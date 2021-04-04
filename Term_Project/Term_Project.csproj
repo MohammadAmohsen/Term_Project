@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Css\LogIn.css" />
+    <Content Include="Css\SignUpCSS.css" />
     <Content Include="Css\StyleSheet1.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -76,10 +77,13 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.css" />
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Images2\Advanced.PNG" />
     <Content Include="Images2\Background.jpg" />
     <Content Include="Images2\background1.jpg" />
     <Content Include="Images2\background2.jpg" />
     <Content Include="Images2\Background3.jpg" />
+    <Content Include="Images2\beginner.png" />
+    <Content Include="Images2\intermediate.png" />
     <Content Include="Images2\Logo.PNG" />
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\icons\favicon.ico" />

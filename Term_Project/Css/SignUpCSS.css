@@ -1,0 +1,28 @@
+﻿body {
+    font-family: 'MV Boli';
+   
+}
+
+
+
+#userInput {
+    margin-top: 105px;
+}
+
+
+#headerNav {
+    background-color: gray;
+}
+
+#Heading {
+    margin-left: 50px;
+}
+
+#btnCreate {
+    background-color: gray;
+    color: white;
+}
+
+#lblFlagEmail {
+    color: white;
+}

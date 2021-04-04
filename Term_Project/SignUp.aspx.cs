@@ -13,5 +13,21 @@ namespace Term_Project
         {
 
         }
+
+        protected void btnCreate_Click1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnBackToSign_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LogIn.aspx");
+
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
