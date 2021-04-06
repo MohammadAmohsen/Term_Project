@@ -41,7 +41,7 @@
 
 	  <form id="form1" runat="server" class="form-signin text-center">
         <div id="userInput" class="d-flex justify-content-center text-center">
-            <div class="card" style="width: 50rem; height: 60rem;">
+            <div class="card" style="width: 50rem; height: 80rem;">
                 <div class="container">
                     <br />
 
@@ -76,7 +76,23 @@
                             </asp:DropDownList>
                         </div>
                     </div>
-                                        <br />
+                   <br />
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="FirstName">First Name</label>
+                            <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control" placeholder="John"></asp:TextBox>
+                            <div class="invalid-feedback">Your First Name is required!</div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="LastName">Last Name</label><br />
+                            <asp:TextBox ID="txtLastName" runat="server" type="number" CssClass="form-control" placeholder="Doe"></asp:TextBox>
+                            <div class="invalid-feedback">Your Last Name is required!</div>
+                        </div>
+
+                    </div>
+                    <br />
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -88,7 +104,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="PhoneNumber">Phone Number</label><br />
                             <asp:TextBox ID="txtPhoneNumber" runat="server" type="number" CssClass="form-control" placeholder="XXX-XXX-XXXX"></asp:TextBox>
-                            <div class="invalid-feedback">Your Phone Numver is required!</div>
+                            <div class="invalid-feedback">Your Phone Number is required!</div>
                         </div>
 
                     </div>
@@ -124,6 +140,73 @@
                             <asp:Label ID="lblPassword1" runat="server" Text="Re-Enter Password"></asp:Label>
                             <asp:Label ID="lblPassError1" runat="server" Text="Passwords Do NOT Match!" ForeColor="#CC0000" Visible="False"></asp:Label>
                             <asp:TextBox ID="txtPasswordReenter" runat="server" CssClass="form-control" placeholder="xxxxxxx" type="password"></asp:TextBox>
+                        </div>
+
+                    </div>
+
+    <!---------------------------------------------------- Security Question 1------------------------------------------------------------------------------------------>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <asp:Label ID="SQ1" runat="server" Text="Security Question 1"></asp:Label>
+                                 <asp:DropDownList ID="ddlSQ1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSQ1_SelectedIndexChanged" >
+                                <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
+                                <asp:ListItem>What was your first school called?</asp:ListItem>
+                                <asp:ListItem>What's your favorite food?</asp:ListItem>
+                                <asp:ListItem>What's your favorite color?</asp:ListItem>
+                            </asp:DropDownList>                        </div>
+                        <br />
+
+
+                        <div class="col-md-6 mb-3">
+                            <asp:Label ID="lblSQ1Answer" runat="server" Text="Security Question 1 Answer"></asp:Label>
+                            <asp:Label ID="lblSQ1AnswerError" runat="server" Text="Text Can't Be Empty!" ForeColor="#CC0000" Visible="False"></asp:Label>
+                            <asp:TextBox ID="txtSQ1Answer" runat="server" CssClass="form-control" placeholder="xxxxxxx"></asp:TextBox>
+                        </div>
+
+                    </div>
+   <!---------------------------------------------------- Security Question 2------------------------------------------------------------------------------------------>
+
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <asp:Label ID="lblSQ2" runat="server" Text="Security Question 2"></asp:Label>
+                                 <asp:DropDownList ID="ddlSQ2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSQ2_SelectedIndexChanged"  >
+                                <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
+                                <asp:ListItem>What was your first school called?</asp:ListItem>
+                                <asp:ListItem>What's your favorite food?</asp:ListItem>
+                                <asp:ListItem>What's your favorite color?</asp:ListItem>
+                            </asp:DropDownList>                        
+
+                        </div>
+                        <br />
+
+
+                        <div class="col-md-6 mb-3">
+                            <asp:Label ID="lblSQ2Answer" runat="server" Text="Security Question 2 Answer"></asp:Label>
+                            <asp:Label ID="lblSQ2Error" runat="server" Text="Text Can't Be Empty!" ForeColor="#CC0000" Visible="False"></asp:Label>
+                            <asp:TextBox ID="txtSQ2Answer" runat="server" CssClass="form-control" placeholder="xxxxxxx" ></asp:TextBox>
+                        </div>
+
+                    </div>
+   <!---------------------------------------------------- Security Question 3------------------------------------------------------------------------------------------>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <asp:Label ID="lblSQ3" runat="server" Text="Security Question 3"></asp:Label>
+                                 <asp:DropDownList ID="ddlSQ3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSQ3_SelectedIndexChanged" >
+                                <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
+                                <asp:ListItem>What was your first school called?</asp:ListItem>
+                                <asp:ListItem>What's your favorite food?</asp:ListItem>
+                                <asp:ListItem>What's your favorite color?</asp:ListItem>
+                            </asp:DropDownList>                        </div>
+                        <br />
+
+
+                        <div class="col-md-6 mb-3">
+                            <asp:Label ID="lblSQ3Answer" runat="server" Text="Security Question 1 Answer"></asp:Label>
+                            <asp:Label ID="lblSQ3Error" runat="server" Text="Text Can't Be Empty!" ForeColor="#CC0000" Visible="False"></asp:Label>
+                            <asp:TextBox ID="txtSQ3Answer" runat="server" CssClass="form-control" placeholder="xxxxxxx" ></asp:TextBox>
                         </div>
 
                     </div>

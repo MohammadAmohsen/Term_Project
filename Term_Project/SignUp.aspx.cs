@@ -29,5 +29,20 @@ namespace Term_Project
         {
 
         }
+
+        protected void ddlSQ1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlSQ2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlSQ3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
