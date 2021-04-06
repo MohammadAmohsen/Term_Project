@@ -16,17 +16,25 @@ namespace Term_Project
 
         protected void btnCreate_Click1(object sender, EventArgs e)
         {
+            String moe = rbAnswer.Text;
+
+            if (rbAnswer.Text == "Yes")
+            {
+                Response.Redirect("Questions.aspx");
+
+            }
+            else
+            {
+                Response.Redirect("LogIn.aspx");
+
+            }
+
 
         }
 
         protected void btnBackToSign_Click(object sender, EventArgs e)
         {
             Response.Redirect("LogIn.aspx");
-
-        }
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -43,6 +51,26 @@ namespace Term_Project
         protected void ddlSQ3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ddlImage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddl;
+            ddl = (DropDownList)FindControl("ddlImage");
+            string selecteditem = ddl.SelectedValue.ToString();
+
+            if (selecteditem == "Beginner")
+            {
+                profilePicture.ImageUrl = "../Images2/beginner.png";
+            }
+            else if (selecteditem == "Intermediate")
+            {
+                profilePicture.ImageUrl = "../Images2/intermediate.png";
+            }
+            else if (selecteditem == "Advanced")
+            {
+                profilePicture.ImageUrl = "../Images2/advanced.png";
+            }
         }
     }
 }

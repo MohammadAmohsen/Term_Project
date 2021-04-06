@@ -69,7 +69,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="Avatar">Select A Profile Picture!</label><br />
                             <asp:Image ID="profilePicture" runat="server" ImageUrl="../Images2/beginner.png" Width="110" Height="110" class="rounded" />
-                            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlImage" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlImage_SelectedIndexChanged"  >
                                 <asp:ListItem Selected="True">Beginner</asp:ListItem>
                                 <asp:ListItem>Intermediate</asp:ListItem>
                                 <asp:ListItem>Advanced</asp:ListItem>
@@ -216,9 +216,9 @@
                         <label for="UserType">Would you like our assistance in finding you the best possible workout?</label>
                         <br />
 
-                        <asp:RadioButtonList ID="rbUser" CssClass="radioButtonList" runat="server" style="margin-left:300px;" RepeatDirection="Vertical"  >
-                            <asp:ListItem Value="User" Selected="True">Yes, I would love some help!</asp:ListItem>
-                            <asp:ListItem Value="Admin">Nah I'm a fucking idiot</asp:ListItem>
+                        <asp:RadioButtonList ID="rbAnswer" CssClass="radioButtonList" runat="server" style="margin-left:300px;" RepeatDirection="Vertical"  >
+                            <asp:ListItem Value="Yes" Selected="True">Yes!</asp:ListItem>
+                            <asp:ListItem Value="No">Nah.</asp:ListItem>
                         </asp:RadioButtonList>
                     </div>
                     <hr />

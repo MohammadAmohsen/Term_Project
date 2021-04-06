@@ -42,13 +42,13 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Image profilePicture;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// ddlImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlImage;
 
         /// <summary>
         /// txtFirstName control.
@@ -294,13 +294,13 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.TextBox txtSQ3Answer;
 
         /// <summary>
-        /// rbUser control.
+        /// rbAnswer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbUser;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbAnswer;
 
         /// <summary>
         /// btnCreate control.
