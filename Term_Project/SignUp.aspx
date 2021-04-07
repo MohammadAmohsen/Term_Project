@@ -41,7 +41,7 @@
 
 	  <form id="form1" runat="server" class="form-signin text-center">
         <div id="userInput" class="d-flex justify-content-center text-center">
-            <div class="card" style="width: 50rem; height: 80rem;">
+            <div class="card" id="cardSize" runat="server" style="width: 50rem; height: auto;">
                 <div class="container">
                     <br />
 
@@ -67,12 +67,12 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="Avatar">Select A Profile Picture!</label><br />
+                            <label for="Avatar">What is your experience level?</label><br />
                             <asp:Image ID="profilePicture" runat="server" ImageUrl="../Images2/beginner.png" Width="110" Height="110" class="rounded" />
                             <asp:DropDownList ID="ddlImage" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlImage_SelectedIndexChanged"  >
-                                <asp:ListItem Selected="True">Beginner</asp:ListItem>
-                                <asp:ListItem>Intermediate</asp:ListItem>
-                                <asp:ListItem>Advanced</asp:ListItem>
+                                <asp:ListItem Selected="True" Value="Beginner">Beginner</asp:ListItem>
+                                <asp:ListItem Value="Intermediate">Intermediate</asp:ListItem>
+                                <asp:ListItem Value="Advanced">Advanced</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -101,10 +101,10 @@
                             <div class="invalid-feedback">Your address is required!</div>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="PhoneNumber">Phone Number</label><br />
-                            <asp:TextBox ID="txtPhoneNumber" runat="server" type="number" CssClass="form-control" placeholder="XXX-XXX-XXXX"></asp:TextBox>
-                            <div class="invalid-feedback">Your Phone Number is required!</div>
+                         <div class="col-md-6 mb-3">
+                            <label for="Address">Billing Address</label>
+                            <asp:TextBox ID="txtBillingAddress" runat="server" CssClass="form-control" placeholder="1234 Fake St"></asp:TextBox>
+                            <div class="invalid-feedback">Your Billing address is required!</div>
                         </div>
 
                     </div>
@@ -119,14 +119,14 @@
                         <br />
 
 
-                        <div class="col-md-6 mb-3">
-                            <label for="SecurityEmail">Security Email</label>
-                            <asp:TextBox ID="txtSecurityEmail" runat="server" CssClass="form-control" placeholder="fake@email.com"></asp:TextBox>
-                            <div class="invalid-feedback">Your Seucrity Email Address is required!</div>
+                       <div class="col-md-6 mb-3">
+                            <label for="PhoneNumber">Phone Number</label><br />
+                            <asp:TextBox ID="txtPhoneNumber" runat="server" type="number" CssClass="form-control" placeholder="XXX-XXX-XXXX"></asp:TextBox>
+                            <div class="invalid-feedback">Your Phone Number is required!</div>
                         </div>
-                        <br />
 
                     </div>
+                    <br />
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
@@ -149,7 +149,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="SQ1" runat="server" Text="Security Question 1"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSQ1_SelectedIndexChanged" >
+                                 <asp:DropDownList ID="ddlSQ1" runat="server" AutoPostBack="true" >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -171,7 +171,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="lblSQ2" runat="server" Text="Security Question 2"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSQ2_SelectedIndexChanged"  >
+                                 <asp:DropDownList ID="ddlSQ2" runat="server" AutoPostBack="true"  >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -194,7 +194,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="lblSQ3" runat="server" Text="Security Question 3"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSQ3_SelectedIndexChanged" >
+                                 <asp:DropDownList ID="ddlSQ3" runat="server" AutoPostBack="true"  >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -211,20 +211,99 @@
 
                     </div>
                     <hr />
+  <!---------------------------------------------------- RadioButton------------------------------------------------------------------------------------------>
 
                     <div class="form-check">
                         <label for="UserType">Would you like our assistance in finding you the best possible workout?</label>
                         <br />
 
-                        <asp:RadioButtonList ID="rbAnswer" CssClass="radioButtonList" runat="server" style="margin-left:300px;" RepeatDirection="Vertical"  >
-                            <asp:ListItem Value="Yes" Selected="True">Yes!</asp:ListItem>
+                        <asp:RadioButtonList ID="rbAnswer" CssClass="radioButtonList" AutoPostback="true" runat="server" style="margin-left:300px;" RepeatDirection="Vertical" OnSelectedIndexChanged="rbAnswer_SelectedIndexChanged"  >
+                            <asp:ListItem Value="Yes">Yes!</asp:ListItem>
                             <asp:ListItem Value="No">Nah.</asp:ListItem>
                         </asp:RadioButtonList>
                     </div>
                     <hr />
 
+  <%--        ------------------------------------------  Weight Question-------------------------------------------------------%>
+
+                        <div class="row" runat="server" visible="false" id="Questions1">
+                            <div class="col mb-3">
+                                <asp:Label ID="LabelWeight" runat="server" Text="What is your current weight (lbs)?" ></asp:Label>
+
+                                <div class="col-md-6 mb-3">
+                                    <asp:Label ID="Label3" runat="server"  visible="false" AutoPostBack="true" Text="Text Can't Be Empty!" ForeColor="#CC0000"></asp:Label>
+                                    <asp:TextBox ID="txtWeight" style="margin-left:200px" runat="server" CssClass="form-control" placeholder="135"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%--        ------------------------------------------ Goal Question-------------------------------------------------------%>
+
+                        <div class="row" runat="server" visible="false" id="Questions2">
+                            <div class="col mb-3">
+                                <asp:Label ID="LabelGoals" runat="server"  Text="What are your fitness goals"></asp:Label>
+
+                                <asp:DropDownList ID="ddlGoals" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSQ3_SelectedIndexChanged">
+                                    <asp:ListItem Selected="True">Gain Weight?</asp:ListItem>
+                                    <asp:ListItem>Lose Weight</asp:ListItem>
+                                    <asp:ListItem>Maintain Weight</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                            <br />
+
+                        </div>
+
+                        <%--        ------------------------------------------ How many days a week question Question-------------------------------------------------------%>
+
+
+                        <div class="row" runat="server" visible="false" id="Questions3">
+                            <div class="col mb-3 ">
+                                <asp:Label ID="DaysAWeekProgram" runat="server" Text="How many days a week would you look your program to be?"></asp:Label>
+                                <asp:DropDownList ID="ddlDays" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSQ3_SelectedIndexChanged">
+                                    <asp:ListItem Selected="True">3</asp:ListItem>
+                                    <asp:ListItem>4-5</asp:ListItem>
+                                    <asp:ListItem>6-7</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                            <br />
+
+                        </div>
+
+                        <%--                  ----------------------------------------  Age Question--%>
+
+                        <div class="row" runat="server" visible="false" id="Questions4">
+                            <div class="col">
+                                <asp:Label ID="lblAge" runat="server" Text="What is your current age?"></asp:Label>
+                                <br />
+
+                                <div class="col-md-6 mb-3" style="margin-left:200px">
+                                    <asp:Label ID="lblErrorAge" visible="false" runat="server" Text="Text Can't Be Empty!" ForeColor="#CC0000"></asp:Label>
+                                    <asp:TextBox ID="txtAge" runat="server" CssClass="form-control" type="number" placeholder="18"></asp:TextBox>
+                                </div>
+
+                            </div>
+                        </div>
+                            <br />
+
+                        <%--                  ----------------------------------------  Type of Training Question--%>
+                        <div class="row" runat="server" visible="false" id="Questions5">
+                            <div class="col mb-3">
+                                <asp:Label ID="lblTypeOfTraining" runat="server" Text="Type of Training?"></asp:Label>
+                                <asp:DropDownList ID="ddlTraining" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSQ3_SelectedIndexChanged">
+                                    <asp:ListItem Selected="True">Hypertrophy (High Repitions)</asp:ListItem>
+                                    <asp:ListItem>Strength (Lower Repitions)</asp:ListItem>
+                                    <asp:ListItem>Both</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                            <br />
+
+                                                </div>
+
+                        <%--                  ----------------------------------------  Buttons for account of create --%>
+
+
                     <asp:Button ID="btnCreate" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Your Account!" OnClick="btnCreate_Click1" />
-                    <asp:Button ID="btnBackToSign" class="btn btn-md btn-light btn-block" runat="server" Text="Sign-In Instead" OnClick="btnBackToSign_Click" />
+                    <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Sign-In Instead" OnClick="btnBackToSign_Click" />
 
                 </div>
             </div>

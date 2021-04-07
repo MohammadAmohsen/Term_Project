@@ -90,6 +90,7 @@
     <Content Include="LogIn.aspx" />
     <Content Include="Questions.aspx" />
     <Content Include="SignUp.aspx" />
+    <Content Include="SignUp1.aspx" />
     <Content Include="vendor\animate\animate.css" />
     <Content Include="vendor\animsition\css\animsition.css" />
     <Content Include="vendor\animsition\css\animsition.min.css" />
@@ -215,6 +216,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorkoutLibraryClass\WorkoutLibraryClass.csproj">
+      <Project>{d97e979d-f4bf-4d4a-b441-19f27bc9b0a3}</Project>
+      <Name>WorkoutLibraryClass</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
