@@ -25,7 +25,43 @@ namespace WorkoutLibrary
         private String userName;
         private String billingAddress;
         private String dateCreated;
+        private int UserWeight;
+        private int UserAge;
+        private String AmountOfDays;
+        private String UserTrainingType;
+        private String userGoals;
 
+        public String UserGoals
+        {
+            get { return userGoals; }
+            set { userGoals = value; }
+        }
+
+
+        public int userWeight
+        {
+            get { return UserWeight; }
+            set { UserWeight = value; }
+        }
+
+
+
+        public int userAge
+        {
+            get { return UserAge; }
+            set { UserAge = value; }
+        }
+        public String amountOfDays
+        {
+            get { return AmountOfDays; }
+            set { AmountOfDays = value; }
+        }
+
+        public String userTrainingType
+        {
+            get { return UserTrainingType; }
+            set { UserTrainingType = value; }
+        }
 
 
         public String DateCreated

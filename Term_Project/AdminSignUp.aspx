@@ -1,11 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SignUp.aspx.cs" Inherits="Term_Project.SignUp" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminSignUp.aspx.cs" Inherits="Term_Project.AdminSignUp" %>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<title>Login V3</title>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<head runat="server">
+    <title></title>
+
+
+    	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -27,14 +29,14 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/LogIn.css"/>
 	<link rel="stylesheet" type="text/css" href="css/StyleSheet1.css"/>
-    <link href="Css/SignUpCSS.css" rel="stylesheet" />
+        <link href="Css/SignUpCSS.css" rel="stylesheet" />
+
 <!--===============================================================================================-->
 </head>
 <body>
-	
-        <header>
+    <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="headerNav">
-            <a class="navbar-brand" href="Default.aspx">Moe's Fitness</a>
+            <a class="navbar-brand" href="Default.aspx">Moe's Fitness - Admin</a>
         </nav>
     </header>
  <div class="container-login100" style="background-image: url('images2/background3.jpg');">
@@ -54,7 +56,7 @@
                         <br />
 
                         <div class="col-md-8 mb-3" id="Heading">
-                            <h4 class="mb-3">Create Your Very Own Account!</h4>
+                            <h4 class="mb-3">Admin Sign Up!</h4>
                         </div>
                     </div>
                     <br />
@@ -68,11 +70,11 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="Avatar">What is your experience level?</label><br />
-                            <asp:Image ID="profilePicture" runat="server" ImageUrl="../Images2/beginner.png" Width="110" Height="110" class="rounded" />
+                            <asp:Image ID="profilePicture" runat="server" ImageUrl="../Images2/Admin1.png" Width="110" Height="110" class="rounded" />
                             <asp:DropDownList ID="ddlImage" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlImage_SelectedIndexChanged"  >
-                                <asp:ListItem Selected="True" Value="Beginner">Beginner</asp:ListItem>
-                                <asp:ListItem Value="Intermediate">Intermediate</asp:ListItem>
-                                <asp:ListItem Value="Advanced">Advanced</asp:ListItem>
+                                <asp:ListItem Selected="True" Value="Admin1">Admin 1</asp:ListItem>
+                                <asp:ListItem Value="Admin2">Admin 2</asp:ListItem>
+                                <asp:ListItem Value="Admin3">Admin 3</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -211,99 +213,11 @@
 
                     </div>
                     <hr />
-  <!---------------------------------------------------- RadioButton------------------------------------------------------------------------------------------>
 
-                    <div class="form-check">
-                        <label for="UserType">Would you like our assistance in finding you the best possible workout?</label>
-                        <br />
-
-                        <asp:RadioButtonList ID="rbAnswer" CssClass="radioButtonList" AutoPostback="true" runat="server" style="margin-left:300px;" RepeatDirection="Vertical" OnSelectedIndexChanged="rbAnswer_SelectedIndexChanged"  >
-                            <asp:ListItem Value="Yes">Yes!</asp:ListItem>
-                            <asp:ListItem Value="No">Nah.</asp:ListItem>
-                        </asp:RadioButtonList>
-                    </div>
-                    <hr />
-
-  <%--        ------------------------------------------  Weight Question-------------------------------------------------------%>
-
-                        <div class="row" runat="server" visible="false" id="Questions1">
-                            <div class="col mb-3">
-                                <asp:Label ID="LabelWeight" runat="server" Text="What is your current weight (lbs)?" ></asp:Label>
-
-                                <div class="col-md-6 mb-3">
-                                    <asp:Label ID="Label3" runat="server"  visible="false" AutoPostBack="true" Text="Text Can't Be Empty!" ForeColor="#CC0000"></asp:Label>
-                                    <asp:TextBox ID="txtWeight" style="margin-left:200px" runat="server" CssClass="form-control" placeholder="135"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-
-                        <%--        ------------------------------------------ Goal Question-------------------------------------------------------%>
-
-                        <div class="row" runat="server" visible="false" id="Questions2">
-                            <div class="col mb-3">
-                                <asp:Label ID="LabelGoals" runat="server"  Text="What are your fitness goals"></asp:Label>
-
-                                <asp:DropDownList ID="ddlGoals" runat="server" AutoPostBack="true"  >
-                                    <asp:ListItem Selected="True">Gain Weight?</asp:ListItem>
-                                    <asp:ListItem>Lose Weight</asp:ListItem>
-                                    <asp:ListItem>Maintain Weight</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                            <br />
-
-                        </div>
-
-                        <%--        ------------------------------------------ How many days a week question Question-------------------------------------------------------%>
-
-
-                        <div class="row" runat="server" visible="false" id="Questions3">
-                            <div class="col mb-3 ">
-                                <asp:Label ID="DaysAWeekProgram" runat="server" Text="How many days a week would you look your program to be?"></asp:Label>
-                                <asp:DropDownList ID="ddlDays" runat="server" AutoPostBack="true">
-                                    <asp:ListItem Selected="True">3</asp:ListItem>
-                                    <asp:ListItem>4-5</asp:ListItem>
-                                    <asp:ListItem>6-7</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                            <br />
-
-                        </div>
-
-                        <%--                  ----------------------------------------  Age Question--%>
-
-                        <div class="row" runat="server" visible="false" id="Questions4">
-                            <div class="col">
-                                <asp:Label ID="lblAge" runat="server" Text="What is your current age?"></asp:Label>
-                                <br />
-
-                                <div class="col-md-6 mb-3" style="margin-left:200px">
-                                    <asp:Label ID="lblErrorAge" visible="false" runat="server" Text="Text Can't Be Empty!" ForeColor="#CC0000"></asp:Label>
-                                    <asp:TextBox ID="txtAge" runat="server" CssClass="form-control" type="number" placeholder="18"></asp:TextBox>
-                                </div>
-
-                            </div>
-                        </div>
-                            <br />
-
-                        <%--                  ----------------------------------------  Type of Training Question--%>
-                        <div class="row" runat="server" visible="false" id="Questions5">
-                            <div class="col mb-3">
-                                <asp:Label ID="lblTypeOfTraining" runat="server" Text="Type of Training?"></asp:Label>
-                                <asp:DropDownList ID="ddlTraining" runat="server" AutoPostBack="true" >
-                                    <asp:ListItem Selected="True">Hypertrophy (High Repitions)</asp:ListItem>
-                                    <asp:ListItem>Strength (Lower Repitions)</asp:ListItem>
-                                    <asp:ListItem>Both</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                            <br />
-
-                                                </div>
-
-                        <%--                  ----------------------------------------  Buttons for account of create --%>
-
+                 
 
                     <asp:Button ID="btnCreate" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Your Account!" OnClick="btnCreate_Click1" />
-                    <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Sign-In Instead" OnClick="btnBackToSign_Click" />
+                    <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Back To Admin Page!" OnClick="btnBackToSign_Click" />
 
                 </div>
             </div>

@@ -47,18 +47,20 @@
 						Log in
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+					<div class="wrap-input100 validate-input" id="lblEmail" runat="server" data-validate = "Enter Email">
+						 <asp:Label ID="lblinputEmailError" Visible="false" runat="server" Text="Please input a valid Email Address" ForeColor="Red"></asp:Label>
+                         <asp:TextBox class="input100" runat="server" id="txtEmail" name="pass" placeholder="Email Address"></asp:TextBox>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+					<div class="wrap-input100 validate-input" runat="server" id="lblPassword" data-validate="Enter password">
+				    <asp:Label ID="lblInputPassError" Visible="false" runat="server" Text="Please input a valid Password" ForeColor="Red"></asp:Label>
+						<asp:TextBox class="input100" runat="server" type="password" id="txtPassword" name="pass" placeholder="Password"></asp:TextBox>
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
 					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"/>
 						<label class="label-checkbox100" for="ckb1">
 							Remember me
 						</label>

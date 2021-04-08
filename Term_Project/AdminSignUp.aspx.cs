@@ -12,15 +12,14 @@ using WorkoutLibrary;
 
 namespace Term_Project
 {
-    public partial class SignUp : System.Web.UI.Page
+    public partial class AdminSignUp : System.Web.UI.Page
     {
-
         DBConnect db = new DBConnect();
         ArrayList arrayNewUser = new ArrayList();
 
         protected void Page_Load(object sender, EventArgs e)
         {
- 
+
         }
 
         protected void btnCreate_Click1(object sender, EventArgs e)
@@ -105,7 +104,7 @@ namespace Term_Project
                         newUsers.SecurityAnswer2 = securityAnswer2;
                         newUsers.SecurityAnswer3 = securityAnswer3;
                         newUsers.Password = pass;
-                        newUsers.Type = "User";
+                        newUsers.Type = "Admin";
                         newUsers.Experience = ddlImage.SelectedValue;
                         newUsers.UserImage = ddlImage.SelectedValue;
                         newUsers.DateCreated = DateTime.Now.ToString();
@@ -186,117 +185,12 @@ namespace Term_Project
                         Experience.Direction = ParameterDirection.Input;
                         sqlCommand.Parameters.Add(Experience);
 
+                        db.DoUpdateUsingCmdObj(sqlCommand);
 
-                         db.DoUpdateUsingCmdObj(sqlCommand);
+                        Response.Redirect("LogIn.aspx");
 
-                        
-                        if(rbAnswer.Text == "Yes")
-                        {
-                            List<String> CheckList2 = new List<String>();
-
-                            int weight = Convert.ToInt32(txtWeight.Text);
-                            string goals = ddlGoals.SelectedValue;
-                            string days = ddlDays.SelectedValue;
-                            int age = Convert.ToInt32(txtAge.Text);
-                            string training = ddlTraining.SelectedValue;
-
-
-                            int check2 = 0;
-                            CheckList2.Add(weight.ToString());
-                            CheckList2.Add(goals);
-                            CheckList2.Add(days);
-                            CheckList2.Add(age.ToString());
-                            CheckList2.Add(training);
-                           
-
-                            for (int i = 0; i < CheckList2.Count; i++)
-                            {
-                                if (CheckList2[i] != "")
-                                {
-                                    check2 = check2 + 1;
-                                }
-
-                            }
-                            if (check2 == 5)
-                            {
-
-                                newUsers.userWeight = Convert.ToInt32(txtWeight.Text);
-                                newUsers.UserGoals = ddlGoals.SelectedValue;
-                                newUsers.amountOfDays = ddlDays.SelectedValue;
-                                newUsers.userAge = Convert.ToInt32(txtAge.Text);
-                                newUsers.userTrainingType = ddlTraining.SelectedValue;
-
-
-                                SqlCommand sqlCommand2 = new SqlCommand();
-
-
-                                sqlCommand2.CommandType = CommandType.StoredProcedure;
-                                sqlCommand2.CommandText = "TP_UpdateUsersQuestions";
-
-                                SqlParameter Training = new SqlParameter("@Training", newUsers.userTrainingType);
-                                Training.Direction = ParameterDirection.Input;
-                                sqlCommand2.Parameters.Add(Training);
-
-                                SqlParameter Weight = new SqlParameter("@Weight", newUsers.userWeight);
-                                Weight.Direction = ParameterDirection.Input;
-                                sqlCommand2.Parameters.Add(Weight);
-
-                                SqlParameter Goals = new SqlParameter("@Goals", newUsers.UserGoals);
-                                Goals.Direction = ParameterDirection.Input;
-                                sqlCommand2.Parameters.Add(Goals);
-
-                                SqlParameter Age = new SqlParameter("@Age", newUsers.userAge);
-                                Age.Direction = ParameterDirection.Input;
-                                sqlCommand2.Parameters.Add(Age);
-
-                                SqlParameter DaysOfWeek = new SqlParameter("@DaysOfWeek", newUsers.amountOfDays);
-                                DaysOfWeek.Direction = ParameterDirection.Input;
-                                sqlCommand2.Parameters.Add(DaysOfWeek);
-
-
-
-                                SqlCommand sqlCommand4 = new SqlCommand();
-
-
-                                sqlCommand4.CommandType = CommandType.StoredProcedure;
-                                sqlCommand4.CommandText = "TP_UserIdFromUsersCreateAccountPage";
-
-                                SqlParameter email = new SqlParameter("@EmailAddress", newUsers.EmailAddress);
-                                email.Direction = ParameterDirection.Input;
-                                sqlCommand4.Parameters.Add(email);
-
-
-                                DataSet ds3 = db.GetDataSetUsingCmdObj(sqlCommand4);
-
-                                int userID =  Convert.ToInt32(ds3.Tables[0].Rows[0]["UserID"]);
-
-                                SqlParameter UserID = new SqlParameter("@UserID", userID);
-                                UserID.Direction = ParameterDirection.Input;
-                                sqlCommand2.Parameters.Add(UserID);
-
-                                db.DoUpdateUsingCmdObj(sqlCommand2);
-
-                                Response.Write("<script>alert('Your account has been created!') </script>");
-                                Response.Redirect("LogIn.aspx");
-
-                            }
-                            else
-                            {
-                                Response.Write("<script>alert('Please Fill Out All The Questions') </script>");
-
-                            }
-
-                        }
-                        else
-                        {
-                            Response.Write("<script>alert('Your account has been created!') </script>");
-                            Response.Redirect("LogIn.aspx");
-                        }
-
-
-                        //Session["TagFolders"] = null;
-                        //Response.Redirect("Default.aspx");
                     }
+
                     else
                     {
                         Response.Write("<script>alert('The EmailAddress is already taken! Please Try Again!') </script>");
@@ -309,19 +203,21 @@ namespace Term_Project
                     lblPassError1.Visible = true;
                     lblPassword.Visible = false;
                     lblPassword1.Visible = false;
-
                 }
+
             }
             else
             {
                 Response.Write("<script>alert('Every Field Is Needed To Make An Account Dummy!') </script>");
             }
+            
 
         }
 
+
         protected void btnBackToSign_Click(object sender, EventArgs e)
         {
-            Response.Redirect("LogIn.aspx");
+            Response.Redirect("AdminPage.aspx");
 
         }
 
@@ -331,46 +227,18 @@ namespace Term_Project
             ddl = (DropDownList)FindControl("ddlImage");
             string selecteditem = ddl.SelectedValue.ToString();
 
-            if (selecteditem == "Beginner")
+            if (selecteditem == "Admin1")
             {
-                profilePicture.ImageUrl = "../Images2/beginner.png";
+                profilePicture.ImageUrl = "../Images2/Admin1.png";
             }
-            else if (selecteditem == "Intermediate")
+            else if (selecteditem == "Admin2")
             {
-                profilePicture.ImageUrl = "../Images2/intermediate.png";
+                profilePicture.ImageUrl = "../Images2/Admin2.png";
             }
-            else if (selecteditem == "Advanced")
+            else if (selecteditem == "Admin3")
             {
-                profilePicture.ImageUrl = "../Images2/advanced.png";
+                profilePicture.ImageUrl = "../Images2/Admin3.png";
             }
-        }
-
-        protected void rbAnswer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            String moe = rbAnswer.Text;
-
-            if (rbAnswer.Text == "Yes")
-            {
-                ShowQuestion(true);
-
-
-            }
-            else
-            {
-                ShowQuestion(false);
-
-            }
-
-        }
-
-        public void ShowQuestion(Boolean boo)
-        {
-            Questions1.Visible = boo;
-            Questions2.Visible = boo;
-            Questions3.Visible = boo;
-            Questions4.Visible = boo;
-            Questions5.Visible = boo;
-
         }
 
     }

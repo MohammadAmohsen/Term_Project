@@ -10,7 +10,7 @@
 
 namespace Term_Project
 {
-    public partial class Questions
+    public partial class HomePage
     {
 
         /// <summary>
