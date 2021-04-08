@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace WorkoutLibrary
 {
-    public class Exericse
+    public class Exercise
     {
         private String ExerciseName;
         private int Reps;
         private int Sets;
+        private String Day;
+
+        public String day
+        {
+            get { return Day; }
+            set { Day = value; }
+        }
+
 
         public String exerciseName
         {

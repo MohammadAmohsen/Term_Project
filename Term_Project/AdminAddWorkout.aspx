@@ -63,7 +63,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="ProgramName">Program Name</label>
-                            <asp:TextBox ID="txtUserName" runat="server" class="form-control" placeholder="Name" autofocus=""></asp:TextBox>
+                            <asp:TextBox ID="txtProgramName" runat="server" class="form-control" placeholder="Name" autofocus=""></asp:TextBox>
                             <div class="invalid-feedback">Your Program Name Is Required</div>
                         </div>
 
@@ -90,43 +90,57 @@
 
                        <div class="col-md-6 mb-3">
                             <label for="Program">Days of Workout</label>
-                           <asp:RadioButtonList ID="rbDays" runat="server" CssClass="radioButtonList" AutoPostback="true" style="margin-left:70px;" RepeatDirection="Horizontal" > 
-                               <asp:ListItem Selected="True" Value="3">3 Days</asp:ListItem>
-                                <asp:ListItem Value="5">4-5 Days</asp:ListItem>
-                                <asp:ListItem Value="7">6-7 Days</asp:ListItem></asp:RadioButtonList>                     
-                        </div>
+                           <asp:RadioButtonList ID="rbDays" runat="server" CssClass="radioButtonList" AutoPostback="true" style="margin-left:50px;" RepeatDirection="Horizontal" > 
+                               <asp:ListItem Selected="True" Value="3" style="margin-right:90px">3 Days</asp:ListItem>
+                                <asp:ListItem Value="5" style="margin-right:90px" >4-5 Days</asp:ListItem>
+                               <asp:ListItem Value="7" style="margin-right: 90px">6-7 Days</asp:ListItem>
+                           </asp:RadioButtonList>
+                       </div>
 
                     </div>
-                    <br />
-
-                    <div class="row">
-                        <h3 id="h3Monday" runat="server">Monday Workout</h3>
-
-                        <div class="col-md-6 mb-3">
-                            <label for="Desc">Workout Description</label>
-                            <asp:TextBox ID="txtMondayDescription" runat="server" CssClass="form-control" placeholder="Back/Biceps"></asp:TextBox>
-                            <div class="invalid-feedback">Your Description is required!</div>
-                        </div>
-
-                         <div class="col-md-6 mb-3">
-                            <label for="ExerciseName">Exercise Name</label>
-                            <asp:TextBox ID="txtExerciseMonday" runat="server" CssClass="form-control" placeholder="Deadlift"></asp:TextBox>
-                            <div class="invalid-feedback">Your Exercise is required!</div>
-                        </div>
-
-                    </div>
-                    <br />
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
+                            <label for="Program">Description Of Program</label>
+                            <asp:TextBox ID="txtDesc" runat="server" class="form-control" placeholder="Description" autofocus=""></asp:TextBox>
+                            <div class="invalid-feedback">Your Program Description Is Required</div>
+                        </div>
+                    </div>
+                    <br />
+                    <hr />
+
+
+                    <!-- Monday -->
+                    <h3 id="h3Monday" class="text-center" runat="server">Monday Workout</h3>
+                    <br />
+
+                    <div class="col-md-6 mb-3 text-center" style="margin-left: 180px;">
+                        <label for="Desc">Workout Description</label>
+                        <asp:TextBox ID="txtMondayDescription" runat="server" class="form-control" placeholder="Back/Biceps"></asp:TextBox>
+                        <div class="invalid-feedback">Your Description is required!</div>
+                    </div>
+
+                    
+
+                    <div class="col-md-6 mb-3" style="margin-left: 180px;">
+                        <label for="ExerciseName">Exercise Name</label>
+                        <asp:TextBox ID="txtExerciseMonday" runat="server" CssClass="form-control" placeholder="Deadlift"></asp:TextBox>
+                        <div class="invalid-feedback">Your Exercise is required!</div>
+                    </div>
+
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
                             <label for="Sets">Sets for this exercise</label>
                             <asp:TextBox ID="txtSetsMonday" runat="server" type="number" CssClass="form-control" placeholder="3"></asp:TextBox>
                             <div class="invalid-feedback">Sets are required!</div>
                         </div>
-                        <br />
+                    </div>
+                    <div class="row">
 
-
-                       <div class="col-md-6 mb-3">
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
                             <label for="Reps">Reps for this exercise</label><br />
                             <asp:TextBox ID="txtRepsMonday" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                             <div class="invalid-feedback">Reps are required!</div>
@@ -134,38 +148,251 @@
 
                     </div>
                     <br />
+
+                      <asp:Button ID="btnAddMonday" runat="server"  Text="Add Workouts!" OnClick="btnAddMonday_Click"  />
+
                     <hr />
 
-                    <div class="row">
-                        <h3 id="h1" runat="server">Tuesday Workout</h3>
+                    <!-- Tuesday -->
+                    <h3 id="h1" class="text-center" runat="server">Tuesday Workout</h3>
+                    <br />
 
-                        <div class="col-md-6 mb-3">
-                            <label for="Desc">Workout Description</label>
-                            <asp:TextBox ID="txtDescriptionTuesday" runat="server" CssClass="form-control" placeholder="Back/Biceps"></asp:TextBox>
-                            <div class="invalid-feedback">Your Description is required!</div>
-                        </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="ExerciseName">Exercise Name</label>
-                            <asp:TextBox ID="txtExerciseTuesday" runat="server" CssClass="form-control" placeholder="Deadlift"></asp:TextBox>
-                            <div class="invalid-feedback">Your Exercise is required!</div>
-                        </div>
 
+                    <div class="col-md-6 mb-3 text-center" style="margin-left: 180px;">
+                        <label for="Desc">Workout Description</label>
+                        <asp:TextBox ID="txtDescTuesday" runat="server" class="form-control" placeholder="Back/Biceps"></asp:TextBox>
+                        <div class="invalid-feedback">Your Description is required!</div>
                     </div>
+
+
+                    <div class="col-md-6 mb-3" style="margin-left: 180px;">
+                        <label for="ExerciseName">Exercise Name</label>
+                        <asp:TextBox ID="txtExcerciseTuesday" runat="server" CssClass="form-control" placeholder="Deadlift"></asp:TextBox>
+                        <div class="invalid-feedback">Your Exercise is required!</div>
+                    </div>
+
+
                     <br />
 
                     <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
                             <label for="Sets">Sets for this exercise</label>
                             <asp:TextBox ID="txtSetsTuesday" runat="server" type="number" CssClass="form-control" placeholder="3"></asp:TextBox>
                             <div class="invalid-feedback">Sets are required!</div>
                         </div>
-                        <br />
+                    </div>
+                    <div class="row">
 
-
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
                             <label for="Reps">Reps for this exercise</label><br />
                             <asp:TextBox ID="txtRepsTuesday" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
+                            <div class="invalid-feedback">Reps are required!</div>
+                        </div>
+
+                    </div>
+                    <asp:Button ID="btnSubmitTuesday" runat="server" Text="Add" />
+                    <br />
+                    <hr />
+
+                    <!-- Wednesday -->
+                    <h3 id="h2" class="text-center" runat="server">Wednesday Workout</h3>
+                    <br />
+
+
+
+                    <div class="col-md-6 mb-3 text-center" style="margin-left: 180px;">
+                        <label for="Desc">Workout Description</label>
+                        <asp:TextBox ID="txtDescWed" runat="server" class="form-control" placeholder="Back/Biceps"></asp:TextBox>
+                        <div class="invalid-feedback">Your Description is required!</div>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3" style="margin-left: 180px;">
+                        <label for="ExerciseName">Exercise Name</label>
+                        <asp:TextBox ID="txtExerciseWed" runat="server" CssClass="form-control" placeholder="Deadlift"></asp:TextBox>
+                        <div class="invalid-feedback">Your Exercise is required!</div>
+                    </div>
+
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Sets">Sets for this exercise</label>
+                            <asp:TextBox ID="txtSetsWed" runat="server" type="number" CssClass="form-control" placeholder="3"></asp:TextBox>
+                            <div class="invalid-feedback">Sets are required!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Reps">Reps for this exercise</label><br />
+                            <asp:TextBox ID="txtRepsWed" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
+                            <div class="invalid-feedback">Reps are required!</div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <hr />
+
+                    <!-- Thursday -->
+                    <h3 id="h3" class="text-center" runat="server">Thursday Workout</h3>
+                    <br />
+
+
+
+                    <div class="col-md-6 mb-3 text-center" style="margin-left: 180px;">
+                        <label for="Desc">Workout Description</label>
+                        <asp:TextBox ID="txtDesThurs" runat="server" class="form-control" placeholder="Back/Biceps"></asp:TextBox>
+                        <div class="invalid-feedback">Your Description is required!</div>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3" style="margin-left: 180px;">
+                        <label for="ExerciseName">Exercise Name</label>
+                        <asp:TextBox ID="txtExerciseThurs" runat="server" CssClass="form-control" placeholder="Deadlift"></asp:TextBox>
+                        <div class="invalid-feedback">Your Exercise is required!</div>
+                    </div>
+
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Sets">Sets for this exercise</label>
+                            <asp:TextBox ID="txtSetsThurs" runat="server" type="number" CssClass="form-control" placeholder="3"></asp:TextBox>
+                            <div class="invalid-feedback">Sets are required!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Reps">Reps for this exercise</label><br />
+                            <asp:TextBox ID="txtRepsThurs" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
+                            <div class="invalid-feedback">Reps are required!</div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <hr />
+
+                    <!-- Friday -->
+                    <h3 id="h4" class="text-center" runat="server">Friday Workout</h3>
+                    <br />
+
+
+
+                    <div class="col-md-6 mb-3 text-center" style="margin-left: 180px;">
+                        <label for="Desc">Workout Description</label>
+                        <asp:TextBox ID="txtDescFri" runat="server" class="form-control" placeholder="Back/Biceps"></asp:TextBox>
+                        <div class="invalid-feedback">Your Description is required!</div>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3" style="margin-left: 180px;">
+                        <label for="ExerciseName">Exercise Name</label>
+                        <asp:TextBox ID="txtExerciseFri" runat="server" CssClass="form-control" placeholder="Deadlift"></asp:TextBox>
+                        <div class="invalid-feedback">Your Exercise is required!</div>
+                    </div>
+
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Sets">Sets for this exercise</label>
+                            <asp:TextBox ID="txtSetsFri" runat="server" type="number" CssClass="form-control" placeholder="3"></asp:TextBox>
+                            <div class="invalid-feedback">Sets are required!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Reps">Reps for this exercise</label><br />
+                            <asp:TextBox ID="txtRepsFri" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
+                            <div class="invalid-feedback">Reps are required!</div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <hr />
+
+                    <!-- Saturday -->
+                    <h3 id="h5" class="text-center" runat="server">Saturday Workout</h3>
+                    <br />
+
+
+
+                    <div class="col-md-6 mb-3 text-center" style="margin-left: 180px;">
+                        <label for="Desc">Workout Description</label>
+                        <asp:TextBox ID="txtDescSat" runat="server" class="form-control" placeholder="Back/Biceps"></asp:TextBox>
+                        <div class="invalid-feedback">Your Description is required!</div>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3" style="margin-left: 180px;">
+                        <label for="ExerciseName">Exercise Name</label>
+                        <asp:TextBox ID="txtExerciseSat" runat="server" CssClass="form-control" placeholder="Deadlift"></asp:TextBox>
+                        <div class="invalid-feedback">Your Exercise is required!</div>
+                    </div>
+
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Sets">Sets for this exercise</label>
+                            <asp:TextBox ID="txtSetsSat" runat="server" type="number" CssClass="form-control" placeholder="3"></asp:TextBox>
+                            <div class="invalid-feedback">Sets are required!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Reps">Reps for this exercise</label><br />
+                            <asp:TextBox ID="txtRepsSat" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
+                            <div class="invalid-feedback">Reps are required!</div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <hr />
+
+                    <!-- Sunday -->
+                    <h3 id="h6" class="text-center" runat="server">Sunday Workout</h3>
+                    <br />
+
+
+
+                    <div class="col-md-6 mb-3 text-center" style="margin-left: 180px;">
+                        <label for="Desc">Workout Description</label>
+                        <asp:TextBox ID="txtDescSun" runat="server" class="form-control" placeholder="Back/Biceps"></asp:TextBox>
+                        <div class="invalid-feedback">Your Description is required!</div>
+                    </div>
+
+
+                    <div class="col-md-6 mb-3" style="margin-left: 180px;">
+                        <label for="ExerciseName">Exercise Name</label>
+                        <asp:TextBox ID="txtExerciseSun" runat="server" CssClass="form-control" placeholder="Deadlift"></asp:TextBox>
+                        <div class="invalid-feedback">Your Exercise is required!</div>
+                    </div>
+
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Sets">Sets for this exercise</label>
+                            <asp:TextBox ID="txtSetsSun" runat="server" type="number" CssClass="form-control" placeholder="3"></asp:TextBox>
+                            <div class="invalid-feedback">Sets are required!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-5 mb-2" style="margin-left: 230px;">
+                            <label for="Reps">Reps for this exercise</label><br />
+                            <asp:TextBox ID="txtRepsSun" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                             <div class="invalid-feedback">Reps are required!</div>
                         </div>
 
@@ -179,8 +406,8 @@
                 </div>
             </div>
         </div>
-    </form>
-     </div>
+      </form>
+ </div>
 
 </body>
 </html>
