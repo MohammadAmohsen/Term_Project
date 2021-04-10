@@ -13,5 +13,11 @@ namespace Term_Project
         {
 
         }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LogIn.aspx");
+
+        }
     }
 }
