@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,10 +16,21 @@ namespace Term_Project
     public partial class LogIn : System.Web.UI.Page
     {
         DBConnect db = new DBConnect();
+        private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
+        private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack && Request.Cookies["LoginCookie"] != null)
 
+            {
+
+                HttpCookie myCookie = Request.Cookies["LoginCookie"];
+
+                txtEmail.Text = myCookie.Values["Username"];
+                txtPassword.Text = myCookie.Values["Password"];
+
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -50,46 +64,66 @@ namespace Term_Project
                 if (size > 0)
                 {
                     string Type = db.GetField("Type", 0).ToString();
-                    if (Type.CompareTo("User") == 0)
+
+                    if (cbRememberMe.Checked)
                     {
-                        Session["UserId"] = db.GetField("UserId", 0);
-                        Session["FirstName"] = db.GetField("FirstName", 0);
-                        Session["LastName"] = db.GetField("LastName", 0);
-                        Session["EmailAddress"] = db.GetField("EmailAddress", 0);
-                        Session["DateCreated"] = db.GetField("DateCreated", 0);
-                        Session["UserImage"] = db.GetField("UserImage", 0);
-                        Session["Experience"] = db.GetField("Experience", 0);
-                        Session["Type"] = db.GetField("Type", 0);
-                        Session["Password"] = db.GetField("Password", 0);
-                        Session["UserName"] = db.GetField("UserName", 0);
-                        Session["BillingAddress"] = db.GetField("BillingAddress", 0);
-                        Session["UserWeight"] = db.GetField("UserWeight", 0);
-                        Session["UserAge"] = db.GetField("UserAge", 0);
-                        Session["UserDays"] = db.GetField("UserDays", 0);
-                        Session["UserTraining"] = db.GetField("UserTraining", 0);
-                        Session["UserGoals"] = db.GetField("UserGoals", 0);
-                        Response.Redirect("HomePage.aspx");
+                        String user = txtEmail.Text;
+                        String plainTextPassword = txtPassword.Text;
+                        String encryptedPassword;
+
+
+                        UTF8Encoding encoder = new UTF8Encoding();      // used to convert bytes to characters, and back
+                        Byte[] textBytes;                               // stores the plain text data as bytes
+
+
+
+                        // Perform Encryption
+                        //-------------------
+                        // Convert a string to a byte array, which will be used in the encryption process.
+                        textBytes = encoder.GetBytes(plainTextPassword);
+
+
+                        // Create an instances of the encryption algorithm (Rinjdael AES) for the encryption to perform,
+                        // a memory stream used to store the encrypted data temporarily, and
+                        // a crypto stream that performs the encryption algorithm.
+                        RijndaelManaged rmEncryption = new RijndaelManaged();
+                        MemoryStream myMemoryStream = new MemoryStream();
+                        CryptoStream myEncryptionStream = new CryptoStream(myMemoryStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+
+
+                        // Use the crypto stream to perform the encryption on the plain text byte array.
+                        myEncryptionStream.Write(textBytes, 0, textBytes.Length);
+                        myEncryptionStream.FlushFinalBlock();
+
+
+                        // Retrieve the encrypted data from the memory stream, and write it to a separate byte array.
+                        myMemoryStream.Position = 0;
+                        Byte[] encryptedBytes = new Byte[myMemoryStream.Length];
+                        myMemoryStream.Read(encryptedBytes, 0, encryptedBytes.Length);
+
+
+                        // Close all the streams.
+                        myEncryptionStream.Close();
+                        myMemoryStream.Close();
+
+                        // Convert the bytes to a string and display it.
+                        encryptedPassword = Convert.ToBase64String(encryptedBytes);
+
+
+                        // Write encrypted password to a cookie
+                        HttpCookie myCookie = new HttpCookie("LoginCookie");
+                        myCookie.Values["Username"] = user;
+                        myCookie.Values["Password"] = encryptedPassword;
+                        myCookie.Expires = new DateTime(2025, 2, 1);
+                        Response.Cookies.Add(myCookie);
+
+                        logIN(Type);
 
                     }
                     else
                     {
-                        Session["UserId"] = db.GetField("UserId", 0);
-                        Session["FirstName"] = db.GetField("FirstName", 0);
-                        Session["LastName"] = db.GetField("LastName", 0);
-                        Session["EmailAddress"] = db.GetField("EmailAddress", 0);
-                        Session["DateCreated"] = db.GetField("DateCreated", 0);
-                        Session["UserImage"] = db.GetField("UserImage", 0);
-                        Session["Experience"] = db.GetField("Experience", 0);
-                        Session["Type"] = db.GetField("Type", 0);
-                        Session["Password"] = db.GetField("Password", 0);
-                        Session["UserName"] = db.GetField("UserName", 0);
-                        Session["BillingAddress"] = db.GetField("BillingAddress", 0);
-                        Session["UserWeight"] = db.GetField("UserWeight", 0);
-                        Session["UserAge"] = db.GetField("UserAge", 0);
-                        Session["UserDays"] = db.GetField("UserDays", 0);
-                        Session["UserTraining"] = db.GetField("UserTraining", 0);
-                        Session["UserGoals"] = db.GetField("UserGoals", 0);
-                        Response.Redirect("AdminPage.aspx");
+                        logIN(Type);
+
                     }
                 }
                 else
@@ -106,5 +140,52 @@ namespace Term_Project
             Response.Redirect("SignUp.aspx");
 
         }
+
+        private void logIN(string Type)
+        {
+            if (Type.CompareTo("User") == 0)
+            {
+                Session["UserId"] = db.GetField("UserId", 0);
+                Session["FirstName"] = db.GetField("FirstName", 0);
+                Session["LastName"] = db.GetField("LastName", 0);
+                Session["EmailAddress"] = db.GetField("EmailAddress", 0);
+                Session["DateCreated"] = db.GetField("DateCreated", 0);
+                Session["UserImage"] = db.GetField("UserImage", 0);
+                Session["Experience"] = db.GetField("Experience", 0);
+                Session["Type"] = db.GetField("Type", 0);
+                Session["Password"] = db.GetField("Password", 0);
+                Session["UserName"] = db.GetField("UserName", 0);
+                Session["BillingAddress"] = db.GetField("BillingAddress", 0);
+                Session["UserWeight"] = db.GetField("UserWeight", 0);
+                Session["UserAge"] = db.GetField("UserAge", 0);
+                Session["UserDays"] = db.GetField("UserDays", 0);
+                Session["UserTraining"] = db.GetField("UserTraining", 0);
+                Session["UserGoals"] = db.GetField("UserGoals", 0);
+                Response.Redirect("HomePage.aspx");
+
+            }
+            else
+            {
+                Session["UserId"] = db.GetField("UserId", 0);
+                Session["FirstName"] = db.GetField("FirstName", 0);
+                Session["LastName"] = db.GetField("LastName", 0);
+                Session["EmailAddress"] = db.GetField("EmailAddress", 0);
+                Session["DateCreated"] = db.GetField("DateCreated", 0);
+                Session["UserImage"] = db.GetField("UserImage", 0);
+                Session["Experience"] = db.GetField("Experience", 0);
+                Session["Type"] = db.GetField("Type", 0);
+                Session["Password"] = db.GetField("Password", 0);
+                Session["UserName"] = db.GetField("UserName", 0);
+                Session["BillingAddress"] = db.GetField("BillingAddress", 0);
+                Session["UserWeight"] = db.GetField("UserWeight", 0);
+                Session["UserAge"] = db.GetField("UserAge", 0);
+                Session["UserDays"] = db.GetField("UserDays", 0);
+                Session["UserTraining"] = db.GetField("UserTraining", 0);
+                Session["UserGoals"] = db.GetField("UserGoals", 0);
+                Response.Redirect("AdminPage.aspx");
+            }
+        }
+
+      
     }
 }

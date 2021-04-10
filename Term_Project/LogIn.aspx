@@ -60,12 +60,9 @@
 					</div>
 
 					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"/>
-						<label class="label-checkbox100" for="ckb1">
-							Remember me
-						</label>
+                        <asp:CheckBox ID="cbRememberMe"  runat="server" AutoPostBack="True" /><p style="display:inline; color:white;"> Remember Me</p>
 					</div>
-
+ 
 					<div class="container-login100-form-btn">
 						<asp:Button ID="btnLogin" runat="server" class="login100-form-btn" Text="Log-In" type="submit" OnClick="btnLogin_Click"/>
  
@@ -73,7 +70,9 @@
 											<br />
 
 			    	<div class="container-login100-form-btn">
-						<asp:Button ID="btnSignUp" runat="server" class="login100-form-btn" Text="Sign-Up" OnClick="btnSignUp_Click"/></div>
+ 						<asp:Button ID="btnSignUp" runat="server" class="login100-form-btn" Text="Sign-Up" OnClick="btnSignUp_Click"/>
+
+			    	</div>
 
 					<div class="text-center p-t-90">
 						<a class="txt1" href="#">
