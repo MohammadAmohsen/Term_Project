@@ -11,7 +11,7 @@ namespace Term_Project
 {
 
 
-    public partial class HomePage
+    public partial class Explore2
     {
     }
 }
