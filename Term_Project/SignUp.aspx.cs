@@ -123,6 +123,8 @@ namespace Term_Project
                             var rand = new Random();
                             int num = rand.Next(1000, 10000);
 
+                            sendMessage(newUsers.EmailAddress, num);
+
                             SqlCommand sqlCommand = new SqlCommand();
 
 
@@ -207,30 +209,7 @@ namespace Term_Project
                             sqlCommand.Parameters.Add(VerifiedNumber);
 
 
-                            db.DoUpdateUsingCmdObj(sqlCommand);
-
-
-
-
-                            Emails objEmail = new Emails();
-                            String strTO = newUsers.EmailAddress;
-                            String strFROM = "tui34800@temple.edu";
-                            String strSubject = "Moe's Fitness Account Creations";
-                            String strMessage = "Thank you so much for signing up to Moe's Fitness. Please Verify your account to get access to our wonderful application! Here's your verification code: " +
-                                num;
-
-                            try
-                            {
-                               objEmail.SendMail(strTO, strFROM, strSubject, strMessage);
-                                Response.Write("<script>alert('The email was sent!') </script>");
-
-                            }
-                            catch (Exception ex)
-                            {
-                                Response.Write("<script>alert('The email couldn't be sent! Please make sure you entered the correct e-mail!') </script>");
-
-                            }
-
+                            db.DoUpdateUsingCmdObj(sqlCommand);        
 
                             if (rbAnswer.Text == "Yes")
                             {
@@ -412,6 +391,63 @@ namespace Term_Project
             Questions3.Visible = boo;
             Questions4.Visible = boo;
             Questions5.Visible = boo;
+
+        }
+
+        public void sendMessage(string emailAddress, int num)
+        {
+            MailAddress to = new MailAddress(emailAddress);
+            MailAddress from = new MailAddress("tui34800@temple.edu");
+
+            MailMessage message = new MailMessage(from, to);
+            message.Subject = "Moe's Fitness Account Creations";
+            message.Body = "Thank you so much for signing up to Moe's Fitness. Please Verify your account to get access to our wonderful application!" +
+                " Here's your verification code: " + num;
+
+
+            SmtpClient client = new SmtpClient("smtp.temple.address", 25)
+            {
+                Credentials = new NetworkCredential("tui34800@temple.edu", "Iadorebiss99!"),
+                EnableSsl = true,
+                UseDefaultCredentials = false
+            };
+            // code in brackets above needed if authentication required 
+
+            try
+            {
+                client.Send(message);
+            }
+            catch (SmtpException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            /*
+            Emails objEmail = new Emails();
+            String strTO = emailAddress;
+            String strFROM = "tui34800@temple.edu";
+            String strSubject = "Moe's Fitness Account Creations";
+            String strMessage = "Thank you so much for signing up to Moe's Fitness. Please Verify your account to get access to our wonderful application!" +
+                " Here's your verification code: " + num;
+
+            try
+            {
+                SmtpClient smtp = new SmtpClient("smtp.server.address", 2525)
+                {
+                    Credentials = new NetworkCredential("smtp_username", "smtp_password"),
+                    EnableSsl = true
+                };
+                objEmail.SendMail(strTO, strFROM, strSubject, strMessage);
+
+                smtp.Send(objEmail);
+                Response.Write("<script>alert('The email was sent!') </script>");
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('The email couldn't be sent! Please make sure you entered the correct e-mail!') </script>");
+
+            }
+            */
 
         }
 
