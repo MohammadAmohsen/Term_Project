@@ -11,10 +11,31 @@ namespace Term_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] == null)
+                {
+                    navBar.Visible = false;
+                    ContentID.Visible = false;
+                    youShallNotPass.Visible = true;
+                }
+                else
+                {
+                    navBar.Visible = true;
+                    ContentID.Visible = true;
+                    youShallNotPass.Visible = false;
+                }
+            }
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+             Session["UserID"] = null;
+             Response.Redirect("LogIn.aspx");
+
+        }
+
+        protected void btnBackToLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("LogIn.aspx");
 

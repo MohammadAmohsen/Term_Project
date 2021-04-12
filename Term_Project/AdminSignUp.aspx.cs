@@ -19,8 +19,22 @@ namespace Term_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] == null)
+                {
+                    headerNav.Visible = false;
+                    contentID.Visible = false;
+                    youShallNotPass.Visible = true;
+                }
+                else
+                {
+                    headerNav.Visible = true;
+                    contentID.Visible = true;
+                    youShallNotPass.Visible = false;
+                }
+            }
+    }
 
         protected void btnCreate_Click1(object sender, EventArgs e)
         {
@@ -217,8 +231,14 @@ namespace Term_Project
 
         protected void btnBackToSign_Click(object sender, EventArgs e)
         {
+            //Session["UserID"] = null;
             Response.Redirect("AdminPage.aspx");
 
+        }
+
+        protected void btnBackToLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LogIn.aspx");
         }
 
         protected void ddlImage_SelectedIndexChanged(object sender, EventArgs e)

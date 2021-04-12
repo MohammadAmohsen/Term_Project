@@ -26,12 +26,13 @@ namespace Term_Project
             {
 
                 HttpCookie myCookie = Request.Cookies["LoginCookie"];
-
                 txtEmail.Text = myCookie.Values["Username"];
                 txtPassword.Text = myCookie.Values["Password"];
+               // cbRememberMe.Checked = true;
 
             }
-           
+ 
+
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

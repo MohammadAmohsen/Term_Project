@@ -15,6 +15,42 @@ namespace Term_Project
     {
 
         /// <summary>
+        /// youShallNotPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl youShallNotPass;
+
+        /// <summary>
+        /// btnBackToLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBackToLogin;
+
+        /// <summary>
+        /// headerNav control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl headerNav;
+
+        /// <summary>
+        /// ContentID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContentID;
+
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -231,6 +267,15 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.TextBox txtRepsWed;
 
         /// <summary>
+        /// btnAddWednesday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddWednesday;
+
+        /// <summary>
         /// h3 control.
         /// </summary>
         /// <remarks>
@@ -274,6 +319,15 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRepsThurs;
+
+        /// <summary>
+        /// btnAddThursday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddThursday;
 
         /// <summary>
         /// h4 control.
@@ -321,6 +375,15 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.TextBox txtRepsFri;
 
         /// <summary>
+        /// btnFriday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFriday;
+
+        /// <summary>
         /// h5 control.
         /// </summary>
         /// <remarks>
@@ -366,6 +429,15 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.TextBox txtRepsSat;
 
         /// <summary>
+        /// btnAddSaturday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddSaturday;
+
+        /// <summary>
         /// h6 control.
         /// </summary>
         /// <remarks>
@@ -409,6 +481,15 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRepsSun;
+
+        /// <summary>
+        /// btnAddSunday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddSunday;
 
         /// <summary>
         /// btnCreateProgram control.

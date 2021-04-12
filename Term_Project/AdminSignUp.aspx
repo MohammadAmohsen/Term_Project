@@ -31,18 +31,29 @@
 	<link rel="stylesheet" type="text/css" href="css/StyleSheet1.css"/>
         <link href="Css/SignUpCSS.css" rel="stylesheet" />
 
-<!--===============================================================================================-->
+    <!--===============================================================================================-->
 </head>
 <body>
+    <div id="youShallNotPass" runat="server" class="text-center">
+        <h2 class="text-center">You Must Log In To See This Site!</h2>
+        <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
+        <form runat="server">
+            <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" Style="margin-top: 100px;" />
+        </form>
+    </div>
+
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="headerNav">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="headerNav" runat="server">
             <a class="navbar-brand" href="Default.aspx">Moe's Fitness - Admin</a>
         </nav>
-    </header>
- <div class="container-login100" style="background-image: url('images2/background3.jpg');">
 
-	  <form id="form1" runat="server" class="form-signin text-center">
-        <div id="userInput" class="d-flex justify-content-center text-center">
+
+
+    </header>
+    <div class="container-login100" style="background-image: url('images2/background3.jpg');" id="contentID" runat="server">
+
+        <form id="form1" runat="server" class="form-signin text-center">
+            <div id="userInput" class="d-flex justify-content-center text-center">
             <div class="card" id="cardSize" runat="server" style="width: 50rem; height: auto;">
                 <div class="container">
                     <br />

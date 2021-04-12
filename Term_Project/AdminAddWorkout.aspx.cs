@@ -18,10 +18,27 @@ namespace Term_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)   
+            if (!IsPostBack)
             {
+                if (Session["UserID"] == null)
+                {
+                    headerNav.Visible = false;
+                    ContentID.Visible = false;
+                    youShallNotPass.Visible = true;
+                }
+                else
+                {
+                    headerNav.Visible = true;
+                    ContentID.Visible = true;
+                    youShallNotPass.Visible = false;
+                }
             }
 
+        }
+
+        protected void btnBackToLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LogIn.aspx");
         }
 
         protected void btnCreateProgram_Click(object sender, EventArgs e)
@@ -202,6 +219,36 @@ namespace Term_Project
             sqlCommand4.Parameters.Add(WorkoutID);
 
             db.DoUpdateUsingCmdObj(sqlCommand4);
+
+        }
+
+        protected void btnSubmitTuesday_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAddWednesday_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnFriday_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAddThursday_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAddSaturday_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAddSunday_Click(object sender, EventArgs e)
+        {
 
         }
     }

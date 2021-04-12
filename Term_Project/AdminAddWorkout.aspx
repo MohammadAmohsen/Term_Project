@@ -33,12 +33,22 @@
 <!--===============================================================================================-->
 
 </head>
-<body> <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="headerNav">
+<body> 
+
+     <div id="youShallNotPass" runat="server" class="text-center">
+    <h2 class="text-center">You Must Log In To See This Site!</h2>
+    <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
+         <form runat="server">
+        <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" style="margin-top:100px;"/>
+             </form>
+        </div>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="headerNav" runat="server">
             <a class="navbar-brand" href="Default.aspx">Moe's Fitness - Admin</a>
         </nav>
     </header>
- <div class="container-login100" style="background-image: url('images2/background3.jpg');">
+ <div class="container-login100" style="background-image: url('images2/background3.jpg');" id="ContentID" runat="server">
 
 	  <form id="form1" runat="server" class="form-signin text-center">
         <div id="userInput" class="d-flex justify-content-center text-center">
@@ -191,7 +201,7 @@
                         </div>
 
                     </div>
-                    <asp:Button ID="btnSubmitTuesday" runat="server" Text="Add" />
+                    <asp:Button ID="btnSubmitTuesday" runat="server" Text="Add" OnClick="btnSubmitTuesday_Click" />
                     <br />
                     <hr />
 
@@ -231,6 +241,7 @@
                             <asp:TextBox ID="txtRepsWed" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                             <div class="invalid-feedback">Reps are required!</div>
                         </div>
+                                            <asp:Button ID="btnAddWednesday" runat="server" Text="Add Wednesday" OnClick="btnAddWednesday_Click" />
 
                     </div>
                     <br />
@@ -272,6 +283,7 @@
                             <asp:TextBox ID="txtRepsThurs" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                             <div class="invalid-feedback">Reps are required!</div>
                         </div>
+                     <asp:Button ID="btnAddThursday" runat="server" Text="Add Thursday" OnClick="btnAddThursday_Click" />
 
                     </div>
                     <br />
@@ -313,6 +325,7 @@
                             <asp:TextBox ID="txtRepsFri" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                             <div class="invalid-feedback">Reps are required!</div>
                         </div>
+                <asp:Button ID="btnFriday" runat="server" Text="Add Friday" OnClick="btnFriday_Click" />
 
                     </div>
                     <br />
@@ -354,6 +367,7 @@
                             <asp:TextBox ID="txtRepsSat" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                             <div class="invalid-feedback">Reps are required!</div>
                         </div>
+                    <asp:Button ID="btnAddSaturday" runat="server" Text="Add Saturday" OnClick="btnAddSaturday_Click" />
 
                     </div>
                     <br />
@@ -395,6 +409,7 @@
                             <asp:TextBox ID="txtRepsSun" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                             <div class="invalid-feedback">Reps are required!</div>
                         </div>
+                    <asp:Button ID="btnAddSunday" runat="server" Text="Add Sunday" OnClick="btnAddSunday_Click" />
 
                     </div>
                     <br />

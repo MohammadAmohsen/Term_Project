@@ -9,8 +9,15 @@
 
 </head>
 <body>
- <%--    nav bar start--%>
-     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+     <div id="youShallNotPass" runat="server" class="text-center">
+    <h2 class="text-center">You Must Log In To See This Site!</h2>
+    <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
+         <form runat="server">
+        <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" style="margin-top:100px;"/>
+             </form>
+        </div>
+  <%--    nav bar start--%>
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
       <a class="navbar-brand" href="#">Moe's Gym</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -52,8 +59,7 @@
         <div>
  <!-- Begin Page Content -->
          
-
-                <div class="container-fluid">
+                <div class="container-fluid" id="ContentID" runat="server">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -191,8 +197,9 @@
                 <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Main Content -->        </div>
+            <!-- End of Main Content -->      
     <br>
-    </form>
+    </form> 
+
 </body>
 </html>

@@ -9,6 +9,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 using WorkoutLibrary;
+using System.Net;
+using System.Net.Mail;
+using WorkoutLibraryClass;
 
 namespace Term_Project
 {
@@ -117,7 +120,10 @@ namespace Term_Project
                         newUsers.DateCreated = DateTime.Now.ToString();
                         arrayNewUser.Add(newUsers);
 
-                        SqlCommand sqlCommand = new SqlCommand();
+                            var rand = new Random();
+                            int num = rand.Next(1000, 10000);
+
+                            SqlCommand sqlCommand = new SqlCommand();
 
 
                         sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -192,8 +198,38 @@ namespace Term_Project
                         Experience.Direction = ParameterDirection.Input;
                         sqlCommand.Parameters.Add(Experience);
 
+                            SqlParameter Verified = new SqlParameter("@Verified", "No");
+                            Verified.Direction = ParameterDirection.Input;
+                            sqlCommand.Parameters.Add(Verified);
 
-                         db.DoUpdateUsingCmdObj(sqlCommand);
+                            SqlParameter VerifiedNumber = new SqlParameter("@VerifiedNumber", num);
+                            VerifiedNumber.Direction = ParameterDirection.Input;
+                            sqlCommand.Parameters.Add(VerifiedNumber);
+
+
+                            db.DoUpdateUsingCmdObj(sqlCommand);
+
+
+
+
+                            Emails objEmail = new Emails();
+                            String strTO = newUsers.EmailAddress;
+                            String strFROM = "tui34800@temple.edu";
+                            String strSubject = "Moe's Fitness Account Creations";
+                            String strMessage = "Thank you so much for signing up to Moe's Fitness. Please Verify your account to get access to our wonderful application! Here's your verification code: " +
+                                num;
+
+                            try
+                            {
+                               objEmail.SendMail(strTO, strFROM, strSubject, strMessage);
+                                Response.Write("<script>alert('The email was sent!') </script>");
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Response.Write("<script>alert('The email couldn't be sent! Please make sure you entered the correct e-mail!') </script>");
+
+                            }
 
 
                             if (rbAnswer.Text == "Yes")
