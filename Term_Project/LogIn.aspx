@@ -73,12 +73,18 @@
  						<asp:Button ID="btnSignUp" runat="server" class="login100-form-btn" Text="Sign-Up" OnClick="btnSignUp_Click"/>
 
 			    	</div>
-
+ 
 					<div class="text-center p-t-90">
 						<a class="txt1" href="ForgotPassword.aspx">
 							Forgot Password?
 						</a>
+						<br />
+						<a class="txt1" href="Verification.aspx">
+							Verify Your Email
+						</a>
 					</div>
+
+
 				</form>
 			</div>
 		</div>

@@ -11,12 +11,7 @@ namespace Term_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SoapService.WebService1 proxy = new SoapService.WebService1();
-            double more = proxy.Add(1, 2);
-            Response.Write("<script>alert('" + more + "') </script>");
-            string m = proxy.Test();
-            Response.Write("<script>alert('" + m + "') </script>");
-
+            
             if(!IsPostBack)
             {
                 if(Session["UserID"] == null)

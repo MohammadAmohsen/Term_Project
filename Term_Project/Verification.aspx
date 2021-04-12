@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="Term_Project.ForgotPassword" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Verification.aspx.cs" Inherits="Term_Project.Verification" %>
 
 <!DOCTYPE html>
 
@@ -58,9 +58,9 @@
 
 
 					<div class="container">
-                    <asp:Label ID="lblSQ1" Visible="false" runat="server" style="margin-left:40px;"></asp:Label>
-                    <asp:Label ID="lblInputPassError" Visible="false" runat="server" Text="Please input a valid answer" ForeColor="Red"></asp:Label>
-                    <asp:TextBox class="input100" Visible="false" runat="server" ID="txtSQ" name="pass" placeholder="Answer"></asp:TextBox>
+                    <asp:Label ID="lblVerification" Visible="false" runat="server" style="margin-left:40px;"></asp:Label>
+                    <asp:Label ID="lblInputPassError" Visible="false" runat="server" Text="Please input a valid code" ForeColor="Red"></asp:Label>
+                    <asp:TextBox class="input100" Visible="false" runat="server" ID="txtVerification" name="pass" placeholder="number"></asp:TextBox>
                     <span class="focus-input100" data-placeholder="&#xf207;"></span>
 						</div>
 

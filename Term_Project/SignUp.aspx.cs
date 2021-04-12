@@ -123,7 +123,7 @@ namespace Term_Project
                             var rand = new Random();
                             int num = rand.Next(1000, 10000);
 
-                            sendMessage(newUsers.EmailAddress, num);
+                            //sendMessage(newUsers.EmailAddress, num);
 
                             SqlCommand sqlCommand = new SqlCommand();
 
@@ -396,6 +396,7 @@ namespace Term_Project
 
         public void sendMessage(string emailAddress, int num)
         {
+            /*
             MailAddress to = new MailAddress(emailAddress);
             MailAddress from = new MailAddress("tui34800@temple.edu");
 
@@ -407,11 +408,10 @@ namespace Term_Project
 
             SmtpClient client = new SmtpClient("smtp.temple.address", 25)
             {
-                Credentials = new NetworkCredential("tui34800@temple.edu", "Iadorebiss99!"),
+                Credentials = new NetworkCredential("do-not-reply@temple.edu", "password"),
                 EnableSsl = true,
                 UseDefaultCredentials = false
             };
-            // code in brackets above needed if authentication required 
 
             try
             {
@@ -421,7 +421,7 @@ namespace Term_Project
             {
                 Console.WriteLine(ex.ToString());
             }
-            /*
+            */
             Emails objEmail = new Emails();
             String strTO = emailAddress;
             String strFROM = "tui34800@temple.edu";
@@ -431,14 +431,7 @@ namespace Term_Project
 
             try
             {
-                SmtpClient smtp = new SmtpClient("smtp.server.address", 2525)
-                {
-                    Credentials = new NetworkCredential("smtp_username", "smtp_password"),
-                    EnableSsl = true
-                };
                 objEmail.SendMail(strTO, strFROM, strSubject, strMessage);
-
-                smtp.Send(objEmail);
                 Response.Write("<script>alert('The email was sent!') </script>");
 
             }
@@ -447,7 +440,7 @@ namespace Term_Project
                 Response.Write("<script>alert('The email couldn't be sent! Please make sure you entered the correct e-mail!') </script>");
 
             }
-            */
+            
 
         }
 

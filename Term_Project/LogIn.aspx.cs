@@ -24,12 +24,13 @@ namespace Term_Project
             if (!IsPostBack && Request.Cookies["LoginCookie"] != null)
 
             {
-
-                HttpCookie myCookie = Request.Cookies["LoginCookie"];
-                txtEmail.Text = myCookie.Values["Username"];
-                txtPassword.Text = myCookie.Values["Password"];
-               // cbRememberMe.Checked = true;
-
+                if (Request.Cookies["LoginCookie"] != null)
+                {
+                    HttpCookie myCookie = Request.Cookies["LoginCookie"];
+                    txtEmail.Text = myCookie.Values["Username"];
+                    txtPassword.Text = myCookie.Values["Password"];
+                    // cbRememberMe.Checked = true;
+                }
             }
  
 
@@ -65,25 +66,48 @@ namespace Term_Project
 
                 if (size > 0)
                 {
+                    //SqlCommand sqlCommand = new SqlCommand();
+
+                    //sqlCommand.CommandType = CommandType.StoredProcedure;
+                    //sqlCommand.CommandText = "TP_SelectVerifiedFromUsers";
+
+                    //SqlParameter Email1 = new SqlParameter("@Email", email);
+                    //Email1.Direction = ParameterDirection.Input;
+                    //sqlCommand.Parameters.Add(Email1);
+
+
+                    //DataSet mydata1 = db.GetDataSetUsingCmdObj(sqlCommand);
+                    //string verified = mydata1.Tables[0].Rows[0]["Verified"].ToString();
+
+
                     string Type = db.GetField("Type", 0).ToString();
+                    string Verified = db.GetField("Verified", 0).ToString();
                     String user = txtEmail.Text;
                     String plainTextPassword = txtPassword.Text;
-                    if (cbRememberMe.Checked)
+
+                    if (Verified == "Yes")
                     {
+                        if (cbRememberMe.Checked)
+                        {
 
 
-                        CreateCookie(plainTextPassword, user);
+                            CreateCookie(plainTextPassword, user);
 
-                        logIN(Type);
+                            logIN(Type);
 
+                        }
+                        else
+                        {
+                            EncryptPassword(plainTextPassword, user);
+                            HttpCookie myCookie = Request.Cookies["LoginCookie"];
+
+                            logIN(Type);
+
+                        }
                     }
                     else
                     {
-                        EncryptPassword(plainTextPassword, user);
-                        HttpCookie myCookie = Request.Cookies["LoginCookie"];
-
-                        logIN(Type);
-
+                        Response.Write("<script>alert('You must verify your email to get access!')</script>");
                     }
                 }
                 else
