@@ -83,9 +83,7 @@
 							Verify Your Email
 						</a>
 					</div>
-
-
-				</form>
+ 				</form>
 			</div>
 		</div>
 	</div>

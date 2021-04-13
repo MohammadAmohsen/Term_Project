@@ -94,8 +94,10 @@
     <Content Include="Images2\Background3.jpg" />
     <Content Include="Images2\beginner.png" />
     <Content Include="Images2\intermediate.png" />
+    <Content Include="Images2\ivysaur.jpg" />
     <Content Include="Images2\ShallNotPass.gif" />
     <Content Include="Images2\Logo.PNG" />
+    <Content Include="Images2\Workout.jpg" />
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\icons\favicon.ico" />
     <Content Include="LogIn.aspx" />

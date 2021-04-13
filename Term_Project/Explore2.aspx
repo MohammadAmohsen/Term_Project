@@ -5,6 +5,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/LogIn.css"/>
+	<link rel="stylesheet" type="text/css" href="css/StyleSheet1.css"/>
+<!--===============================================================================================-->
 </head>
 <body>
 <%--    nav bar start--%>
@@ -34,136 +57,106 @@
             </div>
           </li>
         </ul>
+          </div>
+         </nav>
+ 
+    <br />    <br />
+    <br />    <br />
+    <br />    <br />
+    <br />    <br />
+    <br />
+
 <%--          end nav bar--%>
 
 
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-    <br/>
-    <br/>
-     <br/>
+    <form class="form-inline my-2 my-lg-0" runat="server">
+        <div style="text-align: center; margin-left:auto; margin-right:auto;">
 
-        <div>
-        </div>
-    <br>
-              <center>
-  <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://i.pinimg.com/564x/27/dc/b7/27dcb71a10f300584c2d43d7a04872b5.jpg" width="180" height="242" alt="Test">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Beginner Program</h5>
-        <p class="card-text">This the beginner program to capture all the dragon balls. This is a strength bulidng program to help you get bigger muscles.</p>
-        <p class="card-text"><small class="text-muted">Created On: 4/8/2021</small></p>
-              <a href="#" class="btn btn-primary">Open</a>
-              <a href="#" class="btn btn-primary">Add to programs</a>
-      </div>
-    </div>
-  </div>
-</div>
+            <table>
+                <tr style="color: #CC3300;">
+ 
 
-                  <br>
+                </tr>
 
- <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://cdnb.artstation.com/p/assets/images/images/021/082/417/large/emma-alvarez-piccolo-01.jpg?1570332168" width="180" height="242" alt="Test">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Piccolo Program</h5>
-        <p class="card-text">This the harder program to capture all the dragon balls. This is a strength bulidng program to help you get bigger muscles.</p>
-        <p class="card-text"><small class="text-muted">Created On: 4/12/2021</small></p>
-              <a href="#" class="btn btn-primary">Open</a>
-              <a href="#" class="btn btn-primary">Add to programs</a>
-      </div>
-    </div>
-  </div>
-</div>
+                <asp:Repeater ID="rptPrograms" runat="server" OnItemCommand="rptPrograms_OnItemCommand">
+                    <ItemTemplate>
+                        <tr>
 
-                  <br>
+                            <td>
+                                <asp:Image ID="lblProgramImage" Height="100px" Width="100px" runat="server" ImageUrl='<%# Eval("ProgramImage") %>' />
 
- <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://i.pinimg.com/736x/5a/91/a9/5a91a9ad7a453597b0438e72835ea5a3.jpg" width="180" height="242" alt="Test">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Brolly Program</h5>
-        <p class="card-text">This the harder program to capture all the dragon balls. This is a strength bulidng program to help you get bigger muscles.</p>
-        <p class="card-text"><small class="text-muted">Created On: 4/12/2021</small></p>
-              <a href="#" class="btn btn-primary">Open</a>
-              <a href="#" class="btn btn-primary">Add to programs</a>
-      </div>
-    </div>
-  </div>
-</div>
+                            </td>
+                        </tr>
 
-<br>
+                        <tr>
 
-                    <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://i.pinimg.com/564x/27/dc/b7/27dcb71a10f300584c2d43d7a04872b5.jpg" width="180" height="242" alt="Test">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Beginner Program</h5>
-        <p class="card-text">This the beginner program to capture all the dragon balls. This is a strength bulidng program to help you get bigger muscles.</p>
-        <p class="card-text"><small class="text-muted">Created On: 4/8/2021</small></p>
-              <a href="#" class="btn btn-primary">Open</a>
-              <a href="#" class="btn btn-primary">Add to programs</a>
-      </div>
-    </div>
-  </div>
-</div>
+                            <td>
+                                <asp:Label ID="lblProgramName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramName") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
 
-                  <br>
+                            <td>
+                                <asp:Label ID="lblProgramDesc" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Description") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblProgramDescription" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateAdded") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblProgramType" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramType") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblProgramExperience" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramExperience") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
 
- <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://cdnb.artstation.com/p/assets/images/images/021/082/417/large/emma-alvarez-piccolo-01.jpg?1570332168" width="180" height="242" alt="Test">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Piccolo Program</h5>
-        <p class="card-text">This the harder program to capture all the dragon balls. This is a strength bulidng program to help you get bigger muscles.</p>
-        <p class="card-text"><small class="text-muted">Created On: 4/12/2021</small></p>
-              <a href="#" class="btn btn-primary">Open</a>
-              <a href="#" class="btn btn-primary">Add to programs</a>
-      </div>
-    </div>
-  </div>
-</div>
+                            <td>
+                                <asp:Label ID="lblAmountOfDays" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "AmountOfDays") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnDetailView" class="btn btn-primary" Text="Open Program" runat="server" OnClick="btnDetailView_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnSaveProgram"  class="btn btn-primary" Text="Save" runat="server" OnClick="btnSaveProgram_Click"  />
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </table>                               
+            <asp:Button ID="btnBack"  visible="false" class="btn btn-primary" Text="Back" runat="server" OnClick="btnBack_Click"  />
 
-                  <br>
-
- <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://i.pinimg.com/736x/5a/91/a9/5a91a9ad7a453597b0438e72835ea5a3.jpg" width="180" height="242" alt="Test">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Brolly Program</h5>
-        <p class="card-text">This the harder program to capture all the dragon balls. This is a strength bulidng program to help you get bigger muscles.</p>
-        <p class="card-text"><small class="text-muted">Created On: 4/12/2021</small></p>
-              <a href="#" class="btn btn-primary">Open</a>
-              <a href="#" class="btn btn-primary">Add to programs</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-    </center>
+            </div>
     </form>
+
+
+    <!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
 </body>
 </html>
