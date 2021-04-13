@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminAddWorkout.aspx" />
+    <Content Include="AdminMessages.aspx" />
     <Content Include="AdminPage.aspx" />
     <Content Include="AdminSignUp.aspx" />
     <Content Include="Css\LogIn.css" />
@@ -148,6 +149,13 @@
     </Compile>
     <Compile Include="AdminAddWorkout.aspx.designer.cs">
       <DependentUpon>AdminAddWorkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMessages.aspx.cs">
+      <DependentUpon>AdminMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMessages.aspx.designer.cs">
+      <DependentUpon>AdminMessages.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPage.aspx.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>

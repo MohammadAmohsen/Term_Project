@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkoutLibraryClass", "Work
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoapWebService", "SoapWebService\SoapWebService.csproj", "{DBCCCF60-4E37-48FF-9312-7BC197E0E7EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestfulApi", "RestfulApi\RestfulApi.csproj", "{F9203F1F-A35A-45D1-9ADE-708CD5CD4AC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestfulApi", "RestfulApi\RestfulApi.csproj", "{F9203F1F-A35A-45D1-9ADE-708CD5CD4AC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPITermProject", "WebAPITermProject\WebAPITermProject.csproj", "{131B89CA-5D7C-4BDA-BA61-8CC0AFD3B776}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F9203F1F-A35A-45D1-9ADE-708CD5CD4AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9203F1F-A35A-45D1-9ADE-708CD5CD4AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9203F1F-A35A-45D1-9ADE-708CD5CD4AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{131B89CA-5D7C-4BDA-BA61-8CC0AFD3B776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{131B89CA-5D7C-4BDA-BA61-8CC0AFD3B776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{131B89CA-5D7C-4BDA-BA61-8CC0AFD3B776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{131B89CA-5D7C-4BDA-BA61-8CC0AFD3B776}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

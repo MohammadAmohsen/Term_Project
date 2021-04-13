@@ -52,5 +52,12 @@ namespace Term_Project
             Response.Redirect("LogIn.aspx");
 
         }
+
+        protected void btnMessages_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("AdminMessages.aspx");
+
+        }
     }
 }

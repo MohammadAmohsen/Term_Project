@@ -12,6 +12,13 @@ namespace WorkoutLibrary
         private String EmailBody;
         private String Sender;
         private String Receiever;
+        private String Time;
+
+        public String time
+        {
+            get { return Time; }
+            set { Time = value; }
+        }
 
         public String emailSubject
         {
