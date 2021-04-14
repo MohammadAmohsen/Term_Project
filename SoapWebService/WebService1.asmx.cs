@@ -17,11 +17,13 @@ namespace SoapWebService
     public class WebService1 : System.Web.Services.WebService
     {
             [WebMethod]
-        public WorkoutSoap Test()
+        public WorkoutSoap Test(string m)
         {
-            WorkoutSoap s = null;
+            WorkoutSoap s = new WorkoutSoap();
+            s.Name = m;
             return s;
         }
+
         [WebMethod]
         public double Add(double x, double y)
         {
