@@ -5,26 +5,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Email</title>
+    	<meta charset="UTF-8"/>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
- 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link href="../Css/EmailCSS.css" rel="stylesheet" />
- </head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/LogIn.css"/>
+	<link rel="stylesheet" type="text/css" href="css/StyleSheet1.css"/>
+<!--===============================================================================================-->
+    <link href="Css/EmailCSS.css" rel="stylesheet" />
+</head>
 <body>
 
     <form id="form1" runat="server">
         <div class="d-flex" id="wrap">
         <div class="border-right" runat="server" id="sideBar">
             <div class="sidebar-heading text-center">
-                <asp:Image ID="userAvatar" runat="server" ImageUrl="../Images/Aang.jpg" Width="100" Height="100" class="rounded" />
+                <asp:Image ID="userAvatar" runat="server" ImageUrl="Images2/ivysaur.jpg" Width="100" Height="100" class="rounded" />
                 <br />
                 <asp:Label ID="Label1" runat="server" Text="UserName:" CssClass="text-light"></asp:Label> <br />
                 <asp:Label ID="userLabel" runat="server" Text="UserName" CssClass="text-light"></asp:Label> 
@@ -37,22 +52,48 @@
             <div class="list-group list-group-flush text-center">
                 <asp:LinkButton ID="linkbtnInbox" runat="server" class="list-group-item list-group-item-action bg-dark text-light active" OnClick="linkbtnInbox_Click">Inbox</asp:LinkButton>
                 <asp:LinkButton ID="linkbtnSent" runat="server" class="list-group-item list-group-item-action bg-dark text-light" OnClick="linkbtnSent_Click">Sent</asp:LinkButton>
-                </div>
+            </div>
         </div>
 
-        <div id="content">
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top" runat="server" id="headerNav">
-                <a class="navbar-brand" href="Default.aspx">Appa Mail</a>                
-                <img class="mb-4" src="../Bootstrap/Images2/Logo.PNG" width="50" height="50" />
-                <div class="collapse navbar-collapse" id="navCollapse">
-                    <ul class="navbar-nav mr-auto">
-                    </ul>
-                    <div class="form-inline mt-2 mt-md-0">
-                        <asp:Button ID="btnLogOut" runat="server" Text="Log Out" class="btn btn-light my-2 my-sm-0" OnClick="btnLogOut_Click" />
+            <div id="content">
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
+                    <a class="navbar-brand" href="#">Moe's Gym</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Explore.aspx">Explore</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Programs</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <%--          end nav bar--%>
+                            <div>
+                                <asp:Button ID="btnCreateAdmin" class="btn btn-info" runat="server" Text="Create Admin" OnClick="btnCreateAdmin_Click" />
+                                <asp:Button ID="btnCreateProgram" class="btn btn-info" runat="server" Text="Create Workout" OnClick="btnCreateWorkOut_Click" />
+                                <asp:Button ID="btnLogOut" class="btn btn-info" runat="server" Text="LogOut" OnClick="btnLogOut_Click" />
+                                <asp:Button ID="btnMessages" class="btn btn-info" runat="server" Text="Messages" OnClick="btnMessages_Click" />
+
+                            </div>
+
                     </div>
-                </div>
-            </nav>
-            <br />
+                </nav>
+                <br />
 
            <asp:Label ID="lblName" runat="server" Text="INBOX FOLDER" ></asp:Label>
 
@@ -68,11 +109,11 @@
                                 <asp:CheckBox ID="cbSelectEmail" runat="server" AutoPostBack="true" ></asp:CheckBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="SenderName" HeaderText="Sender: " />
-                        <asp:BoundField DataField="RecieverName" HeaderText="Receiver: " />
-                        <asp:BoundField DataField="Subject" HeaderText="Subject: " />
+                        <asp:BoundField DataField="Sender" HeaderText="Sender: " />
+                        <asp:BoundField DataField="Receiver" HeaderText="Receiver: " />
+                        <asp:BoundField DataField="EmailSubject" HeaderText="Subject: " />
                         <asp:BoundField DataField="EmailBody" HeaderText="Content: " />
-                        <asp:BoundField DataField="CreatedTime" HeaderText="CreatedTime: " />
+                        <asp:BoundField DataField="Time" HeaderText="CreatedTime: " />
                     </Columns>
                     <RowStyle VerticalAlign="Middle" />
                 </asp:GridView>
@@ -155,10 +196,28 @@
                 <asp:TextBox ID="txtContent" runat="server" class="form-control my-2 my-sm-0" placeholder="Receiver" Height="200px" Width="500px" TextMode="MultiLine"></asp:TextBox>
                 <br />
                 <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" OnClick="btnBack_Click" />
-             </div>
+                <asp:Button ID="btnSend" runat="server" Text="Send" class="btn btn-primary" OnClick="btnSend_Click" />
+
+            </div>
 
         </div>
         </div>
-</form>
+    </form>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
 </body>
 </html>

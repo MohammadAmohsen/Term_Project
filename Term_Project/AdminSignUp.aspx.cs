@@ -34,8 +34,7 @@ namespace Term_Project
                     youShallNotPass.Visible = false;
                 }
 
-               string m = ScriptManagerProsdfdsf.Test(name)
-            }
+             }
     }
 
         protected void btnCreate_Click1(object sender, EventArgs e)

@@ -71,6 +71,7 @@
     <Content Include="AdminMessages.aspx" />
     <Content Include="AdminPage.aspx" />
     <Content Include="AdminSignUp.aspx" />
+    <Content Include="Css\EmailCSS.css" />
     <Content Include="Css\LogIn.css" />
     <Content Include="Css\SignUpCSS.css" />
     <Content Include="Css\StyleSheet1.css" />

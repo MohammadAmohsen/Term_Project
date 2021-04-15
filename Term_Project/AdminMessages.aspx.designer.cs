@@ -87,13 +87,31 @@ namespace Term_Project.AdminAspx
         protected global::System.Web.UI.WebControls.LinkButton linkbtnSent;
 
         /// <summary>
-        /// headerNav control.
+        /// navBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl headerNav;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navBar;
+
+        /// <summary>
+        /// btnCreateAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCreateAdmin;
+
+        /// <summary>
+        /// btnCreateProgram control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCreateProgram;
 
         /// <summary>
         /// btnLogOut control.
@@ -103,6 +121,15 @@ namespace Term_Project.AdminAspx
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogOut;
+
+        /// <summary>
+        /// btnMessages control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMessages;
 
         /// <summary>
         /// lblName control.
@@ -328,5 +355,14 @@ namespace Term_Project.AdminAspx
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack;
+
+        /// <summary>
+        /// btnSend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSend;
     }
 }

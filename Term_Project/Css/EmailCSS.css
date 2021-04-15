@@ -1,0 +1,68 @@
+﻿body {
+    background-image: url('../Images/parchment.jpg');
+    background-size: 80%;
+    font-family: 'MV Boli';
+}
+
+#headerNav {
+    background-color: maroon;
+}
+
+
+#content {
+    margin-top: 100px;
+}
+
+#sideBar {
+    margin-top: 90px;
+    height: 870px;
+}
+
+#emailContent {
+    margin-left: 240px;
+}
+
+#sentTable {
+    visibility: hidden;
+}
+
+#txtSearchEmail {
+    margin-left: 100px;
+}
+
+#btnSearch {
+    margin-left: 20px;
+}
+
+#lblName {
+    font-size: 25px;
+}
+
+#showEmail {
+    margin-left: 400px;
+}
+
+#lblCreatedTime2 {
+    border: dashed 2px white;
+    background-color: white;
+}
+
+#lblFromEmail {
+    border: dashed 2px white;
+    background-color: white;
+}
+
+#lblSub {
+    border: dashed 2px white;
+    background-color: white;
+}
+
+#lblBodyEmail {
+    border: dashed 2px white;
+    background-color: white;
+}
+
+#lblToWho {
+    border: dashed 2px white;
+    background-color: white;
+}
