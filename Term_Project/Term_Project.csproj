@@ -103,6 +103,7 @@
     <Content Include="images\icons\favicon.ico" />
     <Content Include="LogIn.aspx" />
     <Content Include="SignUp.aspx" />
+    <Content Include="UserMessages.aspx" />
     <Content Include="vendor\animate\animate.css" />
     <Content Include="vendor\animsition\css\animsition.css" />
     <Content Include="vendor\animsition\css\animsition.min.css" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessages.aspx.cs">
+      <DependentUpon>UserMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserMessages.aspx.designer.cs">
+      <DependentUpon>UserMessages.aspx</DependentUpon>
     </Compile>
     <Compile Include="Verification.aspx.cs">
       <DependentUpon>Verification.aspx</DependentUpon>

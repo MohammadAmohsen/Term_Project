@@ -10,19 +10,28 @@ using System.Web.UI.WebControls;
 using Utilities;
 using WorkoutLibrary;
 
-namespace Term_Project.AdminAspx
+namespace Term_Project
 {
-    public partial class AdminMessages : System.Web.UI.Page
+    public partial class UserMessages : System.Web.UI.Page
     {
         DBConnect db = new DBConnect();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserId"] != null)
             {
                 Session["Tags"] = "Inbox";
                 ViewInbox("Inbox");
-                tbEmail.Visible = false;
+                tbEmail.Visible = false;             
+                navBar.Visible = true;
+                content.Visible = true;
+                youShallNotPass.Visible = false;
+            }
+            else if (Session["UserID"] == null)
+            {
+                navBar.Visible = false;
+                content.Visible = false;
+                youShallNotPass.Visible = true;
             }
         }
 
@@ -36,7 +45,7 @@ namespace Term_Project.AdminAspx
 
 
 
-               // lblCreatedTime2.Text = gvEmails.SelectedRow.Cells[6].Text;
+                lblCreatedTime2.Text = gvEmails.SelectedRow.Cells[6].Text;
                 lblFromEmail.Text = gvEmails.SelectedRow.Cells[2].Text;
                 lblToWho.Text = gvEmails.SelectedRow.Cells[3].Text;
                 lblSub.Text = gvEmails.SelectedRow.Cells[4].Text;
@@ -47,7 +56,7 @@ namespace Term_Project.AdminAspx
 
             }
         }
- 
+
         protected void linkbtnInbox_Click(object sender, EventArgs e)
         {
             lblName.Text = "INBOX FOLDER";
@@ -434,36 +443,6 @@ namespace Term_Project.AdminAspx
             }
         }
 
-        protected void btnBackToLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
-
-        protected void btnCreateWorkOut_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminAddWorkout.aspx");
-        }
-
-        protected void btnCreateAdmin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminSignUp.aspx");
-        }
-
-
-        protected void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Session["UserID"] = null;
-
-            Response.Redirect("LogIn.aspx");
-
-        }
-
-        protected void btnMessages_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("AdminMessages.aspx");
-
-        }
         protected void btnSend_Click(object sender, EventArgs e)
         {
             Email newEmail = new Email();
@@ -783,6 +762,22 @@ namespace Term_Project.AdminAspx
             {
                 Response.Write("<script>alert('Please fill out all the information before sending an email!') </script>");
             }
+        }
+
+
+        protected void btnBackToLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LogIn.aspx");
+        }
+
+
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session["UserID"] = null;
+
+            Response.Redirect("LogIn.aspx");
+
         }
 
     }

@@ -44,10 +44,10 @@
               
           </li>
         </ul>
-<%--          end nav bar--%>
         <form class="form-inline my-2 my-lg-0" runat="server">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
              <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnLogOut" runat="server" Text="LogOut" OnClick="btnLogOut_Click" />
+             <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnMessages" runat="server" Text="Messages" OnClick="btnMessages_Click" />
         </form>
       </div>
     </nav>
@@ -55,6 +55,7 @@
     <br/>
     <br/>
      <br/>
+<%--          end nav bar--%>
 
         <div>
  <!-- Begin Page Content -->
