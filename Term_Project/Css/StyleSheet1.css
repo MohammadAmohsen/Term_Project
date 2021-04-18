@@ -465,13 +465,15 @@ iframe {
     background: -webkit-linear-gradient(bottom, #7579ff, #b224ef);
     background: -o-linear-gradient(bottom, #7579ff, #b224ef);
     background: -moz-linear-gradient(bottom, #7579ff, #b224ef);
-    background: linear-gradient(bottom, #7579ff, #b224ef);
+    background: #9152f8;
     position: relative;
     z-index: 1;
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
+    top: 0px;
+    left: 0px;
 }
 
     .login100-form-btn::before {

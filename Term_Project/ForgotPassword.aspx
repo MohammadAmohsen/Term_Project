@@ -64,11 +64,29 @@
                     <span class="focus-input100" data-placeholder="&#xf207;"></span>
 						</div>
 
+					<div class="container">
+                    <asp:Label ID="lblPass" Visible="false" runat="server" style="margin-left:40px;">New Password</asp:Label>
+                    <asp:Label ID="lblPassError" Visible="false" runat="server" Text="Please input a password" ForeColor="Red"></asp:Label>
+                    <asp:TextBox class="input100" Visible="false" runat="server" ID="txtPass" name="pass" placeholder="Answer"></asp:TextBox>
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+						</div>
+
+					<div class="container">
+                    <asp:Label ID="lblReenterPass" Visible="false" runat="server" style="margin-left:40px;">Re-enter Password</asp:Label>
+                    <asp:Label ID="lblReenterPassError" Visible="false" runat="server" Text="Please input a password" ForeColor="Red"></asp:Label>
+                    <asp:TextBox class="input100" Visible="false" runat="server" ID="txtPass2" name="pass" placeholder="Answer"></asp:TextBox>
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+						</div>
+
                     <div class="container-login100-form-btn">
                         <asp:Button ID="btnContinue" runat="server" class="login100-form-btn" Text="Continue" OnClick="btnContinue_Click" />
                     </div>
                     <div class="container-login100-form-btn">
-                        <asp:Button ID="btnSignIn" runat="server" Visible="false" class="login100-form-btn" Text="Sign-In" OnClick="btnSignIn_Click" />
+                        <asp:Button ID="btnContinue2" runat="server" Visible="false" class="login100-form-btn" Text="Continue" OnClick="btnContinue2_Click" />
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <asp:Button ID="btnReset" runat="server" Visible="false" class="login100-form-btn" Text="Reset Password" OnClick="btnReset_Click" />
                     </div>
 
                     <div class="text-center p-t-90">
@@ -77,6 +95,10 @@
 
                     <div class="container-login100-form-btn">
                         <asp:Button ID="btnBack" runat="server" class="login100-form-btn" Text="Back" OnClick="btnBack_Click" Visible="false"/>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <asp:Button ID="btnBack2" runat="server" class="login100-form-btn" Text="Back" OnClick="btnBack2_Click" Visible="false"/>
                     </div>
 
                 </form>

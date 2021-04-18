@@ -56,7 +56,7 @@ namespace Term_Project
                     btnBackToHome2.Visible = false;
                     btnBack.Visible = true;
                     btnContinue.Visible = false;
-                    btnSignIn.Visible = true;
+                    btnContinue2.Visible = true;
                     lblinputEmailError.Visible = false;
 
                     var rand = new Random();
@@ -131,7 +131,7 @@ namespace Term_Project
                     btnBackToHome2.Visible = true;
                     btnBack.Visible = false;
                     btnContinue.Visible = true;
-                    btnSignIn.Visible = false;
+                    btnContinue2.Visible = false;
                 }
             }
         }
@@ -145,9 +145,29 @@ namespace Term_Project
             lblEmail2.Visible = true;
             txtEmail.Visible = true;
             btnContinue.Visible = true;
-            btnSignIn.Visible = false;
+            btnContinue2.Visible = false;
             txtEmail.Text = "";
             txtSQ.Text = "";
+        }
+
+        protected void btnBack2_Click(object sender, EventArgs e)
+        {
+            btnBackToHome2.Visible = false;
+            btnBack.Visible = true;
+            lblSQ1.Visible = true;
+            txtSQ.Visible = true;
+            lblEmail2.Visible = false;
+            txtEmail.Visible = false;
+            btnContinue.Visible = false;
+            btnContinue2.Visible = true;
+            btnBack2.Visible = false;
+            btnReset.Visible = false;
+            lblPass.Visible = false;
+            lblPassError.Visible = false;
+            lblReenterPass.Visible = false;
+            lblReenterPassError.Visible = false;
+            txtPass.Visible = false;
+            txtPass2.Visible = false;
         }
 
         protected void btnBackToHome_Click(object sender, EventArgs e)
@@ -155,7 +175,7 @@ namespace Term_Project
             Response.Redirect("LogIn.aspx");
         }
 
-        protected void btnSignIn_Click(object sender, EventArgs e)
+        protected void btnContinue2_Click(object sender, EventArgs e)
         {
 
             string answer = txtSQ.Text;
@@ -178,6 +198,24 @@ namespace Term_Project
 
             if (size > 0)
             {
+
+
+                btnBackToHome2.Visible = false;
+                btnBack.Visible = false;
+                btnContinue.Visible = false;
+                btnContinue2.Visible = false;
+                lblinputEmailError.Visible = false;
+                lblSQ1.Visible = false;
+                txtSQ.Visible = false;
+                lblEmail2.Visible = false;
+                txtEmail.Visible = false;
+                btnBack2.Visible = true;
+                btnReset.Visible = true;
+                lblPass.Visible = true;
+                lblReenterPass.Visible = true;
+                txtPass.Visible = true;
+                txtPass2.Visible = true;
+                /*
                 string Type = db.GetField("Type", 0).ToString();
                 if (Type.CompareTo("User") == 0)
                 {
@@ -220,6 +258,7 @@ namespace Term_Project
                     Session["UserGoals"] = db.GetField("UserGoals", 0);
                     Response.Redirect("AdminPage.aspx");
                 }
+                */
             }
             else
             {
@@ -228,9 +267,47 @@ namespace Term_Project
             }
         }
 
-        private void QuickSignIn()
+        protected void btnReset_Click(object sender, EventArgs e)
         {
+            Boolean passCheck1 = true;
+            Boolean passCheck2 = true;
+            if(txtPass.Text == "")
+            {
+                lblPassError.Visible = true;
+                passCheck1 = false;
+            }
+            if(txtPass2.Text == "")
+            {
+                lblReenterPassError.Visible = true;
+                passCheck2 = false;
+            }
+            if(passCheck1 == true && passCheck2 == true)
+            {
+                if(txtPass.Text == txtPass2.Text)
+                {
+                    SqlCommand objCommand = new SqlCommand();
 
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "TP_InsertIntoUserPassword";
+
+                    SqlParameter Password = new SqlParameter("@Password", txtPass.Text);
+                    Password.Direction = ParameterDirection.Input;
+                    objCommand.Parameters.Add(Password);
+
+                    SqlParameter Email = new SqlParameter("@Email", txtEmail.Text);
+                    Email.Direction = ParameterDirection.Input;
+                    objCommand.Parameters.Add(Email);
+
+                    db.DoUpdateUsingCmdObj(objCommand);
+
+                    Response.Redirect("LogIn.aspx");
+
+                }
+                else
+                {
+                    Response.Write("<script>alert('Both Passwords Must Be the Same!')</script>");
+                }
+            }
         }
     }
 

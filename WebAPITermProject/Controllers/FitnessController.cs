@@ -7,15 +7,20 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Utilities;
-using WorkoutLibrary;
 
-namespace RestfulApi
+namespace WebAPITermProject.Controllers
 {
-    [Route("MoesFitness/[controller]")]
-    [ApiController]
-    public class ValuesController : Controller
+    [Route("api/Fitness")]
+    public class FitnessController : Controller
     {
-        [HttpGet("AllPrograms")]
+        // GET api/values
+        [HttpGet]
+        public ActionResult<IEnumerable<string>> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        [HttpGet("AllPrograms")]  //MoesFitness/Values/AllPrograms
         //Get houses based on type (list)
         public List<Programs> GetAll()
         {
@@ -28,18 +33,18 @@ namespace RestfulApi
             foreach (DataRow record in ds.Tables[0].Rows)
             {
                 program = new Programs();
-                program.programName =  record["Program"].ToString();
-                program.dateAdded = record["DateAdded"].ToString();
+                program.programName = record["ProgramName"].ToString();
+                program.dateAdded = DateTime.Parse(record["DateAdded"].ToString());
                 program.description = record["Description"].ToString();
                 program.programType = record["ProgramType"].ToString();
                 program.programExperience = record["ProgramExperience"].ToString();
-                 program.days = int.Parse(record["AmountOfDays"].ToString());              
+                program.days = int.Parse(record["AmountOfDays"].ToString());
+
                 programs.Add(program);
             }
 
             return programs;
         }
-
 
         [HttpDelete("DeleteProgram/{ProgramID}")] //route:MoesFitness/{controllerName}/DeleteProgram/(ProgramID)
         //delete house from database
