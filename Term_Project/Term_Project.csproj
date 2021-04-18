@@ -138,12 +138,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\SoapService\Reference.map">
+    <None Include="Web References\FitnessService\FitnessSoap.wsdl" />
+    <None Include="Web References\FitnessService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\SoapService\WebService1.disco" />
+    <Content Include="Web References\FitnessService\WorkoutSoap.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <Content Include="Verification.aspx" />
+    <None Include="Web References\FitnessService\FitnessSoap.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -230,7 +234,7 @@
     <Compile Include="Verification.aspx.designer.cs">
       <DependentUpon>Verification.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web References\SoapService\Reference.cs">
+    <Compile Include="Web References\FitnessService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -299,7 +303,9 @@
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
-    <None Include="Web References\SoapService\WebService1.wsdl" />
+    <Content Include="Web References\FitnessService\User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -320,16 +326,16 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://localhost:44370/WebService1.asmx">
+    <WebReferenceUrl Include="https://localhost:44370/FitnessSoap.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\SoapService\</RelPath>
-      <UpdateFromURL>https://localhost:44370/WebService1.asmx</UpdateFromURL>
+      <RelPath>Web References\FitnessService\</RelPath>
+      <UpdateFromURL>https://localhost:44370/FitnessSoap.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Term_Project_SoapService_WebService1</CachedSettingsPropName>
+      <CachedSettingsPropName>Term_Project_FitnessService_FitnessSoap</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

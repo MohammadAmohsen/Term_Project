@@ -29,7 +29,12 @@ namespace Term_Project
                     HttpCookie myCookie = Request.Cookies["LoginCookie"];
                     txtEmail.Text = myCookie.Values["Username"];
                     txtPassword.Text = myCookie.Values["Password"];
-                    // cbRememberMe.Checked = true;
+                     cbRememberMe.Checked = true;
+                }
+                else
+                {
+                    cbRememberMe.Checked = false;
+
                 }
             }
  

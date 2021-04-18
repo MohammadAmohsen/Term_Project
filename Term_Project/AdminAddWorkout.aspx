@@ -70,6 +70,7 @@
                     </div>
                     <br />
 
+                    <div runat="server" id="programContent">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="ProgramName">Program Name</label>
@@ -118,8 +119,8 @@
                     </div>
                     <br />
                     <hr />
-
-
+                </div>
+                    <div runat="server" id="divContent" visible="false">
                     <!-- Monday -->
                     <h3 id="h3Monday" class="text-center" runat="server">Monday Workout</h3>
                     <br />
@@ -414,12 +415,13 @@
                     </div>
                     <br />
                     <hr />
+                </div>
 
                     <asp:Button ID="btnCreateProgram" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Your Workout Program!" OnClick="btnCreateProgram_Click" />
                     <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Back To Admin Page!" OnClick="btnBack_Click" />
 
-                </div>
-            </div>
+             </div>
+           </div>
         </div>
       </form>
  </div>

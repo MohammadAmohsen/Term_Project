@@ -67,15 +67,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FitnessSoap.asmx" />
     <Content Include="Web.config" />
-    <Content Include="WebService1.asmx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebService1.asmx.cs">
-      <DependentUpon>WebService1.asmx</DependentUpon>
+    <Compile Include="FitnessSoap.asmx.cs">
+      <DependentUpon>FitnessSoap.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="WorkoutSoap.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +87,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorkoutLibraryClass\WorkoutLibraryClass.csproj">
+      <Project>{d97e979d-f4bf-4d4a-b441-19f27bc9b0a3}</Project>
+      <Name>WorkoutLibraryClass</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

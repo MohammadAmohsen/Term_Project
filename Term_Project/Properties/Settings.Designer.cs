@@ -26,10 +26,10 @@ namespace Term_Project.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44370/WebService1.asmx")]
-        public string Term_Project_SoapService_WebService1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44370/FitnessSoap.asmx")]
+        public string Term_Project_FitnessService_FitnessSoap {
             get {
-                return ((string)(this["Term_Project_SoapService_WebService1"]));
+                return ((string)(this["Term_Project_FitnessService_FitnessSoap"]));
             }
         }
     }

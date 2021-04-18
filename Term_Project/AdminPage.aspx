@@ -66,7 +66,8 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
-        </ul>
+        </ul>      </nav>
+
 <%--          end nav bar--%>
     <form id="form1" runat="server">
         <div>
@@ -76,60 +77,45 @@
             <asp:Button ID="btnMessages" class="btn btn-info" runat="server" Text="Messages" OnClick="btnMessages_Click" />
 
         </div>
+
+ 
+    <br />
+    <br />
+    <br />
+
+    
+        <!-- Content Row -->
+        <div class="row" runat="server" id="ContentID">
+                <asp:GridView ID="gvManageAccounts" Visible="true" runat="server" AutoGenerateColumns="False" CssClass="table table-hover" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Select: ">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="cbSelect" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:ImageField DataImageUrlField="UserImage" HeaderText="UserImage" ControlStyle-Width="100" ControlStyle-Height="100">
+                            <ControlStyle Height="100px" Width="100px"></ControlStyle>
+                        </asp:ImageField>
+                         <asp:BoundField DataField="FirstName" HeaderText="UserName" />
+                        <asp:BoundField DataField="LastName" HeaderText="LastName: " />
+                        <asp:BoundField DataField="EmailAddress" HeaderText="EmailAddress" />
+                        <asp:BoundField DataField="UserName" HeaderText="UserName" />
+                        <asp:BoundField DataField="DateCreated" HeaderText="DateCreated:" />
+                        <asp:BoundField DataField="userWeight" HeaderText="User Weight" />
+                        <asp:BoundField DataField="userAge" HeaderText="User Age: " />
+                        <asp:BoundField DataField="UserGoals" HeaderText="User Goals:" />
+                        <asp:BoundField DataField="userTrainingType" HeaderText="User Training Type: " />
+                        <asp:BoundField DataField="Experience" HeaderText="Experience:" />
+                        <asp:BoundField DataField="amountOfDays" HeaderText="Amount Of Days:" />
+
+                    </Columns>
+                </asp:GridView>
+
+ 
+         
+        </div>
     </form>
-
-      </div>
-    </nav>
-
-    <br/>
-    <br/>
-     <br/>
-
-    <div>
-
-         <!-- Content Row -->
-                    <div class="row" runat="server" id="ContentID">
-                        <center>
-                        <div class="col-lg-8 mb-4">
-
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Users List</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="">
-                                    </div>
-                                    <p>Display list of users
-                                    </p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Click Here &rarr;</a>
-                                </div>
-                            </div>
-
-                            <!-- Approach -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Complete Current Workout</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                        CSS bloat and poor page performance. Custom CSS classes are used to create
-                                        custom components and custom utility classes.</p>
-                                    <p class="mb-0">Before working with this theme, you should become familiar with the
-                                        Bootstrap framework, especially the utility classes.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                            </center>
-                    </div>
-
-
-
-    </div>
-
-
+    
 </body>
 </html>

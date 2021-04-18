@@ -16,12 +16,25 @@ namespace Term_Project
         {
             if (!IsPostBack)
             {
+                //Repeater
                 String strSQL = "SELECT * FROM TP_Program";
 
                 // Set the datasource of the Repeater and bind the data
                 rptPrograms.DataSource = objDB.GetDataSet(strSQL);
                 rptPrograms.DataBind();
-                
+
+                //List View Workout
+                String strSQLForWorkoutDisplay = "SELECT * FROM TP_Workouts";         
+
+                ListViewDisplayWorkout.DataSource = objDB.GetDataSet(strSQLForWorkoutDisplay);
+                ListViewDisplayWorkout.DataBind();
+
+
+                //List View Exercise
+                String strSqlForExerciseDisplay = "SELECT * FROM TP_Exercise";
+
+                ListViewExercise.DataSource = objDB.GetDataSet(strSqlForExerciseDisplay);
+                ListViewExercise.DataBind();
             }
         }
 
@@ -33,13 +46,17 @@ namespace Term_Project
 
             // Retrieve a value from a control in the Repeater's Items collection
             Label myLabel = (Label)rptPrograms.Items[rowIndex].FindControl("ProgramID");
- 
+
+
         }
 
         protected void btnDetailView_Click(object sender, EventArgs e)
         {
             rptPrograms.Visible = false;
             btnBack.Visible = true;
+            ListViewDisplayWorkout.Visible = true;
+            ListViewExercise.Visible = true;
+
         }
 
         protected void btnSaveProgram_Click(object sender, EventArgs e)
@@ -58,6 +75,9 @@ namespace Term_Project
         {
             rptPrograms.Visible = true;
             btnBack.Visible = false;
+            ListViewDisplayWorkout.Visible = false;
+            ListViewExercise.Visible = false;
+
         }
 
 

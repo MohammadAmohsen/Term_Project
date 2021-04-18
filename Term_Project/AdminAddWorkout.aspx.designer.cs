@@ -69,6 +69,15 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl cardSize;
 
         /// <summary>
+        /// programContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl programContent;
+
+        /// <summary>
         /// txtProgramName control.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDesc;
+
+        /// <summary>
+        /// divContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContent;
 
         /// <summary>
         /// h3Monday control.
