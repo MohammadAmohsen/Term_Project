@@ -80,6 +80,14 @@
 
                 <asp:Repeater ID="rptPrograms" runat="server" OnItemCommand="rptPrograms_OnItemCommand">
                     <ItemTemplate>
+
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblProgramID" visible="false" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramID") %>'></asp:Label>
+
+                            </td>
+                        </tr>
                         <tr>
 
                             <td>
@@ -143,81 +151,44 @@
 <%--        List View for each individual Workout and Program--%>
 
 
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <!-- Illustrations -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 id="h6Day" runat="server" class="m-0 font-weight-bold text-primary">Monday</h6>
+                    </div>
+                    <div class="card-body" style="height:auto; width:40rem">
 
-   <asp:ListView ID="ListViewDisplayWorkout" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
-    <ItemTemplate>
+                        <asp:ListView ID="ListViewExercise" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
+                            <ItemTemplate>
+                                 <strong>Exercise Name: </strong>
+                                <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
+                                <br />
+                                <strong>Sets: </strong>
+                                <asp:Label runat="server" ID="Sets" Text='<%# Eval("Sets") %>'></asp:Label>
+                                <br />
+                                <strong>Reps: </strong>
+                                <asp:Label runat="server" ID="Reps" Text='<%# Eval("Reps") %>'></asp:Label>
+                                <br />
+                             </ItemTemplate>
+                            <LayoutTemplate>
+                                <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
+                            </LayoutTemplate>
+                        </asp:ListView>
 
-        <strong>Workout Id: </strong>
-        <asp:Label runat="server" ID="WorkoutID" Text='<%# Eval("WorkoutID") %>'></asp:Label>
-        <br />
-        <strong>Workout Day: </strong>
-        <asp:Label runat="server" ID="WorkoutDay" Text='<%# Eval("WorkoutDay") %>'></asp:Label>
-        <br />
-        <strong>Exercise Id: </strong>
-        <asp:Label runat="server" ID="ExerciseID" Text='<%# Eval("ExerciseID") %>'></asp:Label>
-        <br />
-        <strong>Workout Description: </strong>
-        <asp:Label runat="server" ID="WorkoutDescription" Text='<%# Eval("WorkoutDescription") %>'></asp:Label>
-        <br />
+                    </div>
+                </div>
+                <!-- Second Card -->
+
+            </div>
         </div>
-    </ItemTemplate>
-    <LayoutTemplate>
-        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
-    </LayoutTemplate>
-   </asp:ListView>
-
 
         <br />
                 <br />
         <br />
         <br />
         <br />
-
-
-
-           <asp:ListView ID="ListViewExercise" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
-    <ItemTemplate>
-
-        <strong>Exercise Id: </strong>
-        <asp:Label runat="server" ID="ExerciseID2" Text='<%# Eval("ExerciseID") %>'></asp:Label>
-        <br />
-        <strong>Exercise Name: </strong>
-        <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
-        <br />
-        <strong>Sets: </strong>
-        <asp:Label runat="server" ID="Sets" Text='<%# Eval("Sets") %>'></asp:Label>
-        <br />
-        <strong>Reps: </strong>
-        <asp:Label runat="server" ID="Reps" Text='<%# Eval("Reps") %>'></asp:Label>
-        <br />
-        <strong>Exercise Day: </strong>
-        <asp:Label runat="server" ID="ExerciseDay" Text='<%# Eval("ExerciseDay") %>'></asp:Label>
-        <br />
-        </div>
-    </ItemTemplate>
-    <LayoutTemplate>
-        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
-    </LayoutTemplate>
-   </asp:ListView>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </form>
 

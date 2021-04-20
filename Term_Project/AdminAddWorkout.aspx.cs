@@ -126,7 +126,6 @@ namespace Term_Project
             exercise.exerciseName = exerciseName;
             exercise.sets = sets;
             exercise.reps = reps;
-            exercise.day = days;
             workOut.workoutDescirption = txtMondayDescription.Text;
             workOut.workoutDay = "Monday";
 
@@ -149,9 +148,6 @@ namespace Term_Project
             Reps.Direction = ParameterDirection.Input;
             sqlCommand1.Parameters.Add(Reps);
 
-            SqlParameter Day = new SqlParameter("@Day", exercise.day);
-            Day.Direction = ParameterDirection.Input;
-            sqlCommand1.Parameters.Add(Day);
 
              db.DoUpdateUsingCmdObj(sqlCommand1);
 
@@ -174,9 +170,7 @@ namespace Term_Project
             Reps1.Direction = ParameterDirection.Input;
             sqlCommand3.Parameters.Add(Reps1);
 
-            SqlParameter Day1 = new SqlParameter("@Day", exercise.day);
-            Day1.Direction = ParameterDirection.Input;
-            sqlCommand3.Parameters.Add(Day1);
+  
 
             DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand3);
 
@@ -307,7 +301,6 @@ namespace Term_Project
             exercise.exerciseName = exerciseName;
             exercise.sets = sets;
             exercise.reps = reps;
-            exercise.day = days;
             workOut.workoutDescirption = txtDescTuesday.Text;
             workOut.workoutDay = "Tuesday";
 
@@ -330,9 +323,6 @@ namespace Term_Project
             Reps.Direction = ParameterDirection.Input;
             sqlCommand1.Parameters.Add(Reps);
 
-            SqlParameter Day = new SqlParameter("@Day", exercise.day);
-            Day.Direction = ParameterDirection.Input;
-            sqlCommand1.Parameters.Add(Day);
 
             db.DoUpdateUsingCmdObj(sqlCommand1);
 
@@ -355,9 +345,6 @@ namespace Term_Project
             Reps1.Direction = ParameterDirection.Input;
             sqlCommand3.Parameters.Add(Reps1);
 
-            SqlParameter Day1 = new SqlParameter("@Day", exercise.day);
-            Day1.Direction = ParameterDirection.Input;
-            sqlCommand3.Parameters.Add(Day1);
 
             DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand3);
 
@@ -485,7 +472,6 @@ namespace Term_Project
             exercise.exerciseName = exerciseName;
             exercise.sets = sets;
             exercise.reps = reps;
-            exercise.day = days;
             workOut.workoutDescirption = txtDescWed.Text;
             workOut.workoutDay = "Wednesday";
 
@@ -508,10 +494,6 @@ namespace Term_Project
             Reps.Direction = ParameterDirection.Input;
             sqlCommand1.Parameters.Add(Reps);
 
-            SqlParameter Day = new SqlParameter("@Day", exercise.day);
-            Day.Direction = ParameterDirection.Input;
-            sqlCommand1.Parameters.Add(Day);
-
             db.DoUpdateUsingCmdObj(sqlCommand1);
 
             /*Get Exercise ID*/
@@ -532,10 +514,6 @@ namespace Term_Project
             SqlParameter Reps1 = new SqlParameter("@Reps", exercise.reps);
             Reps1.Direction = ParameterDirection.Input;
             sqlCommand3.Parameters.Add(Reps1);
-
-            SqlParameter Day1 = new SqlParameter("@Day", exercise.day);
-            Day1.Direction = ParameterDirection.Input;
-            sqlCommand3.Parameters.Add(Day1);
 
             DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand3);
 
@@ -640,7 +618,6 @@ namespace Term_Project
             exercise.exerciseName = exerciseName;
             exercise.sets = sets;
             exercise.reps = reps;
-            exercise.day = days;
             workOut.workoutDescirption = txtDescFri.Text;
             workOut.workoutDay = "friday";
 
@@ -663,10 +640,6 @@ namespace Term_Project
             Reps.Direction = ParameterDirection.Input;
             sqlCommand1.Parameters.Add(Reps);
 
-            SqlParameter Day = new SqlParameter("@Day", exercise.day);
-            Day.Direction = ParameterDirection.Input;
-            sqlCommand1.Parameters.Add(Day);
-
             db.DoUpdateUsingCmdObj(sqlCommand1);
 
             /*Get Exercise ID*/
@@ -688,9 +661,6 @@ namespace Term_Project
             Reps1.Direction = ParameterDirection.Input;
             sqlCommand3.Parameters.Add(Reps1);
 
-            SqlParameter Day1 = new SqlParameter("@Day", exercise.day);
-            Day1.Direction = ParameterDirection.Input;
-            sqlCommand3.Parameters.Add(Day1);
 
             DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand3);
 
@@ -795,7 +765,6 @@ namespace Term_Project
             exercise.exerciseName = exerciseName;
             exercise.sets = sets;
             exercise.reps = reps;
-            exercise.day = days;
             workOut.workoutDescirption = txtDesThurs.Text;
             workOut.workoutDay = "Thursday";
 
@@ -818,9 +787,6 @@ namespace Term_Project
             Reps.Direction = ParameterDirection.Input;
             sqlCommand1.Parameters.Add(Reps);
 
-            SqlParameter Day = new SqlParameter("@Day", exercise.day);
-            Day.Direction = ParameterDirection.Input;
-            sqlCommand1.Parameters.Add(Day);
 
             db.DoUpdateUsingCmdObj(sqlCommand1);
 
@@ -842,10 +808,6 @@ namespace Term_Project
             SqlParameter Reps1 = new SqlParameter("@Reps", exercise.reps);
             Reps1.Direction = ParameterDirection.Input;
             sqlCommand3.Parameters.Add(Reps1);
-
-            SqlParameter Day1 = new SqlParameter("@Day", exercise.day);
-            Day1.Direction = ParameterDirection.Input;
-            sqlCommand3.Parameters.Add(Day1);
 
             DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand3);
 
@@ -950,7 +912,6 @@ namespace Term_Project
             exercise.exerciseName = exerciseName;
             exercise.sets = sets;
             exercise.reps = reps;
-            exercise.day = days;
             workOut.workoutDescirption = txtDescSat.Text;
             workOut.workoutDay = "Saturday";
 
@@ -973,10 +934,6 @@ namespace Term_Project
             Reps.Direction = ParameterDirection.Input;
             sqlCommand1.Parameters.Add(Reps);
 
-            SqlParameter Day = new SqlParameter("@Day", exercise.day);
-            Day.Direction = ParameterDirection.Input;
-            sqlCommand1.Parameters.Add(Day);
-
             db.DoUpdateUsingCmdObj(sqlCommand1);
 
             /*Get Exercise ID*/
@@ -998,9 +955,6 @@ namespace Term_Project
             Reps1.Direction = ParameterDirection.Input;
             sqlCommand3.Parameters.Add(Reps1);
 
-            SqlParameter Day1 = new SqlParameter("@Day", exercise.day);
-            Day1.Direction = ParameterDirection.Input;
-            sqlCommand3.Parameters.Add(Day1);
 
             DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand3);
 
@@ -1105,7 +1059,6 @@ namespace Term_Project
             exercise.exerciseName = exerciseName;
             exercise.sets = sets;
             exercise.reps = reps;
-            exercise.day = days;
             workOut.workoutDescirption = txtDescSun.Text;
             workOut.workoutDay = "Sunday";
 
@@ -1128,9 +1081,6 @@ namespace Term_Project
             Reps.Direction = ParameterDirection.Input;
             sqlCommand1.Parameters.Add(Reps);
 
-            SqlParameter Day = new SqlParameter("@Day", exercise.day);
-            Day.Direction = ParameterDirection.Input;
-            sqlCommand1.Parameters.Add(Day);
 
             db.DoUpdateUsingCmdObj(sqlCommand1);
 
@@ -1152,10 +1102,6 @@ namespace Term_Project
             SqlParameter Reps1 = new SqlParameter("@Reps", exercise.reps);
             Reps1.Direction = ParameterDirection.Input;
             sqlCommand3.Parameters.Add(Reps1);
-
-            SqlParameter Day1 = new SqlParameter("@Day", exercise.day);
-            Day1.Direction = ParameterDirection.Input;
-            sqlCommand3.Parameters.Add(Day1);
 
             DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand3);
 

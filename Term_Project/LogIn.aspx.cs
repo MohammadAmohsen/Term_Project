@@ -42,7 +42,7 @@ namespace Term_Project
  
 
         }
-        /*
+        
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
@@ -106,7 +106,7 @@ namespace Term_Project
             }
         }
 
-    */
+    
 
 
         protected void btnSignUp_Click(object sender, EventArgs e)

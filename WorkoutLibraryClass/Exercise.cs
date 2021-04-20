@@ -11,14 +11,13 @@ namespace WorkoutLibrary
         private String ExerciseName;
         private int Reps;
         private int Sets;
-        private String Day;
+        private int exerciseID;
 
-        public String day
+        public int ExerciseID
         {
-            get { return Day; }
-            set { Day = value; }
+            get { return exerciseID; }
+            set { exerciseID = value; }
         }
-
 
         public String exerciseName
         {

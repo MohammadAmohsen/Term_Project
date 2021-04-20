@@ -33,13 +33,13 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Button btnBack;
 
         /// <summary>
-        /// ListViewDisplayWorkout control.
+        /// h6Day control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListViewDisplayWorkout;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl h6Day;
 
         /// <summary>
         /// ListViewExercise control.

@@ -9,6 +9,7 @@
 
 </head>
 <body>
+     <form runat="server">
      <div id="youShallNotPass" runat="server" class="text-center">
     <h2 class="text-center">You Must Log In To See This Site!</h2>
     <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
@@ -44,11 +45,11 @@
               
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" runat="server">
+        <div class="form-inline my-2 my-lg-0" runat="server">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
              <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnLogOut" runat="server" Text="LogOut" OnClick="btnLogOut_Click" />
              <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnMessages" runat="server" Text="Messages" OnClick="btnMessages_Click" />
-        </form>
+        </div>
       </div>
     </nav>
 
@@ -167,16 +168,16 @@
                             <!-- Illustrations -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Workout Progress</h6>
+                                    <h6 id="h6Day" runat="server" class="m-0 font-weight-bold text-primary">Your workouts for today</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="">
-                                    </div>
-                                    <p>Keep up the great work. We are so proud of you, you have completed 23 workouts so far. We 
-                                        are so so so so so proud of you.
-                                    </p>
+                                     <asp:GridView ID="gvWorkoutOftheDay" AutoGenerateColumns="False" runat="server">
+                                          <Columns>
+                                             <asp:BoundField DataField="ExerciseName" HeaderText="ExerciseName: " />
+                                             <asp:BoundField DataField="Sets" HeaderText="Sets: " />
+                                              <asp:BoundField DataField="Reps" HeaderText="Reps: " />
+                                          </Columns>
+                                      </asp:GridView>
                                     <a target="_blank" rel="nofollow" href="https://undraw.co/">See previous workouts &rarr;</a>
                                 </div>
                             </div>

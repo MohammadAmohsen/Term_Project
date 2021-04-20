@@ -33,7 +33,7 @@
 <body>
 	
         <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="headerNav">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top  " id="headerNav">
             <a class="navbar-brand" href="Default.aspx">Moe's Fitness</a>
         </nav>
     </header>
@@ -49,7 +49,7 @@
                         <br />
 
                         <div class="col-md-1 mb-3">
-                            <img src="../Images2/Logo.png" width="100" height="100" />
+                            <img src="../Images2/Asset_4.png" width="100" height="100" />
                         </div>
                         <br />
 
@@ -218,8 +218,8 @@
                         <br />
 
                         <asp:RadioButtonList ID="rbAnswer" CssClass="radioButtonList" AutoPostback="true" runat="server" style="margin-left:300px;" RepeatDirection="Vertical" OnSelectedIndexChanged="rbAnswer_SelectedIndexChanged"  >
-                            <asp:ListItem Value="Yes">Yes!</asp:ListItem>
-                            <asp:ListItem Value="No">Nah.</asp:ListItem>
+                            <asp:ListItem Value="Yes">Yes</asp:ListItem>
+                            <asp:ListItem Value="No">No</asp:ListItem>
                         </asp:RadioButtonList>
                     </div>
                     <hr />
@@ -302,7 +302,7 @@
                         <%--                  ----------------------------------------  Buttons for account of create --%>
 
 
-                    <asp:Button ID="btnCreate" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Your Account!" OnClick="btnCreate_Click1" />
+                    <asp:Button ID="btnCreate" runat="server" class="btn btn-md btn-primary btn-block" type="submit" Text="Create Your Account!" OnClick="btnCreate_Click1" />
                     <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Sign-In Instead" OnClick="btnBackToSign_Click" />
 
                 </div>

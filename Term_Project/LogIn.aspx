@@ -28,67 +28,73 @@
 	<link rel="stylesheet" type="text/css" href="css/LogIn.css"/>
 	<link rel="stylesheet" type="text/css" href="css/StyleSheet1.css"/>
 <!--===============================================================================================-->
-	    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-
 </head>
 <body>
 	
          <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top " runat="server" id="headerNav">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top " runat="server" id="headerNav">
             <a class="navbar-brand" href="Default.aspx">Moe's Fitness</a>
         </nav>
     </header>
 
+    <br />
+        <br />
+
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images2/background3.jpg');">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" runat="server">
-					<img id="imgLogo"  src="Images2/Logo.PNG" /> 
+			<div class="text-center mb-4">
+				<form class="form-sigin" runat="server">
+					<img id="mb-4"  src="Images2/Asset_4.png" width="130" height="130" /> 
 
-					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
-					</span>
+                    <h1 class="h3 mt-2 mb-3 font-weight-normal">Login</h1>
 
-					<div class="wrap-input100 validate-input" id="lblEmail" runat="server" data-validate = "Enter Email">
+                    <div class ="validate-input mb-1" id="lblEmail" runat="server" data-validate ="Enter Email">
+                          <asp:Label ID="lblinputEmailError" Visibile="false" runat="server"  Text="Please input a valid Email Address" ForeColor="Red" data-validate ="Enter Email" class="sr-only">Email address</asp:Label>
+                          <asp:Textbox type="email" runat="server" CssClass="form-control input-md"  id="txtEmail" name="pass" placeholder="Email Address"></asp:Textbox>
+                    </div>
+                     <div class ="validate-input mb-2" id="lblPassword" runat="server" data-validate ="Enter password">
+                          <asp:Label ID="lblInputPassError" Visibile="false" runat="server" Text="Please input a valid Password" ForeColor="Red"  data-validate ="Enter Email" class="sr-only">Email address</asp:Label>
+                          <asp:Textbox type="password" runat="server" CssClass="form-control input-md"  id="txtPassword" name="pass" placeholder="Password"></asp:Textbox>
+                    </div>
+                      
+				<%--	<div class="wrap-input100 validate-input" id="lblEmail" runat="server" data-validate = "Enter Email">
 						 <asp:Label ID="lblinputEmailError" Visible="false" runat="server" Text="Please input a valid Email Address" ForeColor="Red"></asp:Label>
                          <asp:TextBox class="input100" runat="server" id="txtEmail" name="pass" placeholder="Email Address"></asp:TextBox>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
+					</div>--%>
 
-					<div class="wrap-input100 validate-input" runat="server" id="lblPassword" data-validate="Enter password">
+				<%--	<div class="wrap-input100 validate-input" runat="server" id="lblPassword" data-validate="Enter password">
 				    <asp:Label ID="lblInputPassError" Visible="false" runat="server" Text="Please input a valid Password" ForeColor="Red"></asp:Label>
 						<asp:TextBox class="input100" runat="server" type="password" id="txtPassword" name="pass" placeholder="Password"></asp:TextBox>
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-					</div>
+					</div>--%>
 
-					<div class="contact100-form-checkbox">
-                        <asp:CheckBox ID="cbRememberMe"  runat="server" AutoPostBack="True" /><p style="display:inline; color:white;"> Remember Me</p>
+                    <div class="d-inline bg-danger-primary text-white">
+						<asp:Button ID="btnLogin" runat="server" class="btn btn-md btn-primary" Text="Login" type="submit" OnClick="btnLogin_Click"/>
+ 						<asp:Button ID="btnSignUp" runat="server" class="btn btn-md btn-primary" Text="Signup" OnClick="btnSignUp_Click"/>
+                     </div>
+                    <br />
+                    	<div class="checkbox mt-2 mb-2">
+                        <asp:CheckBox ID="cbRememberMe"  runat="server" AutoPostBack="True" /><p style="display:inline; color:black;"> Remember Me</p>
 					</div>
- 
-					<div class="container-login100-form-btn">
-						<input id="btnLogin" type="button" class="login100-form-btn" value="Log-In" onclick="btnLogin_Click()"/>
- 
-					</div>
-											<br />
-
-			    	<div class="container-login100-form-btn">
- 						<asp:Button ID="btnSignUp" runat="server" class="login100-form-btn" Text="Sign-Up" OnClick="btnSignUp_Click"/>
-
-			    	</div>
- 
-					<div class="text-center p-t-90">
-						<a class="txt1" href="ForgotPassword.aspx">
-							Forgot Password?
-						</a>
+					<div>
+                        <p> <a href="ForgotPassword.aspx">
+							Forgot Password? </a>
 						<br />
-						<a class="txt1" href="Verification.aspx">
-							Verify Your Email
-						</a>
+                        <a href="Verification.aspx">
+					    Verify Your Email </a>
+                            </p>
 					</div>
  				</form>
 			</div>
 		</div>
 	</div>
+
+
+
+
+
+
 	
 	
 <!--===============================================================================================-->
@@ -108,9 +114,10 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
+
 	<script>
         var stats;          // global variable used to store the fetched data before it's needed
-		var request;        // global variable used to store the XMLHttpRequest object used to handle AJAX.
+        var request;        // global variable used to store the XMLHttpRequest object used to handle AJAX.
 
         try {
             // Code for IE7+, Firefox, Chrome, Opera, Safari
@@ -121,7 +128,7 @@
             try {
                 // Code for IE6, IE5
                 request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
+            }
 
             catch (other) {
                 request = false;
@@ -131,7 +138,7 @@
 
         function btnLogin_Click() {
             if (document.getElementById('txtEmail').value != "" && document.getElementById('txtPassword').value != "") {
-				var email = document.getElementById('txtEmail').value;
+                var email = document.getElementById('txtEmail').value;
                 var password = document.getElementById('txtPassword').value;
 
                 // Use the JavaScript proxy object to make an AJAX call to an ASP.NET Core 2.0 Web API
@@ -140,20 +147,26 @@
                 //xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
                 request.onreadystatechange = onComplete;
                 request.send();
-			}
-		}
+            }
+        }
 
         // Callback function used to perform some action when an asynchronous request is completed
         function onComplete() {
             if (request.readyState == 4 && request.status == 200) {
+                var size = request.responseText;
                 // store the fetched data in the global variable until it's needed
-                window.open("HomePage.aspx");
-
+                if (size > 0) {
+                    window.open("HomePage.aspx");
+                }
+                else {
+                    alert("Account Doesn't Exist");
+                }
             }
         }
 
 
     </script>
+
 
 </body>
 </html>
