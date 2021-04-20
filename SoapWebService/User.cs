@@ -29,6 +29,14 @@ namespace SoapWebService
         private String AmountOfDays;
         private String UserTrainingType;
         private String userGoals;
+        private String ProgramName;
+
+        public String programName
+        {
+            get { return ProgramName; }
+            set { ProgramName = value; }
+        }
+
 
         public String UserGoals
         {

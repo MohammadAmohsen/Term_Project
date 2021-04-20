@@ -60,6 +60,15 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Button btnMessages;
 
         /// <summary>
+        /// lblTest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTest;
+
+        /// <summary>
         /// ContentID control.
         /// </summary>
         /// <remarks>
@@ -67,5 +76,41 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContentID;
+
+        /// <summary>
+        /// lblProgram control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProgram;
+
+        /// <summary>
+        /// lblCompletionPercentage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCompletionPercentage;
+
+        /// <summary>
+        /// progressBar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progressBar;
+
+        /// <summary>
+        /// lblDaysLeft control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDaysLeft;
     }
 }

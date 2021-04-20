@@ -4,21 +4,18 @@ using RestfulApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Utilities;
+using WebAPITermProject.Models;
+using WorkoutLibrary;
 
 namespace WebAPITermProject.Controllers
 {
     [Route("api/Fitness")]
     public class FitnessController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
         [HttpGet("AllPrograms")]  //MoesFitness/Values/AllPrograms
         //Get houses based on type (list)
@@ -45,6 +42,34 @@ namespace WebAPITermProject.Controllers
 
             return programs;
         }
+
+        [HttpGet("User/{email}/{password}")]  //MoesFitness/Values/User
+        //Get houses based on type (list)
+        public int GetUser(string email, string password)
+        {
+            DBConnect db = new DBConnect();
+
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_SelectAllFromUsers";
+
+            SqlParameter Email = new SqlParameter("@InputEmail", email);
+            Email.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(Email);
+
+            SqlParameter Password = new SqlParameter("@InputPassword", password);
+            Password.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(Password);
+
+            DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
+            int size = mydata.Tables[0].Rows.Count;
+
+            return size;
+        }
+
+
+
 
         [HttpDelete("DeleteProgram/{ProgramID}")] //route:MoesFitness/{controllerName}/DeleteProgram/(ProgramID)
         //delete house from database

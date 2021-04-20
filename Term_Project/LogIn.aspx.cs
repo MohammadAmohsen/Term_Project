@@ -4,9 +4,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
@@ -40,7 +42,7 @@ namespace Term_Project
  
 
         }
-
+        /*
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
@@ -71,20 +73,6 @@ namespace Term_Project
 
                 if (size > 0)
                 {
-                    //SqlCommand sqlCommand = new SqlCommand();
-
-                    //sqlCommand.CommandType = CommandType.StoredProcedure;
-                    //sqlCommand.CommandText = "TP_SelectVerifiedFromUsers";
-
-                    //SqlParameter Email1 = new SqlParameter("@Email", email);
-                    //Email1.Direction = ParameterDirection.Input;
-                    //sqlCommand.Parameters.Add(Email1);
-
-
-                    //DataSet mydata1 = db.GetDataSetUsingCmdObj(sqlCommand);
-                    //string verified = mydata1.Tables[0].Rows[0]["Verified"].ToString();
-
-
                     string Type = db.GetField("Type", 0).ToString();
                     string Verified = db.GetField("Verified", 0).ToString();
                     String user = txtEmail.Text;
@@ -94,18 +82,13 @@ namespace Term_Project
                     {
                         if (cbRememberMe.Checked)
                         {
-
-
                             CreateCookie(plainTextPassword, user);
-
                             logIN(Type);
-
                         }
                         else
                         {
                             EncryptPassword(plainTextPassword, user);
                             HttpCookie myCookie = Request.Cookies["LoginCookie"];
-
                             logIN(Type);
 
                         }
@@ -122,6 +105,8 @@ namespace Term_Project
                 }
             }
         }
+
+    */
 
 
         protected void btnSignUp_Click(object sender, EventArgs e)
@@ -150,6 +135,8 @@ namespace Term_Project
                 Session["UserDays"] = db.GetField("UserDays", 0);
                 Session["UserTraining"] = db.GetField("UserTraining", 0);
                 Session["UserGoals"] = db.GetField("UserGoals", 0);
+                Session["Assistance"] = db.GetField("Assistance", 0);
+                Session["ProgramID"] = db.GetField("ProgramID", 0);
                 Response.Redirect("HomePage.aspx");
 
             }
@@ -225,6 +212,10 @@ namespace Term_Project
             Response.Cookies.Add(myCookie);
         }
 
+
+
+
+
         private void EncryptPassword(string plainTextPassword, string user)
         {
             String encryptedPassword;
@@ -275,5 +266,98 @@ namespace Term_Project
             Response.Cookies.Add(myCookie);
         }
 
+
+
+        //    private void test()
+        //    {
+        //        // Serialize a Team object into a JSON string.
+        //        JavaScriptSerializer js = new JavaScriptSerializer();
+        //        String jsonTeam = js.Serialize(theTeam);
+
+        //        try
+        //        {
+
+        //            // Setup an HTTP POST Web Request and get the HTTP Web Response from the server.
+
+        //            WebRequest request = WebRequest.Create("https://localhost:44392/MoesFitness/Values/User/");
+
+        //            request.Method = "POST";
+
+        //            request.ContentLength = jsonTeam.Length;
+
+        //            request.ContentType = "application/json";
+
+
+
+        //            // Write the JSON data to the Web Request
+
+        //            StreamWriter writer = new StreamWriter(request.GetRequestStream());
+
+        //            writer.Write(jsonTeam);
+
+        //            writer.Flush();
+
+        //            writer.Close();
+
+
+
+        //            // Read the data from the Web Response, which requires working with streams.
+
+        //            WebResponse response = request.GetResponse();
+
+        //            Stream theDataStream = response.GetResponseStream();
+
+        //            StreamReader reader = new StreamReader(theDataStream);
+
+        //            String data = reader.ReadToEnd();
+
+        //            reader.Close();
+
+        //            response.Close();
+
+
+
+        //            if (data == "true")
+
+        //                lblMessage.Text = "The team was successfully saved to the database.";
+
+
+
+        //            else
+
+        //                lblMessage.Text = "The team wasn't saved to the database.";
+
+        //        }
+
+        //        catch (Exception ex)
+        //        {
+        //        }
+
+        //}
+
+
+        //    private double ExecuteCallToWebAPI(string operation, double value1, double value2)
+
+        //    {
+        //        String url = "https://localhost:44392/MoesFitness/Values/User";
+
+        //        // Create an HTTP Web Request and get the HTTP Web Response from the server.
+        //        WebRequest request = WebRequest.Create(url);
+        //        WebResponse response = request.GetResponse();
+
+        //        // Read the data from the Web Response, which requires working with streams.
+        //        Stream theDataStream = response.GetResponseStream();
+        //        StreamReader reader = new StreamReader(theDataStream);
+        //        String data = reader.ReadToEnd();
+        //        reader.Close();
+        //        response.Close();
+
+        //        // Deserialize a JSON string into a double.
+        //        JavaScriptSerializer js = new JavaScriptSerializer();
+        //        double result = js.Deserialize<double>(data);
+
+        //        return result;
+
+        //    }
     }
 }

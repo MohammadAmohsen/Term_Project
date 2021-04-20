@@ -135,8 +135,24 @@ namespace SoapWebService
         public User GetAllUsers(DataSet myData, int i)
         {
             User users = new User();
+            int ID = Convert.ToInt32(myData.Tables[0].Rows[i]["ProgramID"]);
 
-                    users.FirstName = myData.Tables[0].Rows[i]["FirstName"].ToString();
+            SqlCommand sqlCommand = new SqlCommand();
+
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandText = "TP_SelectProgramName";
+
+            SqlParameter programName = new SqlParameter("@ID", ID);
+            programName.Direction = ParameterDirection.Input;
+            sqlCommand.Parameters.Add(programName);     
+            DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand);
+
+            string ProgramName = ds.Tables[0].Rows[0]["ProgramName"].ToString();
+
+
+
+
+            users.FirstName = myData.Tables[0].Rows[i]["FirstName"].ToString();
                     users.LastName = myData.Tables[0].Rows[i]["LastName"].ToString();
                     users.EmailAddress = myData.Tables[0].Rows[i]["EmailAddress"].ToString();
                     users.UserName = myData.Tables[0].Rows[i]["UserName"].ToString();
@@ -148,7 +164,8 @@ namespace SoapWebService
                     users.Experience = myData.Tables[0].Rows[i]["Experience"].ToString();
                     users.amountOfDays = myData.Tables[0].Rows[i]["UserDays"].ToString();
                     users.UserImage = myData.Tables[0].Rows[i]["UserImage"].ToString();
-    
+                    users.programName = ProgramName;
+
             return users;
         }
 

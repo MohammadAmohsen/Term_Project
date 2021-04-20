@@ -220,6 +220,8 @@ namespace Term_Project.FitnessService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class User {
         
+        private string programNameField;
+        
         private string userGoalsField;
         
         private int userWeightField;
@@ -261,6 +263,16 @@ namespace Term_Project.FitnessService {
         private string typeField;
         
         private string userImageField;
+        
+        /// <remarks/>
+        public string programName {
+            get {
+                return this.programNameField;
+            }
+            set {
+                this.programNameField = value;
+            }
+        }
         
         /// <remarks/>
         public string UserGoals {

@@ -364,6 +364,25 @@ namespace Term_Project
             int ID = (int)(ds.Tables[0].Rows[0]["ExerciseID"]);
 
 
+            /* Select ProgramID From Program Table */
+            SqlCommand sqlCommand1A = new SqlCommand();
+
+            sqlCommand1A.CommandType = CommandType.StoredProcedure;
+            sqlCommand1A.CommandText = "TP_SelectProgramIDFromProgram";
+
+            SqlParameter Time = new SqlParameter("@Date", Session["Time"].ToString());
+            Time.Direction = ParameterDirection.Input;
+            sqlCommand1A.Parameters.Add(Time);
+
+            SqlParameter Name2 = new SqlParameter("@Name", txtProgramName.Text);
+            Name2.Direction = ParameterDirection.Input;
+            sqlCommand1A.Parameters.Add(Name2);
+
+            DataSet ds1 = db.GetDataSetUsingCmdObj(sqlCommand1A);
+
+            int ProgramID = (int)(ds1.Tables[0].Rows[0]["ProgramID"]);
+
+
             /*Insert Into Workout Table */
             SqlCommand sqlCommand2 = new SqlCommand();
 
@@ -382,9 +401,13 @@ namespace Term_Project
             ExerciseID.Direction = ParameterDirection.Input;
             sqlCommand2.Parameters.Add(ExerciseID);
 
+            SqlParameter programID = new SqlParameter("@ProgramID", ProgramID);
+            programID.Direction = ParameterDirection.Input;
+            sqlCommand2.Parameters.Add(programID);
+
             db.DoUpdateUsingCmdObj(sqlCommand2);
 
-            /*Get WorkOutID*/
+            /*Get WorkOutID
 
             SqlCommand sqlCommand5 = new SqlCommand();
 
@@ -408,7 +431,7 @@ namespace Term_Project
             int WorkoutId = (int)ds1.Tables[0].Rows[0]["WorkoutID"];
 
 
-            /*Insert Into Program Table */
+            /*Insert Into Program Table 
             SqlCommand sqlCommand4 = new SqlCommand();
 
             sqlCommand4.CommandType = CommandType.StoredProcedure;
@@ -440,13 +463,13 @@ namespace Term_Project
             Days.Direction = ParameterDirection.Input;
             sqlCommand4.Parameters.Add(Days);
 
-            /*
+            
             SqlParameter WorkoutID = new SqlParameter("@WorkOutID", WorkoutId);
             WorkoutID.Direction = ParameterDirection.Input;
             sqlCommand4.Parameters.Add(WorkoutID);
             */
 
-            db.DoUpdateUsingCmdObj(sqlCommand4);
+           // db.DoUpdateUsingCmdObj(sqlCommand4);
         }
 
         protected void btnAddWednesday_Click(object sender, EventArgs e)
@@ -539,7 +562,7 @@ namespace Term_Project
 
             db.DoUpdateUsingCmdObj(sqlCommand2);
 
-            /*Get WorkOutID*/
+            /*Get WorkOutID
 
             SqlCommand sqlCommand5 = new SqlCommand();
 
@@ -563,7 +586,7 @@ namespace Term_Project
             int WorkoutId = (int)ds1.Tables[0].Rows[0]["WorkoutID"];
 
 
-            /*Insert Into Program Table */
+            /*Insert Into Program Table 
             SqlCommand sqlCommand4 = new SqlCommand();
 
             sqlCommand4.CommandType = CommandType.StoredProcedure;
@@ -601,7 +624,7 @@ namespace Term_Project
             sqlCommand4.Parameters.Add(WorkoutID);
             */
 
-            db.DoUpdateUsingCmdObj(sqlCommand4);
+           // db.DoUpdateUsingCmdObj(sqlCommand4);
         }
 
         protected void btnFriday_Click(object sender, EventArgs e)
@@ -694,7 +717,7 @@ namespace Term_Project
 
             db.DoUpdateUsingCmdObj(sqlCommand2);
 
-            /*Get WorkOutID*/
+            /*Get WorkOutID
 
             SqlCommand sqlCommand5 = new SqlCommand();
 
@@ -718,7 +741,7 @@ namespace Term_Project
             int WorkoutId = (int)ds1.Tables[0].Rows[0]["WorkoutID"];
 
 
-            /*Insert Into Program Table */
+            /*Insert Into Program Table 
             SqlCommand sqlCommand4 = new SqlCommand();
 
             sqlCommand4.CommandType = CommandType.StoredProcedure;
@@ -756,7 +779,7 @@ namespace Term_Project
             sqlCommand4.Parameters.Add(WorkoutID);
             */
 
-            db.DoUpdateUsingCmdObj(sqlCommand4);
+            //db.DoUpdateUsingCmdObj(sqlCommand4);
         }
 
         protected void btnAddThursday_Click(object sender, EventArgs e)
@@ -849,7 +872,7 @@ namespace Term_Project
 
             db.DoUpdateUsingCmdObj(sqlCommand2);
 
-            /*Get WorkOutID*/
+            /*Get WorkOutID
 
             SqlCommand sqlCommand5 = new SqlCommand();
 
@@ -873,7 +896,7 @@ namespace Term_Project
             int WorkoutId = (int)ds1.Tables[0].Rows[0]["WorkoutID"];
 
 
-            /*Insert Into Program Table */
+            /*Insert Into Program Table 
             SqlCommand sqlCommand4 = new SqlCommand();
 
             sqlCommand4.CommandType = CommandType.StoredProcedure;
@@ -911,7 +934,7 @@ namespace Term_Project
             sqlCommand4.Parameters.Add(WorkoutID);
             */
 
-            db.DoUpdateUsingCmdObj(sqlCommand4);
+           // db.DoUpdateUsingCmdObj(sqlCommand4);
         }
 
         protected void btnAddSaturday_Click(object sender, EventArgs e)
@@ -1004,7 +1027,7 @@ namespace Term_Project
 
             db.DoUpdateUsingCmdObj(sqlCommand2);
 
-            /*Get WorkOutID*/
+            /*Get WorkOutID
 
             SqlCommand sqlCommand5 = new SqlCommand();
 
@@ -1028,7 +1051,7 @@ namespace Term_Project
             int WorkoutId = (int)ds1.Tables[0].Rows[0]["WorkoutID"];
 
 
-            /*Insert Into Program Table */
+            /*Insert Into Program Table 
             SqlCommand sqlCommand4 = new SqlCommand();
 
             sqlCommand4.CommandType = CommandType.StoredProcedure;
@@ -1066,7 +1089,7 @@ namespace Term_Project
             sqlCommand4.Parameters.Add(WorkoutID);
             */
 
-            db.DoUpdateUsingCmdObj(sqlCommand4);
+            //db.DoUpdateUsingCmdObj(sqlCommand4);
         }
 
         protected void btnAddSunday_Click(object sender, EventArgs e)
@@ -1159,7 +1182,7 @@ namespace Term_Project
 
             db.DoUpdateUsingCmdObj(sqlCommand2);
 
-            /*Get WorkOutID*/
+            /*Get WorkOutID
 
             SqlCommand sqlCommand5 = new SqlCommand();
 
@@ -1183,7 +1206,7 @@ namespace Term_Project
             int WorkoutId = (int)ds1.Tables[0].Rows[0]["WorkoutID"];
 
 
-            /*Insert Into Program Table */
+            /*Insert Into Program Table 
             SqlCommand sqlCommand4 = new SqlCommand();
 
             sqlCommand4.CommandType = CommandType.StoredProcedure;
@@ -1221,7 +1244,7 @@ namespace Term_Project
             sqlCommand4.Parameters.Add(WorkoutID);
             */
 
-            db.DoUpdateUsingCmdObj(sqlCommand4);
+           // db.DoUpdateUsingCmdObj(sqlCommand4);
         }
     }
 }

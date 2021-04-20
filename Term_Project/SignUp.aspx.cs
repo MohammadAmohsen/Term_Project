@@ -214,6 +214,7 @@ namespace Term_Project
 
                                         db.DoUpdateUsingCmdObj(sqlCommand2);
 
+
                                         Response.Redirect("LogIn.aspx");
 
                                     }

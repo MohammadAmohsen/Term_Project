@@ -28,6 +28,8 @@
 	<link rel="stylesheet" type="text/css" href="css/LogIn.css"/>
 	<link rel="stylesheet" type="text/css" href="css/StyleSheet1.css"/>
 <!--===============================================================================================-->
+	    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
 </head>
 <body>
 	
@@ -64,7 +66,7 @@
 					</div>
  
 					<div class="container-login100-form-btn">
-						<asp:Button ID="btnLogin" runat="server" class="login100-form-btn" Text="Log-In" type="submit" OnClick="btnLogin_Click"/>
+						<input id="btnLogin" type="button" class="login100-form-btn" value="Log-In" onclick="btnLogin_Click()"/>
  
 					</div>
 											<br />
@@ -105,6 +107,53 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+	<script>
+        var stats;          // global variable used to store the fetched data before it's needed
+		var request;        // global variable used to store the XMLHttpRequest object used to handle AJAX.
+
+        try {
+            // Code for IE7+, Firefox, Chrome, Opera, Safari
+            request = new XMLHttpRequest();
+        }
+
+        catch (try_older_microsoft) {
+            try {
+                // Code for IE6, IE5
+                request = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+            catch (other) {
+                request = false;
+                alert("Your browser doesn't support AJAX!");
+            }
+        }
+
+        function btnLogin_Click() {
+            if (document.getElementById('txtEmail').value != "" && document.getElementById('txtPassword').value != "") {
+				var email = document.getElementById('txtEmail').value;
+                var password = document.getElementById('txtPassword').value;
+
+                // Use the JavaScript proxy object to make an AJAX call to an ASP.NET Core 2.0 Web API
+                request.open("GET", "https://localhost:44314/api/Fitness/User/" + email + "/" + password, true);
+
+                //xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+                request.onreadystatechange = onComplete;
+                request.send();
+			}
+		}
+
+        // Callback function used to perform some action when an asynchronous request is completed
+        function onComplete() {
+            if (request.readyState == 4 && request.status == 200) {
+                // store the fetched data in the global variable until it's needed
+                window.open("HomePage.aspx");
+
+            }
+        }
+
+
+    </script>
 
 </body>
 </html>

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace WorkoutLibrary
+namespace WebAPITermProject.Models
 {
-    public class Users
+    public class User
     {
-        //   private String userName;
         private String firstName;
         private String lastName;
         private String emailAddress;

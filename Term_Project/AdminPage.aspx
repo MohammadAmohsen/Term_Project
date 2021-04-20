@@ -85,8 +85,8 @@
 
     
         <!-- Content Row -->
-        <div class="row" runat="server" id="ContentID">
-                <asp:GridView ID="gvManageAccounts" Visible="true" runat="server" AutoGenerateColumns="False" CssClass="table table-hover" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
+        <div class="row justify-content-center" runat="server" id="ContentID">
+                <asp:GridView ID="gvManageAccounts" style="margin-left:auto; margin-right:auto;" Visible="true" runat="server" AutoGenerateColumns="False" CssClass="table table-hover" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" Width="90%">
                     <Columns>
                         <asp:TemplateField HeaderText="Select: ">
                             <ItemTemplate>
@@ -108,14 +108,15 @@
                         <asp:BoundField DataField="userTrainingType" HeaderText="User Training Type: " />
                         <asp:BoundField DataField="Experience" HeaderText="Experience:" />
                         <asp:BoundField DataField="amountOfDays" HeaderText="Amount Of Days:" />
+                        <asp:BoundField DataField="programName" HeaderText="Program:" />
 
                     </Columns>
                 </asp:GridView>
 
- 
-         
+
+
         </div>
     </form>
-    
+
 </body>
 </html>
