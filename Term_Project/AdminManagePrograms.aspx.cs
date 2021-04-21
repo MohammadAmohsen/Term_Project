@@ -8,21 +8,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
-using WorkoutLibrary;
 
 namespace Term_Project
 {
-    public partial class AdminPage : System.Web.UI.Page
+    public partial class AdminManagePrograms : System.Web.UI.Page
     {
         DBConnect db = new DBConnect();
         FitnessService.FitnessSoap pxy = new FitnessService.FitnessSoap();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if(!IsPostBack)
+
+            if (!IsPostBack)
             {
-                if(Session["UserID"] == null)
+                if (Session["UserID"] == null)
                 {
                     navBar.Visible = false;
                     ContentID.Visible = false;
@@ -36,7 +35,7 @@ namespace Term_Project
                     ShowUsers();
                 }
             }
-            }
+        }
 
         protected void btnBackToLogin_Click(object sender, EventArgs e)
         {
@@ -69,32 +68,19 @@ namespace Term_Project
 
         }
 
-
-        protected void btnManageWorkouts_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("AdminManagePrograms.aspx");
-
-        }
-
         public void ShowUsers()
         {
             SqlCommand sqlCommand1 = new SqlCommand();
-            ArrayList userList = new ArrayList();
+            ArrayList programList = new ArrayList();
 
             sqlCommand1.CommandType = CommandType.StoredProcedure;
-            sqlCommand1.CommandText = "TP_SelectAllFromUsersWhereTypeUser";
-
-
-            SqlParameter UserType = new SqlParameter("@User", "User");
-            UserType.Direction = ParameterDirection.Input;
-            sqlCommand1.Parameters.Add(UserType);
+            sqlCommand1.CommandText = "TP_SelectEverythingFromProgram";
 
             DataSet myData = db.GetDataSetUsingCmdObj(sqlCommand1);
 
             // String sql = "SELECT * FROM Users WHERE UserType = 'User'";
             //DataSet myData = db.GetDataSet(sql);
-            
+
 
             int size = myData.Tables[0].Rows.Count;
 
@@ -102,14 +88,42 @@ namespace Term_Project
             {
                 for (int i = 0; i < size; i++)
                 {
-                    userList.Add(pxy.GetAllUsers(myData, i));
+                    programList.Add(pxy.GetAllProgram(myData, i));
                 }
-                gvManageAccounts.DataSource = userList;
-                gvManageAccounts.DataBind();
+                gvManagePrograms.DataSource = programList;
+                gvManagePrograms.DataBind();
             }
             else
             {
                 Response.Write("<script>alert('No Users Found') </script>");
+            }
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < gvManagePrograms.Rows.Count; i++)
+            {
+                CheckBox cb;
+                cb = (CheckBox)gvManagePrograms.Rows[i].FindControl("cbSelect");
+
+                if (cb.Checked)
+                {
+                    SqlCommand sqlCommand5 = new SqlCommand();
+
+                    String programName = gvManagePrograms.Rows[i].Cells[2].Text;
+
+                    sqlCommand5.CommandType = CommandType.StoredProcedure;
+                    sqlCommand5.CommandText = "TP_DeleteFromPrograms";
+
+
+                    SqlParameter program = new SqlParameter("@Name", programName);
+                    program.Direction = ParameterDirection.Input;
+                    sqlCommand5.Parameters.Add(program);
+
+                    db.DoUpdateUsingCmdObj(sqlCommand5);
+
+                    ShowUsers();
+                }
             }
         }
     }

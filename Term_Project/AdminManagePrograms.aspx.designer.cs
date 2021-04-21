@@ -11,7 +11,7 @@ namespace Term_Project
 {
 
 
-    public partial class AdminPage
+    public partial class AdminManagePrograms
     {
 
         /// <summary>
@@ -87,13 +87,13 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Button btnMessages;
 
         /// <summary>
-        /// btnManageWorkouts control.
+        /// btnDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnManageWorkouts;
+        protected global::System.Web.UI.WebControls.Button btnDelete;
 
         /// <summary>
         /// ContentID control.
@@ -105,12 +105,21 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContentID;
 
         /// <summary>
-        /// gvManageAccounts control.
+        /// gvManagePrograms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvManageAccounts;
+        protected global::System.Web.UI.WebControls.GridView gvManagePrograms;
+
+        /// <summary>
+        /// hdn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdn;
     }
 }

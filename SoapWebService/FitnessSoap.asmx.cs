@@ -149,25 +149,39 @@ namespace SoapWebService
 
             string ProgramName = ds.Tables[0].Rows[0]["ProgramName"].ToString();
 
-
-
-
             users.FirstName = myData.Tables[0].Rows[i]["FirstName"].ToString();
-                    users.LastName = myData.Tables[0].Rows[i]["LastName"].ToString();
-                    users.EmailAddress = myData.Tables[0].Rows[i]["EmailAddress"].ToString();
-                    users.UserName = myData.Tables[0].Rows[i]["UserName"].ToString();
-                    users.DateCreated = myData.Tables[0].Rows[i]["DateCreated"].ToString();
-                    users.userWeight = Convert.ToInt32(myData.Tables[0].Rows[i]["UserWeight"]);
-                    users.userAge = Convert.ToInt32(myData.Tables[0].Rows[i]["UserAge"]);
-                    users.UserGoals = myData.Tables[0].Rows[i]["UserGoals"].ToString();
-                    users.userTrainingType = myData.Tables[0].Rows[i]["UserTraining"].ToString();
-                    users.Experience = myData.Tables[0].Rows[i]["Experience"].ToString();
-                    users.amountOfDays = myData.Tables[0].Rows[i]["UserDays"].ToString();
-                    users.UserImage = myData.Tables[0].Rows[i]["UserImage"].ToString();
-                    users.programName = ProgramName;
+            users.LastName = myData.Tables[0].Rows[i]["LastName"].ToString();
+            users.EmailAddress = myData.Tables[0].Rows[i]["EmailAddress"].ToString();
+            users.UserName = myData.Tables[0].Rows[i]["UserName"].ToString();
+            users.DateCreated = myData.Tables[0].Rows[i]["DateCreated"].ToString();
+            users.userWeight = Convert.ToInt32(myData.Tables[0].Rows[i]["UserWeight"]);
+            users.userAge = Convert.ToInt32(myData.Tables[0].Rows[i]["UserAge"]);
+            users.UserGoals = myData.Tables[0].Rows[i]["UserGoals"].ToString();
+            users.userTrainingType = myData.Tables[0].Rows[i]["UserTraining"].ToString();
+            users.Experience = myData.Tables[0].Rows[i]["Experience"].ToString();
+            users.amountOfDays = myData.Tables[0].Rows[i]["UserDays"].ToString();
+            users.UserImage = myData.Tables[0].Rows[i]["UserImage"].ToString();
+            users.programName = ProgramName;
 
             return users;
         }
 
+        [WebMethod]
+        public Program GetAllProgram(DataSet myData, int i)
+        {
+            Program program = new Program();
+
+            program.programName = myData.Tables[0].Rows[i]["ProgramName"].ToString();
+            program.dateAdded = myData.Tables[0].Rows[i]["DateAdded"].ToString();
+            program.description = myData.Tables[0].Rows[i]["Description"].ToString();
+            program.programType = myData.Tables[0].Rows[i]["ProgramType"].ToString();
+            program.programExperience = myData.Tables[0].Rows[i]["ProgramExperience"].ToString();
+            program.Days = Convert.ToInt32(myData.Tables[0].Rows[i]["AmountOfDays"]);
+            program.Image = myData.Tables[0].Rows[i]["ProgramImage"].ToString();
+            program.LengthOfProgram = Convert.ToInt32(myData.Tables[0].Rows[i]["LengthOfProgram"]);
+
+            return program;
+        }
+        //FitnessService
     }
 }

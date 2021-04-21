@@ -47,6 +47,7 @@
 					<img id="mb-4"  src="Images2/Asset_4.png" width="130" height="130" /> 
 
                     <h1 class="h3 mt-2 mb-3 font-weight-normal">Login</h1>
+                    <asp:HiddenField id="hdn" runat="server"></asp:HiddenField>
 
                     <div class ="validate-input mb-1" id="lblEmail" runat="server" data-validate ="Enter Email">
                           <asp:Label ID="lblinputEmailError" Visibile="false" runat="server"  Text="Please input a valid Email Address" ForeColor="Red" data-validate ="Enter Email" class="sr-only">Email address</asp:Label>
@@ -91,10 +92,6 @@
 	</div>
 
 
-
-
-
-
 	
 	
 <!--===============================================================================================-->
@@ -136,16 +133,18 @@
             }
         }
 
-        function btnLogin_Click() {
+        window.onload = function () {
             if (document.getElementById('txtEmail').value != "" && document.getElementById('txtPassword').value != "") {
                 var email = document.getElementById('txtEmail').value;
                 var password = document.getElementById('txtPassword').value;
 
                 // Use the JavaScript proxy object to make an AJAX call to an ASP.NET Core 2.0 Web API
-                request.open("GET", "https://localhost:44314/api/Fitness/User/" + email + "/" + password, true);
+                request.open("GET", "https://localhost:44314/api/Fitness/User/" + "dom@dom.con" + "/" + "hi", true);
 
                 //xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
                 request.onreadystatechange = onComplete;
+                document.getElementById('<%=hdn.ClientID%>').value = 1;
+
                 request.send();
             }
         }
@@ -153,17 +152,11 @@
         // Callback function used to perform some action when an asynchronous request is completed
         function onComplete() {
             if (request.readyState == 4 && request.status == 200) {
-                var size = request.responseText;
-                // store the fetched data in the global variable until it's needed
-                if (size > 0) {
-                    window.open("HomePage.aspx");
-                }
-                else {
-                    alert("Account Doesn't Exist");
-                }
+                stats = request.responseText;
             }
+    
         }
-
+        
 
     </script>
 

@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminAddWorkout.aspx" />
+    <Content Include="AdminManagePrograms.aspx" />
     <Content Include="AdminMessages.aspx" />
     <Content Include="AdminPage.aspx" />
     <Content Include="AdminSignUp.aspx" />
@@ -194,14 +195,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\FitnessService\FitnessSoap.wsdl" />
-    <None Include="Web References\FitnessService\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Web References\FitnessService\WorkoutSoap.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <Content Include="Verification.aspx" />
     <None Include="Web References\FitnessService\FitnessSoap.disco" />
     <Content Include="Web.config" />
@@ -213,6 +206,13 @@
     </Compile>
     <Compile Include="AdminAddWorkout.aspx.designer.cs">
       <DependentUpon>AdminAddWorkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminManagePrograms.aspx.cs">
+      <DependentUpon>AdminManagePrograms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminManagePrograms.aspx.designer.cs">
+      <DependentUpon>AdminManagePrograms.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminMessages.aspx.cs">
       <DependentUpon>AdminMessages.aspx</DependentUpon>
@@ -359,7 +359,18 @@
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="Web References\FitnessService\FitnessSoap.wsdl" />
+    <Content Include="Web References\FitnessService\Program.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\FitnessService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web References\FitnessService\User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\FitnessService\WorkoutSoap.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">

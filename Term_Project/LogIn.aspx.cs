@@ -55,6 +55,8 @@ namespace Term_Project
             }
             else
             {
+                string b = hdn.Value;
+
                 SqlCommand objCommand = new SqlCommand();
 
                 objCommand.CommandType = CommandType.StoredProcedure;

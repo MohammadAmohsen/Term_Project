@@ -180,6 +180,7 @@
                                       </asp:GridView>
                                     <a target="_blank" rel="nofollow" href="https://undraw.co/">See previous workouts &rarr;</a>
                                 </div>
+                                      <asp:Label ID="lblRestDay" visible="false" runat="server" Text="Rest Day"></asp:Label>
                             </div>
 
                             <!-- Approach -->
@@ -201,9 +202,9 @@
                     </div>
 
                 </div>
-                <!-- /.container-fluid -->
+            <!-- /.container-fluid -->
 
-            </div>
+        </div>
             <!-- End of Main Content -->      
     <br>
     </form> 

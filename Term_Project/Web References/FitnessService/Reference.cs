@@ -36,6 +36,8 @@ namespace Term_Project.FitnessService {
         
         private System.Threading.SendOrPostCallback GetAllUsersOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllProgramOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -82,6 +84,9 @@ namespace Term_Project.FitnessService {
         
         /// <remarks/>
         public event GetAllUsersCompletedEventHandler GetAllUsersCompleted;
+        
+        /// <remarks/>
+        public event GetAllProgramCompletedEventHandler GetAllProgramCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Test", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -173,6 +178,37 @@ namespace Term_Project.FitnessService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllProgram", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Program GetAllProgram(System.Data.DataSet myData, int i) {
+            object[] results = this.Invoke("GetAllProgram", new object[] {
+                        myData,
+                        i});
+            return ((Program)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllProgramAsync(System.Data.DataSet myData, int i) {
+            this.GetAllProgramAsync(myData, i, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllProgramAsync(System.Data.DataSet myData, int i, object userState) {
+            if ((this.GetAllProgramOperationCompleted == null)) {
+                this.GetAllProgramOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllProgramOperationCompleted);
+            }
+            this.InvokeAsync("GetAllProgram", new object[] {
+                        myData,
+                        i}, this.GetAllProgramOperationCompleted, userState);
+        }
+        
+        private void OnGetAllProgramOperationCompleted(object arg) {
+            if ((this.GetAllProgramCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllProgramCompleted(this, new GetAllProgramCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -208,6 +244,111 @@ namespace Term_Project.FitnessService {
             }
             set {
                 this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Program {
+        
+        private int lengthOfProgramField;
+        
+        private string imageField;
+        
+        private int daysField;
+        
+        private string programNameField;
+        
+        private string dateAddedField;
+        
+        private string descriptionField;
+        
+        private string programTypeField;
+        
+        private string programExperienceField;
+        
+        /// <remarks/>
+        public int LengthOfProgram {
+            get {
+                return this.lengthOfProgramField;
+            }
+            set {
+                this.lengthOfProgramField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Image {
+            get {
+                return this.imageField;
+            }
+            set {
+                this.imageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Days {
+            get {
+                return this.daysField;
+            }
+            set {
+                this.daysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string programName {
+            get {
+                return this.programNameField;
+            }
+            set {
+                this.programNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string dateAdded {
+            get {
+                return this.dateAddedField;
+            }
+            set {
+                this.dateAddedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string programType {
+            get {
+                return this.programTypeField;
+            }
+            set {
+                this.programTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string programExperience {
+            get {
+                return this.programExperienceField;
+            }
+            set {
+                this.programExperienceField = value;
             }
         }
     }
@@ -559,6 +700,32 @@ namespace Term_Project.FitnessService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((User)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void GetAllProgramCompletedEventHandler(object sender, GetAllProgramCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllProgramCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllProgramCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Program Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Program)(this.results[0]));
             }
         }
     }

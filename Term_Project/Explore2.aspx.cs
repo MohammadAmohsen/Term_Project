@@ -21,8 +21,8 @@ namespace Term_Project
             if (!IsPostBack)
             {
                 //Repeater
-                String strSQL = "SELECT * FROM TP_Program";
-
+                String strSQL = "Select * FROM TP_Program";
+                lvVisible(false);
                 // Set the datasource of the Repeater and bind the data
                 rptPrograms.DataSource = db.GetDataSet(strSQL);
                 rptPrograms.DataBind();
@@ -42,62 +42,36 @@ namespace Term_Project
             Label myLabel = (Label)rptPrograms.Items[rowIndex].FindControl("ProgramID");
 
             //List View Workout
-           // String strSQLForWorkoutDisplay = "SELECT * FROM TP_Workouts Where ProgramID = " + ID;
+            // String strSQLForWorkoutDisplay = "SELECT * FROM TP_Workouts Where ProgramID = " + ID;
 
-            SqlCommand objCommand = new SqlCommand();
+            lvMonday.DataSource = lvWorkoutDays(ID, "Monday");
+            lvMonday.DataBind();
 
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_SelectAllFromWorkout";
+            lvTuesday.DataSource = lvWorkoutDays(ID, "Tuesday");
+            lvTuesday.DataBind();
 
-            SqlParameter workoutID = new SqlParameter("@ID", ID);
-            workoutID.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(workoutID);
+            lvWednesday.DataSource = lvWorkoutDays(ID, "Wednesday");
+            lvWednesday.DataBind();
 
-            DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
+            lvThursday.DataSource = lvWorkoutDays(ID, "Thursday");
+            lvThursday.DataBind();
 
+            lvFriday.DataSource = lvWorkoutDays(ID, "Friday");
+            lvFriday.DataBind();
 
-            ArrayList arrayExercise = new ArrayList();
-            int size = mydata.Tables[0].Rows.Count;
-            for (int i = 0; i < size; i++)
-            {
-                Exercise exercise = new Exercise();
-                 exercise.ExerciseID = Convert.ToInt32(mydata.Tables[0].Rows[i]["ExerciseID"]);
+            lvSaturday.DataSource = lvWorkoutDays(ID, "Saturday");
+            lvSaturday.DataBind();
 
-
-                //List View Exercise
-                // String strSqlForExerciseDisplay = "SELECT * FROM TP_Exercise, TP_Workouts WHERE TP_Exercise.ExerciseID = TP_Workouts.WorkoutID";
-             SqlCommand objCommand1 = new SqlCommand();
-
-                objCommand1.CommandType = CommandType.StoredProcedure;
-                objCommand1.CommandText = "TP_SelectAllfromExercisesWhereWorkoutID";
-
-                SqlParameter exerciseID = new SqlParameter("@ID", exercise.ExerciseID);
-                exerciseID.Direction = ParameterDirection.Input;
-                objCommand1.Parameters.Add(exerciseID);
-                DataSet mydata1 = db.GetDataSetUsingCmdObj(objCommand1);
-
-                for (int row = 0; row < mydata1.Tables.Count; row++)
-                {
-                    exercise.exerciseName = mydata1.Tables[0].Rows[row]["ExerciseName"].ToString();
-                    exercise.sets = Convert.ToInt32(mydata1.Tables[0].Rows[row]["Sets"]);
-                    exercise.reps = Convert.ToInt32(mydata1.Tables[0].Rows[row]["Reps"]);
-
-                    arrayExercise.Add(exercise);
-                }
-
-            }
-            ListViewExercise.DataSource = arrayExercise;
-            ListViewExercise.DataBind();
-
+            lvSunday.DataSource = lvWorkoutDays(ID, "Sunday");
+            lvSunday.DataBind();
 
         }
 
         protected void btnDetailView_Click(object sender, EventArgs e)
         {
             rptPrograms.Visible = false;
-            btnBack.Visible = true;
             //ListViewDisplayWorkout.Visible = true;
-            ListViewExercise.Visible = true;
+            lvVisible(true);
 
         }
 
@@ -116,12 +90,65 @@ namespace Term_Project
         protected void btnBack_Click(object sender, EventArgs e)
         {
             rptPrograms.Visible = true;
-            btnBack.Visible = false;
-           // ListViewDisplayWorkout.Visible = false;
-            ListViewExercise.Visible = false;
+             // ListViewDisplayWorkout.Visible = false;
+            lvVisible(false);
+        }
+
+        private ArrayList lvWorkoutDays(int ID, string dayName)
+        {
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_SelectAllFromExercisesWhereDay";
+
+            SqlParameter workoutID = new SqlParameter("@ID", ID);
+            workoutID.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(workoutID);
+
+            SqlParameter day = new SqlParameter("@Day", dayName);
+            day.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(day);
+
+
+            DataSet mydata1 = db.GetDataSetUsingCmdObj(objCommand);
+
+
+            ArrayList arrayExercise = new ArrayList();
+            int size = mydata1.Tables[0].Rows.Count;
+            if (size > 0)
+            {
+                for (int row = 0; row < mydata1.Tables[0].Rows.Count; row++)
+                {
+                    Exercise exercise = new Exercise();
+                    exercise.exerciseName = mydata1.Tables[0].Rows[row]["ExerciseName"].ToString();
+                    exercise.sets = Convert.ToInt32(mydata1.Tables[0].Rows[row]["Sets"]);
+                    exercise.reps = Convert.ToInt32(mydata1.Tables[0].Rows[row]["Reps"]);
+
+                    arrayExercise.Add(exercise);
+                }
+                return arrayExercise;
+            }
+            else
+            {
+                Exercise exercise = new Exercise();
+                exercise.exerciseName = "rest";
+                arrayExercise.Add(exercise);
+            }
+            return arrayExercise;
 
         }
 
+        private void lvVisible(Boolean boo)
+        {
+            lvMonday.Visible = boo;
+            lvTuesday.Visible = boo;
+            lvWednesday.Visible = boo;
+            lvThursday.Visible = boo;
+            lvFriday.Visible = boo;
+            lvSaturday.Visible = boo;
+            lvSunday.Visible = boo;
+            btnBack.Visible = boo;
+        }
 
     }
 }

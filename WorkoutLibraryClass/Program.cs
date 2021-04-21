@@ -13,7 +13,25 @@ namespace WorkoutLibrary
         private String Description;
         private String ProgramType;
         private String ProgramExperience;
+        private int days;
+        private int lengthOfProgram;
+        private String image;
 
+        public int LengthOfProgram
+        {
+            get { return lengthOfProgram; }
+            set { lengthOfProgram = value; }
+        }
+        public String Image
+        {
+            get { return image; }
+            set { image = value; }
+        }
+        public int Days
+        {
+            get { return days; }
+            set { days = value; }
+        }
         public String programName
         {
             get { return ProgramName; }

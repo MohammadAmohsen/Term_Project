@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RestfulApi.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -30,12 +30,14 @@ namespace WebAPITermProject.Controllers
             foreach (DataRow record in ds.Tables[0].Rows)
             {
                 program = new Programs();
+                program.programID = int.Parse(record["ProgramID"].ToString());
                 program.programName = record["ProgramName"].ToString();
                 program.dateAdded = DateTime.Parse(record["DateAdded"].ToString());
                 program.description = record["Description"].ToString();
                 program.programType = record["ProgramType"].ToString();
                 program.programExperience = record["ProgramExperience"].ToString();
                 program.days = int.Parse(record["AmountOfDays"].ToString());
+                program.programImage = record["ProgramImage"].ToString();
 
                 programs.Add(program);
             }
@@ -73,10 +75,10 @@ namespace WebAPITermProject.Controllers
 
         [HttpDelete("DeleteProgram/{ProgramID}")] //route:MoesFitness/{controllerName}/DeleteProgram/(ProgramID)
         //delete house from database
-        public Boolean DeleteProgram(int ProgramID)
+        public Boolean DeleteProgram(string ProgramName)
         {
             DBConnect db = new DBConnect();
-            string strSQL = "DELETE FROM TP_Program WHERE ProgramID = " + ProgramID;
+            string strSQL = "DELETE FROM TP_Program WHERE ProgramID = " + ProgramName;
             DataSet recordSet = db.GetDataSet(strSQL);
 
             int result = db.DoUpdate(strSQL);
@@ -94,16 +96,89 @@ namespace WebAPITermProject.Controllers
         {
             DBConnect db = new DBConnect();
 
-            string sql = "INSERT INTO TP_Program (ProgramName, DateAdded, Description, WorkoutID, ProgramType, ProgramExperience, AmountOfDays) " +
-                "VALUES (" + program.programName + ", '" + program.dateAdded + "', '" + program.description + "', '" + program.workoutID + "', '" + program.programType + "', '" + program.programExperience
-                + "', '" + program.days + "')";
-            DataSet recordSet = db.GetDataSet(sql);
-            int result = db.DoUpdate(sql);
+            ArrayList arrayList = new ArrayList();
+            Exercise exercise = new Exercise();
 
-            if (result > 0)
-                return true;
+            SqlCommand sqlCommand3 = new SqlCommand();
 
-            return false;
+            sqlCommand3.CommandType = CommandType.StoredProcedure;
+            sqlCommand3.CommandText = "TP_SelectALLFromProgram";
+
+            SqlParameter programName = new SqlParameter("@ProgramName", program.programName);
+            programName.Direction = ParameterDirection.Input;
+            sqlCommand3.Parameters.Add(programName);
+
+            DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand3);
+
+            int size = ds.Tables[0].Rows.Count;
+
+            if (size == 0)
+            {
+                /*Insert Into Program Table */
+                SqlCommand sqlCommand4 = new SqlCommand();
+
+                sqlCommand4.CommandType = CommandType.StoredProcedure;
+                sqlCommand4.CommandText = "TP_InsertIntoProgram";
+
+
+                SqlParameter ProgramName = new SqlParameter("@ProgramName", program.programName);
+                ProgramName.Direction = ParameterDirection.Input;
+                sqlCommand4.Parameters.Add(ProgramName);
+
+                SqlParameter DateAdded = new SqlParameter("@DateTime", DateTime.Now);
+                DateAdded.Direction = ParameterDirection.Input;
+                sqlCommand4.Parameters.Add(DateAdded);
+
+                SqlParameter Desc = new SqlParameter("@Description", program.description);
+                Desc.Direction = ParameterDirection.Input;
+                sqlCommand4.Parameters.Add(Desc);
+
+                SqlParameter Type = new SqlParameter("@ProgramType", program.programType);
+                Type.Direction = ParameterDirection.Input;
+                sqlCommand4.Parameters.Add(Type);
+
+                SqlParameter Exp = new SqlParameter("@ProgramExperience", program.programExperience);
+                Exp.Direction = ParameterDirection.Input;
+                sqlCommand4.Parameters.Add(Exp);
+
+                SqlParameter Days = new SqlParameter("@AmountOfDays", program.days);
+                Days.Direction = ParameterDirection.Input;
+                sqlCommand4.Parameters.Add(Days);
+
+                int ret = db.DoUpdateUsingCmdObj(sqlCommand4);
+
+
+                if (ret > 0)
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+       
+            }
+            else
+            {
+                return false;
+            }
+
+
+
+
+            //DBConnect db = new DBConnect();
+
+            //string sql = "INSERT INTO TP_Program (ProgramName, DateAdded, Description, WorkoutID, ProgramType, ProgramExperience, AmountOfDays) " +
+            //    "VALUES (" + program.programName + ", '" + program.dateAdded + "', '" + program.description + "', '" + program.workoutID + "', '" + program.programType + "', '" + program.programExperience
+            //    + "', '" + program.days + "')";
+            //DataSet recordSet = db.GetDataSet(sql);
+            //int result = db.DoUpdate(sql);
+
+            //if (result > 0)
+            //    return true;
+
+            //return false;
         }
 
         [HttpPut("UpdateProgram/{ProgramID}")] //MoesFitness/{controllerName}/UpdateProgram/(ProgramID)

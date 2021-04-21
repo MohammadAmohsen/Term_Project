@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RestfulApi.Models
+namespace WebAPITermProject.Models
 {
     public class Programs
     {
@@ -27,6 +27,12 @@ namespace RestfulApi.Models
             get;
             set;
         }
+
+        public String programImage
+        {
+            get;
+            set;
+        }
         public String programExperience
         {
             get;
@@ -42,6 +48,12 @@ namespace RestfulApi.Models
             get;
             set;
         }
+        public int programID
+        {
+            get;
+            set;
+        }
+
 
     }
 }

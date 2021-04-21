@@ -419,12 +419,56 @@
 
                     <asp:Button ID="btnCreateProgram" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Your Workout Program!" OnClick="btnCreateProgram_Click" />
                     <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Back To Admin Page!" OnClick="btnBack_Click" />
+                    <input type="button" value="Create Program" id="btnCreate" onclick="btnCreate_Click()" />
 
              </div>
            </div>
         </div>
       </form>
  </div>
+
+
+    	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+
+    <script>
+        function btnCreate_Click() {
+            $.ajax({
+                type: "POST",
+                url: url2,
+                contentType: "application/json",
+                dataType: "json",
+                data: strInput,
+                success: function (data) {
+                    alert("house updated");
+                },
+                error: function (req, status, error) {
+                    alert("error");
+                }
+
+            });
+
+        }
+
+        
+    </script>
+
 
 </body>
 </html>

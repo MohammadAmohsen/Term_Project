@@ -197,37 +197,46 @@ namespace Term_Project
             sqlCommand.Parameters.Add(ProgramID);
 
             DataSet mydata1 = db.GetDataSetUsingCmdObj(sqlCommand);
-            int size = mydata1.Tables.Count;
-            for (int row = 0; row <= size; row++)
-            {         
-                Exercise exercises = new Exercise();
-                exercises.ExerciseID = Convert.ToInt32(mydata1.Tables[0].Rows[row]["ExerciseID"]);
-               // arrayExerciseID.Add(exercises.ExerciseID);
+            int size = mydata1.Tables[0].Rows.Count;
 
-                SqlCommand sqlCommand1 = new SqlCommand();
+            if (size > 0)
+            {
+                for (int row = 0; row < size; row++)
+                {
+                    Exercise exercises = new Exercise();
+                    exercises.ExerciseID = Convert.ToInt32(mydata1.Tables[0].Rows[row]["ExerciseID"]);
+                    // arrayExerciseID.Add(exercises.ExerciseID);
 
-                sqlCommand1.CommandType = CommandType.StoredProcedure;
-                sqlCommand1.CommandText = "TP_SelectAllFromExercise";
+                    SqlCommand sqlCommand1 = new SqlCommand();
+
+                    sqlCommand1.CommandType = CommandType.StoredProcedure;
+                    sqlCommand1.CommandText = "TP_SelectAllFromExercise";
 
 
-                SqlParameter ExerciseID = new SqlParameter("@ID", exercises.ExerciseID);
-                ExerciseID.Direction = ParameterDirection.Input;
-                sqlCommand1.Parameters.Add(ExerciseID);
+                    SqlParameter ExerciseID = new SqlParameter("@ID", exercises.ExerciseID);
+                    ExerciseID.Direction = ParameterDirection.Input;
+                    sqlCommand1.Parameters.Add(ExerciseID);
 
-                DataSet mydata2 = db.GetDataSetUsingCmdObj(sqlCommand1);
+                    DataSet mydata2 = db.GetDataSetUsingCmdObj(sqlCommand1);
 
-                for (int i = 0; i < mydata2.Tables.Count; i++)
-                {           
-                    Exercise exercise = new Exercise();
-                    exercise.exerciseName = mydata2.Tables[0].Rows[i]["ExerciseName"].ToString();
-                    exercise.sets = Convert.ToInt32(mydata2.Tables[0].Rows[i]["Sets"]);
-                    exercise.reps = Convert.ToInt32(mydata2.Tables[0].Rows[i]["Reps"]);
-                    arrayExercises.Add(exercise);
+                    for (int i = 0; i < mydata2.Tables.Count; i++)
+                    {
+                        Exercise exercise = new Exercise();
+                        exercise.exerciseName = mydata2.Tables[0].Rows[i]["ExerciseName"].ToString();
+                        exercise.sets = Convert.ToInt32(mydata2.Tables[0].Rows[i]["Sets"]);
+                        exercise.reps = Convert.ToInt32(mydata2.Tables[0].Rows[i]["Reps"]);
+                        arrayExercises.Add(exercise);
+                    }
                 }
+                h6Day.InnerText = DateTime.Now.DayOfWeek.ToString() + " Workouts";
+                gvWorkoutOftheDay.DataSource = arrayExercises;
+                gvWorkoutOftheDay.DataBind();
             }
-            h6Day.InnerText = DateTime.Now.DayOfWeek.ToString() + " Workouts";
-            gvWorkoutOftheDay.DataSource = arrayExercises;
-            gvWorkoutOftheDay.DataBind();
+            else
+            {
+                Response.Write("<script>alert('rest day!')</script>");
+
+            }
 
         }
     }

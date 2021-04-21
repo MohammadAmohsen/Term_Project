@@ -83,6 +83,40 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllProgram">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myData">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="i" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllProgramResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllProgramResult" type="tns:Program" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Program">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LengthOfProgram" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Days" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="programName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dateAdded" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="programType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="programExperience" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="TestSoapIn">
@@ -103,6 +137,12 @@
   <wsdl:message name="GetAllUsersSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllProgramSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllProgram" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProgramSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllProgramResponse" />
+  </wsdl:message>
   <wsdl:portType name="FitnessSoapSoap">
     <wsdl:operation name="Test">
       <wsdl:input message="tns:TestSoapIn" />
@@ -115,6 +155,10 @@
     <wsdl:operation name="GetAllUsers">
       <wsdl:input message="tns:GetAllUsersSoapIn" />
       <wsdl:output message="tns:GetAllUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProgram">
+      <wsdl:input message="tns:GetAllProgramSoapIn" />
+      <wsdl:output message="tns:GetAllProgramSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FitnessSoapSoap" type="tns:FitnessSoapSoap">
@@ -146,6 +190,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllProgram">
+      <soap:operation soapAction="http://tempuri.org/GetAllProgram" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FitnessSoapSoap12" type="tns:FitnessSoapSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -169,6 +222,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllUsers">
       <soap12:operation soapAction="http://tempuri.org/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProgram">
+      <soap12:operation soapAction="http://tempuri.org/GetAllProgram" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
