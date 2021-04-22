@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WorkoutLibrary
-{
+{   [Serializable]
     public class Users
     {
         //   private String userName;
@@ -31,6 +31,22 @@ namespace WorkoutLibrary
         private String UserTrainingType;
         private String userGoals;
         private String ProgramName;
+        private String binaryPassword;
+        private String binaryAddress;
+
+        public String BinaryAddress
+        {
+            get { return binaryAddress; }
+            set { binaryAddress = value; }
+        }
+
+        public String BinaryPassword
+        {
+            get { return binaryPassword; }
+            set { binaryPassword = value; }
+        }
+
+
         public String programName
         {
             get { return ProgramName; }

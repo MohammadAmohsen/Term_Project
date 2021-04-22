@@ -171,6 +171,7 @@ namespace SoapWebService
         {
             Program program = new Program();
 
+            program.ProgramID = Convert.ToInt32(myData.Tables[0].Rows[i]["ProgramID"]);
             program.programName = myData.Tables[0].Rows[i]["ProgramName"].ToString();
             program.dateAdded = myData.Tables[0].Rows[i]["DateAdded"].ToString();
             program.description = myData.Tables[0].Rows[i]["Description"].ToString();

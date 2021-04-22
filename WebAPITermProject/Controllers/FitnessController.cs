@@ -23,9 +23,29 @@ namespace WebAPITermProject.Controllers
             return "Web api ran";
         }
 
+        [HttpGet("GetEmail/{email}")] //api/Fitness/GetEmail/{email}
+        public int UserEmail(string email)
+        {
+            DBConnect db = new DBConnect();
+            SqlCommand sqlCommand1 = new SqlCommand();
+
+            sqlCommand1.CommandType = CommandType.StoredProcedure;
+            sqlCommand1.CommandText = "TP_SelectVerificationCodeFromUsers";
+
+ 
+            SqlParameter email1 = new SqlParameter("@Email", email);
+            email1.Direction = ParameterDirection.Input;
+            sqlCommand1.Parameters.Add(email1);
+
+            DataSet ds1 = db.GetDataSetUsingCmdObj(sqlCommand1);
+
+            int verificationCode = Convert.ToInt32(ds1.Tables[0].Rows[0]["VerificationCode"]);
+
+            return verificationCode;
+        }
+
         [HttpGet("AllPrograms")]  //api/Fitness/AllPrograms
-        //Get houses based on type (list)
-        public List<Programs> GetAll()
+         public List<Programs> GetAll()
         {
             DBConnect db = new DBConnect();
             DataSet ds = db.GetDataSet("SELECT * FROM TP_Program");
@@ -52,8 +72,7 @@ namespace WebAPITermProject.Controllers
         }
 
         [HttpGet("User/{email}/{password}")]  //MoesFitness/Values/User
-        //Get houses based on type (list)
-        public int GetUser(string email, string password)
+         public int GetUser(string email, string password)
         {
             DBConnect db = new DBConnect();
 
@@ -80,8 +99,7 @@ namespace WebAPITermProject.Controllers
 
 
         [HttpDelete("DeleteProgram/{ProgramID}")] //route:api/Fitness/DeleteProgram/(ProgramID)
-        //delete house from database
-        public Boolean DeleteProgram(string ProgramName)
+         public Boolean DeleteProgram(string ProgramName)
         {
             DBConnect db = new DBConnect();
             string strSQL = "DELETE FROM TP_Program WHERE ProgramID = " + ProgramName;
@@ -97,8 +115,7 @@ namespace WebAPITermProject.Controllers
 
 
         [HttpPost("AddProgram")] //route:api/Fitness/AddProgram
-        //add house to db
-        public Boolean Post([FromBody] Programs program)
+         public Boolean Post([FromBody] Programs program)
         {
             DBConnect db = new DBConnect();
 
@@ -200,15 +217,29 @@ namespace WebAPITermProject.Controllers
         //    }
         }
 
-        [HttpPut("UpdateProgram/{ProgramID}")] //api/Fitness/UpdateProgram/(ProgramID)
-        public Boolean Put(int HomeID, [FromBody] Programs program)
+        [HttpPut("UpdateProgram/{email}")] //api/Fitness/UpdateProgram/(ProgramID)
+        public Boolean Put(string email)
         {
 
             DBConnect db = new DBConnect();
 
-            String sql = "UPDATE TP_Program SET ProgramName = '" + program.programName + "', DateAdded = '" + program.dateAdded + "', Description = '" + program.description + "', ProgramType = '" + program.programType + "', ProgramExperience = " + program.programExperience + ", AmountOfDays = " + program.days;
+            //String sql = "UPDATE TP_Users SET Verified = Yes WHERE EmailAddress = '" + email + "'";
 
-            int result = db.DoUpdate(sql);
+            /*Insert Into Program Table */
+            SqlCommand sqlCommand4 = new SqlCommand();
+
+            sqlCommand4.CommandType = CommandType.StoredProcedure;
+            sqlCommand4.CommandText = "TP_UpdateUsersSetVerifiedYes";
+
+            SqlParameter Email = new SqlParameter("@Email", email);
+            Email.Direction = ParameterDirection.Input;
+            sqlCommand4.Parameters.Add(Email);
+
+            SqlParameter yes = new SqlParameter("@Yes", "Yes");
+            yes.Direction = ParameterDirection.Input;
+            sqlCommand4.Parameters.Add(yes);
+
+            int result = db.DoUpdateUsingCmdObj(sqlCommand4);
             if (result > 0)
                 return true;
 

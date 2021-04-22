@@ -52,7 +52,7 @@ namespace Term_Project
                 if (size > 0)
                 {
 
-
+                    hdn.Value = txtEmail.Text;
                     btnBackToHome2.Visible = false;
                     btnBack.Visible = true;
                     btnContinue.Visible = false;

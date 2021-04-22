@@ -53,7 +53,7 @@
 
                     <div class ="validate-input mb-1" id="lblEmail" runat="server" data-validate ="Enter Email">
                           <asp:Label ID="lblinputEmailError" Visibile="false" runat="server"  Text="Please input a valid Email Address" ForeColor="Red" data-validate ="Enter Email" class="sr-only">Email address</asp:Label>
-                          <asp:Textbox type="email" runat="server" CssClass="form-control input-md"  id="txtEmail" name="pass" placeholder="Email Address"></asp:Textbox>
+                          <asp:Textbox runat="server" CssClass="form-control input-md"  id="txtEmail" name="pass" placeholder="Email Address"></asp:Textbox>
                     </div>
                      <div class ="validate-input mb-2" id="lblPassword" runat="server" data-validate ="Enter password">
                           <asp:Label ID="lblInputPassError" Visibile="false" runat="server" Text="Please input a valid Password" ForeColor="Red"  data-validate ="Enter Email" class="sr-only">Email address</asp:Label>

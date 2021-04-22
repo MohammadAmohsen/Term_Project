@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
+using WorkoutLibrary;
 
 namespace Term_Project
 {
@@ -125,6 +126,94 @@ namespace Term_Project
                     ShowUsers();
                 }
             }
+        }
+
+        protected void gvManagePrograms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int ID = Convert.ToInt32(gvManagePrograms.SelectedRow.Cells[3].Text);
+
+            lvMonday.DataSource = lvWorkoutDays(ID, "Monday");
+
+
+            lvTuesday.DataSource = lvWorkoutDays(ID, "Tuesday");
+
+            lvWednesday.DataSource = lvWorkoutDays(ID, "Wednesday");
+
+            lvThursday.DataSource = lvWorkoutDays(ID, "Thursday");
+
+            lvFriday.DataSource = lvWorkoutDays(ID, "Friday");
+
+            lvSaturday.DataSource = lvWorkoutDays(ID, "Saturday");
+
+            lvSunday.DataSource = lvWorkoutDays(ID, "Sunday");
+
+
+            lvMonday.DataBind();
+            lvTuesday.DataBind();
+            lvWednesday.DataBind();
+            lvThursday.DataBind();
+            lvFriday.DataBind();
+            lvSaturday.DataBind();
+            lvSunday.DataBind();
+
+            lvVisible(true);
+            gvManagePrograms.Visible = false;
+        }
+
+        private ArrayList lvWorkoutDays(int ID, string dayName)
+        {
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_SelectAllFromExercisesWhereDay";
+
+            SqlParameter workoutID = new SqlParameter("@ID", ID);
+            workoutID.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(workoutID);
+
+            SqlParameter day = new SqlParameter("@Day", dayName);
+            day.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(day);
+
+
+            DataSet mydata1 = db.GetDataSetUsingCmdObj(objCommand);
+
+
+            ArrayList arrayExercise = new ArrayList();
+            int size = mydata1.Tables[0].Rows.Count;
+            if (size > 0)
+            {
+                for (int row = 0; row < mydata1.Tables[0].Rows.Count; row++)
+                {
+                    Exercise exercise = new Exercise();
+                    exercise.exerciseName = mydata1.Tables[0].Rows[row]["ExerciseName"].ToString();
+                    exercise.sets = Convert.ToInt32(mydata1.Tables[0].Rows[row]["Sets"]);
+                    exercise.reps = Convert.ToInt32(mydata1.Tables[0].Rows[row]["Reps"]);
+
+                    arrayExercise.Add(exercise);
+                }
+                return arrayExercise;
+            }
+            else
+            {
+                Exercise exercise = new Exercise();
+                exercise.exerciseName = "rest";
+                arrayExercise.Add(exercise);
+                return arrayExercise;
+
+            }
+        }
+        private void lvVisible(Boolean boo)
+        {
+            lvMonday.Visible = boo;
+            lvTuesday.Visible = boo;
+            lvWednesday.Visible = boo;
+            lvThursday.Visible = boo;
+            lvFriday.Visible = boo;
+            lvSaturday.Visible = boo;
+            lvSunday.Visible = boo;
+            //btnBack.Visible = boo;
         }
     }
 }

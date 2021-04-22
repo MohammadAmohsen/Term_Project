@@ -459,7 +459,6 @@
 
             var strInput = JSON.stringify(program);
 
-            console.log("");
 
             $.ajax({
                 type: "POST",

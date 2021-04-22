@@ -12,6 +12,8 @@ using WorkoutLibrary;
 using System.Net;
 using System.Net.Mail;
 using WorkoutLibraryClass;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Term_Project
 {
@@ -105,7 +107,10 @@ namespace Term_Project
                         {
                             //Users newUsers = new Users();
                             FitnessService.User newUsers = new FitnessService.User();
+                            ArrayList binaryArray = new ArrayList();
+                            Users user = new Users();
 
+                            String password = txtPassword.Text;
                             newUsers.FirstName = firstName;
                             newUsers.LastName = lastName;
                             newUsers.EmailAddress = emailAddress;
@@ -122,8 +127,48 @@ namespace Term_Project
                             newUsers.Experience = ddlImage.SelectedValue;
                             newUsers.UserImage = ddlImage.SelectedValue;
                             newUsers.DateCreated = DateTime.Now.ToString();
+                            user.BinaryPassword = txtPassword.Text;
+                            user.BinaryAddress = txtBillingAddress.Text;
 
                             Boolean test = pxy.AddUser(newUsers);
+
+
+                            SqlCommand sqlCommand3B = new SqlCommand();
+
+                            sqlCommand3B.CommandType = CommandType.StoredProcedure;
+                            sqlCommand3B.CommandText = "TP_SelectUserIDEmailCreateUser";
+
+                            SqlParameter EmailAddress1 = new SqlParameter("@Email", txtNewEmail.Text);
+                            EmailAddress1.Direction = ParameterDirection.Input;
+                            sqlCommand3B.Parameters.Add(EmailAddress1);
+
+                            DataSet ds2 = db.GetDataSetUsingCmdObj(sqlCommand3B);
+
+                            int userId = Convert.ToInt32(ds2.Tables[0].Rows[0]["UserID"]);
+
+
+                            BinaryFormatter serializer = new BinaryFormatter();
+                            MemoryStream memStream = new MemoryStream();
+                            Byte[] byteArray;
+
+                            serializer.Serialize(memStream, user);
+                            byteArray = memStream.ToArray();
+
+                            SqlCommand sqlCommand3A = new SqlCommand();
+
+                            sqlCommand3A.CommandType = CommandType.StoredProcedure;
+                            sqlCommand3A.CommandText = "TP_UpdateUsersCreateBinary";
+
+                            SqlParameter ID = new SqlParameter("@ID", userId);
+                            ID.Direction = ParameterDirection.Input;
+                            sqlCommand3A.Parameters.Add(ID);
+
+                            SqlParameter objectBinary = new SqlParameter("@BinaryObject", byteArray);
+                            objectBinary.Direction = ParameterDirection.Input;
+                            sqlCommand3A.Parameters.Add(objectBinary);
+
+                            int ret = db.DoUpdateUsingCmdObj(sqlCommand3A);
+
 
                             if (test == true)
                             {

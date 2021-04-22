@@ -75,7 +75,7 @@
             <asp:Button ID="btnCreateProgram" class="btn btn-info" runat="server" Text="Create Workout" OnClick="btnCreateWorkOut_Click"  />
             <asp:Button ID="btnLogOut" class="btn btn-info" runat="server" Text="LogOut" OnClick="btnLogOut_Click" />
             <asp:Button ID="btnMessages" class="btn btn-info" runat="server" Text="Messages" OnClick="btnMessages_Click" />
-            <asp:Button ID="btnManageWorkouts" class="btn btn-info" runat="server" Text="Messages" OnClick="btnManageWorkouts_Click" />
+            <asp:Button ID="btnManageWorkouts" class="btn btn-info" runat="server" Text="View Workouts" OnClick="btnManageWorkouts_Click" />
 
         </div>
  </nav>

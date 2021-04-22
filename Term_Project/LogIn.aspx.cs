@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -12,6 +13,7 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
+using WorkoutLibrary;
 
 namespace Term_Project
 {
@@ -55,8 +57,7 @@ namespace Term_Project
             }
             else
             {
-                string b = hdn.Value;
-
+                /*
                 SqlCommand objCommand = new SqlCommand();
 
                 objCommand.CommandType = CommandType.StoredProcedure;
@@ -69,36 +70,63 @@ namespace Term_Project
                 SqlParameter Password = new SqlParameter("@InputPassword", password);
                 Password.Direction = ParameterDirection.Input;
                 objCommand.Parameters.Add(Password);
+                */
+
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_SelectBinaryDataFromUsers";
+
+                SqlParameter Email = new SqlParameter("@Email", email);
+                Email.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(Email);
 
                 DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
                 int size = mydata.Tables[0].Rows.Count;
 
                 if (size > 0)
                 {
-                    string Type = db.GetField("Type", 0).ToString();
-                    string Verified = db.GetField("Verified", 0).ToString();
-                    String user = txtEmail.Text;
-                    String plainTextPassword = txtPassword.Text;
 
-                    if (Verified == "Yes")
-                    {
-                        if (cbRememberMe.Checked)
+                   // Byte[] byteArray = (Byte[])db.GetField("BinaryObject", 0);
+
+                   // BinaryFormatter deSerializer = new BinaryFormatter();
+
+                   //MemoryStream memStream = new MemoryStream(byteArray);
+
+                   // Users users = (Users)deSerializer.Deserialize(memStream);
+
+                   // if (users.BinaryPassword == txtPassword.Text)
+                   // {
+
+                        string Type = db.GetField("Type", 0).ToString();
+                        string Verified = db.GetField("Verified", 0).ToString();
+                        String user = txtEmail.Text;
+                        String plainTextPassword = txtPassword.Text;
+
+                        if (Verified == "Yes")
                         {
-                            CreateCookie(plainTextPassword, user);
-                            logIN(Type);
+                            if (cbRememberMe.Checked)
+                            {
+                                CreateCookie(plainTextPassword, user);
+                                logIN(Type);
+                            }
+                            else
+                            {
+                                EncryptPassword(plainTextPassword, user);
+                                HttpCookie myCookie = Request.Cookies["LoginCookie"];
+                                logIN(Type);
+
+                            }
                         }
                         else
                         {
-                            EncryptPassword(plainTextPassword, user);
-                            HttpCookie myCookie = Request.Cookies["LoginCookie"];
-                            logIN(Type);
-
+                            Response.Write("<script>alert('You must verify your email to get access!')</script>");
                         }
-                    }
-                    else
-                    {
-                        Response.Write("<script>alert('You must verify your email to get access!')</script>");
-                    }
+                    //}
+                  //  else
+                   // {
+                    //    Response.Write("<script>alert('Password was incorrect!')</script>");
+                    //}
                 }
                 else
                 {

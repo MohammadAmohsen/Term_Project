@@ -16,7 +16,13 @@ namespace WorkoutLibrary
         private int days;
         private int lengthOfProgram;
         private String image;
+        private int programID;
 
+        public int ProgramID
+        {
+            get { return programID; }
+            set { programID = value; }
+        }
         public int LengthOfProgram
         {
             get { return lengthOfProgram; }

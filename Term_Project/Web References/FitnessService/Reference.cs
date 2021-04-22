@@ -256,6 +256,8 @@ namespace Term_Project.FitnessService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Program {
         
+        private int programIDField;
+        
         private int lengthOfProgramField;
         
         private string imageField;
@@ -271,6 +273,16 @@ namespace Term_Project.FitnessService {
         private string programTypeField;
         
         private string programExperienceField;
+        
+        /// <remarks/>
+        public int ProgramID {
+            get {
+                return this.programIDField;
+            }
+            set {
+                this.programIDField = value;
+            }
+        }
         
         /// <remarks/>
         public int LengthOfProgram {

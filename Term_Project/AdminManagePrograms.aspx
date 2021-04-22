@@ -89,7 +89,7 @@
 
         <!-- Content Row -->
         <div class="row justify-content-center" runat="server" id="ContentID">
-            <asp:GridView ID="gvManagePrograms" Style="margin-left: auto; margin-right: auto;" Visible="true" runat="server" AutoGenerateColumns="False" CssClass="table table-hover" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" Width="90%">
+            <asp:GridView ID="gvManagePrograms" Style="margin-left: auto; margin-right: auto;" Visible="true" runat="server" AutoGenerateSelectButton="true" AutoGenerateColumns="False" CssClass="table table-hover" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" Width="90%" OnSelectedIndexChanged="gvManagePrograms_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField HeaderText="Select: ">
                         <ItemTemplate>
@@ -100,6 +100,7 @@
                     <asp:ImageField DataImageUrlField="Image" HeaderText="Image" ControlStyle-Width="100" ControlStyle-Height="100">
                         <ControlStyle Height="100px" Width="100px"></ControlStyle>
                     </asp:ImageField>
+                    <asp:BoundField DataField="programID" HeaderText="ProgramID" />
                     <asp:BoundField DataField="programName" HeaderText="Name" />
                     <asp:BoundField DataField="dateAdded" HeaderText="Date: " />
                     <asp:BoundField DataField="description" HeaderText="description" />
@@ -112,8 +113,213 @@
             </asp:GridView>
         </div>
 
-        <asp:HiddenField ID="hdn" runat="server"></asp:HiddenField>
 
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                        <!-- Illustrations -->
+                    <div class="col-md-3">
+
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 id="h6Day" runat="server" class="m-0 font-weight-bold text-primary">Monday</h6>
+                            </div>
+                            <div class="card-body" style="height: auto; width: 15rem">
+
+                                <asp:ListView ID="lvMonday" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
+                                    <ItemTemplate>
+                                        <strong>Exercise Name: </strong>
+                                        <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
+                                        <br />
+                                        <strong>Sets: </strong>
+                                        <asp:Label runat="server" ID="Sets" Text='<%# Eval("Sets") %>'></asp:Label>
+                                        <br />
+                                        <strong>Reps: </strong>
+                                        <asp:Label runat="server" ID="Reps" Text='<%# Eval("Reps") %>'></asp:Label>
+                                        <br />
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second Card -->
+                    <div class="col-md-3">
+
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 id="h1" runat="server" class="m-0 font-weight-bold text-primary">Tuesday</h6>
+                            </div>
+                            <div class="card-body" style="height: auto; width: 15rem">
+
+                                <asp:ListView ID="lvTuesday" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
+                                    <ItemTemplate>
+                                        <strong>Exercise Name: </strong>
+                                        <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
+                                        <br />
+                                        <strong>Sets: </strong>
+                                        <asp:Label runat="server" ID="Sets" Text='<%# Eval("Sets") %>'></asp:Label>
+                                        <br />
+                                        <strong>Reps: </strong>
+                                        <asp:Label runat="server" ID="Reps" Text='<%# Eval("Reps") %>'></asp:Label>
+                                        <br />
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Third Card -->
+                    <div class="col-md-3">
+
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 id="h2" runat="server" class="m-0 font-weight-bold text-primary">Wednesday</h6>
+                            </div>
+                            <div class="card-body" style="height: auto; width: 15rem">
+
+                                <asp:ListView ID="lvWednesday" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
+                                    <ItemTemplate>
+                                        <strong>Exercise Name: </strong>
+                                        <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
+                                        <br />
+                                        <strong>Sets: </strong>
+                                        <asp:Label runat="server" ID="Sets" Text='<%# Eval("Sets") %>'></asp:Label>
+                                        <br />
+                                        <strong>Reps: </strong>
+                                        <asp:Label runat="server" ID="Reps" Text='<%# Eval("Reps") %>'></asp:Label>
+                                        <br />
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                            </div>
+                        </div>
+                    </div>
+                        <!--Fourth Card -->
+                    <div class="col-md-3">
+
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 id="h3" runat="server" class="m-0 font-weight-bold text-primary">Thursday</h6>
+                            </div>
+                            <div class="card-body" style="height: auto; width: 15rem">
+
+                                <asp:ListView ID="lvThursday" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
+                                    <ItemTemplate>
+                                        <strong>Exercise Name: </strong>
+                                        <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
+                                        <br />
+                                        <strong>Sets: </strong>
+                                        <asp:Label runat="server" ID="Sets" Text='<%# Eval("Sets") %>'></asp:Label>
+                                        <br />
+                                        <strong>Reps: </strong>
+                                        <asp:Label runat="server" ID="Reps" Text='<%# Eval("Reps") %>'></asp:Label>
+                                        <br />
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <!-- Illustrations -->
+                    <div class="col-md-3">
+
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 id="h4" runat="server" class="m-0 font-weight-bold text-primary">Friday</h6>
+                            </div>
+                            <div class="card-body" style="height: auto; width: 15rem">
+
+                                <asp:ListView ID="lvFriday" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
+                                    <ItemTemplate>
+                                        <strong>Exercise Name: </strong>
+                                        <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
+                                        <br />
+                                        <strong>Sets: </strong>
+                                        <asp:Label runat="server" ID="Sets" Text='<%# Eval("Sets") %>'></asp:Label>
+                                        <br />
+                                        <strong>Reps: </strong>
+                                        <asp:Label runat="server" ID="Reps" Text='<%# Eval("Reps") %>'></asp:Label>
+                                        <br />
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second Card -->
+                    <div class="col-md-3">
+
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 id="h5" runat="server" class="m-0 font-weight-bold text-primary">Saturday</h6>
+                            </div>
+                            <div class="card-body" style="height: auto; width: 15rem">
+
+                                <asp:ListView ID="lvSaturday" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
+                                    <ItemTemplate>
+                                        <strong>Exercise Name: </strong>
+                                        <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
+                                        <br />
+                                        <strong>Sets: </strong>
+                                        <asp:Label runat="server" ID="Sets" Text='<%# Eval("Sets") %>'></asp:Label>
+                                        <br />
+                                        <strong>Reps: </strong>
+                                        <asp:Label runat="server" ID="Reps" Text='<%# Eval("Reps") %>'></asp:Label>
+                                        <br />
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Third Card -->
+                    <div class="col-md-3">
+
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 id="h6" runat="server" class="m-0 font-weight-bold text-primary">Sunday</h6>
+                            </div>
+                            <div class="card-body" style="height: auto; width: 15rem">
+
+                                <asp:ListView ID="lvSunday" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
+                                    <ItemTemplate>
+                                        <strong>Exercise Name: </strong>
+                                        <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
+                                        <br />
+                                        <strong>Sets: </strong>
+                                        <asp:Label runat="server" ID="Sets" Text='<%# Eval("Sets") %>'></asp:Label>
+                                        <br />
+                                        <strong>Reps: </strong>
+                                        <asp:Label runat="server" ID="Reps" Text='<%# Eval("Reps") %>'></asp:Label>
+                                        <br />
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                            </div>
+                        </div>
+                    </div>              
+                </div>
+            </div>
+        </div>
     </form>
 
     <!--===============================================================================================-->
