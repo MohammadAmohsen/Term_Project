@@ -21,21 +21,25 @@
 <!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/LogIn.css"/>
-	<link rel="stylesheet" type="text/css" href="css/StyleSheet1.css"/>
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/LogIn.css" />
+    <link rel="stylesheet" type="text/css" href="css/StyleSheet1.css" />
     <link href="Css/SignUpCSS.css" rel="stylesheet" />
-<!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 </head>
-<body> 
+<body>
 
-     <div id="youShallNotPass" runat="server" class="text-center">
+    <div id="youShallNotPass" runat="server" class="text-center">
     <h2 class="text-center">You Must Log In To See This Site!</h2>
     <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
          <form runat="server">
@@ -70,7 +74,7 @@
                     </div>
                     <br />
 
-                    <div runat="server" id="programContent">
+                    <div id="programContent">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="ProgramName">Program Name</label>
@@ -80,7 +84,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="Experience">Program experience level?</label><br />
-                            <asp:DropDownList ID="ddlExpereience" runat="server" AutoPostBack="true">
+                            <asp:DropDownList ID="ddlExperience" runat="server" AutoPostBack="true">
                                 <asp:ListItem Selected="True" Value="Beginner">Beginner</asp:ListItem>
                                 <asp:ListItem Value="Intermediate">Intermediate</asp:ListItem>
                                 <asp:ListItem Value="Advanced">Advanced</asp:ListItem>
@@ -120,7 +124,7 @@
                     <br />
                     <hr />
                 </div>
-                    <div runat="server" id="divContent" visible="false">
+                    <div id="divContent" visible="false">
                     <!-- Monday -->
                     <h3 id="h3Monday" class="text-center" runat="server">Monday Workout</h3>
                     <br />
@@ -428,35 +432,50 @@
  </div>
 
 
-    	
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
-
     <script>
+
+        $(document).ready(function () {
+            $("#divContent").hide();
+        })
+
+
         function btnCreate_Click() {
+
+            var strURL = "https://localhost:44314/api/Fitness/addprogram";
+            var date = new Date();
+            var rb = $("#rbDays").val();
+            var program = new Object();
+            program.programName = $("#txtProgramName").val();
+            program.dateAdded = date;
+            program.description = $("#txtDesc").val();
+            program.programType = $("#ddlType").val();
+            program.programExperience = $("#ddlExperience").val();
+            program.days = 5;
+           // program.programImage = $("#price").val().toString();
+            program.programImage = "Images2/Logo.PNG";
+            program.programLength = 60;
+            var d = true;
+
+
+            var strInput = JSON.stringify(program);
+
+            console.log("");
+
             $.ajax({
                 type: "POST",
-                url: url2,
+                url: strURL,
                 contentType: "application/json",
                 dataType: "json",
                 data: strInput,
                 success: function (data) {
-                    alert("house updated");
+                    if (data == false) {
+                        alert("Program already exists!");
+                    }
+                    else {
+                    $("#divContent").show();
+                    $("#programContent").hide();
+                    }
+
                 },
                 error: function (req, status, error) {
                     alert("error");
@@ -465,10 +484,7 @@
             });
 
         }
-
         
     </script>
-
-
 </body>
 </html>

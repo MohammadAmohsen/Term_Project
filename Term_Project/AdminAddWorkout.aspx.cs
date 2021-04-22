@@ -86,7 +86,7 @@ namespace Term_Project
                 Type.Direction = ParameterDirection.Input;
                 sqlCommand4.Parameters.Add(Type);
 
-                SqlParameter Exp = new SqlParameter("@ProgramExperience", ddlExpereience.SelectedValue);
+                SqlParameter Exp = new SqlParameter("@ProgramExperience", ddlExperience.SelectedValue);
                 Exp.Direction = ParameterDirection.Input;
                 sqlCommand4.Parameters.Add(Exp);
 
@@ -96,8 +96,8 @@ namespace Term_Project
 
                 db.DoUpdateUsingCmdObj(sqlCommand4);
 
-                divContent.Visible = true;
-                programContent.Visible = false;
+                //divContent.Visible = true;
+                //programContent.Visible = false;
                 Response.Write("<script>alert('Your Workout Program was created! Now create the scheule and give it some exercises!') </script>");
             }
             else

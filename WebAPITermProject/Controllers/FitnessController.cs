@@ -17,7 +17,13 @@ namespace WebAPITermProject.Controllers
     public class FitnessController : Controller
     {
 
-        [HttpGet("AllPrograms")]  //MoesFitness/Values/AllPrograms
+        [HttpGet]
+        public string Get()
+        {
+            return "Web api ran";
+        }
+
+        [HttpGet("AllPrograms")]  //api/Fitness/AllPrograms
         //Get houses based on type (list)
         public List<Programs> GetAll()
         {
@@ -73,7 +79,7 @@ namespace WebAPITermProject.Controllers
 
 
 
-        [HttpDelete("DeleteProgram/{ProgramID}")] //route:MoesFitness/{controllerName}/DeleteProgram/(ProgramID)
+        [HttpDelete("DeleteProgram/{ProgramID}")] //route:api/Fitness/DeleteProgram/(ProgramID)
         //delete house from database
         public Boolean DeleteProgram(string ProgramName)
         {
@@ -90,7 +96,7 @@ namespace WebAPITermProject.Controllers
         }
 
 
-        [HttpPost("AddProgram")] //route: MoesFitness/{controllerName}/AddProgram
+        [HttpPost("AddProgram")] //route:api/Fitness/AddProgram
         //add house to db
         public Boolean Post([FromBody] Programs program)
         {
@@ -145,6 +151,14 @@ namespace WebAPITermProject.Controllers
                 Days.Direction = ParameterDirection.Input;
                 sqlCommand4.Parameters.Add(Days);
 
+                SqlParameter image = new SqlParameter("@Image", program.programImage);
+                image.Direction = ParameterDirection.Input;
+                sqlCommand4.Parameters.Add(image);
+
+                SqlParameter Length = new SqlParameter("@Length", program.programLength);
+                Length.Direction = ParameterDirection.Input;
+                sqlCommand4.Parameters.Add(Length);
+
                 int ret = db.DoUpdateUsingCmdObj(sqlCommand4);
 
 
@@ -157,7 +171,7 @@ namespace WebAPITermProject.Controllers
                 {
                     return false;
                 }
-       
+
             }
             else
             {
@@ -169,26 +183,30 @@ namespace WebAPITermProject.Controllers
 
             //DBConnect db = new DBConnect();
 
-            //string sql = "INSERT INTO TP_Program (ProgramName, DateAdded, Description, WorkoutID, ProgramType, ProgramExperience, AmountOfDays) " +
-            //    "VALUES (" + program.programName + ", '" + program.dateAdded + "', '" + program.description + "', '" + program.workoutID + "', '" + program.programType + "', '" + program.programExperience
-            //    + "', '" + program.days + "')";
-            //DataSet recordSet = db.GetDataSet(sql);
+            //string sql = "INSERT INTO TP_Program (ProgramName, DateAdded, Description, ProgramType, ProgramExperience, AmountOfDays, ProgramImage, LengthOfProgram) " +
+            //    "VALUES ('" + program.programName + "', '" + program.dateAdded + "', '" + program.description + "', '" + program.programType + "', '" + program.programExperience
+            //    + "', " + program.days + ", '" + program.programImage + "', " + program.programLength + ")";
+            ////DataSet recordSet = db.GetDataSet(sql);
             //int result = db.DoUpdate(sql);
 
-            //if (result > 0)
-            //    return true;
+        //    if (result > 0)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //    return false;
 
-            //return false;
+        //    }
         }
 
-        [HttpPut("UpdateProgram/{ProgramID}")] //MoesFitness/{controllerName}/UpdateProgram/(ProgramID)
+        [HttpPut("UpdateProgram/{ProgramID}")] //api/Fitness/UpdateProgram/(ProgramID)
         public Boolean Put(int HomeID, [FromBody] Programs program)
         {
 
             DBConnect db = new DBConnect();
 
-            String sql = "UPDATE TP_Program SET ProgramName = '" + program.programName + "', DateAdded = '" + program.dateAdded + "', Description = '" + program.description + "', WorkoutID = " + program.workoutID +
-                ", ProgramType = '" + program.programType + "', ProgramExperience = " + program.programExperience + ", AmountOfDays = " + program.days;
+            String sql = "UPDATE TP_Program SET ProgramName = '" + program.programName + "', DateAdded = '" + program.dateAdded + "', Description = '" + program.description + "', ProgramType = '" + program.programType + "', ProgramExperience = " + program.programExperience + ", AmountOfDays = " + program.days;
 
             int result = db.DoUpdate(sql);
             if (result > 0)

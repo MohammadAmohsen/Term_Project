@@ -43,17 +43,17 @@ namespace WebAPITermProject.Models
             get;
             set;
         }
-        public int workoutID
-        {
-            get;
-            set;
-        }
+
         public int programID
         {
             get;
             set;
         }
 
-
+        public String programLength
+        {
+            get;
+            set;
+        }
     }
 }
