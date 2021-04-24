@@ -28,7 +28,7 @@ namespace WebAPITermProject.Models
             set;
         }
 
-        public String programImage
+        public String Image
         {
             get;
             set;

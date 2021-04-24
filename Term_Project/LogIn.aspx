@@ -113,7 +113,7 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
-
+    
 	<script>
         var stats;          // global variable used to store the fetched data before it's needed
         var request;        // global variable used to store the XMLHttpRequest object used to handle AJAX.

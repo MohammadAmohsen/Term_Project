@@ -3,11 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Web;
-using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
@@ -15,8 +12,8 @@ using WorkoutLibrary;
 
 namespace Term_Project
 {
-    public partial class Explore2 : System.Web.UI.Page
-    {              
+    public partial class UserSavedPrograms : System.Web.UI.Page
+    {
         DBConnect db = new DBConnect();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -24,27 +21,55 @@ namespace Term_Project
             if (!IsPostBack)
             {
                 //Repeater
+                //String strSQL = "Select ProgramID FROM TP_SavedProgram";
 
-                WebRequest request = WebRequest.Create("https://localhost:44314/api/Fitness/AllPrograms/");
-                WebResponse response = request.GetResponse();
+                SqlCommand objCommand = new SqlCommand();
+                ArrayList arrayProgramID = new ArrayList();
+                ArrayList arrayDisplay = new ArrayList();
 
-                // Read the data from the Web Response, which requires working with streams.
-                Stream theDataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(theDataStream);
-                String data = reader.ReadToEnd();
-                reader.Close();
-                response.Close();
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_SelectProgramIDFromSavedPrograms";
 
-                // Deserialize a JSON string that contains an array of JSON objects into an Array of Team objects.
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                List<Program> programList = js.Deserialize<List<Program>>(data);
+                SqlParameter ProgramID = new SqlParameter("@ID", Convert.ToInt32(Session["UserID"]));
+                ProgramID.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(ProgramID);
 
-                //String strSQL = "Select * FROM TP_Program";
-                lvVisible(false);
+                DataSet mydata1 = db.GetDataSetUsingCmdObj(objCommand);
+
+                for (int i = 0; i < mydata1.Tables[0].Rows.Count; i++)
+                {
+                    Program program = new Program();
+                    int programID = Convert.ToInt32(mydata1.Tables[0].Rows[i]["ProgramID"]);
+
+                    lvVisible(false);
+
+                    SqlCommand objCommand1 = new SqlCommand();
+
+                    objCommand1.CommandType = CommandType.StoredProcedure;
+                    objCommand1.CommandText = "TP_SelectAllFromProgramWhereID";
+
+                    SqlParameter ProgramID1 = new SqlParameter("@ID", programID);
+                    ProgramID1.Direction = ParameterDirection.Input;
+                    objCommand1.Parameters.Add(ProgramID1);
+
+                    DataSet mydata = db.GetDataSetUsingCmdObj(objCommand1);
+                    program.programName = mydata.Tables[0].Rows[0]["ProgramName"].ToString();
+                    program.Image = mydata.Tables[0].Rows[0]["ProgramImage"].ToString();
+                    program.ProgramID = Convert.ToInt32(mydata.Tables[0].Rows[0]["ProgramID"]);
+                    program.description = mydata.Tables[0].Rows[0]["Description"].ToString();
+                    program.dateAdded = mydata.Tables[0].Rows[0]["DateAdded"].ToString();
+                    program.programType = mydata.Tables[0].Rows[0]["ProgramType"].ToString();
+                    program.programExperience = mydata.Tables[0].Rows[0]["ProgramExperience"].ToString();
+                    program.Days = Convert.ToInt32(mydata.Tables[0].Rows[0]["AmountOfDays"]);
+                    program.LengthOfProgram = Convert.ToInt32(mydata.Tables[0].Rows[0]["LengthOfProgram"]);
+
+
+                    arrayProgramID.Add(program);
+                }
                 // Set the datasource of the Repeater and bind the data
-                rptPrograms.DataSource = programList;
-                rptPrograms.DataBind();
-
+                rptPrograms.DataSource = arrayProgramID;
+                    rptPrograms.DataBind();
+                
             }
         }
 
@@ -56,7 +81,7 @@ namespace Term_Project
 
             // Retrieve a value from a control in the Repeater's Items collection
             Label id = (Label)(rptPrograms.Items[rowIndex].FindControl("lblProgramID"));
-             int ID = Convert.ToInt32(id.Text);
+            int ID = Convert.ToInt32(id.Text);
             Label myLabel = (Label)rptPrograms.Items[rowIndex].FindControl("ProgramID");
 
             //List View Workout
@@ -98,7 +123,7 @@ namespace Term_Project
             Response.Redirect("LogIn.aspx");
         }
 
-        
+
         protected void btnBackToHome_Click(object sender, EventArgs e)
         {
             Response.Redirect("LogIn.aspx");
@@ -114,7 +139,7 @@ namespace Term_Project
         protected void btnBack_Click(object sender, EventArgs e)
         {
             rptPrograms.Visible = true;
-             // ListViewDisplayWorkout.Visible = false;
+            // ListViewDisplayWorkout.Visible = false;
             lvVisible(false);
         }
 
@@ -172,7 +197,7 @@ namespace Term_Project
             lvSaturday.Visible = boo;
             lvSunday.Visible = boo;
             btnBack.Visible = boo;
-            lvWorkouts.Visible = boo;
+            lvContent.Visible = boo;
         }
 
     }

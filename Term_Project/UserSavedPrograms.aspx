@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminManagePrograms.aspx.cs" Inherits="Term_Project.AdminManagePrograms" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserSavedPrograms.aspx.cs" Inherits="Term_Project.UserSavedPrograms" %>
+<%@ Register Src="~/LogoutNav.ascx" TagPrefix="uc1" TagName="LogoutNav" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    
     	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -33,18 +33,9 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
-
-    <div id="youShallNotPass" runat="server" class="text-center">
-    <h2 class="text-center">You Must Log In To See This Site!</h2>
-    <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
-         <form runat="server">
-        <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" style="margin-top:100px;"/>
-             </form>
-        </div>
-
-    <%--    nav bar start--%>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
+    <form runat="server">
+<%--    nav bar start--%>
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
       <a class="navbar-brand" href="#">Moe's Gym</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -53,10 +44,10 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Explore.aspx">Explore</a>
+            <a class="nav-link" href="#">Explore</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Programs</a>
@@ -64,71 +55,124 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="MyProgram.aspx">My Program</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
-        </ul>     
+        </ul>
+       <div class="form-inline my-2 my-lg-0" runat="server">
+            <uc1:LogoutNav runat="server" ID="LogoutNav" />
+             <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnMessages" runat="server" Text="Messages" OnClick="btnMessages_Click" />
+        </div>
+
+
+          </div>
+         </nav>
+ 
+    <br />    <br />
+    <br />    <br />
+    <br />    <br />
+    <br />    <br />
+    <br />
 
 <%--          end nav bar--%>
-        <div>
-            <asp:Button ID="btnCreateAdmin" class="btn btn-info" runat="server" Text="Create Admin" OnClick="btnCreateAdmin_Click" />
-            <asp:Button ID="btnCreateProgram" class="btn btn-info" runat="server" Text="Create Workout" OnClick="btnCreateWorkOut_Click"  />
-            <asp:Button ID="btnLogOut" class="btn btn-info" runat="server" Text="LogOut" OnClick="btnLogOut_Click" />
-            <asp:Button ID="btnMessages" class="btn btn-info" runat="server" Text="Messages" OnClick="btnMessages_Click" />
-
-        </div>
-      </nav>
-
-        <br />
-        <br />
-        <br />
-        <asp:Button ID="btnDelete" class="btn btn-info" runat="server" Text="delete" OnClick="btnDelete_Click" />
 
 
-        <!-- Content Row -->
-        <div class="row justify-content-center" runat="server" id="ContentID">
-            <asp:GridView ID="gvManagePrograms" Style="margin-left: auto; margin-right: auto;" Visible="true" runat="server" AutoGenerateSelectButton="true" AutoGenerateColumns="False" CssClass="table table-hover" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" Width="90%" OnSelectedIndexChanged="gvManagePrograms_SelectedIndexChanged">
-                <Columns>
-                    <asp:TemplateField HeaderText="Select: ">
-                        <ItemTemplate>
-                            <asp:CheckBox ID="cbSelect" runat="server" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
+        <div class="row justify-content-center">
+ 
+            <table>
+                
+                <asp:Repeater ID="rptPrograms" runat="server" OnItemCommand="rptPrograms_OnItemCommand">
+                    <ItemTemplate>
 
-                    <asp:ImageField DataImageUrlField="Image" HeaderText="Image" ControlStyle-Width="100" ControlStyle-Height="100">
-                        <ControlStyle Height="100px" Width="100px"></ControlStyle>
-                    </asp:ImageField>
-                    <asp:BoundField DataField="programID" HeaderText="ProgramID" />
-                    <asp:BoundField DataField="programName" HeaderText="Name" />
-                    <asp:BoundField DataField="dateAdded" HeaderText="Date: " />
-                    <asp:BoundField DataField="description" HeaderText="description" />
-                    <asp:BoundField DataField="programType" HeaderText="programType" />
-                    <asp:BoundField DataField="programExperience" HeaderText="Experience:" />
-                    <asp:BoundField DataField="Days" HeaderText="Days" />
-                    <asp:BoundField DataField="lengthOfProgram" HeaderText="length Of Program:" />
+                        <tr>
 
-                </Columns>
-            </asp:GridView>
-        </div>
+                            <td>
+                                <asp:Label ID="lblProgramID" visible="false" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramID") %>'></asp:Label>
 
-          <asp:Button ID="btnBack" Visible="false" class="btn btn-primary" Text="Back" runat="server" OnClick="btnBack_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <asp:Image ID="lblProgramImage" Height="100px" Width="100px" runat="server" ImageUrl='<%# Eval("Image") %>' />
+
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblProgramName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramName") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblProgramDesc" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Description") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblDate" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateAdded") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblProgramType" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramType") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblProgramExperience" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramExperience") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblAmountOfDays" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Days") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblLength" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "LengthOfProgram") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnDetailView" class="btn btn-primary" Text="Open Program" runat="server" OnClick="btnDetailView_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnSaveProgram" class="btn btn-primary" Text="Save" runat="server" OnClick="btnSaveProgram_Click" />
+                            </td>
+                            <td></td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </table>
+             <asp:Button ID="btnBack" Visible="false" class="btn btn-primary" Text="Back" runat="server" OnClick="btnBack_Click" />
+
+         </div>
+         <%--        List View for each individual Workout and Program--%>
 
         <div id="lvContent" runat="server" visible="false">
-        <div class="album py-5 bg-light" > 
-            <div class="container">
-                <div class="row">
+        <div class="album py-5 bg-light" visible="false">
+            <div class="container" visible="false">
+                <div class="row" visible="false">
                         <!-- Illustrations -->
-                    <div class="col-md-3">
+                    <div class="col-md-3" visible="false">
 
-                        <div class="card shadow mb-3">
+                        <div class="card shadow mb-3" visible="false">
                             <div class="card-header py-3">
-                                <h6 id="h6Day" runat="server" class="m-0 font-weight-bold text-primary">Monday</h6>
+                                <h6 id="h6Day"  runat="server" class="m-0 font-weight-bold text-primary">Monday</h6>
                             </div>
-                            <div class="card-body" style="height: auto; width: 15rem">
+                            <div class="card-body" style="height: auto; width: 15rem" visible="false">
 
-                                <asp:ListView ID="lvMonday" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
+                                <asp:ListView ID="lvMonday" Visible="false"  runat="server" ItemPlaceholderID="PlaceHolder1">
                                     <ItemTemplate>
                                         <strong>Exercise Name: </strong>
                                         <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
@@ -323,9 +367,15 @@
             </div>
         </div>
         </div>
-    </form>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 
-    <!--===============================================================================================-->
+
+
+        <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
@@ -342,8 +392,7 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
-    
-	<%--<script>
+    <script>
         var stats;          // global variable used to store the fetched data before it's needed
         var request;        // global variable used to store the XMLHttpRequest object used to handle AJAX.
 
@@ -364,31 +413,29 @@
             }
         }
 
+
         window.onload = function () {
-            var programName = document.getElementById("<%=hdn.ClientID%>").value;
+                // Use the JavaScript proxy object to make an AJAX call to an ASP.NET Core 2.0 Web API
+                request.open("GET", "https://localhost:44314/api/Fitness/AllPrograms/", true);
 
-            // Use the JavaScript proxy object to make an AJAX call to an ASP.NET Core 2.0 Web API
-            request.open("GET", "https://localhost:44314/api/Fitness/DeleteUser/" + programName, true);
+                //xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+                request.onreadystatechange = onComplete;
+                request.send();
+           
+        } // end of page load event
 
-            //xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-            request.onreadystatechange = onComplete;
-            document.getElementById('<%=hdn.ClientID%>').value = 1;
 
-            request.send();
-        }
-              
-       
 
         // Callback function used to perform some action when an asynchronous request is completed
         function onComplete() {
             if (request.readyState == 4 && request.status == 200) {
-                stats = request.responseText;
+                var m = request.responseText;
+
             }
-    
         }
-        
 
-    </script>--%>
 
+    </script>
+        </form>
 </body>
 </html>

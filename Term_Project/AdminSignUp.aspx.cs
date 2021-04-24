@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -16,6 +18,7 @@ namespace Term_Project
     {
         DBConnect db = new DBConnect();
         ArrayList arrayNewUser = new ArrayList();
+        FitnessService.FitnessSoap pxy = new FitnessService.FitnessSoap();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,6 +42,7 @@ namespace Term_Project
 
         protected void btnCreate_Click1(object sender, EventArgs e)
         {
+            //Gets values and passes it to variables 
             List<String> CheckList = new List<String>();
             string pass = txtPassword.Text;
             string pass2 = txtPasswordReenter.Text;
@@ -56,7 +60,7 @@ namespace Term_Project
             string securityQuestion2 = ddlSQ2.SelectedValue;
             string securityQuestion3 = ddlSQ3.SelectedValue;
 
-
+            //Validation checks
             int check = 0;
             CheckList.Add(userName);
             CheckList.Add(address);
@@ -82,6 +86,7 @@ namespace Term_Project
                 }
 
             }
+            //If validation passes, if passwords are accurate
             if (check == 15)
             {
                 if (pass == pass2)
@@ -91,6 +96,7 @@ namespace Term_Project
                     lblPassword.Visible = true;
                     lblPassword1.Visible = true;
 
+                    //Checks to see if email exists
                     SqlCommand sqlCommand3 = new SqlCommand();
 
                     sqlCommand3.CommandType = CommandType.StoredProcedure;
@@ -104,9 +110,12 @@ namespace Term_Project
 
                     int size = ds.Tables[0].Rows.Count;
 
+                    //If email doesn't exist
                     if (size == 0)
                     {
-                        Users newUsers = new Users();
+                        //Adds all values to a soap object
+                        FitnessService.User newUsers = new FitnessService.User();
+                        Users user = new Users();
                         newUsers.FirstName = firstName;
                         newUsers.LastName = lastName;
                         newUsers.EmailAddress = emailAddress;
@@ -123,84 +132,83 @@ namespace Term_Project
                         newUsers.Experience = ddlImage.SelectedValue;
                         newUsers.UserImage = ddlImage.SelectedValue;
                         newUsers.DateCreated = DateTime.Now.ToString();
+                        user.BinaryPassword = txtPassword.Text;
+                        user.BinaryAddress = txtBillingAddress.Text;
                         arrayNewUser.Add(newUsers);
 
-                        SqlCommand sqlCommand = new SqlCommand();
+                        //Executes soap
+                        Boolean test = pxy.AddUser(newUsers);
 
+                        //Gets UserID from newly created account
+                        SqlCommand sqlCommand3B = new SqlCommand();
 
-                        sqlCommand.CommandType = CommandType.StoredProcedure;
-                        sqlCommand.CommandText = "TP_InsertUser";
+                        sqlCommand3B.CommandType = CommandType.StoredProcedure;
+                        sqlCommand3B.CommandText = "TP_SelectUserIDEmailCreateUser";
 
-                        SqlParameter UserName = new SqlParameter("@UserName", newUsers.UserName);
-                        UserName.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(UserName);
+                        SqlParameter EmailAddress1 = new SqlParameter("@Email", txtNewEmail.Text);
+                        EmailAddress1.Direction = ParameterDirection.Input;
+                        sqlCommand3B.Parameters.Add(EmailAddress1);
 
-                        SqlParameter Avatar = new SqlParameter("@FirstName", newUsers.FirstName);
-                        Avatar.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(Avatar);
+                        DataSet ds2 = db.GetDataSetUsingCmdObj(sqlCommand3B);
 
-                        SqlParameter Address = new SqlParameter("@LastName", newUsers.LastName);
-                        Address.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(Address);
+                        //Assigns UserID value to int variable
+                        int userId = Convert.ToInt32(ds2.Tables[0].Rows[0]["UserID"]);
 
-                        SqlParameter PhoneNumber = new SqlParameter("@EmailAddress", newUsers.EmailAddress);
-                        PhoneNumber.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(PhoneNumber);
+                        //Serializes object containing password and address
+                        BinaryFormatter serializer = new BinaryFormatter();
+                        MemoryStream memStream = new MemoryStream();
+                        Byte[] byteArray;
 
-                        SqlParameter NewEmail = new SqlParameter("@BillingAddress", newUsers.BillingAddress);
-                        NewEmail.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(NewEmail);
+                        serializer.Serialize(memStream, user);
+                        byteArray = memStream.ToArray();
 
-                        SqlParameter SecurityEmail = new SqlParameter("@Image", "Images2/" + newUsers.UserImage + ".png");
-                        SecurityEmail.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(SecurityEmail);
+                        //Inserts serialized object to database
+                        SqlCommand sqlCommand3A = new SqlCommand();
 
-                        SqlParameter SecurityAnswer1 = new SqlParameter("@SecurityAnswer1", newUsers.SecurityAnswer1);
-                        SecurityAnswer1.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(SecurityAnswer1);
+                        sqlCommand3A.CommandType = CommandType.StoredProcedure;
+                        sqlCommand3A.CommandText = "TP_UpdateUsersCreateBinary";
 
+                        SqlParameter ID = new SqlParameter("@ID", userId);
+                        ID.Direction = ParameterDirection.Input;
+                        sqlCommand3A.Parameters.Add(ID);
 
-                        SqlParameter SecurityAnswer2 = new SqlParameter("@SecurityAnswer2", newUsers.SecurityAnswer2);
-                        SecurityAnswer2.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(SecurityAnswer2);
+                        SqlParameter objectBinary = new SqlParameter("@BinaryObject", byteArray);
+                        objectBinary.Direction = ParameterDirection.Input;
+                        sqlCommand3A.Parameters.Add(objectBinary);
 
+                        db.DoUpdateUsingCmdObj(sqlCommand3A);
 
-                        SqlParameter SecurityAnswer3 = new SqlParameter("@SecurityAnswer3", newUsers.SecurityAnswer3);
-                        SecurityAnswer3.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(SecurityAnswer3);
+                        //Creates Inbox tag for user
+                        SqlCommand sqlCommand4A = new SqlCommand();
 
+                        sqlCommand4A.CommandType = CommandType.StoredProcedure;
+                        sqlCommand4A.CommandText = "TP_InsertIntoTags";
 
-                        SqlParameter SecurityQuestion1 = new SqlParameter("@SecurityQuestion1", newUsers.SecurityQuestion1);
-                        SecurityQuestion1.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(SecurityQuestion1);
+                        SqlParameter UserID2 = new SqlParameter("@ID", userId);
+                        UserID2.Direction = ParameterDirection.Input;
+                        sqlCommand4A.Parameters.Add(UserID2);
 
+                        SqlParameter TagName = new SqlParameter("@TagName", "Inbox");
+                        TagName.Direction = ParameterDirection.Input;
+                        sqlCommand4A.Parameters.Add(TagName);
 
-                        SqlParameter SecurityQuestion2 = new SqlParameter("@SecurityQuestion2", newUsers.SecurityQuestion2);
-                        SecurityQuestion2.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(SecurityQuestion2);
+                        db.DoUpdateUsingCmdObj(sqlCommand4A);
 
+                        //Creates Sent tag for user
+                        SqlCommand sqlCommand5A = new SqlCommand();
 
-                        SqlParameter SecurityQuestion3 = new SqlParameter("@SecurityQuestion3", newUsers.SecurityQuestion3);
-                        SecurityQuestion3.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(SecurityQuestion3);
+                        sqlCommand5A.CommandType = CommandType.StoredProcedure;
+                        sqlCommand5A.CommandText = "TP_InsertIntoTags";
 
-                        SqlParameter Password = new SqlParameter("@Password", newUsers.Password);
-                        Password.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(Password);
+                        SqlParameter UserID3 = new SqlParameter("@ID", userId);
+                        UserID3.Direction = ParameterDirection.Input;
+                        sqlCommand5A.Parameters.Add(UserID3);
 
-                        SqlParameter Type = new SqlParameter("@Type", newUsers.Type);
-                        Type.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(Type);
+                        SqlParameter Sent = new SqlParameter("@TagName", "Sent");
+                        Sent.Direction = ParameterDirection.Input;
+                        sqlCommand5A.Parameters.Add(Sent);
 
-                        SqlParameter DateCreated = new SqlParameter("@DateCreated", newUsers.DateCreated);
-                        DateCreated.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(DateCreated);
-
-                        SqlParameter Experience = new SqlParameter("@Experience", newUsers.Experience);
-                        Experience.Direction = ParameterDirection.Input;
-                        sqlCommand.Parameters.Add(Experience);
-
-                        db.DoUpdateUsingCmdObj(sqlCommand);
+                        db.DoUpdateUsingCmdObj(sqlCommand5A);
 
                         Response.Redirect("LogIn.aspx");
 

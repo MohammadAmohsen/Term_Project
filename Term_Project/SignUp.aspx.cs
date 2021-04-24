@@ -21,8 +21,7 @@ namespace Term_Project
     {
 
         DBConnect db = new DBConnect();
-        ArrayList arrayNewUser = new ArrayList();
-        FitnessService.FitnessSoap pxy = new FitnessService.FitnessSoap();
+         FitnessService.FitnessSoap pxy = new FitnessService.FitnessSoap();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,6 +31,7 @@ namespace Term_Project
 
         protected void btnCreate_Click1(object sender, EventArgs e)
         {
+            //Add values to variables
             List<String> CheckList = new List<String>();
             string pass = txtPassword.Text;
             string pass2 = txtPasswordReenter.Text;
@@ -52,6 +52,8 @@ namespace Term_Project
             string SQ2 = ddlSQ2.SelectedValue;
             string SQ3 = ddlSQ3.SelectedValue;
 
+
+            //Verification checks
             int check = 0;
             CheckList.Add(userName);
             CheckList.Add(address);
@@ -77,6 +79,8 @@ namespace Term_Project
                 }
 
             }
+
+            //If checks pass, if passwords are equal, if the security questions selected aren't equal
             if (check == 15)
             {
                 if (pass == pass2)
@@ -90,6 +94,7 @@ namespace Term_Project
                         lblPassword.Visible = true;
                         lblPassword1.Visible = true;
 
+                        //Stored procedure to check if account exists
                         SqlCommand sqlCommand3 = new SqlCommand();
 
                         sqlCommand3.CommandType = CommandType.StoredProcedure;
@@ -103,13 +108,14 @@ namespace Term_Project
 
                         int size = ds.Tables[0].Rows.Count;
 
+                        //If account doesn't exist
                         if (size == 0)
                         {
-                            //Users newUsers = new Users();
                             FitnessService.User newUsers = new FitnessService.User();
                             ArrayList binaryArray = new ArrayList();
                             Users user = new Users();
 
+                            //Assigns values to class object
                             String password = txtPassword.Text;
                             newUsers.FirstName = firstName;
                             newUsers.LastName = lastName;
@@ -130,9 +136,11 @@ namespace Term_Project
                             user.BinaryPassword = txtPassword.Text;
                             user.BinaryAddress = txtBillingAddress.Text;
 
+                            //Executes soap, creates user
                             Boolean test = pxy.AddUser(newUsers);
 
 
+                            //Gets UserID from newest account
                             SqlCommand sqlCommand3B = new SqlCommand();
 
                             sqlCommand3B.CommandType = CommandType.StoredProcedure;
@@ -146,7 +154,7 @@ namespace Term_Project
 
                             int userId = Convert.ToInt32(ds2.Tables[0].Rows[0]["UserID"]);
 
-
+                            //Serializes an object 
                             BinaryFormatter serializer = new BinaryFormatter();
                             MemoryStream memStream = new MemoryStream();
                             Byte[] byteArray;
@@ -154,6 +162,7 @@ namespace Term_Project
                             serializer.Serialize(memStream, user);
                             byteArray = memStream.ToArray();
 
+                            //Adds serialized object to database
                             SqlCommand sqlCommand3A = new SqlCommand();
 
                             sqlCommand3A.CommandType = CommandType.StoredProcedure;
@@ -170,6 +179,39 @@ namespace Term_Project
                             int ret = db.DoUpdateUsingCmdObj(sqlCommand3A);
 
 
+                            //Creates Inbox tag for user
+                            SqlCommand sqlCommand4A = new SqlCommand();
+
+                            sqlCommand4A.CommandType = CommandType.StoredProcedure;
+                            sqlCommand4A.CommandText = "TP_InsertIntoTags";
+
+                            SqlParameter UserID2 = new SqlParameter("@ID", userId);
+                            UserID2.Direction = ParameterDirection.Input;
+                            sqlCommand4A.Parameters.Add(UserID2);
+
+                            SqlParameter TagName = new SqlParameter("@TagName", "Inbox");
+                            TagName.Direction = ParameterDirection.Input;
+                            sqlCommand4A.Parameters.Add(TagName);
+
+                            db.DoUpdateUsingCmdObj(sqlCommand4A);
+
+                            //Creates Sent tag for user
+                            SqlCommand sqlCommand5A = new SqlCommand();
+
+                            sqlCommand5A.CommandType = CommandType.StoredProcedure;
+                            sqlCommand5A.CommandText = "TP_InsertIntoTags";
+
+                            SqlParameter UserID3 = new SqlParameter("@ID", userId);
+                            UserID3.Direction = ParameterDirection.Input;
+                            sqlCommand5A.Parameters.Add(UserID3);
+
+                            SqlParameter Sent = new SqlParameter("@TagName", "Sent");
+                            Sent.Direction = ParameterDirection.Input;
+                            sqlCommand5A.Parameters.Add(Sent);
+
+                            db.DoUpdateUsingCmdObj(sqlCommand5A);
+
+                            //If soap passes, if users answers yes to question
                             if (test == true)
                             {
 
@@ -183,7 +225,7 @@ namespace Term_Project
                                     int age = Convert.ToInt32(txtAge.Text);
                                     string training = ddlTraining.SelectedValue;
 
-
+                                    //Validation checks
                                     int check2 = 0;
                                     CheckList2.Add(weight.ToString());
                                     CheckList2.Add(goals);
@@ -202,14 +244,14 @@ namespace Term_Project
                                     }
                                     if (check2 == 5)
                                     {
-
+                                        //Adds values to class object
                                         newUsers.userWeight = Convert.ToInt32(txtWeight.Text);
                                         newUsers.UserGoals = ddlGoals.SelectedValue;
                                         newUsers.amountOfDays = ddlDays.SelectedValue;
                                         newUsers.userAge = Convert.ToInt32(txtAge.Text);
                                         newUsers.userTrainingType = ddlTraining.SelectedValue;
 
-
+                                        //Adds questions to user
                                         SqlCommand sqlCommand2 = new SqlCommand();
 
 
@@ -237,7 +279,7 @@ namespace Term_Project
                                         sqlCommand2.Parameters.Add(DaysOfWeek);
 
 
-
+                                        //Gets most recent userID
                                         SqlCommand sqlCommand4 = new SqlCommand();
 
 
@@ -257,6 +299,7 @@ namespace Term_Project
                                         UserID.Direction = ParameterDirection.Input;
                                         sqlCommand2.Parameters.Add(UserID);
 
+                                        //Adds questions to user
                                         db.DoUpdateUsingCmdObj(sqlCommand2);
 
 

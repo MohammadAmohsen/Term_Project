@@ -93,7 +93,7 @@ namespace WebAPITermProject.Controllers
 
             string sql = "INSERT INTO TP_Program (ProgramName, DateAdded, Description, ProgramType, ProgramExperience, AmountOfDays, ProgramImage, LengthOfProgram) " +
                 "VALUES ('" + program.programName + "', '" + program.dateAdded + "', '" + program.description + "', '" + program.programType + "', '" + program.programExperience
-                + ", '" + program.days + ", '" + program.programImage + "', '" + program.programLength + "')";
+                + ", '" + program.days + ", '" + program.Image + "', '" + program.programLength + "')";
             DataSet recordSet = db.GetDataSet(sql);
             int result = db.DoUpdate(sql);
 

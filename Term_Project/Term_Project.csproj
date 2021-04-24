@@ -140,6 +140,7 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="ForgotPassword.aspx" />
+    <Content Include="GridViewHomePage.ascx" />
     <Content Include="HomePage.aspx" />
     <Content Include="Images2\Admin1.png" />
     <Content Include="Images2\Admin2.png" />
@@ -159,8 +160,11 @@
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\icons\favicon.ico" />
     <Content Include="LogIn.aspx" />
+    <Content Include="LogOutNav.ascx" />
+    <Content Include="MyProgram.aspx" />
     <Content Include="SignUp.aspx" />
     <Content Include="UserMessages.aspx" />
+    <Content Include="UserSavedPrograms.aspx" />
     <Content Include="vendor\animate\animate.css" />
     <Content Include="vendor\animsition\css\animsition.css" />
     <Content Include="vendor\animsition\css\animsition.min.css" />
@@ -249,6 +253,13 @@
     <Compile Include="ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GridViewHomePage.ascx.cs">
+      <DependentUpon>GridViewHomePage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GridViewHomePage.ascx.designer.cs">
+      <DependentUpon>GridViewHomePage.ascx</DependentUpon>
+    </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -262,6 +273,20 @@
     </Compile>
     <Compile Include="LogIn.aspx.designer.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogOutNav.ascx.cs">
+      <DependentUpon>LogOutNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOutNav.ascx.designer.cs">
+      <DependentUpon>LogOutNav.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MyProgram.aspx.cs">
+      <DependentUpon>MyProgram.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyProgram.aspx.designer.cs">
+      <DependentUpon>MyProgram.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -282,6 +307,13 @@
     </Compile>
     <Compile Include="UserMessages.aspx.designer.cs">
       <DependentUpon>UserMessages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserSavedPrograms.aspx.cs">
+      <DependentUpon>UserSavedPrograms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserSavedPrograms.aspx.designer.cs">
+      <DependentUpon>UserSavedPrograms.aspx</DependentUpon>
     </Compile>
     <Compile Include="Verification.aspx.cs">
       <DependentUpon>Verification.aspx</DependentUpon>
@@ -363,10 +395,10 @@
     <Content Include="Web References\FitnessService\Program.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\FitnessService\Reference.map">
+    <None Include="Web References\FitnessService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web References\FitnessService\User.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>

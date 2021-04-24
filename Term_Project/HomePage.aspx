@@ -1,5 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="Term_Project.HomePage" %>
 
+<%@ Register Src="~/LogoutNav.ascx" TagPrefix="uc1" TagName="LogoutNav" %>
+<%@ Register Src="~/GridViewHomePage.ascx" TagPrefix="uc1" TagName="GridViewHomePage" %>
+
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,12 +18,10 @@
      <div id="youShallNotPass" runat="server" class="text-center">
     <h2 class="text-center">You Must Log In To See This Site!</h2>
     <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
-         <form runat="server">
         <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" style="margin-top:100px;"/>
-             </form>
         </div>
-  <%--    nav bar start--%>
-     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
+<%--    nav bar start--%>
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
       <a class="navbar-brand" href="#">Moe's Gym</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,7 +30,7 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Explore2.aspx">Explore</a>
@@ -38,24 +41,24 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="MyProgram.aspx">My Program</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
-              
           </li>
         </ul>
-        <div class="form-inline my-2 my-lg-0" runat="server">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
-             <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnLogOut" runat="server" Text="LogOut" OnClick="btnLogOut_Click" />
+                  <div class="form-inline my-2 my-lg-0" runat="server">
+    <uc1:LogoutNav runat="server" ID="LogoutNav" />
              <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnMessages" runat="server" Text="Messages" OnClick="btnMessages_Click" />
+             <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnMyPage" runat="server" Text="MyPage" OnClick="btnMyPage_Click" />
+             <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnSaved" runat="server" Text="Saved Programs" OnClick="btnSaved_Click" />
         </div>
-      </div>
-    </nav>
+          </div>
+         </nav>
+ 
+    <br />    <br />
+    <br />    
 
-    <br/>
-    <br/>
-     <br/>
 <%--          end nav bar--%>
 
         <div>
@@ -166,22 +169,25 @@
                         <div class="col-lg-8 mb-4">
 
                             <!-- Illustrations -->
-                            <div class="card shadow mb-4">
+                            <uc1:GridViewHomePage runat="server" id="GridViewHomePage" />
+              <%--         <%--     <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 id="h6Day" runat="server" class="m-0 font-weight-bold text-primary">Your workouts for today</h6>
                                 </div>
                                 <div class="card-body">
-                                     <asp:GridView ID="gvWorkoutOftheDay" AutoGenerateColumns="False" runat="server">
+
+
+                     <%--                <asp:GridView ID="gvWorkoutOftheDay" AutoGenerateColumns="False" runat="server">
                                           <Columns>
                                              <asp:BoundField DataField="ExerciseName" HeaderText="ExerciseName: " />
                                              <asp:BoundField DataField="Sets" HeaderText="Sets: " />
                                               <asp:BoundField DataField="Reps" HeaderText="Reps: " />
                                           </Columns>
-                                      </asp:GridView>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">See previous workouts &rarr;</a>
+                                      </asp:GridView>--%>
+                            <%--        <a target="_blank" rel="nofollow" href="https://undraw.co/">See previous workouts &rarr;</a>
                                 </div>
                                       <asp:Label ID="lblRestDay" visible="false" runat="server" Text="Rest Day"></asp:Label>
-                            </div>
+                            </div> --%>
 
                             <!-- Approach -->
                             <div class="card shadow mb-4">

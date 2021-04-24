@@ -23,7 +23,6 @@ namespace Term_Project
             {
                 if (Session["UserID"] == null)
                 {
-                    navBar.Visible = false;
                     ContentID.Visible = false;
                     youShallNotPass.Visible = true;
                 }
@@ -33,11 +32,10 @@ namespace Term_Project
                     // int programID = Convert.ToInt32(Session["ProgramID"]);
                     DateTime f = DateTime.Now;
                     DateTime no = f.AddDays(12);
-                    navBar.Visible = true;
                     ContentID.Visible = true;
                     youShallNotPass.Visible = false;
                     SavedWorkouts();
-                    DailyWorkout();
+                    //DailyWorkout();
                 }
                 if ((Session["UserID"] != null && Session["Assistance"].ToString() == "Yes"))
                 {
@@ -67,6 +65,16 @@ namespace Term_Project
 
         }
 
+        protected void btnMyPage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MyProgram.aspx");
+
+        }
+        protected void btnSaved_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UserSavedPrograms.aspx");
+
+        }
         private void SavedWorkouts()
         {
             /* First Statement to get ProgramID */
@@ -166,79 +174,79 @@ namespace Term_Project
 
 
 
-        public void DailyWorkout()
-        {
-            ArrayList arrayExercises = new ArrayList();
-            ArrayList arrayExerciseID = new ArrayList();
-            SqlCommand objCommand = new SqlCommand();
+        //public void DailyWorkout()
+        //{
+        //    ArrayList arrayExercises = new ArrayList();
+        //    ArrayList arrayExerciseID = new ArrayList();
+        //    SqlCommand objCommand = new SqlCommand();
  
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_SelectProgramID";
+        //    objCommand.CommandType = CommandType.StoredProcedure;
+        //    objCommand.CommandText = "TP_SelectProgramID";
 
-            SqlParameter ID = new SqlParameter("@UserID", Convert.ToInt32(Session["UserID"]));
-            ID.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(ID);
+        //    SqlParameter ID = new SqlParameter("@UserID", Convert.ToInt32(Session["UserID"]));
+        //    ID.Direction = ParameterDirection.Input;
+        //    objCommand.Parameters.Add(ID);
 
-            DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
-            int programID = Convert.ToInt32(mydata.Tables[0].Rows[0]["ProgramID"]);
-
-
-            SqlCommand sqlCommand = new SqlCommand();
-
-            sqlCommand.CommandType = CommandType.StoredProcedure;
-            sqlCommand.CommandText = "TP_SelectExerciseIDWhereDay";
-
-            SqlParameter Day = new SqlParameter("@Day", DateTime.Now.DayOfWeek.ToString());
-            Day.Direction = ParameterDirection.Input;
-            sqlCommand.Parameters.Add(Day);
-
-            SqlParameter ProgramID = new SqlParameter("@ID", programID);
-            ProgramID.Direction = ParameterDirection.Input;
-            sqlCommand.Parameters.Add(ProgramID);
-
-            DataSet mydata1 = db.GetDataSetUsingCmdObj(sqlCommand);
-            int size = mydata1.Tables[0].Rows.Count;
-
-            if (size > 0)
-            {
-                for (int row = 0; row < size; row++)
-                {
-                    Exercise exercises = new Exercise();
-                    exercises.ExerciseID = Convert.ToInt32(mydata1.Tables[0].Rows[row]["ExerciseID"]);
-                    // arrayExerciseID.Add(exercises.ExerciseID);
-
-                    SqlCommand sqlCommand1 = new SqlCommand();
-
-                    sqlCommand1.CommandType = CommandType.StoredProcedure;
-                    sqlCommand1.CommandText = "TP_SelectAllFromExercise";
+        //    DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
+        //    int programID = Convert.ToInt32(mydata.Tables[0].Rows[0]["ProgramID"]);
 
 
-                    SqlParameter ExerciseID = new SqlParameter("@ID", exercises.ExerciseID);
-                    ExerciseID.Direction = ParameterDirection.Input;
-                    sqlCommand1.Parameters.Add(ExerciseID);
+        //    SqlCommand sqlCommand = new SqlCommand();
 
-                    DataSet mydata2 = db.GetDataSetUsingCmdObj(sqlCommand1);
+        //    sqlCommand.CommandType = CommandType.StoredProcedure;
+        //    sqlCommand.CommandText = "TP_SelectExerciseIDWhereDay";
 
-                    for (int i = 0; i < mydata2.Tables.Count; i++)
-                    {
-                        Exercise exercise = new Exercise();
-                        exercise.exerciseName = mydata2.Tables[0].Rows[i]["ExerciseName"].ToString();
-                        exercise.sets = Convert.ToInt32(mydata2.Tables[0].Rows[i]["Sets"]);
-                        exercise.reps = Convert.ToInt32(mydata2.Tables[0].Rows[i]["Reps"]);
-                        arrayExercises.Add(exercise);
-                    }
-                }
-                h6Day.InnerText = DateTime.Now.DayOfWeek.ToString() + " Workouts";
-                gvWorkoutOftheDay.DataSource = arrayExercises;
-                gvWorkoutOftheDay.DataBind();
-            }
-            else
-            {
-                Response.Write("<script>alert('rest day!')</script>");
+        //    SqlParameter Day = new SqlParameter("@Day", DateTime.Now.DayOfWeek.ToString());
+        //    Day.Direction = ParameterDirection.Input;
+        //    sqlCommand.Parameters.Add(Day);
 
-            }
+        //    SqlParameter ProgramID = new SqlParameter("@ID", programID);
+        //    ProgramID.Direction = ParameterDirection.Input;
+        //    sqlCommand.Parameters.Add(ProgramID);
 
-        }
+        //    DataSet mydata1 = db.GetDataSetUsingCmdObj(sqlCommand);
+        //    int size = mydata1.Tables[0].Rows.Count;
+
+        //    if (size > 0)
+        //    {
+        //        for (int row = 0; row < size; row++)
+        //        {
+        //            Exercise exercises = new Exercise();
+        //            exercises.ExerciseID = Convert.ToInt32(mydata1.Tables[0].Rows[row]["ExerciseID"]);
+        //            // arrayExerciseID.Add(exercises.ExerciseID);
+
+        //            SqlCommand sqlCommand1 = new SqlCommand();
+
+        //            sqlCommand1.CommandType = CommandType.StoredProcedure;
+        //            sqlCommand1.CommandText = "TP_SelectAllFromExercise";
+
+
+        //            SqlParameter ExerciseID = new SqlParameter("@ID", exercises.ExerciseID);
+        //            ExerciseID.Direction = ParameterDirection.Input;
+        //            sqlCommand1.Parameters.Add(ExerciseID);
+
+        //            DataSet mydata2 = db.GetDataSetUsingCmdObj(sqlCommand1);
+
+        //            for (int i = 0; i < mydata2.Tables.Count; i++)
+        //            {
+        //                Exercise exercise = new Exercise();
+        //                exercise.exerciseName = mydata2.Tables[0].Rows[i]["ExerciseName"].ToString();
+        //                exercise.sets = Convert.ToInt32(mydata2.Tables[0].Rows[i]["Sets"]);
+        //                exercise.reps = Convert.ToInt32(mydata2.Tables[0].Rows[i]["Reps"]);
+        //                arrayExercises.Add(exercise);
+        //            }
+        //        }
+        //        h6Day.InnerText = DateTime.Now.DayOfWeek.ToString() + " Workouts";
+        //        gvWorkoutOftheDay.DataSource = arrayExercises;
+        //        gvWorkoutOftheDay.DataBind();
+        //    }
+        //    else
+        //    {
+        //        Response.Write("<script>alert('rest day!')</script>");
+
+        //    }
+
+        //}
     }
 }
    

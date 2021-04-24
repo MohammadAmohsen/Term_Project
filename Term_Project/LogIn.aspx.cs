@@ -87,16 +87,16 @@ namespace Term_Project
                 if (size > 0)
                 {
 
-                   // Byte[] byteArray = (Byte[])db.GetField("BinaryObject", 0);
+                    Byte[] byteArray = (Byte[])db.GetField("BinaryObject", 0);
 
-                   // BinaryFormatter deSerializer = new BinaryFormatter();
+                    BinaryFormatter deSerializer = new BinaryFormatter();
 
-                   //MemoryStream memStream = new MemoryStream(byteArray);
+                    MemoryStream memStream = new MemoryStream(byteArray);
 
-                   // Users users = (Users)deSerializer.Deserialize(memStream);
+                    Users users = (Users)deSerializer.Deserialize(memStream);
 
-                   // if (users.BinaryPassword == txtPassword.Text)
-                   // {
+                    if (users.BinaryPassword == txtPassword.Text)
+                    {
 
                         string Type = db.GetField("Type", 0).ToString();
                         string Verified = db.GetField("Verified", 0).ToString();
@@ -122,11 +122,11 @@ namespace Term_Project
                         {
                             Response.Write("<script>alert('You must verify your email to get access!')</script>");
                         }
-                    //}
-                  //  else
-                   // {
-                    //    Response.Write("<script>alert('Password was incorrect!')</script>");
-                    //}
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('Password was incorrect!')</script>");
+                    }
                 }
                 else
                 {

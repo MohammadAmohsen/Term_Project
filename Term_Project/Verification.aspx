@@ -98,8 +98,6 @@
            // var email = $("#txtEmail").val();
             var strURL = "https://localhost:44314/api/Fitness/GetEmail/";
             var url2 = strURL + email;
-            var m = new Array
-            var resp = [];
 
            //  var codes = new Object();
             //var f = true;
@@ -116,14 +114,10 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data) {
-                        alert("success");
-
                         if ($("#txtVerification").val() == data) {
                             var strURL = "https://localhost:44314/api/Fitness/UpdateProgram/";
                             var url2 = strURL + email;
                             var strInput = JSON.stringify(email);
-                            alert(url2);
-
 
                             $.ajax({
                                 type: "PUT",

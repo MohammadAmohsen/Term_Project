@@ -136,6 +136,7 @@ namespace SoapWebService
         {
             User users = new User();
             int ID = Convert.ToInt32(myData.Tables[0].Rows[i]["ProgramID"]);
+            string ProgramName;
 
             SqlCommand sqlCommand = new SqlCommand();
 
@@ -144,10 +145,11 @@ namespace SoapWebService
 
             SqlParameter programName = new SqlParameter("@ID", ID);
             programName.Direction = ParameterDirection.Input;
-            sqlCommand.Parameters.Add(programName);     
+            sqlCommand.Parameters.Add(programName);
             DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand);
+            ProgramName = ds.Tables[0].Rows[0]["ProgramName"].ToString();
 
-            string ProgramName = ds.Tables[0].Rows[0]["ProgramName"].ToString();
+
 
             users.FirstName = myData.Tables[0].Rows[i]["FirstName"].ToString();
             users.LastName = myData.Tables[0].Rows[i]["LastName"].ToString();
@@ -172,6 +174,7 @@ namespace SoapWebService
             Program program = new Program();
 
             program.ProgramID = Convert.ToInt32(myData.Tables[0].Rows[i]["ProgramID"]);
+
             program.programName = myData.Tables[0].Rows[i]["ProgramName"].ToString();
             program.dateAdded = myData.Tables[0].Rows[i]["DateAdded"].ToString();
             program.description = myData.Tables[0].Rows[i]["Description"].ToString();
@@ -182,6 +185,7 @@ namespace SoapWebService
             program.LengthOfProgram = Convert.ToInt32(myData.Tables[0].Rows[i]["LengthOfProgram"]);
 
             return program;
+
         }
         //FitnessService
     }

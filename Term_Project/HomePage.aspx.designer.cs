@@ -33,22 +33,13 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Button btnBackToLogin;
 
         /// <summary>
-        /// navBar control.
+        /// LogoutNav control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navBar;
-
-        /// <summary>
-        /// btnLogOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogOut;
+        protected global::Term_Project.LogoutNav LogoutNav;
 
         /// <summary>
         /// btnMessages control.
@@ -58,6 +49,24 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMessages;
+
+        /// <summary>
+        /// btnMyPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMyPage;
+
+        /// <summary>
+        /// btnSaved control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaved;
 
         /// <summary>
         /// lblTest control.
@@ -114,30 +123,12 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Label lblDaysLeft;
 
         /// <summary>
-        /// h6Day control.
+        /// GridViewHomePage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl h6Day;
-
-        /// <summary>
-        /// gvWorkoutOftheDay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvWorkoutOftheDay;
-
-        /// <summary>
-        /// lblRestDay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRestDay;
+        protected global::Term_Project.GridViewHomePage GridViewHomePage;
     }
 }

@@ -23,7 +23,35 @@ namespace WebAPITermProject.Controllers
             return "Web api ran";
         }
 
+        [HttpGet("AllPrograms")]  //https://localhost:44314/api/Fitness/AllPrograms/
+        public List<Programs> GetAll()
+        {
+            DBConnect db = new DBConnect();
+            DataSet ds = db.GetDataSet("SELECT * FROM TP_Program");
+
+            List<Programs> programs = new List<Programs>();
+            Programs program;
+
+            foreach (DataRow record in ds.Tables[0].Rows)
+            {
+                program = new Programs();
+                program.programID = int.Parse(record["ProgramID"].ToString());
+                program.programName = record["ProgramName"].ToString();
+                program.dateAdded = DateTime.Parse(record["dateAdded"].ToString());
+                program.description = record["Description"].ToString();
+                program.programType = record["ProgramType"].ToString();
+                program.programExperience = record["ProgramExperience"].ToString();
+                program.days = int.Parse(record["AmountOfDays"].ToString());
+                program.Image = record["ProgramImage"].ToString();
+
+                programs.Add(program);
+            }
+
+            return programs;
+        }
+
         [HttpGet("GetEmail/{email}")] //api/Fitness/GetEmail/{email}
+        //DONE AJAX
         public int UserEmail(string email)
         {
             DBConnect db = new DBConnect();
@@ -44,77 +72,63 @@ namespace WebAPITermProject.Controllers
             return verificationCode;
         }
 
-        [HttpGet("AllPrograms")]  //api/Fitness/AllPrograms
-         public List<Programs> GetAll()
-        {
-            DBConnect db = new DBConnect();
-            DataSet ds = db.GetDataSet("SELECT * FROM TP_Program");
 
-            List<Programs> programs = new List<Programs>();
-            Programs program;
-
-            foreach (DataRow record in ds.Tables[0].Rows)
-            {
-                program = new Programs();
-                program.programID = int.Parse(record["ProgramID"].ToString());
-                program.programName = record["ProgramName"].ToString();
-                program.dateAdded = DateTime.Parse(record["DateAdded"].ToString());
-                program.description = record["Description"].ToString();
-                program.programType = record["ProgramType"].ToString();
-                program.programExperience = record["ProgramExperience"].ToString();
-                program.days = int.Parse(record["AmountOfDays"].ToString());
-                program.programImage = record["ProgramImage"].ToString();
-
-                programs.Add(program);
-            }
-
-            return programs;
-        }
-
-        [HttpGet("User/{email}/{password}")]  //MoesFitness/Values/User
-         public int GetUser(string email, string password)
-        {
-            DBConnect db = new DBConnect();
-
-                SqlCommand objCommand = new SqlCommand();
-
-                objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "TP_SelectAllFromUsers";
-
-            SqlParameter Email = new SqlParameter("@InputEmail", email);
-            Email.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(Email);
-
-            SqlParameter Password = new SqlParameter("@InputPassword", password);
-            Password.Direction = ParameterDirection.Input;
-            objCommand.Parameters.Add(Password);
-
-            DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
-            int size = mydata.Tables[0].Rows.Count;
-
-            return size;
-        }
-
-
-
-
-        [HttpDelete("DeleteProgram/{ProgramID}")] //route:api/Fitness/DeleteProgram/(ProgramID)
+        [HttpDelete("DeleteProgram/{ProgramName}")] //route:api/Fitness/DeleteProgram/(ProgramID)
          public Boolean DeleteProgram(string ProgramName)
         {
             DBConnect db = new DBConnect();
-            string strSQL = "DELETE FROM TP_Program WHERE ProgramID = " + ProgramName;
-            DataSet recordSet = db.GetDataSet(strSQL);
+            SqlCommand objCommand = new SqlCommand();
 
-            int result = db.DoUpdate(strSQL);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_DeleteFromPrograms";
+
+            SqlParameter Name = new SqlParameter("@Name", ProgramName);
+            Name.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(Name);
+
+
+            int result = db.DoUpdateUsingCmdObj(objCommand);
 
             if (result > 0)
+            {
                 return true;
-
+            }
+            else
+            {
             return false;
+
+            }
+        }
+
+        [HttpDelete("DeleteWorkOut/{ProgramID}")] //route:api/Fitness/DeleteWorkOut/(ProgramID)
+        public Boolean DeleteWorkout(int ProgramID)
+        {
+            DBConnect db = new DBConnect();
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_DeleteFromWorkouts";
+
+            SqlParameter programID = new SqlParameter("@ProgramID", ProgramID);
+            programID.Direction = ParameterDirection.Input;
+            objCommand.Parameters.Add(programID);
+
+ 
+            int result = db.DoUpdateUsingCmdObj(objCommand);
+
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
         [HttpPost("AddProgram")] //route:api/Fitness/AddProgram
+        //DONE AJAX
          public Boolean Post([FromBody] Programs program)
         {
             DBConnect db = new DBConnect();
@@ -168,7 +182,7 @@ namespace WebAPITermProject.Controllers
                 Days.Direction = ParameterDirection.Input;
                 sqlCommand4.Parameters.Add(Days);
 
-                SqlParameter image = new SqlParameter("@Image", program.programImage);
+                SqlParameter image = new SqlParameter("@Image", program.Image);
                 image.Direction = ParameterDirection.Input;
                 sqlCommand4.Parameters.Add(image);
 
@@ -218,6 +232,7 @@ namespace WebAPITermProject.Controllers
         }
 
         [HttpPut("UpdateProgram/{email}")] //api/Fitness/UpdateProgram/(ProgramID)
+        //DONE AJAX
         public Boolean Put(string email)
         {
 
@@ -246,6 +261,31 @@ namespace WebAPITermProject.Controllers
             return false;
 
         }
+
+
+        //[HttpGet("User/{email}/{password}")]  //MoesFitness/Values/User
+        // public int GetUser(string email, string password)
+        //{
+        //    DBConnect db = new DBConnect();
+
+        //        SqlCommand objCommand = new SqlCommand();
+
+        //        objCommand.CommandType = CommandType.StoredProcedure;
+        //        objCommand.CommandText = "TP_SelectAllFromUsers";
+
+        //    SqlParameter Email = new SqlParameter("@InputEmail", email);
+        //    Email.Direction = ParameterDirection.Input;
+        //    objCommand.Parameters.Add(Email);
+
+        //    SqlParameter Password = new SqlParameter("@InputPassword", password);
+        //    Password.Direction = ParameterDirection.Input;
+        //    objCommand.Parameters.Add(Password);
+
+        //    DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
+        //    int size = mydata.Tables[0].Rows.Count;
+
+        //    return size;
+        //}
 
     }
 }

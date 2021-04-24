@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
@@ -33,7 +36,7 @@ namespace Term_Project
                     navBar.Visible = true;
                     ContentID.Visible = true;
                     youShallNotPass.Visible = false;
-                    ShowUsers();
+                    ShowPrograms();
                 }
             }
         }
@@ -69,7 +72,7 @@ namespace Term_Project
 
         }
 
-        public void ShowUsers()
+        public void ShowPrograms()
         {
             SqlCommand sqlCommand1 = new SqlCommand();
             ArrayList programList = new ArrayList();
@@ -92,7 +95,9 @@ namespace Term_Project
                     programList.Add(pxy.GetAllProgram(myData, i));
                 }
                 gvManagePrograms.DataSource = programList;
-                gvManagePrograms.DataBind();
+                gvManagePrograms.DataBind();         
+                gvManagePrograms.Rows[0].Visible = false;
+
             }
             else
             {
@@ -109,26 +114,127 @@ namespace Term_Project
 
                 if (cb.Checked)
                 {
-                    SqlCommand sqlCommand5 = new SqlCommand();
+                    //SqlCommand sqlCommand5 = new SqlCommand();
 
-                    String programName = gvManagePrograms.Rows[i].Cells[2].Text;
+                    String programName = gvManagePrograms.Rows[i].Cells[4].Text;
 
-                    sqlCommand5.CommandType = CommandType.StoredProcedure;
-                    sqlCommand5.CommandText = "TP_DeleteFromPrograms";
+                    int programID = Convert.ToInt32(gvManagePrograms.Rows[i].Cells[3].Text);
 
 
-                    SqlParameter program = new SqlParameter("@Name", programName);
-                    program.Direction = ParameterDirection.Input;
-                    sqlCommand5.Parameters.Add(program);
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    String jsonWorkout = js.Serialize(programID);
 
-                    db.DoUpdateUsingCmdObj(sqlCommand5);
 
-                    ShowUsers();
+
+                    JavaScriptSerializer JS = new JavaScriptSerializer();
+                    String jsonProgram = JS.Serialize(programName);
+                    string data = "";
+
+                    try
+                    {
+                        WebRequest request = WebRequest.Create("https://localhost:44314/api/Fitness/DeleteWorkout/" + programID);
+                        request.Method = "DELETE";
+                        request.ContentLength = jsonWorkout.Length;
+                        request.ContentType = "application/json";
+
+                        StreamWriter writer = new StreamWriter(request.GetRequestStream());
+                        writer.Write(jsonWorkout);
+                        writer.Flush();
+                        writer.Close();
+
+                        WebResponse response = request.GetResponse();
+                        Stream theDataStream = response.GetResponseStream();
+                        StreamReader reader = new StreamReader(theDataStream);
+                        data = reader.ReadToEnd();
+                        reader.Close();
+                        response.Close();
+
+
+
+                        try
+                        {
+
+                            SqlCommand objCommand1 = new SqlCommand();
+
+                            objCommand1.CommandType = CommandType.StoredProcedure;
+                            objCommand1.CommandText = "TP_SelectProgramNameWhereID";
+
+                            SqlParameter ProgramName = new SqlParameter("@ProgramName", programName);
+                            ProgramName.Direction = ParameterDirection.Input;
+                            objCommand1.Parameters.Add(ProgramName);
+
+                            DataSet ds = db.GetDataSetUsingCmdObj(objCommand1);
+
+                            int id = Convert.ToInt32(ds.Tables[0].Rows[0]["ProgramID"]);
+
+
+
+                            SqlCommand objCommand = new SqlCommand();
+
+                            objCommand.CommandType = CommandType.StoredProcedure;
+                            objCommand.CommandText = "TP_UpdateUserIDWhereProgram";
+
+                            SqlParameter ID = new SqlParameter("@ID", id);
+                            ID.Direction = ParameterDirection.Input;
+                            objCommand.Parameters.Add(ID);
+
+
+                            int result = db.DoUpdateUsingCmdObj(objCommand);
+
+
+                            SqlCommand objCommand2 = new SqlCommand();
+
+                            objCommand2.CommandType = CommandType.StoredProcedure;
+                            objCommand2.CommandText = "TP_DeleteFromSavedPrograms";
+
+                            SqlParameter SavedID = new SqlParameter("@ID", id);
+                            SavedID.Direction = ParameterDirection.Input;
+                            objCommand2.Parameters.Add(SavedID);
+
+                            db.DoUpdateUsingCmdObj(objCommand2);
+
+                            WebRequest request1 = WebRequest.Create("https://localhost:44314/api/Fitness/DeleteProgram/" + programName);
+                                request1.Method = "DELETE";
+                                request1.ContentLength = jsonProgram.Length;
+                                request1.ContentType = "application/json";
+
+                                StreamWriter writer1 = new StreamWriter(request1.GetRequestStream());
+                                writer1.Write(jsonProgram);
+                                writer1.Flush();
+                                writer1.Close();
+
+                                WebResponse response1 = request1.GetResponse();
+                                Stream theDataStream1 = response1.GetResponseStream();
+                                StreamReader reader1 = new StreamReader(theDataStream1);
+                                String data1 = reader1.ReadToEnd();
+                                reader1.Close();
+                                response1.Close();
+
+                                Response.Redirect("AdminManagePrograms.aspx");
+                      
+                        }
+
+                        catch (Exception ex)
+                        {
+                            Response.Write("<script>alert('Delete not work') </script>");
+
+                        }
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Response.Write("<script>alert('Delete not work') </script>");
+
+                    }
+                    // Response.Write("<script>alert('" + data + "') </script>");
+
+
                 }
             }
         }
 
-        protected void gvManagePrograms_SelectedIndexChanged(object sender, EventArgs e)
+         protected void gvManagePrograms_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             int ID = Convert.ToInt32(gvManagePrograms.SelectedRow.Cells[3].Text);
@@ -213,7 +319,15 @@ namespace Term_Project
             lvFriday.Visible = boo;
             lvSaturday.Visible = boo;
             lvSunday.Visible = boo;
-            //btnBack.Visible = boo;
+            btnBack.Visible = boo;
+            lvContent.Visible = boo;
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            gvManagePrograms.Visible = true;
+            // ListViewDisplayWorkout.Visible = false;
+            lvVisible(false);
         }
     }
 }
