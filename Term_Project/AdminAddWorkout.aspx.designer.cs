@@ -15,6 +15,15 @@ namespace Term_Project
     {
 
         /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
         /// youShallNotPass control.
         /// </summary>
         /// <remarks>
@@ -24,22 +33,31 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl youShallNotPass;
 
         /// <summary>
-        /// btnBackToLogin control.
+        /// LogoutNav2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBackToLogin;
+        protected global::Term_Project.LogoutNav LogoutNav2;
 
         /// <summary>
-        /// headerNav control.
+        /// navBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl headerNav;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navBar;
+
+        /// <summary>
+        /// LogoutNav1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Term_Project.LogoutNav LogoutNav1;
 
         /// <summary>
         /// ContentID control.
@@ -51,15 +69,6 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContentID;
 
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
         /// cardSize control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl cardSize;
+
+        /// <summary>
+        /// programContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl programContent;
 
         /// <summary>
         /// txtProgramName control.
@@ -105,6 +123,24 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.RadioButtonList rbDays;
 
         /// <summary>
+        /// txtImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtImage;
+
+        /// <summary>
+        /// txtLength control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLength;
+
+        /// <summary>
         /// txtDesc control.
         /// </summary>
         /// <remarks>
@@ -112,6 +148,15 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDesc;
+
+        /// <summary>
+        /// divContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContent;
 
         /// <summary>
         /// h3Monday control.
@@ -492,15 +537,6 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Button btnAddSunday;
 
         /// <summary>
-        /// btnCreateProgram control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateProgram;
-
-        /// <summary>
         /// btnBack control.
         /// </summary>
         /// <remarks>
@@ -508,5 +544,14 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack;
+
+        /// <summary>
+        /// hdn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdn;
     }
 }

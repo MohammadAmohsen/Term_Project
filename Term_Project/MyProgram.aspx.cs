@@ -26,17 +26,7 @@ namespace Term_Project
 
         }
 
-        protected void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Session["UserID"] = null;
-            Response.Redirect("LogIn.aspx");
-        }
-
-        protected void btnMessages_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("UserMessages.aspx");
-        }
-
+      
 
         public void ProgramLoad() {
             //First Get the Program Id for the User
@@ -125,11 +115,6 @@ namespace Term_Project
             return arrayExercise;
 
         }
-
-
-
-
-
 
 
     }

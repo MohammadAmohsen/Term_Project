@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Term_Project {
-    
-    
-    public partial class MyProgram {
-        
+namespace Term_Project
+{
+
+
+    public partial class MyProgram
+    {
+
         /// <summary>
         /// navBar control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navBar;
-        
+
         /// <summary>
         /// LogoutNav control.
         /// </summary>
@@ -29,16 +31,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Term_Project.LogoutNav LogoutNav;
-        
-        /// <summary>
-        /// btnMessages control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMessages;
-        
+
         /// <summary>
         /// ContentID control.
         /// </summary>
@@ -47,7 +40,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContentID;
-        
+
         /// <summary>
         /// h6Day control.
         /// </summary>
@@ -56,7 +49,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h6Day;
-        
+
         /// <summary>
         /// rptPrograms control.
         /// </summary>
@@ -65,7 +58,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptPrograms;
-        
+
         /// <summary>
         /// h1 control.
         /// </summary>
@@ -74,7 +67,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h1;
-        
+
         /// <summary>
         /// lvMonday control.
         /// </summary>
@@ -83,7 +76,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvMonday;
-        
+
         /// <summary>
         /// h2 control.
         /// </summary>
@@ -92,7 +85,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h2;
-        
+
         /// <summary>
         /// lvTuesday control.
         /// </summary>
@@ -101,7 +94,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvTuesday;
-        
+
         /// <summary>
         /// h3 control.
         /// </summary>
@@ -110,7 +103,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h3;
-        
+
         /// <summary>
         /// lvWednesday control.
         /// </summary>
@@ -119,7 +112,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvWednesday;
-        
+
         /// <summary>
         /// h4 control.
         /// </summary>
@@ -128,7 +121,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h4;
-        
+
         /// <summary>
         /// lvThursday control.
         /// </summary>
@@ -137,7 +130,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvThursday;
-        
+
         /// <summary>
         /// h5 control.
         /// </summary>
@@ -146,7 +139,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h5;
-        
+
         /// <summary>
         /// lvFriday control.
         /// </summary>
@@ -155,7 +148,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvFriday;
-        
+
         /// <summary>
         /// h6 control.
         /// </summary>
@@ -164,7 +157,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h6;
-        
+
         /// <summary>
         /// lvSaturday control.
         /// </summary>
@@ -173,7 +166,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvSaturday;
-        
+
         /// <summary>
         /// h7 control.
         /// </summary>
@@ -182,7 +175,7 @@ namespace Term_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h7;
-        
+
         /// <summary>
         /// lvSunday control.
         /// </summary>

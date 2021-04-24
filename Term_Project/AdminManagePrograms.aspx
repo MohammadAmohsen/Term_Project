@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminManagePrograms.aspx.cs" Inherits="Term_Project.AdminManagePrograms" %>
+<%@ Register Src="~/LogoutNav.ascx" TagPrefix="uc1" TagName="LogoutNav" %>
 
 <!DOCTYPE html>
 
@@ -35,41 +36,54 @@
 <body>
     <form id="form1" runat="server">
 
-    <div id="youShallNotPass" runat="server" class="text-center">
+     <div id="youShallNotPass" runat="server" class="text-center" visible="false">
     <h2 class="text-center">You Must Log In To See This Site!</h2>
     <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
-         <form runat="server">
-        <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" style="margin-top:100px;"/>
-             </form>
+          <uc1:LogoutNav runat="server" ID="LogoutNav2" />
+
         </div>
 
     <%--    nav bar start--%>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-      <a class="navbar-brand" href="#">Moe's Gym</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <a class="navbar-brand" href="#">Moe's Gym</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Explore.aspx">Explore</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Programs</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminSignUp.aspx">Create an Admin!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions!</a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0" runat="server">
+                    <uc1:LogoutNav runat="server" ID="LogoutNav1" />
+                </div>
             </div>
-          </li>
-        </ul>     
+      </nav>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
 
 <%--          end nav bar--%>
         <div>

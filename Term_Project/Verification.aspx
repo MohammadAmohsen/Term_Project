@@ -47,7 +47,7 @@
 					<img id="imgLogo"  src="Images2/Logo.PNG" /> 
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Forgot Password?
+						Verify Your Account!
 					</span>
 
                     <asp:HiddenField ID="hdn" runat="server" value="" />
@@ -70,11 +70,11 @@
 
                     <div class="container-login100-form-btn">
                         <asp:Button ID="btnContinue" runat="server" class="login100-form-btn" Text="Continue" OnClick="btnContinue_Click" />
-						 <input type="button" value="HTML Continue" id="btnHtmlContinue" onclick="btnHtmlContinue_Click()" />
+						 <input type="button" value="HTML Continue" runat="server" id="btnHtmlContinue" onclick="btnHtmlContinue_Click()" />
                     </div>
-                    <div class="container-login100-form-btn">
+                    <%--<div class="container-login100-form-btn">
                         <asp:Button ID="btnSignIn" runat="server" Visible="false" class="login100-form-btn" Text="Sign-In" OnClick="btnSignIn_Click" />
-                    </div>
+                    </div>--%>
 
                     <div class="text-center p-t-90">
                         <a class="txt1" id="btnBackToHome2" runat="server" href="LogIn.aspx">Back To Sign-In</a>

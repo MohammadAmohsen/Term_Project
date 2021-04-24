@@ -19,10 +19,10 @@ namespace Term_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if(!IsPostBack)
+
+            if (!IsPostBack)
             {
-                if(Session["UserID"] == null)
+                if (Session["UserID"] == null)
                 {
                     navBar.Visible = false;
                     ContentID.Visible = false;
@@ -36,46 +36,8 @@ namespace Term_Project
                     ShowUsers();
                 }
             }
-            }
-
-        protected void btnBackToLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
         }
 
-        protected void btnCreateWorkOut_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminAddWorkout.aspx");
-        }
-
-        protected void btnCreateAdmin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminSignUp.aspx");
-        }
-
-
-        protected void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Session["UserID"] = null;
-
-            Response.Redirect("LogIn.aspx");
-
-        }
-
-        protected void btnMessages_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("AdminMessages.aspx");
-
-        }
-
-
-        protected void btnManageWorkouts_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("AdminManagePrograms.aspx");
-
-        }
 
         public void ShowUsers()
         {

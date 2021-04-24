@@ -1,6 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Explore2.aspx.cs" Inherits="Term_Project.Explore2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserFilteredWorkouts.aspx.cs" Inherits="Term_Project.FilteredWorkouts" %>
 <%@ Register Src="~/LogoutNav.ascx" TagPrefix="uc1" TagName="LogoutNav" %>
-
 
 <!DOCTYPE html>
 
@@ -95,7 +94,7 @@
                         <tr>
 
                             <td>
-                                <asp:Image ID="lblProgramImage" Height="100px" Width="100px" runat="server" ImageUrl='<%# Eval("Image") %>' />
+                                <asp:Image ID="lblProgramImage" Height="100px" Width="100px" runat="server" ImageUrl='<%# Eval("ProgramImage") %>' />
 
                             </td>
                         </tr>
@@ -130,7 +129,7 @@
                         <tr>
 
                             <td>
-                                <asp:Label ID="lblAmountOfDays" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Days") %>'></asp:Label>
+                                <asp:Label ID="lblAmountOfDays" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "AmountOfDays") %>'></asp:Label>
                             </td>
                         </tr>
                         <tr>

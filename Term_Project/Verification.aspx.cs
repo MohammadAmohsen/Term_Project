@@ -22,6 +22,7 @@ namespace Term_Project
             {
                 txtEmail.Text = "";
                 txtVerification.Text = "";
+                btnHtmlContinue.Visible = false;
             }
         }
 
@@ -56,7 +57,7 @@ namespace Term_Project
                     btnBackToHome2.Visible = false;
                     btnBack.Visible = true;
                     btnContinue.Visible = false;
-                    btnSignIn.Visible = true;
+                   // btnSignIn.Visible = true;
                     lblinputEmailError.Visible = false;
 
                     var rand = new Random();
@@ -64,6 +65,7 @@ namespace Term_Project
                     txtVerification.Visible = true;
                     lblEmail2.Visible = false;
                     txtEmail.Visible = false;
+                    btnHtmlContinue.Visible = true;
 
                     lblVerification.Text = "What's the verification code?";
                  }
@@ -73,7 +75,7 @@ namespace Term_Project
                     btnBackToHome2.Visible = true;
                     btnBack.Visible = false;
                     btnContinue.Visible = true;
-                    btnSignIn.Visible = false;
+                   // btnSignIn.Visible = false;
                 }
             }
         }
@@ -87,9 +89,10 @@ namespace Term_Project
             lblEmail2.Visible = true;
             txtEmail.Visible = true;
             btnContinue.Visible = true;
-            btnSignIn.Visible = false;
+           // btnSignIn.Visible = false;
             txtEmail.Text = "";
             txtVerification.Text = "";
+            btnHtmlContinue.Visible = false;
         }
 
         protected void btnBackToHome_Click(object sender, EventArgs e)
@@ -97,7 +100,7 @@ namespace Term_Project
             Response.Redirect("LogIn.aspx");
         }
 
-        protected void btnSignIn_Click(object sender, EventArgs e)
+      /*  protected void btnSignIn_Click(object sender, EventArgs e)
         {
 
             SqlCommand sqlCommand1 = new SqlCommand();
@@ -138,6 +141,7 @@ namespace Term_Project
 
             }
         }
+      */
 
         private void QuickSignIn()
         {

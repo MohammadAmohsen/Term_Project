@@ -765,20 +765,6 @@ namespace Term_Project
         }
 
 
-        protected void btnBackToLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
-
-
-
-        protected void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Session["UserID"] = null;
-
-            Response.Redirect("LogIn.aspx");
-
-        }
-
+   
     }
 }

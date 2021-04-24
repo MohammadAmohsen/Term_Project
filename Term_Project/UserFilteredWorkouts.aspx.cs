@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
@@ -12,7 +15,7 @@ using WorkoutLibrary;
 
 namespace Term_Project
 {
-    public partial class UserSavedPrograms : System.Web.UI.Page
+    public partial class FilteredWorkouts : System.Web.UI.Page
     {
         DBConnect db = new DBConnect();
 
@@ -20,72 +23,37 @@ namespace Term_Project
         {
             if (!IsPostBack)
             {
-                if (Session["UserId"] == null)
-                {
-                    navBar.Visible = false;
-                    content.Visible = false;
-                    youShallNotPass.Visible = true;
-                }
-                else if (Session["UserID"] != null)
-                {
-                    //Repeater
-                    //String strSQL = "Select ProgramID FROM TP_SavedProgram";
+                //Repeater
 
-                    SqlCommand objCommand = new SqlCommand();
-                    ArrayList arrayProgramID = new ArrayList();
-                    ArrayList arrayDisplay = new ArrayList();
+                SqlCommand objCommand = new SqlCommand();
 
-                    objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "TP_SelectProgramIDFromSavedPrograms";
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_SelectProgramNameForUser";
 
-                    SqlParameter ProgramID = new SqlParameter("@ID", Convert.ToInt32(Session["UserID"]));
-                    ProgramID.Direction = ParameterDirection.Input;
-                    objCommand.Parameters.Add(ProgramID);
+                SqlParameter Days = new SqlParameter("@Days", Convert.ToInt32(Session["UserDays"]));
+                Days.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(Days);
 
-                    DataSet mydata1 = db.GetDataSetUsingCmdObj(objCommand);
+                SqlParameter Training = new SqlParameter("@Training", Session["UserTraining"].ToString());
+                Training.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(Training);
 
-                    for (int i = 0; i < mydata1.Tables[0].Rows.Count; i++)
-                    {
-                        Program program = new Program();
-                        int programID = Convert.ToInt32(mydata1.Tables[0].Rows[i]["ProgramID"]);
+                SqlParameter Exp = new SqlParameter("@Experience", Session["Experience"].ToString());
+                Exp.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(Exp);
 
-                        lvVisible(false);
+                //DataSet ds = db.GetDataSetUsingCmdObj(objCommand);
+                //string programName = ds.Tables[0].Rows[0]["ProgramName"].ToString();
 
-                        SqlCommand objCommand1 = new SqlCommand();
+                //String strSQL = "Select * FROM TP_Program";
+                lvVisible(false);
+                // Set the datasource of the Repeater and bind the data
+                rptPrograms.DataSource = db.GetDataSetUsingCmdObj(objCommand);
+                rptPrograms.DataBind();
 
-                        objCommand1.CommandType = CommandType.StoredProcedure;
-                        objCommand1.CommandText = "TP_SelectAllFromProgramWhereID";
-
-                        SqlParameter ProgramID1 = new SqlParameter("@ID", programID);
-                        ProgramID1.Direction = ParameterDirection.Input;
-                        objCommand1.Parameters.Add(ProgramID1);
-
-                        DataSet mydata = db.GetDataSetUsingCmdObj(objCommand1);
-                        program.programName = mydata.Tables[0].Rows[0]["ProgramName"].ToString();
-                        program.Image = mydata.Tables[0].Rows[0]["ProgramImage"].ToString();
-                        program.ProgramID = Convert.ToInt32(mydata.Tables[0].Rows[0]["ProgramID"]);
-                        program.description = mydata.Tables[0].Rows[0]["Description"].ToString();
-                        program.dateAdded = mydata.Tables[0].Rows[0]["DateAdded"].ToString();
-                        program.programType = mydata.Tables[0].Rows[0]["ProgramType"].ToString();
-                        program.programExperience = mydata.Tables[0].Rows[0]["ProgramExperience"].ToString();
-                        program.Days = Convert.ToInt32(mydata.Tables[0].Rows[0]["AmountOfDays"]);
-                        program.LengthOfProgram = Convert.ToInt32(mydata.Tables[0].Rows[0]["LengthOfProgram"]);
-
-
-                        arrayProgramID.Add(program);
-                    }
-                    // Set the datasource of the Repeater and bind the data
-                    rptPrograms.DataSource = arrayProgramID;
-                    rptPrograms.DataBind();
-
-                }
             }
         }
 
-        protected void btnBackToLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
 
         protected void rptPrograms_OnItemCommand(object sender, System.Web.UI.WebControls.RepeaterCommandEventArgs e)
         {
@@ -131,25 +99,15 @@ namespace Term_Project
 
         }
 
-        protected void btnSaveProgram_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
-
-
-        protected void btnBackToHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
-
-        protected void btnMessages_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("UserMessages.aspx");
-
-        }
-
-
         protected void btnBack_Click(object sender, EventArgs e)
+        {
+            rptPrograms.Visible = true;
+            // ListViewDisplayWorkout.Visible = false;
+            lvVisible(false);
+        }
+
+
+        protected void btnSaveProgram_Click(object sender, EventArgs e)
         {
             rptPrograms.Visible = true;
             // ListViewDisplayWorkout.Visible = false;
@@ -210,7 +168,7 @@ namespace Term_Project
             lvSaturday.Visible = boo;
             lvSunday.Visible = boo;
             btnBack.Visible = boo;
-            lvContent.Visible = boo;
+            lvWorkouts.Visible = boo;
         }
 
     }

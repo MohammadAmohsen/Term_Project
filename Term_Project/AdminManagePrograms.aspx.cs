@@ -41,36 +41,7 @@ namespace Term_Project
             }
         }
 
-        protected void btnBackToLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
-
-        protected void btnCreateWorkOut_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminAddWorkout.aspx");
-        }
-
-        protected void btnCreateAdmin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminSignUp.aspx");
-        }
-
-
-        protected void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Session["UserID"] = null;
-
-            Response.Redirect("LogIn.aspx");
-
-        }
-
-        protected void btnMessages_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("AdminMessages.aspx");
-
-        }
+      
 
         public void ShowPrograms()
         {

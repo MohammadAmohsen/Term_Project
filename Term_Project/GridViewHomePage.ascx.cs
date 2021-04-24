@@ -19,7 +19,14 @@ namespace Term_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["UserID"] == null){
+
+            }
+            else
+            {
             DailyWorkout();
+
+            }
         }
 
 

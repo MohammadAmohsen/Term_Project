@@ -93,28 +93,18 @@ namespace Term_Project
 
         }
 
-        protected void btnSaveProgram_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
-
-        
-        protected void btnBackToHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
-
-        protected void btnMessages_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("UserMessages.aspx");
-
-        }
-
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             rptPrograms.Visible = true;
              // ListViewDisplayWorkout.Visible = false;
+            lvVisible(false);
+        }
+
+
+        protected void btnSaveProgram_Click(object sender, EventArgs e)
+        {
+            rptPrograms.Visible = true;
+            // ListViewDisplayWorkout.Visible = false;
             lvVisible(false);
         }
 

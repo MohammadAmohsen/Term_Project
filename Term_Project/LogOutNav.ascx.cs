@@ -16,6 +16,7 @@ namespace Term_Project
 
         protected void buttonLogout_Click(object sender, EventArgs e)
         {
+            Session["UserID"] = null;
             Response.Redirect("LogIn.aspx");
         }
     }

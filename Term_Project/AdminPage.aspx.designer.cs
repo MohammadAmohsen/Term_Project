@@ -33,13 +33,13 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl youShallNotPass;
 
         /// <summary>
-        /// btnBackToLogin control.
+        /// LogoutNav2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBackToLogin;
+        protected global::Term_Project.LogoutNav LogoutNav2;
 
         /// <summary>
         /// navBar control.
@@ -51,49 +51,13 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navBar;
 
         /// <summary>
-        /// btnCreateAdmin control.
+        /// LogoutNav1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateAdmin;
-
-        /// <summary>
-        /// btnCreateProgram control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateProgram;
-
-        /// <summary>
-        /// btnLogOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogOut;
-
-        /// <summary>
-        /// btnMessages control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMessages;
-
-        /// <summary>
-        /// btnManageWorkouts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnManageWorkouts;
+        protected global::Term_Project.LogoutNav LogoutNav1;
 
         /// <summary>
         /// ContentID control.

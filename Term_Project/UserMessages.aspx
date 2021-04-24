@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserMessages.aspx.cs" Inherits="Term_Project.UserMessages" %>
+<%@ Register Src="~/LogoutNav.ascx" TagPrefix="uc1" TagName="LogoutNav" %>
 
 <!DOCTYPE html>
 
@@ -59,7 +60,7 @@
                 <asp:LinkButton ID="linkbtnInbox" runat="server" class="list-group-item list-group-item-action bg-dark text-light active" OnClick="linkbtnInbox_Click">Inbox</asp:LinkButton>
                 <asp:LinkButton ID="linkbtnSent" runat="server" class="list-group-item list-group-item-action bg-dark text-light" OnClick="linkbtnSent_Click">Sent</asp:LinkButton>
             </div>
-        </div>
+            </div>
 
             <div id="content" runat="server">
                 <%--    nav bar start--%>
@@ -72,27 +73,26 @@
                     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Explore2.aspx">Explore</a>
+                                <a class="nav-link" href="Explore2.aspx">Explore Workout Programs</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Programs</a>
+                                <a class="nav-link" href="UserSavedPrograms.aspx">Saved Programs</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="MyProgram.aspx">My Programs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">My Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="UserMessages.aspx">Customer Service</a>
                             </li>
                         </ul>
                         <div class="form-inline my-2 my-lg-0" runat="server">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                            <asp:Button class="btn btn-outline-success my-2 my-sm-0" ID="btnLogOut" runat="server" Text="LogOut" OnClick="btnLogOut_Click" />
+                            <uc1:logoutnav runat="server" id="LogoutNav" />
                         </div>
                     </div>
                 </nav>

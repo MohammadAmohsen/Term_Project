@@ -25,8 +25,14 @@ namespace Term_Project
                 {
                     ContentID.Visible = false;
                     youShallNotPass.Visible = true;
+                    navBar.Visible = false;
                 }
+                else if(Session["Assistance"].ToString() == "Yes")
+                {
+                    Response.Redirect("UserFilteredWorkouts.aspx");
 
+                    //FindWorkout(Convert.ToInt32(Session["UserDays"]), Session["UserTraining"].ToString(), Session["Experience"].ToString());
+                }
                 else
                 {
                     // int programID = Convert.ToInt32(Session["ProgramID"]);
@@ -37,44 +43,11 @@ namespace Term_Project
                     SavedWorkouts();
                     //DailyWorkout();
                 }
-                if ((Session["UserID"] != null && Session["Assistance"].ToString() == "Yes"))
-                {
-                    FindWorkout(Convert.ToInt32(Session["UserDays"]), Session["UserTraining"].ToString(), Session["Experience"].ToString());
-                }
 
             }
         }
 
-        protected void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Session["UserID"] = null;
-            Response.Redirect("LogIn.aspx");
-
-        }
-
-        protected void btnBackToLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-
-        }
-
-
-        protected void btnMessages_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("UserMessages.aspx");
-
-        }
-
-        protected void btnMyPage_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("MyProgram.aspx");
-
-        }
-        protected void btnSaved_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("UserSavedPrograms.aspx");
-
-        }
+   
         private void SavedWorkouts()
         {
             /* First Statement to get ProgramID */
@@ -168,7 +141,6 @@ namespace Term_Project
             DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
             string programName = mydata.Tables[0].Rows[0]["ProgramName"].ToString();
 
-            lblTest.Text = programName;
        
         }
 

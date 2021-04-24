@@ -218,7 +218,7 @@
                         <br />
 
                         <asp:RadioButtonList ID="rbAnswer" CssClass="radioButtonList" AutoPostback="true" runat="server" style="margin-left:300px;" RepeatDirection="Vertical" OnSelectedIndexChanged="rbAnswer_SelectedIndexChanged"  >
-                            <asp:ListItem Value="Yes">Yes</asp:ListItem>
+                            <asp:ListItem Value="Yes" Selected="True">Yes</asp:ListItem>
                             <asp:ListItem Value="No">No</asp:ListItem>
                         </asp:RadioButtonList>
                     </div>

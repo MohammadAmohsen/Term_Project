@@ -105,13 +105,13 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Button btnContinue;
 
         /// <summary>
-        /// btnSignIn control.
+        /// btnHtmlContinue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSignIn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnHtmlContinue;
 
         /// <summary>
         /// btnBackToHome2 control.

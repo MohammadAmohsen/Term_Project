@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminMessages.aspx.cs" Inherits="Term_Project.AdminAspx.AdminMessages" %>
+<%@ Register Src="~/LogoutNav.ascx" TagPrefix="uc1" TagName="LogoutNav" %>
 
 <!DOCTYPE html>
 

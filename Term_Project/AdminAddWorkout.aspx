@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminAddWorkout.aspx.cs" Inherits="Term_Project.AdminAddWorkout" %>
+<%@ Register Src="~/LogoutNav.ascx" TagPrefix="uc1" TagName="LogoutNav" %>
 
 <!DOCTYPE html>
 
@@ -38,23 +39,60 @@
 
 </head>
 <body>
+    <form id="form1" runat="server">
 
-    <div id="youShallNotPass" runat="server" class="text-center">
+     <div id="youShallNotPass" runat="server" class="text-center" visible="false">
     <h2 class="text-center">You Must Log In To See This Site!</h2>
     <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
-         <form runat="server">
-        <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" style="margin-top:100px;"/>
-             </form>
+          <uc1:LogoutNav runat="server" ID="LogoutNav2" />
+
         </div>
 
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="headerNav" runat="server">
-            <a class="navbar-brand" href="Default.aspx">Moe's Fitness - Admin</a>
-        </nav>
-    </header>
+    <%--    nav bar start--%>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
+            <a class="navbar-brand" href="#">Moe's Gym</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminSignUp.aspx">Create an Admin!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions!</a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0" runat="server">
+                    <uc1:LogoutNav runat="server" ID="LogoutNav1" />
+                </div>
+            </div>
+      </nav>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+        <%--          end nav bar--%>
  <div class="container-login100" style="background-image: url('images2/background3.jpg');" id="ContentID" runat="server">
 
-	  <form id="form1" runat="server" class="form-signin text-center">
         <div id="userInput" class="d-flex justify-content-center text-center">
             <div class="card" id="cardSize" runat="server" style="width: 50rem; height: auto;">
                 <div class="container">
@@ -74,7 +112,7 @@
                     </div>
                     <br />
 
-                    <div id="programContent">
+                    <div id="programContent" runat="server">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="ProgramName">Program Name</label>
@@ -114,7 +152,26 @@
 
                     </div>
 
-                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="ProgramName">Program Image</label>
+                                    <asp:TextBox ID="txtImage" runat="server" class="form-control" placeholder="Name" autofocus=""></asp:TextBox>
+                                    <div class="invalid-feedback">Your Program Name Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="ProgramName">Program Length</label>
+                                    <asp:TextBox ID="txtLength" type="number" runat="server" class="form-control" placeholder="Name" autofocus=""></asp:TextBox>
+                                    <div class="invalid-feedback">Your Program Name Is Required</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="Program">Description Of Program</label>
                             <asp:TextBox ID="txtDesc" runat="server" class="form-control" placeholder="Description" autofocus=""></asp:TextBox>
@@ -124,7 +181,7 @@
                     <br />
                     <hr />
                 </div>
-                    <div id="divContent" visible="false">
+                    <div id="divContent" runat="server"  >
                     <!-- Monday -->
                     <h3 id="h3Monday" class="text-center" runat="server">Monday Workout</h3>
                     <br />
@@ -164,7 +221,7 @@
                     </div>
                     <br />
 
-                      <asp:Button ID="btnAddMonday" runat="server"  Text="Add Workouts!" OnClick="btnAddMonday_Click"  />
+                      <asp:Button ID="btnAddMonday" runat="server" Text="Add Workouts!" OnClick="btnAddMonday_Click"  />
 
                     <hr />
 
@@ -298,8 +355,6 @@
                     <h3 id="h4" class="text-center" runat="server">Friday Workout</h3>
                     <br />
 
-
-
                     <div class="col-md-6 mb-3 text-center" style="margin-left: 180px;">
                         <label for="Desc">Workout Description</label>
                         <asp:TextBox ID="txtDescFri" runat="server" class="form-control" placeholder="Back/Biceps"></asp:TextBox>
@@ -421,44 +476,48 @@
                     <hr />
                 </div>
 
-                    <asp:Button ID="btnCreateProgram" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Your Workout Program!" OnClick="btnCreateProgram_Click" />
+<%--                    <asp:Button ID="btnCreateProgram" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Your Workout Program!" OnClick="btnCreateProgram_Click" />--%>
                     <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Back To Admin Page!" OnClick="btnBack_Click" />
                     <input type="button" value="Create Program" id="btnCreate" onclick="btnCreate_Click()" />
 
-             </div>
-           </div>
+                </div>
+            </div>
         </div>
-      </form>
  </div>
+                              <asp:HiddenField id="hdn" runat="server"></asp:HiddenField>
+
+      </form>
 
 
     <script>
 
-        $(document).ready(function () {
+        window.onload = function () {
             $("#divContent").hide();
-        })
-
+             if ($("#hdn").val() == "1") {
+                $("#divContent").show();
+                 $("#programContent").hide();
+                 $("#btnCreate").hide();
+            }
+        }
 
         function btnCreate_Click() {
 
             var strURL = "https://localhost:44314/api/Fitness/addprogram";
             var date = new Date();
-            var rb = $("#rbDays").val();
+            var rb =  $('input[name="rbDays"]:checked').val();
             var program = new Object();
             program.programName = $("#txtProgramName").val();
             program.dateAdded = date;
             program.description = $("#txtDesc").val();
             program.programType = $("#ddlType").val();
             program.programExperience = $("#ddlExperience").val();
-            program.days = 5;
-           // program.programImage = $("#price").val().toString();
-            program.programImage = "Images2/Logo.PNG";
-            program.programLength = 60;
+            program.days = rb;
+            program.Image = $("#txtImage").val();
+            program.programLength = $("#txtLength").val();
             var d = true;
 
-
             var strInput = JSON.stringify(program);
-
+          
 
             $.ajax({
                 type: "POST",
@@ -471,6 +530,7 @@
                         alert("Program already exists!");
                     }
                     else {
+                        $("#hdn").val("1");
                     $("#divContent").show();
                     $("#programContent").hide();
                     }

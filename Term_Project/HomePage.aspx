@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="Term_Project.HomePage" %>
-
 <%@ Register Src="~/LogoutNav.ascx" TagPrefix="uc1" TagName="LogoutNav" %>
 <%@ Register Src="~/GridViewHomePage.ascx" TagPrefix="uc1" TagName="GridViewHomePage" %>
 
@@ -18,52 +17,53 @@
      <div id="youShallNotPass" runat="server" class="text-center">
     <h2 class="text-center">You Must Log In To See This Site!</h2>
     <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
-        <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" style="margin-top:100px;"/>
+                 <uc1:LogoutNav runat="server" ID="LogoutNav1" />       
         </div>
 <%--    nav bar start--%>
-     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
       <a class="navbar-brand" href="#">Moe's Gym</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Explore2.aspx">Explore</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Programs</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="MyProgram.aspx">My Program</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-                  <div class="form-inline my-2 my-lg-0" runat="server">
-    <uc1:LogoutNav runat="server" ID="LogoutNav" />
-             <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnMessages" runat="server" Text="Messages" OnClick="btnMessages_Click" />
-             <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnMyPage" runat="server" Text="MyPage" OnClick="btnMyPage_Click" />
-             <asp:Button class="btn btn-outline-success my-2 my-sm-0" id="btnSaved" runat="server" Text="Saved Programs" OnClick="btnSaved_Click" />
-        </div>
-          </div>
-         </nav>
- 
-    <br />    <br />
-    <br />    
+         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+             <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
+                     <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="Explore2.aspx">Explore Workout Programs</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="UserSavedPrograms.aspx">Saved Programs</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="MyProgram.aspx">My Programs</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#">My Profile</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="UserMessages.aspx">Customer Service</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="FilteredWorkouts.aspx">Your Perfect Workout!</a>
+                 </li>
+             </ul>
+             <div class="form-inline my-2 my-lg-0" runat="server">
+                 <uc1:LogoutNav runat="server" ID="LogoutNav" />       
+             </div>
+         </div>
+     </nav>
 
-<%--          end nav bar--%>
+         <br />
+         <br />
+         <br />
+
+         <%--          end nav bar--%>
 
         <div>
  <!-- Begin Page Content -->
-            <asp:Label ID="lblTest" runat="server" Text="Label"></asp:Label>
                 <div class="container-fluid" id="ContentID" runat="server">
 
                     <!-- Page Heading -->

@@ -132,6 +132,7 @@
     <Content Include="Css\SignUpCSS.css" />
     <Content Include="Css\StyleSheet1.css" />
     <Content Include="Explore2.aspx" />
+    <Content Include="UserFilteredWorkouts.aspx" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
@@ -245,6 +246,13 @@
     </Compile>
     <Compile Include="Explore2.aspx.designer.cs">
       <DependentUpon>Explore2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserFilteredWorkouts.aspx.cs">
+      <DependentUpon>UserFilteredWorkouts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserFilteredWorkouts.aspx.designer.cs">
+      <DependentUpon>UserFilteredWorkouts.aspx</DependentUpon>
     </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
@@ -395,10 +403,10 @@
     <Content Include="Web References\FitnessService\Program.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <None Include="Web References\FitnessService\Reference.map">
+    <Content Include="Web References\FitnessService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <Content Include="Web References\FitnessService\User.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
