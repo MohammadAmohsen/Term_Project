@@ -142,7 +142,9 @@
                             <td>
                                 <asp:Button ID="btnSaveProgram" class="btn btn-primary" Text="Save" runat="server" OnClick="btnSaveProgram_Click" />
                             </td>
-                            <td></td>
+                            <td>
+                                <asp:Button ID="btnSelectProgram" class="btn btn-primary" Text="Select" runat="server" OnClick="btnSelectProgram_Click" />
+                            </td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>

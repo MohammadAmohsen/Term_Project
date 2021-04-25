@@ -143,6 +143,12 @@
                             </td>
                             <td></td>
                         </tr>
+                          <tr>
+                           <td>
+                                <asp:Button ID="btnSelectProgram" class="btn btn-primary" Text="Select" runat="server" OnClick="btnSelectProgram_Click" />
+                            </td>
+                            <td></td>
+                        </tr>
                     </ItemTemplate>
                 </asp:Repeater>
             </table>

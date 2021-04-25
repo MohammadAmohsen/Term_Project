@@ -445,7 +445,6 @@ namespace Term_Project.AdminAspx
             }
         }
 
-       
         protected void btnSend_Click(object sender, EventArgs e)
         {
             Email newEmail = new Email();

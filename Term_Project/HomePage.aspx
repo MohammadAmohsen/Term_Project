@@ -32,8 +32,9 @@
                      <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link" href="Explore2.aspx">Explore Workout Programs</a>
-                 </li>
+                     <a class="nav-link" href="Explore2.aspx">Explore Workout Programs
+                     </a>
+                 &nbsp;</li>
                  <li class="nav-item">
                      <a class="nav-link" href="UserSavedPrograms.aspx">Saved Programs</a>
                  </li>
@@ -64,7 +65,7 @@
 
         <div>
  <!-- Begin Page Content -->
-                <div class="container-fluid" id="ContentID" runat="server">
+                <div class="container-fluid text-center" id="ContentID" runat="server">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -75,14 +76,16 @@
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Current Weight</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">135 (lbs)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <asp:Label ID="lblCurrentWeight" runat="server" Text="Label"></asp:Label>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -93,14 +96,49 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Workout Goals
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <asp:Label ID="lblGoals" runat="server" Text="Label"></asp:Label>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Goal Weight</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">165 (lbs)</div>
+                                                You chose this program:
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                                                <asp:ScriptManager ID="ScriptManager1" runat="server" />
+                                                <asp:Timer runat="server" ID="UpdateTimer" Interval="1000" OnTick="UpdateTimer_Tick" />
+                                                <asp:UpdatePanel runat="server" ID="TimedPanel" UpdateMode="Conditional">
+                                                    <Triggers>
+                                                        <asp:AsyncPostBackTrigger ControlID="UpdateTimer" EventName="Tick" />
+                                                    </Triggers>
+                                                    <ContentTemplate>
+                                                        <asp:Label runat="server" ID="DateStampLabel" />
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel>
+
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -111,7 +149,7 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -143,7 +181,7 @@
                         </div>
 
                         <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">

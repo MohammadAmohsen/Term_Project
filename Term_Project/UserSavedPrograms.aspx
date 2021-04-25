@@ -35,7 +35,7 @@
 <body>
     <form runat="server">
 
-        <div id="youShallNotPass" runat="server" class="text-center">
+        <div id="youShallNotPass" runat="server" class="text-center" visible="false">
             <h2 class="text-center">You Must Log In To See This Site!</h2>
             <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
                     <uc1:LogoutNav runat="server" ID="LogoutNav1" />
@@ -155,14 +155,20 @@
                             <td>
                                 <asp:Button ID="btnSaveProgram" class="btn btn-primary" Text="Save" runat="server" OnClick="btnSaveProgram_Click" />
                             </td>
-                            <td></td>
+                            
+                        </tr>
+                        <tr>
+                           <td>
+                                <asp:Button ID="btnSelectProgram" class="btn btn-primary" Text="Select" runat="server" OnClick="btnSelectProgram_Click" />
+                            </td>
+                            
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
             </table>
-             <asp:Button ID="btnBack" Visible="false" class="btn btn-primary" Text="Back" runat="server" OnClick="btnBack_Click" />
+            <asp:Button ID="btnBack" Visible="false" class="btn btn-primary" Text="Back" runat="server" OnClick="btnBack_Click" />
 
-         </div>
+        </div>
          <%--        List View for each individual Workout and Program--%>
 
         <div id="lvContent" runat="server" visible="false">

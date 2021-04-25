@@ -27,7 +27,12 @@ namespace WebAPITermProject.Controllers
         public List<Programs> GetAll()
         {
             DBConnect db = new DBConnect();
-            DataSet ds = db.GetDataSet("SELECT * FROM TP_Program");
+            SqlCommand sqlCommand3 = new SqlCommand();
+
+            sqlCommand3.CommandType = CommandType.StoredProcedure;
+            sqlCommand3.CommandText = "TP_SelectAllFromProgramWhere32";
+
+            DataSet ds = db.GetDataSetUsingCmdObj(sqlCommand3);
 
             List<Programs> programs = new List<Programs>();
             Programs program;

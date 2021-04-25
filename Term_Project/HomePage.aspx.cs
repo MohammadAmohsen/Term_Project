@@ -41,16 +41,30 @@ namespace Term_Project
                     ContentID.Visible = true;
                     youShallNotPass.Visible = false;
                     SavedWorkouts();
+                    DisplayTime();
+                    lblCurrentWeight.Text = Session["UserWeight"].ToString() + "lbs";
+                    lblGoals.Text = Session["UserGoals"].ToString();
                     //DailyWorkout();
                 }
 
             }
         }
 
-   
+        protected void UpdateTimer_Tick(object sender, EventArgs e)
+        {
+            DisplayTime();
+        }
+
+        private void DisplayTime()
+        {
+            DateTime dateSelected = GetDate();
+            TimeSpan totalDays = TimeSpan.FromSeconds((DateTime.Now - dateSelected).TotalSeconds);
+            DateStampLabel.Text = totalDays.ToString(@"d'd, 'hh\hmm\mss") + "s ago";
+        }
+
         private void SavedWorkouts()
         {
-            /* First Statement to get ProgramID */
+            ///* First Statement to get ProgramID */
             SqlCommand objCommand = new SqlCommand();
 
             objCommand.CommandType = CommandType.StoredProcedure;
@@ -62,39 +76,18 @@ namespace Term_Project
 
             DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
             int ProgramID = Convert.ToInt32(mydata.Tables[0].Rows[0]["ProgramID"]);
+          
 
-            /* Second Statement to get Length Of Program */
-            SqlCommand objCommand1 = new SqlCommand();
-
-            objCommand1.CommandType = CommandType.StoredProcedure;
-            objCommand1.CommandText = "TP_SelectProgramLength";
-
-            SqlParameter programID = new SqlParameter("@ID", ProgramID);
-            programID.Direction = ParameterDirection.Input;
-            objCommand1.Parameters.Add(programID);
-
-            DataSet mydata1 = db.GetDataSetUsingCmdObj(objCommand1);
-            double LengthOfProgram = Convert.ToInt32(mydata1.Tables[0].Rows[0]["LengthOfProgram"]);
-
-            /* Third Statement to get Date Added Of Program */
-            SqlCommand objCommand2 = new SqlCommand();
-
-            objCommand2.CommandType = CommandType.StoredProcedure;
-            objCommand2.CommandText = "TP_SelectDaySelected";
-
-            SqlParameter userID = new SqlParameter("@ID", Convert.ToInt32(Session["UserID"]));
-            userID.Direction = ParameterDirection.Input;
-            objCommand2.Parameters.Add(userID);
-
-            DataSet mydata2 = db.GetDataSetUsingCmdObj(objCommand2);
-            DateTime dateSelected = Convert.ToDateTime(mydata2.Tables[0].Rows[0]["DayWorkoutSelected"]);
+            double LengthOfProgram = GetLengthOfProgram(ProgramID);
+          
+            DateTime dateSelected = GetDate();
 
             /*Date When User finished program */
             DateTime dateFinished = dateSelected.AddDays(LengthOfProgram);
 
             double difference = Convert.ToInt32((dateFinished - DateTime.Now).TotalDays);
 
-            lblDaysLeft.Text = difference.ToString();
+            lblDaysLeft.Text = difference.ToString() + " days left!";
 
             double percentage = ((LengthOfProgram - difference) / LengthOfProgram) * 100;
 
@@ -144,6 +137,42 @@ namespace Term_Project
        
         }
 
+        public DateTime GetDate()
+        {
+            /* Third Statement to get Date Added Of Program */
+            SqlCommand objCommand2 = new SqlCommand();
+
+            objCommand2.CommandType = CommandType.StoredProcedure;
+            objCommand2.CommandText = "TP_SelectDaySelected";
+
+            SqlParameter userID = new SqlParameter("@ID", Convert.ToInt32(Session["UserID"]));
+            userID.Direction = ParameterDirection.Input;
+            objCommand2.Parameters.Add(userID);
+
+            DataSet mydata2 = db.GetDataSetUsingCmdObj(objCommand2);
+            DateTime dateSelected = Convert.ToDateTime(mydata2.Tables[0].Rows[0]["DayWorkoutSelected"]);
+
+            return dateSelected;
+        }
+
+        public Double GetLengthOfProgram(int ProgramID)
+        {
+            /* Second Statement to get Length Of Program */
+            SqlCommand objCommand1 = new SqlCommand();
+
+            objCommand1.CommandType = CommandType.StoredProcedure;
+            objCommand1.CommandText = "TP_SelectProgramLength";
+
+            SqlParameter programID = new SqlParameter("@ID", ProgramID);
+            programID.Direction = ParameterDirection.Input;
+            objCommand1.Parameters.Add(programID);
+
+            DataSet mydata1 = db.GetDataSetUsingCmdObj(objCommand1);
+            double LengthOfProgram = Convert.ToInt32(mydata1.Tables[0].Rows[0]["LengthOfProgram"]);
+
+            return LengthOfProgram;
+        }
+
 
 
         //public void DailyWorkout()
@@ -151,7 +180,7 @@ namespace Term_Project
         //    ArrayList arrayExercises = new ArrayList();
         //    ArrayList arrayExerciseID = new ArrayList();
         //    SqlCommand objCommand = new SqlCommand();
- 
+
         //    objCommand.CommandType = CommandType.StoredProcedure;
         //    objCommand.CommandText = "TP_SelectProgramID";
 
