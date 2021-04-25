@@ -184,21 +184,59 @@ namespace Term_Project
 
         }
 
-        protected void btnSaveProgram_Click(object sender, EventArgs e)
+      
+        protected void btnUnSaveProgram_Click(object sender, EventArgs e)
         {
-            Response.Redirect("LogIn.aspx");
-        }
+            var btn = (Button)sender;
+            var item = (RepeaterItem)btn.NamingContainer;
+            Label labelProgram = (Label)item.FindControl("lblProgramID");
+            int programID = Convert.ToInt32(labelProgram.Text);
 
 
-        protected void btnBackToHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
+            SqlCommand objCommand1 = new SqlCommand();
 
-        protected void btnMessages_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("UserMessages.aspx");
+            objCommand1.CommandType = CommandType.StoredProcedure;
+            objCommand1.CommandText = "TP_SelectAllFromSaved";
 
+            SqlParameter ProgramID1 = new SqlParameter("@ProgramID", programID);
+            ProgramID1.Direction = ParameterDirection.Input;
+            objCommand1.Parameters.Add(ProgramID1);
+
+            SqlParameter UserID1 = new SqlParameter("@UserID", Convert.ToInt32(Session["UserID"]));
+            UserID1.Direction = ParameterDirection.Input;
+            objCommand1.Parameters.Add(UserID1);
+
+            DataSet ds = db.GetDataSetUsingCmdObj(objCommand1);
+            int size = ds.Tables[0].Rows.Count;
+
+            if (size > 0)
+            {
+
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_DeleteFromSaved";
+
+                SqlParameter ProgramID = new SqlParameter("@ProgramID", programID);
+                ProgramID.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(ProgramID);
+
+                SqlParameter UserID = new SqlParameter("@UserID", Convert.ToInt32(Session["UserID"]));
+                UserID.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(UserID);
+
+
+                db.DoUpdateUsingCmdObj(objCommand);
+
+                Response.Write("<script>alert('Program Has Been Deleted!') </script>");
+                Response.Redirect("UserSavedPrograms.aspx");
+
+            }
+            else
+            {
+                Response.Write("<script>alert('Program Was Never saved!') </script>");
+
+            }
         }
 
 

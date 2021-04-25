@@ -152,14 +152,14 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <asp:Button ID="btnSaveProgram" class="btn btn-primary" Text="Save" runat="server" OnClick="btnSaveProgram_Click" />
+                           <td>
+                                <asp:Button ID="btnSelectProgram" class="btn btn-primary" Text="Select" runat="server" OnClick="btnSelectProgram_Click" />
                             </td>
                             
                         </tr>
-                        <tr>
+                          <tr>
                            <td>
-                                <asp:Button ID="btnSelectProgram" class="btn btn-primary" Text="Select" runat="server" OnClick="btnSelectProgram_Click" />
+                                <asp:Button ID="btnUnsave" class="btn btn-primary" Text="UnSave" runat="server" OnClick="btnUnSaveProgram_Click" />
                             </td>
                             
                         </tr>
