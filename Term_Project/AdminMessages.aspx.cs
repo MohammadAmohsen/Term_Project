@@ -18,12 +18,23 @@ namespace Term_Project.AdminAspx
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] != null)
+            if (!IsPostBack)
             {
-                Session["Tags"] = "Inbox";
+                if (Session["UserID"] == null)
+                {
+                     divContent.Visible = false;
+                    youShallNotPass.Visible = true;
+                }
+                else
+                {
+                     divContent.Visible = true;
+                    youShallNotPass.Visible = false;
+                    Session["Tags"] = "Inbox";
                 ViewInbox("Inbox");
                 tbEmail.Visible = false;
+                }
             }
+          
         }
 
         protected void gvEmails_SelectedIndexChanged(object sender, EventArgs e)
@@ -434,36 +445,7 @@ namespace Term_Project.AdminAspx
             }
         }
 
-        protected void btnBackToLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
-
-        protected void btnCreateWorkOut_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminAddWorkout.aspx");
-        }
-
-        protected void btnCreateAdmin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminSignUp.aspx");
-        }
-
-
-        protected void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Session["UserID"] = null;
-
-            Response.Redirect("LogIn.aspx");
-
-        }
-
-        protected void btnMessages_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("AdminMessages.aspx");
-
-        }
+       
         protected void btnSend_Click(object sender, EventArgs e)
         {
             Email newEmail = new Email();

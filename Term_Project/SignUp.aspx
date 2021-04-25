@@ -110,6 +110,23 @@
                     </div>
                     <br />
 
+                     <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="Address">Age</label>
+                            <asp:TextBox ID="txtAge" runat="server" CssClass="form-control" placeholder="26" type="number"></asp:TextBox>
+                            <div class="invalid-feedback">Your age is required!</div>
+                        </div>
+
+                         <div class="col-md-6 mb-3">
+                            <label for="Address">Your weight in pounds</label>
+                            <asp:TextBox ID="txtWeight" runat="server" CssClass="form-control" type="number" placeholder="123"></asp:TextBox>
+                            <div class="invalid-feedback">Your weight is required!</div>
+                        </div>
+
+                    </div>
+                    <br />
+
+
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="NewEmail">New Email</label>
@@ -218,24 +235,12 @@
                         <br />
 
                         <asp:RadioButtonList ID="rbAnswer" CssClass="radioButtonList" AutoPostback="true" runat="server" style="margin-left:300px;" RepeatDirection="Vertical" OnSelectedIndexChanged="rbAnswer_SelectedIndexChanged"  >
-                            <asp:ListItem Value="Yes" Selected="True">Yes</asp:ListItem>
-                            <asp:ListItem Value="No">No</asp:ListItem>
+                            <asp:ListItem Value="Yes">Yes</asp:ListItem>
+                            <asp:ListItem Value="No"  Selected="True">No</asp:ListItem>
                         </asp:RadioButtonList>
                     </div>
                     <hr />
 
-  <%--        ------------------------------------------  Weight Question-------------------------------------------------------%>
-
-                        <div class="row" runat="server" visible="false" id="Questions1">
-                            <div class="col mb-3">
-                                <asp:Label ID="LabelWeight" runat="server" Text="What is your current weight (lbs)?" ></asp:Label>
-
-                                <div class="col-md-6 mb-3">
-                                    <asp:Label ID="Label3" runat="server"  visible="false" AutoPostBack="true" Text="Text Can't Be Empty!" ForeColor="#CC0000"></asp:Label>
-                                    <asp:TextBox ID="txtWeight" style="margin-left:200px" runat="server" CssClass="form-control" placeholder="135"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
 
                         <%--        ------------------------------------------ Goal Question-------------------------------------------------------%>
 
@@ -269,21 +274,6 @@
 
                         </div>
 
-                        <%--                  ----------------------------------------  Age Question--%>
-
-                        <div class="row" runat="server" visible="false" id="Questions4">
-                            <div class="col">
-                                <asp:Label ID="lblAge" runat="server" Text="What is your current age?"></asp:Label>
-                                <br />
-
-                                <div class="col-md-6 mb-3" style="margin-left:200px">
-                                    <asp:Label ID="lblErrorAge" visible="false" runat="server" Text="Text Can't Be Empty!" ForeColor="#CC0000"></asp:Label>
-                                    <asp:TextBox ID="txtAge" runat="server" CssClass="form-control" type="number" placeholder="18"></asp:TextBox>
-                                </div>
-
-                            </div>
-                        </div>
-                            <br />
 
                         <%--                  ----------------------------------------  Type of Training Question--%>
                         <div class="row" runat="server" visible="false" id="Questions5">

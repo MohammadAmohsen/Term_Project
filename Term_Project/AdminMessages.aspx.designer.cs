@@ -24,6 +24,33 @@ namespace Term_Project.AdminAspx
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// youShallNotPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl youShallNotPass;
+
+        /// <summary>
+        /// LogoutNav2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Term_Project.LogoutNav LogoutNav2;
+
+        /// <summary>
+        /// divContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContent;
+
+        /// <summary>
         /// sideBar control.
         /// </summary>
         /// <remarks>
@@ -96,40 +123,13 @@ namespace Term_Project.AdminAspx
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navBar;
 
         /// <summary>
-        /// btnCreateAdmin control.
+        /// LogoutNav1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateAdmin;
-
-        /// <summary>
-        /// btnCreateProgram control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateProgram;
-
-        /// <summary>
-        /// btnLogOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogOut;
-
-        /// <summary>
-        /// btnMessages control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMessages;
+        protected global::Term_Project.LogoutNav LogoutNav1;
 
         /// <summary>
         /// lblName control.

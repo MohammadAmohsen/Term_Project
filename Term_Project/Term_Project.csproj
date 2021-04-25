@@ -403,10 +403,10 @@
     <Content Include="Web References\FitnessService\Program.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\FitnessService\Reference.map">
+    <None Include="Web References\FitnessService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web References\FitnessService\User.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>

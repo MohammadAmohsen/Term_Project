@@ -37,6 +37,17 @@
 <body>
 
     <form id="form1" runat="server">
+
+
+        <div id="youShallNotPass" runat="server" class="text-center">
+            <h2 class="text-center">You Must Log In To See This Site!</h2>
+            <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
+            <uc1:LogoutNav runat="server" ID="LogoutNav2" />
+
+        </div>
+
+            <div id="divContent" runat="server">
+
         <div class="d-flex" id="wrap">
         <div class="border-right" runat="server" id="sideBar">
             <div class="sidebar-heading text-center">
@@ -56,44 +67,38 @@
             </div>
         </div>
 
-            <div id="content">
                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-                    <a class="navbar-brand" href="#">Moe's Gym</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <a class="navbar-brand" href="#">Moe's Gym</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Explore.aspx">Explore</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Programs</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <%--          end nav bar--%>
-                            <div>
-                                <asp:Button ID="btnCreateAdmin" class="btn btn-info" runat="server" Text="Create Admin" OnClick="btnCreateAdmin_Click" />
-                                <asp:Button ID="btnCreateProgram" class="btn btn-info" runat="server" Text="Create Workout" OnClick="btnCreateWorkOut_Click" />
-                                <asp:Button ID="btnLogOut" class="btn btn-info" runat="server" Text="LogOut" OnClick="btnLogOut_Click" />
-                                <asp:Button ID="btnMessages" class="btn btn-info" runat="server" Text="Messages" OnClick="btnMessages_Click" />
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AdminPage.aspx">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminSignUp.aspx">Create an Admin!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions!</a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0" runat="server">
+                    <uc1:LogoutNav runat="server" ID="LogoutNav1" />
+                </div>
+            </div>
+      </nav>
 
-                            </div>
-
-                    </div>
-                </nav>
+        <br />
+        <br />
                 <br />
 
            <asp:Label ID="lblName" runat="server" Text="INBOX FOLDER" ></asp:Label>

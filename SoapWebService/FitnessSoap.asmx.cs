@@ -118,6 +118,18 @@ namespace SoapWebService
             VerifiedNumber.Direction = ParameterDirection.Input;
             sqlCommand.Parameters.Add(VerifiedNumber);
 
+            SqlParameter age = new SqlParameter("@Age", newUsers.userAge);
+            age.Direction = ParameterDirection.Input;
+            sqlCommand.Parameters.Add(age);
+
+            SqlParameter weight = new SqlParameter("@Weight", newUsers.userWeight);
+            weight.Direction = ParameterDirection.Input;
+            sqlCommand.Parameters.Add(weight);
+
+            SqlParameter date = new SqlParameter("@DayWorkoutSelected", newUsers.DateCreated);
+            date.Direction = ParameterDirection.Input;
+            sqlCommand.Parameters.Add(date);
+
 
             int ret = db.DoUpdateUsingCmdObj(sqlCommand);
 

@@ -35,25 +35,61 @@
     <!--===============================================================================================-->
 </head>
 <body>
+    <form id="form2" runat="server">
+
     <div id="youShallNotPass" runat="server" class="text-center">
-        <h2 class="text-center">You Must Log In To See This Site!</h2>
-        <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
-        <form runat="server">
-            <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" Style="margin-top: 100px;" />
-        </form>
-    </div>
+    <h2 class="text-center">You Must Log In To See This Site!</h2>
+    <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;"/>
+                            <uc1:LogoutNav runat="server" ID="LogoutNav2" />
 
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="headerNav" runat="server">
-            <a class="navbar-brand" href="Default.aspx">Moe's Fitness - Admin</a>
-        </nav>
+        </div>
+
+    <%--    nav bar start--%>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
+            <a class="navbar-brand" href="#">Moe's Gym</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AdminPage.aspx">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminSignUp.aspx">Create an Admin!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions!</a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0" runat="server">
+                    <uc1:LogoutNav runat="server" ID="LogoutNav1" />
+                </div>
+            </div>
+      </nav>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 
 
-
-    </header>
+        <%--          end nav bar--%>
     <div class="container-login100" style="background-image: url('images2/background3.jpg');" id="contentID" runat="server">
 
-        <form id="form1" runat="server" class="form-signin text-center">
+        <div id="form1" runat="server" class="form-signin text-center">
             <div id="userInput" class="d-flex justify-content-center text-center">
             <div class="card" id="cardSize" runat="server" style="width: 50rem; height: auto;">
                 <div class="container">
@@ -234,8 +270,8 @@
                 </div>
             </div>
         </div>
-    </form>
+    </div>
      </div>
-
+</form>
 </body>
 </html>

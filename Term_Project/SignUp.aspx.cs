@@ -48,6 +48,8 @@ namespace Term_Project
             string securityQuestion1 = ddlSQ1.SelectedValue;
             string securityQuestion2 = ddlSQ2.SelectedValue;
             string securityQuestion3 = ddlSQ3.SelectedValue;
+            string Weighttxt = txtWeight.Text;
+            string Agetxt = txtAge.Text;
             string SQ1 = ddlSQ1.SelectedValue;
             string SQ2 = ddlSQ2.SelectedValue;
             string SQ3 = ddlSQ3.SelectedValue;
@@ -70,6 +72,8 @@ namespace Term_Project
             CheckList.Add(securityQuestion3);
             CheckList.Add(pass);
             CheckList.Add(pass2);
+            CheckList.Add(Weighttxt);
+            CheckList.Add(Agetxt);
 
             for (int i = 0; i < CheckList.Count; i++)
             {
@@ -81,14 +85,12 @@ namespace Term_Project
             }
 
             //If checks pass, if passwords are equal, if the security questions selected aren't equal
-            if (check == 15)
+            if (check == 17)
             {
                 if (pass == pass2)
                 {
                     if (SQ1 != SQ2 && SQ1 != SQ3 && SQ2 != SQ3)
                     {
-
-
                         lblPassError.Visible = false;
                         lblPassError1.Visible = false;
                         lblPassword.Visible = true;
@@ -133,6 +135,8 @@ namespace Term_Project
                             newUsers.Experience = ddlImage.SelectedValue;
                             newUsers.UserImage = ddlImage.SelectedValue;
                             newUsers.DateCreated = DateTime.Now.ToString();
+                            newUsers.userWeight = Convert.ToInt32(txtWeight.Text);
+                            newUsers.userAge = Convert.ToInt32(txtAge.Text);
                             user.BinaryPassword = txtPassword.Text;
                             user.BinaryAddress = txtBillingAddress.Text;
 
@@ -217,66 +221,11 @@ namespace Term_Project
 
                                 if (rbAnswer.Text == "Yes")
                                 {
-                                    List<String> CheckList2 = new List<String>();
-
-                                    int weight = Convert.ToInt32(txtWeight.Text);
-                                    string goals = ddlGoals.SelectedValue;
-                                    string days = ddlDays.SelectedValue;
-                                    int age = Convert.ToInt32(txtAge.Text);
-                                    string training = ddlTraining.SelectedValue;
-
-                                    //Validation checks
-                                    int check2 = 0;
-                                    CheckList2.Add(weight.ToString());
-                                    CheckList2.Add(goals);
-                                    CheckList2.Add(days);
-                                    CheckList2.Add(age.ToString());
-                                    CheckList2.Add(training);
-
-
-                                    for (int i = 0; i < CheckList2.Count; i++)
-                                    {
-                                        if (CheckList2[i] != "")
-                                        {
-                                            check2 = check2 + 1;
-                                        }
-
-                                    }
-                                    if (check2 == 5)
-                                    {
+                              
                                         //Adds values to class object
-                                        newUsers.userWeight = Convert.ToInt32(txtWeight.Text);
                                         newUsers.UserGoals = ddlGoals.SelectedValue;
                                         newUsers.amountOfDays = ddlDays.SelectedValue;
-                                        newUsers.userAge = Convert.ToInt32(txtAge.Text);
                                         newUsers.userTrainingType = ddlTraining.SelectedValue;
-
-                                        //Adds questions to user
-                                        SqlCommand sqlCommand2 = new SqlCommand();
-
-
-                                        sqlCommand2.CommandType = CommandType.StoredProcedure;
-                                        sqlCommand2.CommandText = "TP_UpdateUsersQuestions";
-
-                                        SqlParameter Training = new SqlParameter("@Training", newUsers.userTrainingType);
-                                        Training.Direction = ParameterDirection.Input;
-                                        sqlCommand2.Parameters.Add(Training);
-
-                                        SqlParameter Weight = new SqlParameter("@Weight", newUsers.userWeight);
-                                        Weight.Direction = ParameterDirection.Input;
-                                        sqlCommand2.Parameters.Add(Weight);
-
-                                        SqlParameter Goals = new SqlParameter("@Goals", newUsers.UserGoals);
-                                        Goals.Direction = ParameterDirection.Input;
-                                        sqlCommand2.Parameters.Add(Goals);
-
-                                        SqlParameter Age = new SqlParameter("@Age", newUsers.userAge);
-                                        Age.Direction = ParameterDirection.Input;
-                                        sqlCommand2.Parameters.Add(Age);
-
-                                        SqlParameter DaysOfWeek = new SqlParameter("@DaysOfWeek", newUsers.amountOfDays);
-                                        DaysOfWeek.Direction = ParameterDirection.Input;
-                                        sqlCommand2.Parameters.Add(DaysOfWeek);
 
 
                                         //Gets most recent userID
@@ -295,6 +244,27 @@ namespace Term_Project
 
                                         int userID = Convert.ToInt32(ds3.Tables[0].Rows[0]["UserID"]);
 
+                                        //Adds questions to user
+                                        SqlCommand sqlCommand2 = new SqlCommand();
+
+
+                                        sqlCommand2.CommandType = CommandType.StoredProcedure;
+                                        sqlCommand2.CommandText = "TP_UpdateUsersQuestions";
+
+                                        SqlParameter Training = new SqlParameter("@Training", newUsers.userTrainingType);
+                                        Training.Direction = ParameterDirection.Input;
+                                        sqlCommand2.Parameters.Add(Training);
+
+
+                                        SqlParameter Goals = new SqlParameter("@Goals", newUsers.UserGoals);
+                                        Goals.Direction = ParameterDirection.Input;
+                                        sqlCommand2.Parameters.Add(Goals);
+
+                                        SqlParameter DaysOfWeek = new SqlParameter("@DaysOfWeek", newUsers.amountOfDays);
+                                        DaysOfWeek.Direction = ParameterDirection.Input;
+                                        sqlCommand2.Parameters.Add(DaysOfWeek);
+
+
                                         SqlParameter UserID = new SqlParameter("@UserID", userID);
                                         UserID.Direction = ParameterDirection.Input;
                                         sqlCommand2.Parameters.Add(UserID);
@@ -302,51 +272,101 @@ namespace Term_Project
                                         //Adds questions to user
                                         db.DoUpdateUsingCmdObj(sqlCommand2);
 
+                                    SqlCommand sqlCommand9 = new SqlCommand();
 
-                                        Response.Redirect("LogIn.aspx");
 
-                                    }
-                                    else
-                                    {
-                                        Response.Write("<script>alert('Please Fill Out All The Questions') </script>");
+                                    sqlCommand9.CommandType = CommandType.StoredProcedure;
+                                    sqlCommand9.CommandText = "TP_UpdateUserAssistance";
 
-                                    }
+                                    SqlParameter Yes = new SqlParameter("@Answer", "Yes");
+                                    Yes.Direction = ParameterDirection.Input;
+                                    sqlCommand9.Parameters.Add(Yes);
+
+                                    SqlParameter UserID7 = new SqlParameter("@ID", userID);
+                                    UserID7.Direction = ParameterDirection.Input;
+                                    sqlCommand9.Parameters.Add(UserID7);
+
+                                    db.DoUpdateUsingCmdObj(sqlCommand9);
+
+
+                                    Response.Redirect("LogIn.aspx");
+
+                                    
                                 }
-
-
                                 else
                                 {
+                                    //Gets most recent userID
+                                    SqlCommand sqlCommand4 = new SqlCommand();
+
+
+                                    sqlCommand4.CommandType = CommandType.StoredProcedure;
+                                    sqlCommand4.CommandText = "TP_UserIdFromUsersCreateAccountPage";
+
+                                    SqlParameter email = new SqlParameter("@EmailAddress", newUsers.EmailAddress);
+                                    email.Direction = ParameterDirection.Input;
+                                    sqlCommand4.Parameters.Add(email);
+
+
+                                    DataSet ds3 = db.GetDataSetUsingCmdObj(sqlCommand4);
+
+                                    int userID = Convert.ToInt32(ds3.Tables[0].Rows[0]["UserID"]);
+
+                                    SqlCommand sqlCommand9A = new SqlCommand();
+
+
+                                    sqlCommand9A.CommandType = CommandType.StoredProcedure;
+                                    sqlCommand9A.CommandText = "TP_UpdateUserAssistance";
+
+                                    SqlParameter No = new SqlParameter("@Answer", "No");
+                                    No.Direction = ParameterDirection.Input;
+                                    sqlCommand9A.Parameters.Add(No);
+
+                                    SqlParameter UserID7 = new SqlParameter("@ID", userID);
+                                    UserID7.Direction = ParameterDirection.Input;
+                                    sqlCommand9A.Parameters.Add(UserID7);
+
+
+                                    db.DoUpdateUsingCmdObj(sqlCommand9A);
                                     Response.Redirect("LogIn.aspx");
                                 }
 
                             }
-
                             else
                             {
-                                Response.Write("<script>alert('The EmailAddress is already taken! Please Try Again!') </script>");
+                                Response.Write("<script>alert('There has been an error. Please try again.') </script>");
                             }
+
+
                         }
                         else
                         {
-                            Response.Write("<script>alert('Please Select Different Security Questions') </script>");
+                            Response.Write("<script>alert('The EmailAddress is already taken! Please Try Again!') </script>");
                         }
-
+                        
                     }
                     else
                     {
-                        lblPassError.Visible = true;
-                        lblPassError1.Visible = true;
-                        lblPassword.Visible = false;
-                        lblPassword1.Visible = false;
-
+                        Response.Write("<script>alert('Please Select Different Security Questions') </script>");
                     }
+
+                    
                 }
                 else
                 {
-                    Response.Write("<script>alert('Every Field Is Needed To Make An Account Dummy!') </script>");
-                }
+                    lblPassError.Visible = true;
+                    lblPassError1.Visible = true;
+                    lblPassword.Visible = false;
+                    lblPassword1.Visible = false;
 
+                }
+                
             }
+            else
+            {
+                Response.Write("<script>alert('Every Field Is Needed To Make An Account Dummy!') </script>");
+            }
+
+            
         }
         protected void btnBackToSign_Click(object sender, EventArgs e)
         {
@@ -394,10 +414,8 @@ namespace Term_Project
 
         public void ShowQuestion(Boolean boo)
         {
-            Questions1.Visible = boo;
             Questions2.Visible = boo;
             Questions3.Visible = boo;
-            Questions4.Visible = boo;
             Questions5.Visible = boo;
 
         }

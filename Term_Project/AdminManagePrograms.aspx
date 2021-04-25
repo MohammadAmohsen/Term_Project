@@ -53,7 +53,7 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="AdminPage.aspx">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="AdminSignUp.aspx">Create an Admin!</a>
@@ -86,14 +86,7 @@
 
 
 <%--          end nav bar--%>
-        <div>
-            <asp:Button ID="btnCreateAdmin" class="btn btn-info" runat="server" Text="Create Admin" OnClick="btnCreateAdmin_Click" />
-            <asp:Button ID="btnCreateProgram" class="btn btn-info" runat="server" Text="Create Workout" OnClick="btnCreateWorkOut_Click"  />
-            <asp:Button ID="btnLogOut" class="btn btn-info" runat="server" Text="LogOut" OnClick="btnLogOut_Click" />
-            <asp:Button ID="btnMessages" class="btn btn-info" runat="server" Text="Messages" OnClick="btnMessages_Click" />
-
-        </div>
-      </nav>
+      
 
         <br />
         <br />

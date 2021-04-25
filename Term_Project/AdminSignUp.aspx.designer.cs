@@ -15,6 +15,15 @@ namespace Term_Project
     {
 
         /// <summary>
+        /// form2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+
+        /// <summary>
         /// youShallNotPass control.
         /// </summary>
         /// <remarks>
@@ -24,22 +33,31 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl youShallNotPass;
 
         /// <summary>
-        /// btnBackToLogin control.
+        /// LogoutNav2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBackToLogin;
+        protected global::Term_Project.LogoutNav LogoutNav2;
 
         /// <summary>
-        /// headerNav control.
+        /// navBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl headerNav;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navBar;
+
+        /// <summary>
+        /// LogoutNav1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Term_Project.LogoutNav LogoutNav1;
 
         /// <summary>
         /// contentID control.
@@ -57,7 +75,7 @@ namespace Term_Project
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form1;
 
         /// <summary>
         /// cardSize control.

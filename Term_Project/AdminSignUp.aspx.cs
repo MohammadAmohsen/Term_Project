@@ -26,13 +26,13 @@ namespace Term_Project
             {
                 if (Session["UserID"] == null)
                 {
-                    headerNav.Visible = false;
+                    navBar.Visible = false;
                     contentID.Visible = false;
                     youShallNotPass.Visible = true;
                 }
                 else
                 {
-                    headerNav.Visible = true;
+                    navBar.Visible = true;
                     contentID.Visible = true;
                     youShallNotPass.Visible = false;
                 }
@@ -245,10 +245,7 @@ namespace Term_Project
 
         }
 
-        protected void btnBackToLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LogIn.aspx");
-        }
+
 
         protected void ddlImage_SelectedIndexChanged(object sender, EventArgs e)
         {
