@@ -27,7 +27,7 @@ namespace Term_Project
                     youShallNotPass.Visible = true;
                     navBar.Visible = false;
                 }
-                else if(Session["Assistance"].ToString() == "Yes")
+                else if (Session["Assistance"].ToString() == "Yes")
                 {
                     Response.Redirect("UserFilteredWorkouts.aspx");
 
@@ -41,9 +41,20 @@ namespace Term_Project
                     ContentID.Visible = true;
                     youShallNotPass.Visible = false;
                     SavedWorkouts();
-                    DisplayTime();
-                    lblCurrentWeight.Text = Session["UserWeight"].ToString() + "lbs";
-                    lblGoals.Text = Session["UserGoals"].ToString();
+                    if (Convert.ToInt32(Session["ProgramID"]) == 32)
+                    {
+                        DateStampLabel.Text = "No Workout Program Selected!";
+                        lblGoals.Text = Session["UserGoals"].ToString();
+                        lblCurrentWeight.Text = Session["UserWeight"].ToString() + "lbs";
+                        lblDaysLeft.Text = "N/A";
+                    }
+                    else
+                    {
+                        DisplayTime();
+                        lblCurrentWeight.Text = Session["UserWeight"].ToString() + "lbs";
+                        lblGoals.Text = Session["UserGoals"].ToString();
+                    }
+
                     //DailyWorkout();
                 }
 
@@ -76,10 +87,10 @@ namespace Term_Project
 
             DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
             int ProgramID = Convert.ToInt32(mydata.Tables[0].Rows[0]["ProgramID"]);
-          
+
 
             double LengthOfProgram = GetLengthOfProgram(ProgramID);
-          
+
             DateTime dateSelected = GetDate();
 
             /*Date When User finished program */
@@ -134,7 +145,7 @@ namespace Term_Project
             DataSet mydata = db.GetDataSetUsingCmdObj(objCommand);
             string programName = mydata.Tables[0].Rows[0]["ProgramName"].ToString();
 
-       
+
         }
 
         public DateTime GetDate()
@@ -250,4 +261,3 @@ namespace Term_Project
         //}
     }
 }
-   

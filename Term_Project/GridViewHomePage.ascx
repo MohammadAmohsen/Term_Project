@@ -16,7 +16,7 @@
                 <asp:BoundField DataField="Reps" HeaderText="Reps: " />
             </Columns>
         </asp:GridView>
-        <a target="_blank" rel="nofollow" href="https://undraw.co/">See previous workouts &rarr;</a>
+        <a target="_blank" rel="nofollow" href="MyProgram.aspx">See your entire workout! &rarr;</a>
     </div>
     <asp:Label ID="lblRestDay" Visible="false" runat="server" Text="Rest Day"></asp:Label>
 </div>

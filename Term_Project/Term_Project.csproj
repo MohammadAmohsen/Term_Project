@@ -132,6 +132,7 @@
     <Content Include="Css\SignUpCSS.css" />
     <Content Include="Css\StyleSheet1.css" />
     <Content Include="Explore2.aspx" />
+    <Content Include="Images2\beginnerStock.jpg" />
     <Content Include="UserFilteredWorkouts.aspx" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />

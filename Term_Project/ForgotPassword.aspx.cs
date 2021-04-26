@@ -149,6 +149,10 @@ namespace Term_Project
             txtEmail.Text = "";
             txtSQ.Text = "";
         }
+        protected void btnBackToLogIn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LogIn.aspx");
+        }
 
         protected void btnBack2_Click(object sender, EventArgs e)
         {

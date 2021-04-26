@@ -38,9 +38,8 @@
     <div id="youShallNotPass" runat="server" class="text-center">
         <h2 class="text-center">You Must Log In To See This Site!</h2>
         <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
-        <form runat="server">
-            <asp:Button ID="btnBackToLogin" class="btn btn-primary" runat="server" Text="BackToLogin" OnClick="btnBackToLogin_Click" Style="margin-top: 100px;" />
-        </form>
+                             <uc1:logoutnav runat="server" id="LogoutNav1" />
+
     </div>
     <form id="form1" runat="server">
         <div class="d-flex" id="wrap">

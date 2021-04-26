@@ -54,7 +54,7 @@
                         <br />
 
                         <div class="col-md-8 mb-3" id="Heading">
-                            <h4 class="mb-3">Create Your Very Own Account!</h4>
+                            <h4 class="mb-3">Create An Account</h4>
                         </div>
                     </div>
                     <br />
@@ -68,8 +68,8 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="Avatar">What is your experience level?</label><br />
-                            <asp:Image ID="profilePicture" runat="server" ImageUrl="../Images2/beginner.png" Width="110" Height="110" class="rounded" />
-                            <asp:DropDownList ID="ddlImage" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlImage_SelectedIndexChanged"  >
+                            <asp:Image ID="profilePicture" runat="server" ImageUrl="../Images2/beginnerStock.jpg" Width="110" Height="110" class="rounded" />
+                            <asp:DropDownList ID="ddlImage" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlImage_SelectedIndexChanged"  >
                                 <asp:ListItem Selected="True" Value="Beginner">Beginner</asp:ListItem>
                                 <asp:ListItem Value="Intermediate">Intermediate</asp:ListItem>
                                 <asp:ListItem Value="Advanced">Advanced</asp:ListItem>
@@ -166,7 +166,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="SQ1" runat="server" Text="Security Question 1"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ1" runat="server" >
+                                 <asp:DropDownList ID="ddlSQ1" runat="server" CssClass="form-control" >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -188,7 +188,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="lblSQ2" runat="server" Text="Security Question 2"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ2" runat="server"  >
+                                 <asp:DropDownList ID="ddlSQ2" runat="server" CssClass="form-control"  >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -211,7 +211,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="lblSQ3" runat="server" Text="Security Question 3"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ3" runat="server"  >
+                                 <asp:DropDownList ID="ddlSQ3" runat="server" CssClass="form-control" >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -234,7 +234,7 @@
                         <label for="UserType">Would you like our assistance in finding you the best possible workout?</label>
                         <br />
 
-                        <asp:RadioButtonList ID="rbAnswer" CssClass="radioButtonList" AutoPostback="true" runat="server" style="margin-left:300px;" RepeatDirection="Vertical" OnSelectedIndexChanged="rbAnswer_SelectedIndexChanged"  >
+                        <asp:RadioButtonList ID="rbAnswer" CssClass="radioButtonList" AutoPostback="true" runat="server" style="margin-left:300px;"  RepeatDirection="Vertical" OnSelectedIndexChanged="rbAnswer_SelectedIndexChanged"  >
                             <asp:ListItem Value="Yes">Yes</asp:ListItem>
                             <asp:ListItem Value="No"  Selected="True">No</asp:ListItem>
                         </asp:RadioButtonList>
@@ -248,7 +248,7 @@
                             <div class="col mb-3">
                                 <asp:Label ID="LabelGoals" runat="server"  Text="What are your fitness goals"></asp:Label>
 
-                                <asp:DropDownList ID="ddlGoals" runat="server" AutoPostBack="true"  >
+                                <asp:DropDownList ID="ddlGoals" runat="server" CssClass="form-control" AutoPostBack="true"  >
                                     <asp:ListItem Selected="True">Gain Weight?</asp:ListItem>
                                     <asp:ListItem>Lose Weight</asp:ListItem>
                                     <asp:ListItem>Maintain Weight</asp:ListItem>
@@ -264,7 +264,7 @@
                         <div class="row" runat="server" visible="false" id="Questions3">
                             <div class="col mb-3 ">
                                 <asp:Label ID="DaysAWeekProgram" runat="server" Text="How many days a week would you look your program to be?"></asp:Label>
-                                <asp:DropDownList ID="ddlDays" runat="server" AutoPostBack="true">
+                                <asp:DropDownList ID="ddlDays" runat="server" CssClass="form-control" AutoPostBack="true">
                                     <asp:ListItem Selected="True">3</asp:ListItem>
                                     <asp:ListItem>4-5</asp:ListItem>
                                     <asp:ListItem>6-7</asp:ListItem>
@@ -279,7 +279,7 @@
                         <div class="row" runat="server" visible="false" id="Questions5">
                             <div class="col mb-3">
                                 <asp:Label ID="lblTypeOfTraining" runat="server" Text="Type of Training?"></asp:Label>
-                                <asp:DropDownList ID="ddlTraining" runat="server" AutoPostBack="true" >
+                                <asp:DropDownList ID="ddlTraining" runat="server" CssClass="form-control" AutoPostBack="true" >
                                     <asp:ListItem Selected="True">Hypertrophy (High Repitions)</asp:ListItem>
                                     <asp:ListItem>Strength (Lower Repitions)</asp:ListItem>
                                     <asp:ListItem>Both</asp:ListItem>
@@ -292,8 +292,9 @@
                         <%--                  ----------------------------------------  Buttons for account of create --%>
 
 
-                    <asp:Button ID="btnCreate" runat="server" class="btn btn-md btn-primary btn-block" type="submit" Text="Create Your Account!" OnClick="btnCreate_Click1" />
-                    <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Sign-In Instead" OnClick="btnBackToSign_Click" />
+                    <asp:Button ID="btnCreate" runat="server" class="btn btn-md btn-primary mb-3" type="submit" Text="Create Your Account!" OnClick="btnCreate_Click1" />
+                    <asp:Button ID="btnBack" class="btn btn-md btn-light mb-3" runat="server" Text="Sign-In Instead" OnClick="btnBackToSign_Click" />
+                    <br />
 
                 </div>
             </div>

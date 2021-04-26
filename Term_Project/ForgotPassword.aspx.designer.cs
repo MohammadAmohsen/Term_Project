@@ -24,6 +24,15 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl headerNav;
 
         /// <summary>
+        /// lblEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEmail;
+
+        /// <summary>
         /// lblEmail2 control.
         /// </summary>
         /// <remarks>
@@ -184,5 +193,14 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack2;
+
+        /// <summary>
+        /// btnBackToLogIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBackToLogIn;
     }
 }

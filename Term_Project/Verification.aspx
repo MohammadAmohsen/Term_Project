@@ -35,43 +35,43 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top " runat="server" id="headerNav">
+         <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top " runat="server" id="headerNav">
             <a class="navbar-brand" href="Default.aspx">Moe's Fitness</a>
         </nav>
     </header>
 
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images2/background3.jpg');">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" runat="server">
-					<img id="imgLogo"  src="Images2/Logo.PNG" /> 
+		    <div class="text-center mb-4">
+				<form class="form-sigin" runat="server">
+					<img id="imgLogo" class="img-responsive center-block"  src="Images2/Asset_4.png" width="130" height="130" style="margin-right:100px;" /> 
 
-					<span class="login100-form-title p-b-34 p-t-27">
-						Verify Your Account!
-					</span>
+                    <h1 class="h3 mt-2 mb-1 font-weight-normal">Verify Your Account</h1>
+                    <br/>
 
                     <asp:HiddenField ID="hdn" runat="server" value="" />
                      <asp:HiddenField ID="hdn2" runat="server" value="" />
 
 					<div class="container">
-                    <asp:Label ID="lblEmail2" runat="server" Text="Enter Email" style="margin-left:40px;"></asp:Label>
+                    <asp:Label ID="lblEmail2" runat="server" Text="Enter Email"></asp:Label>
                     <asp:Label ID="lblinputEmailError" Visible="false" runat="server" Text="Please input a valid Email Address" ForeColor="Red"></asp:Label>
-                    <asp:TextBox class="input100"  runat="server" ID="txtEmail" name="pass" placeholder="Email Address" ClientIDMode="Static"></asp:TextBox>
-                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    <asp:TextBox class="form-control"  runat="server" ID="txtEmail" name="pass" placeholder="Email Address" ClientIDMode="Static"></asp:TextBox>
 						</div>
+                                        <br/>
+
+
 
 
 					<div class="container">
-                    <asp:Label ID="lblVerification" Visible="false" runat="server" style="margin-left:40px;"></asp:Label>
+                    <asp:Label ID="lblVerification" Visible="false" runat="server"></asp:Label>
                     <asp:Label ID="lblInputPassError" Visible="false" runat="server" Text="Please input a valid code" ForeColor="Red"></asp:Label>
-                    <asp:TextBox class="input100" Visible="false" runat="server" ID="txtVerification" name="pass" placeholder="number"></asp:TextBox>
-                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    <asp:TextBox class="form-control" Visible="false" runat="server" ID="txtVerification" name="pass" placeholder="number"></asp:TextBox>
 						</div>
 
-                    <div class="container-login100-form-btn">
-                        <asp:Button ID="btnContinue" runat="server" class="login100-form-btn" Text="Continue" OnClick="btnContinue_Click" />
+                    <div class="d-inline bg-danger-primary text-white">
+                        <asp:Button ID="btnContinue" runat="server" class="btn btn-md btn-primary" Text="Continue" OnClick="btnContinue_Click" />
 						 <input type="button" value="HTML Continue" runat="server" id="btnHtmlContinue" onclick="btnHtmlContinue_Click()" />
-                    </div>
+                                        </div>
                     <%--<div class="container-login100-form-btn">
                         <asp:Button ID="btnSignIn" runat="server" Visible="false" class="login100-form-btn" Text="Sign-In" OnClick="btnSignIn_Click" />
                     </div>--%>
@@ -80,9 +80,11 @@
                         <a class="txt1" id="btnBackToHome2" runat="server" href="LogIn.aspx">Back To Sign-In</a>
                     </div>
 
-                    <div class="container-login100-form-btn">
-                        <asp:Button ID="btnBack" runat="server" class="login100-form-btn" Text="Back" OnClick="btnBack_Click" Visible="false"/>
+                    <div class="d-inline bg-danger-primary text-white">
+                        <asp:Button ID="btnBack" runat="server" class="btn btn-md btn-primary" Text="Back" OnClick="btnBack_Click" Visible="false"/>
                     </div>
+
+
 
                 </form>
 			</div>
