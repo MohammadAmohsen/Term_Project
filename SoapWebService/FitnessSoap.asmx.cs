@@ -35,9 +35,6 @@ namespace SoapWebService
         {
             SqlCommand sqlCommand = new SqlCommand();
 
-            var rand = new Random();
-            int num = rand.Next(1000, 10000);
-
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandText = "TP_InsertUser";
 
@@ -114,7 +111,7 @@ namespace SoapWebService
             Verified.Direction = ParameterDirection.Input;
             sqlCommand.Parameters.Add(Verified);
 
-            SqlParameter VerifiedNumber = new SqlParameter("@VerifiedNumber", num);
+            SqlParameter VerifiedNumber = new SqlParameter("@VerifiedNumber", newUsers.Code);
             VerifiedNumber.Direction = ParameterDirection.Input;
             sqlCommand.Parameters.Add(VerifiedNumber);
 

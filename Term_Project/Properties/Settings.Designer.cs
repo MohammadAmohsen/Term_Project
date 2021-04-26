@@ -26,7 +26,8 @@ namespace Term_Project.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44370/FitnessSoap.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://cis-iis2.temple.edu/spring2021/CIS3342_tui34800/TermProject/fitnesssoap.as" +
+            "mx")]
         public string Term_Project_FitnessService_FitnessSoap {
             get {
                 return ((string)(this["Term_Project_FitnessService_FitnessSoap"]));

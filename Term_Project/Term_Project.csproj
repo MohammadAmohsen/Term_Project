@@ -203,7 +203,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Verification.aspx" />
-    <None Include="Web References\FitnessService\FitnessSoap.disco" />
+    <None Include="Web References\FitnessService\fitnesssoap.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -408,14 +408,14 @@
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
-    <None Include="Web References\FitnessService\FitnessSoap.wsdl" />
+    <None Include="Web References\FitnessService\fitnesssoap.wsdl" />
     <Content Include="Web References\FitnessService\Program.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <None Include="Web References\FitnessService\Reference.map">
+    <Content Include="Web References\FitnessService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <Content Include="Web References\FitnessService\User.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -442,10 +442,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://localhost:44370/FitnessSoap.asmx">
+    <WebReferenceUrl Include="http://cis-iis2.temple.edu/spring2021/CIS3342_tui34800/TermProject/fitnesssoap.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\FitnessService\</RelPath>
-      <UpdateFromURL>https://localhost:44370/FitnessSoap.asmx</UpdateFromURL>
+      <UpdateFromURL>http://cis-iis2.temple.edu/spring2021/CIS3342_tui34800/TermProject/fitnesssoap.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

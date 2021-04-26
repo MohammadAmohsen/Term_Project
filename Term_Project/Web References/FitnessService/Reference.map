@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="https://localhost:44370/FitnessSoap.asmx?disco" filename="FitnessSoap.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://localhost:44370/FitnessSoap.asmx?wsdl" filename="FitnessSoap.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://cis-iis2.temple.edu/spring2021/CIS3342_tui34800/TermProject/fitnesssoap.asmx?disco" filename="fitnesssoap.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://cis-iis2.temple.edu/spring2021/CIS3342_tui34800/TermProject/fitnesssoap.asmx?wsdl" filename="fitnesssoap.wsdl" />
   </Results>
 </DiscoveryClientResultsFile>

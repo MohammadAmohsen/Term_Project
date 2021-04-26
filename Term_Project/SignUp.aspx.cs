@@ -117,6 +117,8 @@ namespace Term_Project
                             ArrayList binaryArray = new ArrayList();
                             Users user = new Users();
 
+                            var rand = new Random();
+                            int num = rand.Next(1000, 10000);
                             //Assigns values to class object
                             String password = txtPassword.Text;
                             newUsers.FirstName = firstName;
@@ -139,7 +141,7 @@ namespace Term_Project
                             newUsers.userAge = Convert.ToInt32(txtAge.Text);
                             user.BinaryPassword = txtPassword.Text;
                             user.BinaryAddress = txtBillingAddress.Text;
-
+                            newUsers.Code = num;
                             //Executes soap, creates user
                             Boolean test = pxy.AddUser(newUsers);
 
@@ -288,6 +290,7 @@ namespace Term_Project
 
                                   int ret2 =  db.DoUpdateUsingCmdObj(sqlCommand9);
 
+                                    sendMessage(newUsers.EmailAddress, newUsers.Code);
 
                                     Response.Redirect("LogIn.aspx");
 
@@ -327,6 +330,9 @@ namespace Term_Project
 
 
                                     db.DoUpdateUsingCmdObj(sqlCommand9A);
+
+                                    sendMessage(newUsers.EmailAddress, newUsers.Code);
+
                                     Response.Redirect("LogIn.aspx");
                                 }
 
@@ -422,32 +428,7 @@ namespace Term_Project
 
         public void sendMessage(string emailAddress, int num)
         {
-            /*
-            MailAddress to = new MailAddress(emailAddress);
-            MailAddress from = new MailAddress("tui34800@temple.edu");
-
-            MailMessage message = new MailMessage(from, to);
-            message.Subject = "Moe's Fitness Account Creations";
-            message.Body = "Thank you so much for signing up to Moe's Fitness. Please Verify your account to get access to our wonderful application!" +
-                " Here's your verification code: " + num;
-
-
-            SmtpClient client = new SmtpClient("smtp.temple.address", 25)
-            {
-                Credentials = new NetworkCredential("do-not-reply@temple.edu", "password"),
-                EnableSsl = true,
-                UseDefaultCredentials = false
-            };
-
-            try
-            {
-                client.Send(message);
-            }
-            catch (SmtpException ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            */
+                       
             Emails objEmail = new Emails();
             String strTO = emailAddress;
             String strFROM = "tui34800@temple.edu";

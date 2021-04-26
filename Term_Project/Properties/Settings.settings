@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Term_Project_FitnessService_FitnessSoap" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://localhost:44370/FitnessSoap.asmx</Value>
+      <Value Profile="(Default)">http://cis-iis2.temple.edu/spring2021/CIS3342_tui34800/TermProject/fitnesssoap.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

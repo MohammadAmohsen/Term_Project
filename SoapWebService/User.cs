@@ -30,6 +30,7 @@ namespace SoapWebService
         private String UserTrainingType;
         private String userGoals;
         private String ProgramName;
+        private int code;
 
         public String programName
         {
@@ -51,7 +52,11 @@ namespace SoapWebService
             set { UserWeight = value; }
         }
 
-
+        public int Code
+        {
+            get { return code; }
+            set { code = value; }
+        }
 
         public int userAge
         {

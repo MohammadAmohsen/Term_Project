@@ -379,6 +379,8 @@ namespace Term_Project.FitnessService {
         
         private int userWeightField;
         
+        private int codeField;
+        
         private int userAgeField;
         
         private string amountOfDaysField;
@@ -444,6 +446,16 @@ namespace Term_Project.FitnessService {
             }
             set {
                 this.userWeightField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
             }
         }
         
