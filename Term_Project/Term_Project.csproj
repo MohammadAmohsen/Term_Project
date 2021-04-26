@@ -124,7 +124,7 @@
   <ItemGroup>
     <Content Include="AdminAddWorkout.aspx" />
     <Content Include="AdminManagePrograms.aspx" />
-    <Content Include="AdminMessages.aspx" />
+    <Content Include="AdminMessage.aspx" />
     <Content Include="AdminPage.aspx" />
     <Content Include="AdminSignUp.aspx" />
     <Content Include="Css\EmailCSS.css" />
@@ -132,7 +132,8 @@
     <Content Include="Css\SignUpCSS.css" />
     <Content Include="Css\StyleSheet1.css" />
     <Content Include="Explore2.aspx" />
-    <Content Include="Images2\beginnerStock.jpg" />
+    <Content Include="Images2\beginnerStock.png" />
+    <Content Include="MyProfilePage.aspx" />
     <Content Include="UserFilteredWorkouts.aspx" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -220,12 +221,12 @@
     <Compile Include="AdminManagePrograms.aspx.designer.cs">
       <DependentUpon>AdminManagePrograms.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminMessages.aspx.cs">
-      <DependentUpon>AdminMessages.aspx</DependentUpon>
+    <Compile Include="AdminMessage.aspx.cs">
+      <DependentUpon>AdminMessage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminMessages.aspx.designer.cs">
-      <DependentUpon>AdminMessages.aspx</DependentUpon>
+    <Compile Include="AdminMessage.aspx.designer.cs">
+      <DependentUpon>AdminMessage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPage.aspx.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
@@ -247,6 +248,13 @@
     </Compile>
     <Compile Include="Explore2.aspx.designer.cs">
       <DependentUpon>Explore2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyProfilePage.aspx.cs">
+      <DependentUpon>MyProfilePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyProfilePage.aspx.designer.cs">
+      <DependentUpon>MyProfilePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserFilteredWorkouts.aspx.cs">
       <DependentUpon>UserFilteredWorkouts.aspx</DependentUpon>

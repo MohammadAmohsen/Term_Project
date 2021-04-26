@@ -21,7 +21,7 @@
         </div>
         <%--    nav bar start--%>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-            <a class="navbar-brand" href="#">Moe's Fitness</a>
+            <a class="navbar-brand" href="HomePage.aspx">Moe's Fitness</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,7 +41,7 @@
                         <a class="nav-link" href="MyProgram.aspx">My Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My Profile</a>
+                        <a class="nav-link" href="MyProfilePage.aspx">My Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="UserMessages.aspx">Customer Service</a>

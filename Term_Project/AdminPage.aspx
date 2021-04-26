@@ -43,7 +43,7 @@
 
     <%--    nav bar start--%>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-            <a class="navbar-brand" href="#">Moe's Gym</a>
+            <a class="navbar-brand" href="AdminPage.aspx">Moe's Fitness</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -63,7 +63,7 @@
                         <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions</a>
+                        <a class="nav-link" href="AdminMessage.aspx">Customer's Questions</a>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0" runat="server">
@@ -71,11 +71,6 @@
                 </div>
             </div>
       </nav>
-
-
-
-
-
 
         <%--          end nav bar--%>
 

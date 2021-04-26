@@ -35,7 +35,7 @@
 	
          <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top " runat="server" id="headerNav">
-            <a class="navbar-brand" href="Default.aspx">Moe's Fitness</a>
+            <a class="navbar-brand" href="LogIn.aspx">Moe's Fitness</a>
         </nav>
     </header>
 
@@ -92,7 +92,7 @@
 			</div>
 		</div>
 	</div>
-
+    
 
 	
 	

@@ -382,7 +382,7 @@ namespace Term_Project
 
             if (selecteditem == "Beginner")
             {
-                profilePicture.ImageUrl = "../Images2/beginner.png";
+                profilePicture.ImageUrl = "../Images2/beginnerStock.png";
             }
             else if (selecteditem == "Intermediate")
             {

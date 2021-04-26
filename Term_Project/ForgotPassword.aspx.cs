@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Term_Project.FitnessService;
 using Utilities;
+using WorkoutLibrary;
 
 namespace Term_Project
 {
@@ -289,10 +293,21 @@ namespace Term_Project
             {
                 if(txtPass.Text == txtPass2.Text)
                 {
+                    Users user = new Users();
+                    user.BinaryPassword = txtPass.Text;
+                    //Serializes an object 
+                    BinaryFormatter serializer = new BinaryFormatter();
+                    MemoryStream memStream = new MemoryStream();
+                    Byte[] byteArray;
+
+                    serializer.Serialize(memStream, user);
+                    byteArray = memStream.ToArray();
+
+
                     SqlCommand objCommand = new SqlCommand();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "TP_InsertIntoUserPassword";
+                    objCommand.CommandText = "TP_InsertIntoUserEncryptedPassword";
 
                     SqlParameter Password = new SqlParameter("@Password", txtPass.Text);
                     Password.Direction = ParameterDirection.Input;
@@ -301,6 +316,10 @@ namespace Term_Project
                     SqlParameter Email = new SqlParameter("@Email", txtEmail.Text);
                     Email.Direction = ParameterDirection.Input;
                     objCommand.Parameters.Add(Email);
+
+                    SqlParameter binary = new SqlParameter("@Binary", byteArray);
+                    binary.Direction = ParameterDirection.Input;
+                    objCommand.Parameters.Add(binary);
 
                     db.DoUpdateUsingCmdObj(objCommand);
 

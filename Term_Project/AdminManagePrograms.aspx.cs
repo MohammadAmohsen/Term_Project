@@ -200,7 +200,6 @@ namespace Term_Project
                                 reader1.Close();
                                 response1.Close();
 
-                                Response.Redirect("AdminManagePrograms.aspx");
                       
                         }
 
@@ -222,9 +221,11 @@ namespace Term_Project
 
                 }
             }
+            Response.Redirect("AdminManagePrograms.aspx");
+
         }
 
-         protected void gvManagePrograms_SelectedIndexChanged(object sender, EventArgs e)
+        protected void gvManagePrograms_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             int ID = Convert.ToInt32(gvManagePrograms.SelectedRow.Cells[3].Text);

@@ -12,20 +12,25 @@
 </head>
 <body>
     <form runat="server">
+        <div id="youShallNotPass" runat="server" class="text-center">
+            <h2 class="text-center">You Must Log In To See This Site!</h2>
+            <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
+            <uc1:LogoutNav runat="server" ID="LogoutNav1" />
+        </div>
         <%--    nav bar start--%>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-      <a class="navbar-brand" href="#">Moe's Gym</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
+            <a class="navbar-brand" href="HomePage.aspx">Moe's Fitness</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-             <ul class="navbar-nav mr-auto">
-                 <li class="nav-item active">
-                     <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="Explore2.aspx">Explore Workout Programs</a>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Explore2.aspx">Explore Workout Programs</a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="UserSavedPrograms.aspx">Saved Programs</a>
@@ -61,10 +66,10 @@
                 </div>
 
                 <!-- Content Row -->
-                <div class="row">
+                <div class="row"  >
 
                     <!-- Content Row -->
-                    <div class="row">
+                    <div class="row" style="margin-left:auto; margin-right:auto;">
                         <center>
                         <div class="col mb-4">
 

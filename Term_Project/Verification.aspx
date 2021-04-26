@@ -70,18 +70,18 @@
 
                     <div class="d-inline bg-danger-primary text-white">
                         <asp:Button ID="btnContinue" runat="server" class="btn btn-md btn-primary" Text="Continue" OnClick="btnContinue_Click" />
-						 <input type="button" value="Continue" runat="server" id="btnHtmlContinue" onclick="btnHtmlContinue_Click()" />
+						 <input type="button" value="Verify" runat="server" id="btnHtmlContinue" style="background-color:cornflowerblue; color:white; margin-top:10px; width:90px;border-radius: 8px;" onclick="btnHtmlContinue_Click()" />
                                         </div>
                     <%--<div class="container-login100-form-btn">
                         <asp:Button ID="btnSignIn" runat="server" Visible="false" class="login100-form-btn" Text="Sign-In" OnClick="btnSignIn_Click" />
                     </div>--%>
 
                     <div class="text-center p-t-90">
-                        <a class="txt1" id="btnBackToHome2" runat="server" href="LogIn.aspx">Back To Sign-In</a>
+                        <a id="btnBackToHome2" runat="server" href="LogIn.aspx">Back To Sign-In</a>
                     </div>
 
                     <div class="d-inline bg-danger-primary text-white">
-                        <asp:Button ID="btnBack" runat="server" class="btn btn-md btn-primary" Text="Back" OnClick="btnBack_Click" Visible="false"/>
+                        <asp:Button ID="btnBack" runat="server" class="btn btn-md btn-danger" Text="Back" OnClick="btnBack_Click" Visible="false"/>
                     </div>
 
 

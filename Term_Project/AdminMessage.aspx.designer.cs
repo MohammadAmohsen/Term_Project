@@ -11,7 +11,7 @@ namespace Term_Project
 {
 
 
-    public partial class UserMessages
+    public partial class AdminMessage
     {
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// content control.
+        /// divContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl content;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContent;
 
         /// <summary>
         /// navBar control.
@@ -60,13 +60,13 @@ namespace Term_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navBar;
 
         /// <summary>
-        /// LogoutNav control.
+        /// LogoutNav2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Term_Project.LogoutNav LogoutNav;
+        protected global::Term_Project.LogoutNav LogoutNav2;
 
         /// <summary>
         /// userAvatar control.
@@ -265,6 +265,24 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTitle;
+
+        /// <summary>
+        /// lblSendTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSendTo;
+
+        /// <summary>
+        /// txtEmailTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmailTo;
 
         /// <summary>
         /// lblSubject control.

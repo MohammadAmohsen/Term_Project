@@ -21,8 +21,8 @@ namespace Term_Project
             if (Session["UserId"] != null)
             {
                 Session["Tags"] = "Inbox";
-                ViewInbox("Inbox");
-                tbEmail.Visible = false;             
+                showEmail();
+                 tbEmail.Visible = false;             
                 navBar.Visible = true;
                 content.Visible = true;
                 youShallNotPass.Visible = false;
@@ -59,7 +59,7 @@ namespace Term_Project
 
         protected void linkbtnInbox_Click(object sender, EventArgs e)
         {
-            lblName.Text = "INBOX FOLDER";
+            folderName.InnerText = "INBOX FOLDER";
             emailContent.Visible = false;
             gvEmails.Visible = true;
             tbEmail.Visible = false;
@@ -70,8 +70,8 @@ namespace Term_Project
 
         protected void linkbtnSent_Click(object sender, EventArgs e)
         {
+            folderName.InnerText = "SENT FOLDER";
             tbEmail.Visible = false;
-            lblName.Text = "SENT FOLDER";
             emailContent.Visible = false;
             gvEmails.Visible = true;
             Session["Tags"] = "Sent";
@@ -214,7 +214,7 @@ namespace Term_Project
             lblEmpty.Visible = false;
             gvEmails.Visible = true;
 
-            txtEmailTo.Text = "";
+            //txtEmailTo.Text = "";
             txtSubject.Text = "";
             txtContent.Text = "";
             //Response.Redirect("EmailClient.aspx");
@@ -357,10 +357,11 @@ namespace Term_Project
 
             int tag = (int)ds.Tables[0].Rows[0]["TagID"];
 
+            string m = Session["UserImage"].ToString();
             userAvatar.ImageUrl = Session["UserImage"].ToString();
 
 
-            userLabel.Text = Session["UserName"].ToString();
+            //userLabel.Text = Session["UserName"].ToString();
 
             SqlCommand sqlCommand1A = new SqlCommand();
 
@@ -446,7 +447,7 @@ namespace Term_Project
         protected void btnSend_Click(object sender, EventArgs e)
         {
             Email newEmail = new Email();
-            string To = txtEmailTo.Text;
+            //string To = txtEmailTo.Text;
             string Subject = txtSubject.Text;
             string Body = txtContent.Text;
             string Time = DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss");
@@ -460,27 +461,19 @@ namespace Term_Project
             newEmail.emailBody = Body;
             newEmail.time = Time;
 
-            SqlCommand sqlCommandM = new SqlCommand();
+            //SqlCommand sqlCommandM = new SqlCommand();
 
-            sqlCommandM.CommandType = CommandType.StoredProcedure;
-            sqlCommandM.CommandText = "TP_SelectUserIDEmailCreateUser";
+            //sqlCommandM.CommandType = CommandType.StoredProcedure;
+            //sqlCommandM.CommandText = "TP_SelectUserIDEmailCreateUser";
 
-            SqlParameter EmailAddress = new SqlParameter("@Email", To);
-            EmailAddress.Direction = ParameterDirection.Input;
-            sqlCommandM.Parameters.Add(EmailAddress);
+            //SqlParameter EmailAddress = new SqlParameter("@Email", To);
+            //EmailAddress.Direction = ParameterDirection.Input;
+            //sqlCommandM.Parameters.Add(EmailAddress);
 
-            DataSet DS1 = db.GetDataSetUsingCmdObj(sqlCommandM);
+            //DataSet DS1 = db.GetDataSetUsingCmdObj(sqlCommandM);
 
-            int size = DS1.Tables[0].Rows.Count;
+            //int size = DS1.Tables[0].Rows.Count;
 
-            if (To == "")
-            {
-                check = false;
-            }
-            else
-            {
-                check = true;
-            }
             if (Subject == "")
             {
                 check2 = false;
@@ -501,16 +494,16 @@ namespace Term_Project
             if (check == true && check2 == true && check3 == true)
             {
 
-                if (size > 0)
-                {
-                    /*Get ReceiverID
-                     */
+                //if (size > 0)
+                //{
+                //    /*Get ReceiverID
+                     
                     SqlCommand sqlCommand3A = new SqlCommand();
 
                     sqlCommand3A.CommandType = CommandType.StoredProcedure;
-                    sqlCommand3A.CommandText = "TP_SelectUserIDFromUsersEMAILASP";
+                    sqlCommand3A.CommandText = "TP_SelectRandomAdmin";
 
-                    SqlParameter SendTo = new SqlParameter("@To", To);
+                    SqlParameter SendTo = new SqlParameter("@Type", "Admin");
                     SendTo.Direction = ParameterDirection.Input;
                     sqlCommand3A.Parameters.Add(SendTo);
 
@@ -746,17 +739,17 @@ namespace Term_Project
                     //db.DoUpdate(sql9);
                     Response.Write("<script>alert('Email Has Been Sent!') </script>");
 
-                    txtEmailTo.Text = "";
+                   // txtEmailTo.Text = "";
                     txtSubject.Text = "";
                     txtContent.Text = "";
 
                     showEmail();
                     emailContent.Visible = false;
-                }
-                else
-                {
-                    Response.Write("<script>alert('User Does NOT Exist! Please Try Again!') </script>");
-                }
+                //}
+                //else
+                //{
+                //    Response.Write("<script>alert('User Does NOT Exist! Please Try Again!') </script>");
+                //}
             }
             else
             {

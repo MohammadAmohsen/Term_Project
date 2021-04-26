@@ -10,31 +10,31 @@ using System.Web.UI.WebControls;
 using Utilities;
 using WorkoutLibrary;
 
-namespace Term_Project.AdminAspx
+namespace Term_Project
 {
-    public partial class AdminMessages : System.Web.UI.Page
+    public partial class AdminMessage : System.Web.UI.Page
     {
         DBConnect db = new DBConnect();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Session["UserID"] == null)
                 {
-                     divContent.Visible = false;
+                    divContent.Visible = false;
                     youShallNotPass.Visible = true;
                 }
                 else
                 {
-                     divContent.Visible = true;
+                    divContent.Visible = true;
                     youShallNotPass.Visible = false;
                     Session["Tags"] = "Inbox";
-                ViewInbox("Inbox");
-                tbEmail.Visible = false;
+                    showEmail();
+                    tbEmail.Visible = false;
                 }
             }
-          
+
         }
 
         protected void gvEmails_SelectedIndexChanged(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace Term_Project.AdminAspx
 
 
 
-               // lblCreatedTime2.Text = gvEmails.SelectedRow.Cells[6].Text;
+                // lblCreatedTime2.Text = gvEmails.SelectedRow.Cells[6].Text;
                 lblFromEmail.Text = gvEmails.SelectedRow.Cells[2].Text;
                 lblToWho.Text = gvEmails.SelectedRow.Cells[3].Text;
                 lblSub.Text = gvEmails.SelectedRow.Cells[4].Text;
@@ -58,10 +58,10 @@ namespace Term_Project.AdminAspx
 
             }
         }
- 
+
         protected void linkbtnInbox_Click(object sender, EventArgs e)
         {
-            lblName.Text = "INBOX FOLDER";
+            folderName.InnerText = "INBOX FOLDER";
             emailContent.Visible = false;
             gvEmails.Visible = true;
             tbEmail.Visible = false;
@@ -73,7 +73,7 @@ namespace Term_Project.AdminAspx
         protected void linkbtnSent_Click(object sender, EventArgs e)
         {
             tbEmail.Visible = false;
-            lblName.Text = "SENT FOLDER";
+            folderName.InnerText = "SENT FOLDER";
             emailContent.Visible = false;
             gvEmails.Visible = true;
             Session["Tags"] = "Sent";
@@ -362,7 +362,7 @@ namespace Term_Project.AdminAspx
             userAvatar.ImageUrl = Session["UserImage"].ToString();
 
 
-            userLabel.Text = Session["UserName"].ToString();
+            //userLabel.Text = Session["UserName"].ToString();
 
             SqlCommand sqlCommand1A = new SqlCommand();
 

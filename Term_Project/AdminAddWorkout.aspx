@@ -51,7 +51,7 @@
 
         <%--    nav bar start--%>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-            <a class="navbar-brand" href="#">Moe's Gym</a>
+            <a class="navbar-brand" href="AdminPage.aspx">Moe's Fitness</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -154,9 +154,9 @@
 
                                 <div class="col-md-6 mb-3">
                                     <div class="col-md-6 mb-3">
-                                        <label for="ProgramName">Program Length</label>
-                                        <asp:TextBox ID="txtLength" type="number" runat="server" class="form-control" placeholder="Name" autofocus=""></asp:TextBox>
-                                        <div class="invalid-feedback">Your Program Name Is Required</div>
+                                        <label for="ProgramName">Program Length in Days</label>
+                                        <asp:TextBox ID="txtLength" type="number" runat="server" class="form-control" placeholder="60 days" autofocus=""></asp:TextBox>
+                                        <div class="invalid-feedback">Your Program Length Is Required</div>
                                     </div>
                                 </div>
 
@@ -254,7 +254,7 @@
                                 </div>
 
                             </div>
-                            <asp:Button ID="btnSubmitTuesday" runat="server" Text="Add" OnClick="btnSubmitTuesday_Click" />
+                            <asp:Button ID="btnSubmitTuesday" runat="server" Text="Add Workout" OnClick="btnSubmitTuesday_Click" />
                             <br />
                             <hr />
 
@@ -293,10 +293,12 @@
                                     <label for="Reps">Reps for this exercise</label><br />
                                     <asp:TextBox ID="txtRepsWed" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                                     <div class="invalid-feedback">Reps are required!</div>
-                                </div>
-                                <asp:Button ID="btnAddWednesday" runat="server" Text="Add Wednesday" OnClick="btnAddWednesday_Click" />
+                                </div>     
 
                             </div>
+
+                                <asp:Button ID="btnAddWednesday" runat="server" Text="Add Workout" OnClick="btnAddWednesday_Click" />
+
                             <br />
                             <hr />
 
@@ -336,9 +338,10 @@
                                     <asp:TextBox ID="txtRepsThurs" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                                     <div class="invalid-feedback">Reps are required!</div>
                                 </div>
-                                <asp:Button ID="btnAddThursday" runat="server" Text="Add Thursday" OnClick="btnAddThursday_Click" />
-
                             </div>
+
+                            <asp:Button ID="btnAddThursday" runat="server" Text="Add Workout" OnClick="btnAddThursday_Click" />
+
                             <br />
                             <hr />
 
@@ -376,9 +379,10 @@
                                     <asp:TextBox ID="txtRepsFri" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                                     <div class="invalid-feedback">Reps are required!</div>
                                 </div>
-                                <asp:Button ID="btnFriday" runat="server" Text="Add Friday" OnClick="btnFriday_Click" />
-
                             </div>
+
+                            <asp:Button ID="btnFriday" runat="server" Text="Add Workout" OnClick="btnFriday_Click" />
+
                             <br />
                             <hr />
 
@@ -418,9 +422,10 @@
                                     <asp:TextBox ID="txtRepsSat" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                                     <div class="invalid-feedback">Reps are required!</div>
                                 </div>
-                                <asp:Button ID="btnAddSaturday" runat="server" Text="Add Saturday" OnClick="btnAddSaturday_Click" />
-
                             </div>
+
+                            <asp:Button ID="btnAddSaturday" runat="server" Text="Add Workout" OnClick="btnAddSaturday_Click" />
+
                             <br />
                             <hr />
 
@@ -460,20 +465,21 @@
                                     <asp:TextBox ID="txtRepsSun" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
                                     <div class="invalid-feedback">Reps are required!</div>
                                 </div>
-                                <asp:Button ID="btnAddSunday" runat="server" Text="Add Sunday" OnClick="btnAddSunday_Click" />
-
                             </div>
+
+                            <asp:Button ID="btnAddSunday" runat="server" Text="Add Workout" OnClick="btnAddSunday_Click" />
+
                             <br />
                             <hr />
                         </div>
 
 
                         <div class="mb-3">
-                        <%--                    <asp:Button ID="btnCreateProgram" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Your Workout Program!" OnClick="btnCreateProgram_Click" />--%>
-                        <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Back To Admin Page!" OnClick="btnBack_Click" />
+                        <input type="button" value="Create Program" id="btnCreate" style="width:100%; height:30px;" onclick="btnCreate_Click()" />
+                        <input type="button" value="Back" id="btnBackToCreate" style="width:100%; height:30px;" onclick="btnBackToCreate_Click()" />
+                         <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Finish!" OnClick="btnBack_Click" />
 
                         <br />
-                        <input type="button" value="Create Program" id="btnCreate" style="width:100%; height:30px;" onclick="btnCreate_Click()" />
 
 <%--            <asp:Button ID="btnCreate" class="btn btn-md btn-light btn-block" runat="server" Text="Create Program" onclick="btnCreate_Click()" />--%>
                             </div>
@@ -492,10 +498,12 @@
 
         window.onload = function () {
             $("#divContent").hide();
+            $("#btnBackToCreate").hide();
             if ($("#hdn").val() == "1") {
                 $("#divContent").show();
                 $("#programContent").hide();
                 $("#btnCreate").hide();
+                $("#btnBackToCreate").show();
             }
         }
 
@@ -517,30 +525,64 @@
 
             var strInput = JSON.stringify(program);
 
+            if (program.programName == "") {
+                d = false;
+            }
+            if (program.description == "") {
+                d = false;
+            }
 
-            $.ajax({
-                type: "POST",
-                url: strURL,
-                contentType: "application/json",
-                dataType: "json",
-                data: strInput,
-                success: function (data) {
-                    if (data == false) {
-                        alert("Program already exists!");
+            if (program.programExperience == "") {
+                d = false;
+            }
+            if (program.Image == "") {
+                d = false;
+            }
+            if (program.programLength == 0) {
+                d = false;
+            }
+ 
+            if (d === true) {
+                $.ajax({
+                    type: "POST",
+                    url: strURL,
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: strInput,
+                    success: function (data) {
+                        if (data == false) {
+                            alert("Program already exists!");
+                        }
+                        else {
+                            $("#hdn").val("1");
+                            $("#divContent").show();
+                            $("#programContent").hide();
+                            $("#btnCreate").hide();
+                            $("#btnBackToCreate").show();
+                        }
+
+                    },
+                    error: function (req, status, error) {
+                        alert("error");
                     }
-                    else {
-                        $("#hdn").val("1");
-                        $("#divContent").show();
-                        $("#programContent").hide();
-                    }
 
-                },
-                error: function (req, status, error) {
-                    alert("error");
-                }
+                });
+            }
+            else {
+                alert("All fields must be filled in!");
+            }
 
-            });
+        }
 
+        function btnBackToCreate_Click() {
+            $("#btnCreate").show();
+            $("#divContent").hide();
+            $("#programContent").show();
+            $("#btnBackToCreate").hide();
+            $("#txtProgramName").val("");
+            $("#txtDesc").val("");
+            $("#txtImage").val("");
+            $("#txtLength").val("");
         }
 
     </script>

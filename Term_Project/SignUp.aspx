@@ -34,7 +34,7 @@
 	
         <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top  " id="headerNav">
-            <a class="navbar-brand" href="Default.aspx">Moe's Fitness</a>
+            <a class="navbar-brand" href="LogIn.aspx">Moe's Fitness</a>
         </nav>
     </header>
  <div class="container-login100" style="background-image: url('images2/background3.jpg');">

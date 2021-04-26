@@ -20,8 +20,21 @@ namespace Term_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBConnect db = new DBConnect();
-            ProgramLoad();
+            if (Session["UserId"] != null)
+            {
+
+                navBar.Visible = true;
+                ContentID.Visible = true;
+                youShallNotPass.Visible = false;   
+                ProgramLoad();
+
+            }
+            else if (Session["UserID"] == null)
+            {
+                navBar.Visible = false;
+                ContentID.Visible = false;
+                youShallNotPass.Visible = true;
+            }
             
 
         }

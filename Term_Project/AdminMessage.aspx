@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserMessages.aspx.cs" Inherits="Term_Project.UserMessages" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminMessage.aspx.cs" Inherits="Term_Project.AdminMessage" %>
 <%@ Register Src="~/LogoutNav.ascx" TagPrefix="uc1" TagName="LogoutNav" %>
 
 <!DOCTYPE html>
@@ -6,32 +6,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Email</title>
-    	<meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"/>
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/LogIn.css"/>
-	<link rel="stylesheet" type="text/css" href="css/StyleSheet1.css"/>
-<!--===============================================================================================-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/LogIn.css" />
+    <link rel="stylesheet" type="text/css" href="css/StyleSheet1.css" />
+    <!--===============================================================================================-->
     <link href="Css/EmailCSS.css" rel="stylesheet" />
 
 
@@ -51,50 +51,51 @@
     <form id="form1" runat="server">
    
 
-            <div id="content" runat="server">
+            <div id="divContent" runat="server">
                 <%--    nav bar start--%>
-                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-                    <a class="navbar-brand" href="HomePage.aspx">Moe's Fitness</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
+            <a class="navbar-brand" href="AdminPage.aspx">Moe's Fitness</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Explore2.aspx">Explore Workout Programs</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="UserSavedPrograms.aspx">Saved Programs</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="MyProgram.aspx">My Programs</a>
-                            </li>
-                            <li class="nav-item">
-                        <a class="nav-link" href="MyProfilePage.aspx">My Profile</a>
-                            </li>
-                            <li class="nav-item  active">
-                                <a class="nav-link" href="UserMessages.aspx">Customer Service</a>
-                            </li>
-                        </ul>
-                        <div class="form-inline my-2 my-lg-0" runat="server">
-                            <uc1:logoutnav runat="server" id="LogoutNav" />
-                        </div>
-                    </div>
-                </nav>
-
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AdminPage.aspx">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminSignUp.aspx">Create Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminMessage.aspx">Customer's Questions</a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0" runat="server">
+                    <uc1:LogoutNav runat="server" ID="LogoutNav2" />
+                </div>
+            </div>
+      </nav>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <br />
 
-                <%--          end nav bar--%>
+      <%--          end nav bar--%>
 
         </div>
 
 <%--        NEW MAILBOX--%>
         <div class="container mb-10">
-    <div class="row">
+    <div class="row" >
         <div class="col-md-12 col-lg-8">
             <div class="card">
                 <div class="card-body bg-primary text-white mailbox-widget pb-0">
@@ -134,6 +135,8 @@
                                     </ul>
                                 </div>
                             </div>
+                            </div>
+                        
                             <!-- Mail list-->
                             <div class="table-responsive">
                                 <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
@@ -160,27 +163,25 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+
                    
                 <div class="container-fluid">
-
+ 
                     <br />
 
                     <asp:Label ID="lblEmpty" runat="server" Text="Your Inbox Is Empty" ></asp:Label>
 
                
 
-                 <div id="tbEmail" runat="server" class="container-fluid">
+                 <div id="tbEmail" runat="server" class="container-fluid" style="margin-right: auto; margin-left: auto;">
                 <h3>
-                    <asp:Label ID="subjectID" runat="server" Text="" Visible="true"></asp:Label>
-
-                </h3>
-                     <div id="showEmail" class="text-center" style="margin-right: auto; margin-left: auto;">
+                    <asp:Label ID="subjectID" runat="server" Text="" Visible="true"></asp:Label></h3>
+                     <div id="showEmail" class="text-center">
                 <table class="table table-borderless text-center">
                     <tbody>
                         <tr>
                             <td>
-                                <asp:Label ID="lblCreateTime" runat="server" Text="CreatedTime: " style="font-weight:bold;" class="mr-sm-2"></asp:Label></td>
+                                <asp:Label ID="lblCreateTime" runat="server" Text="CreatedTime: " style="font-weight:bold;"  class="mr-sm-2"></asp:Label></td>
                            
                         </tr>
 
@@ -192,7 +193,7 @@
 
                         <tr>
                             <td>
-                                <asp:Label ID="lblFromWho" runat="server" Text="From: " style="font-weight:bold;"  class="mr-sm-2"></asp:Label></td>
+                                <asp:Label ID="lblFromWho" runat="server" Text="From: " style="font-weight:bold;" class="mr-sm-2"></asp:Label></td>
                              
                         </tr>
                         <tr>
@@ -202,7 +203,7 @@
                         
                          <tr>
                             <td>
-                                <asp:Label ID="lblTo" runat="server" Text="To: " style="font-weight:bold;"  class="mr-sm-2"></asp:Label></td>
+                                <asp:Label ID="lblTo" runat="server" Text="To: " style="font-weight:bold;" class="mr-sm-2"></asp:Label></td>
                              
                         </tr>
                         <tr>
@@ -212,7 +213,7 @@
 
                         <tr>
                             <td>
-                                <asp:Label ID="lblSubject1" runat="server" Text="Subject: " style="font-weight:bold;"  class="mr-sm-2"></asp:Label></td>
+                                <asp:Label ID="lblSubject1" runat="server" Text="Subject: " style="font-weight:bold;" class="mr-sm-2"></asp:Label></td>
                             
                         </tr>
                         <tr>
@@ -223,7 +224,7 @@
 
                         <tr>
                             <td>
-                                <asp:Label ID="lblEmailBody" runat="server" Text="Body: " style="font-weight:bold;"  class="mr-sm-2 "></asp:Label></td>
+                                <asp:Label ID="lblEmailBody" runat="server" Text="Body: " style="font-weight:bold;" class="mr-sm-2 "></asp:Label></td>
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -241,6 +242,8 @@
             <div class="container-fluid">
             <div id="emailContent" runat="server" class="container-fluid"  visible="false">
                 <asp:Label ID="lblTitle" runat="server" ><h3>New Message</h3></asp:Label>
+                <asp:Label ID="lblSendTo" runat="server" Text="To: " class="mr-sm-2"></asp:Label>
+                <asp:TextBox ID="txtEmailTo" runat="server" class="form-control my-2 my-sm-0" placeholder="Receiver" Width="300px"></asp:TextBox>
                 <br />
                 <asp:Label ID="lblSubject" runat="server" Text="Subject: " class="mr-sm-2"></asp:Label>
                 <asp:TextBox ID="txtSubject" runat="server" class="form-control my-2 my-sm-0" placeholder="Subject: " Width="300px"></asp:TextBox>

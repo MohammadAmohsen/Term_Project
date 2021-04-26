@@ -46,7 +46,7 @@
 
     <%--    nav bar start--%>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-            <a class="navbar-brand" href="#">Moe's Gym</a>
+            <a class="navbar-brand" href="AdminPage.aspx">Moe's Fitness</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -189,7 +189,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="SQ1" runat="server" Text="Security Question 1"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ1" CssClass="form-control" runat="server" AutoPostBack="true" >
+                                 <asp:DropDownList ID="ddlSQ1" CssClass="form-control" runat="server" >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -211,7 +211,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="lblSQ2" runat="server" Text="Security Question 2"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ2" runat="server" CssClass="form-control" AutoPostBack="true"  >
+                                 <asp:DropDownList ID="ddlSQ2" runat="server" CssClass="form-control"   >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -234,7 +234,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="lblSQ3" runat="server"  Text="Security Question 3"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ3" CssClass="form-control" runat="server" AutoPostBack="true"  >
+                                 <asp:DropDownList ID="ddlSQ3" CssClass="form-control" runat="server"  >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
