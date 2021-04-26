@@ -60,6 +60,15 @@ namespace Term_Project
         protected global::Term_Project.LogoutNav LogOutNav;
 
         /// <summary>
+        /// divContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContent;
+
+        /// <summary>
         /// FirstCard control.
         /// </summary>
         /// <remarks>

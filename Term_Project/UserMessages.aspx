@@ -36,20 +36,15 @@
 
 
 
-
-
-
-
 </head>
 <body>
+        <form id="form1" runat="server">
     <div id="youShallNotPass" runat="server" class="text-center">
         <h2 class="text-center">You Must Log In To See This Site!</h2>
         <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
                              <uc1:logoutnav runat="server" id="LogoutNav1" />
 
-    </div>
-    <form id="form1" runat="server">
-   
+    </div>   
 
             <div id="content" runat="server">
                 <%--    nav bar start--%>
@@ -93,6 +88,7 @@
         </div>
 
 <%--        NEW MAILBOX--%>
+            <div id="divContent" runat="server">
         <div class="container mb-10">
     <div class="row">
         <div class="col-md-12 col-lg-8">
@@ -257,7 +253,7 @@
         </div>
     </div>
 </div>
-
+</div>
 
     </form>
     <!--===============================================================================================-->

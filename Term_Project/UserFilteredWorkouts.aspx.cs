@@ -54,6 +54,27 @@ namespace Term_Project
             }
         }
 
+
+        public void ProgramLoad(int programID)
+        {
+            programDiv.Visible = true;
+
+            //Next use the Program Id and add that to the Repeater
+            SqlCommand objCommand1 = new SqlCommand();
+
+            objCommand1.CommandType = CommandType.StoredProcedure;
+            objCommand1.CommandText = "TP_SelectAllFromProgramWhereID";
+
+            SqlParameter ProgramID1 = new SqlParameter("@ID", programID);
+            ProgramID1.Direction = ParameterDirection.Input;
+            objCommand1.Parameters.Add(ProgramID1);
+
+            Repeater1.DataSource = db.GetDataSetUsingCmdObj(objCommand1);
+            Repeater1.DataBind();
+
+        }
+
+
         protected void btnSelectProgram_Click(object sender, EventArgs e)
         {
 
@@ -85,7 +106,7 @@ namespace Term_Project
                 SqlCommand objCommand = new SqlCommand();
 
                 objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "TP_UpdateUsersSetProgramID";
+                objCommand.CommandText = "TP_UpdateUsersSetProgramID2";
 
                 SqlParameter ProgramID = new SqlParameter("@ProgramID", programID);
                 ProgramID.Direction = ParameterDirection.Input;
@@ -95,8 +116,18 @@ namespace Term_Project
                 UserID.Direction = ParameterDirection.Input;
                 objCommand.Parameters.Add(UserID);
 
+                SqlParameter no = new SqlParameter("@No", "No");
+                no.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(no);
 
-                db.DoUpdateUsingCmdObj(objCommand);
+                SqlParameter date = new SqlParameter("@Date", DateTime.Now);
+                date.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(date);
+
+                Session["ProgramID"] = programID;
+                Session["Assistance"] = "No";
+                int ret = db.DoUpdateUsingCmdObj(objCommand);
+                Response.Redirect("HomePage.aspx");
 
                 Response.Write("<script>alert('Program Has Been Selected!') </script>");
             }
@@ -141,6 +172,8 @@ namespace Term_Project
             lvSunday.DataSource = lvWorkoutDays(ID, "Sunday");
             lvSunday.DataBind();
 
+            ProgramLoad(ID);
+
         }
 
         protected void btnDetailView_Click(object sender, EventArgs e)
@@ -161,9 +194,61 @@ namespace Term_Project
 
         protected void btnSaveProgram_Click(object sender, EventArgs e)
         {
-            rptPrograms.Visible = true;
-            // ListViewDisplayWorkout.Visible = false;
+
+            var btn = (Button)sender;
+            var item = (RepeaterItem)btn.NamingContainer;
+            Label labelProgram = (Label)item.FindControl("lblProgramID");
+            int programID = Convert.ToInt32(labelProgram.Text);
             lvVisible(false);
+
+
+            SqlCommand objCommand1 = new SqlCommand();
+
+            objCommand1.CommandType = CommandType.StoredProcedure;
+            objCommand1.CommandText = "TP_SelectAllFromSaved";
+
+            SqlParameter ProgramID1 = new SqlParameter("@ProgramID", programID);
+            ProgramID1.Direction = ParameterDirection.Input;
+            objCommand1.Parameters.Add(ProgramID1);
+
+            SqlParameter UserID1 = new SqlParameter("@UserID", Convert.ToInt32(Session["UserID"]));
+            UserID1.Direction = ParameterDirection.Input;
+            objCommand1.Parameters.Add(UserID1);
+
+            DataSet ds = db.GetDataSetUsingCmdObj(objCommand1);
+            int size = ds.Tables[0].Rows.Count;
+
+            if (size == 0)
+            {
+
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_InsertIntoSaved";
+
+                SqlParameter ProgramID = new SqlParameter("@ProgramID", programID);
+                ProgramID.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(ProgramID);
+
+                SqlParameter UserID = new SqlParameter("@UserID", Convert.ToInt32(Session["UserID"]));
+                UserID.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(UserID);
+
+                SqlParameter Date = new SqlParameter("@Date", DateTime.Now);
+                Date.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(Date);
+
+
+                db.DoUpdateUsingCmdObj(objCommand);
+
+                Response.Write("<script>alert('Program Has Been Saved!') </script>");
+            }
+
+            else
+            {
+                Response.Write("<script>alert('Program Has Already Been Saved Dummy!') </script>");
+
+            }
         }
 
         private ArrayList lvWorkoutDays(int ID, string dayName)
@@ -221,6 +306,7 @@ namespace Term_Project
             lvSunday.Visible = boo;
             btnBack.Visible = boo;
             lvWorkouts.Visible = boo;
+            programDiv.Visible = boo;
         }
 
     }

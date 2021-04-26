@@ -23,7 +23,7 @@ namespace Term_Project
                 if (Session["UserId"] == null)
                 {
                     navBar.Visible = false;
-                    content.Visible = false;
+                    contentID.Visible = false;
                     youShallNotPass.Visible = true;
                 }
                 else if (Session["UserID"] != null)
@@ -121,6 +121,9 @@ namespace Term_Project
             lvSunday.DataSource = lvWorkoutDays(ID, "Sunday");
             lvSunday.DataBind();
 
+            ProgramLoad(ID);
+
+
         }
 
         protected void btnSelectProgram_Click(object sender, EventArgs e)
@@ -164,8 +167,13 @@ namespace Term_Project
                 UserID.Direction = ParameterDirection.Input;
                 objCommand.Parameters.Add(UserID);
 
+                SqlParameter Date = new SqlParameter("@Date", DateTime.Now);
+                Date.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(Date);
 
-                db.DoUpdateUsingCmdObj(objCommand);
+               int ret = db.DoUpdateUsingCmdObj(objCommand);
+                Session["ProgramID"] = programID;
+                Response.Redirect("HomePage.aspx");
 
                 Response.Write("<script>alert('Program Has Been Selected!') </script>");
             }
@@ -184,7 +192,28 @@ namespace Term_Project
 
         }
 
-      
+        public void ProgramLoad(int programID)
+        {
+            programDiv.Visible = true;
+
+            //Next use the Program Id and add that to the Repeater
+            SqlCommand objCommand1 = new SqlCommand();
+
+            objCommand1.CommandType = CommandType.StoredProcedure;
+            objCommand1.CommandText = "TP_SelectAllFromProgramWhereID";
+
+            SqlParameter ProgramID1 = new SqlParameter("@ID", programID);
+            ProgramID1.Direction = ParameterDirection.Input;
+            objCommand1.Parameters.Add(ProgramID1);
+
+            Repeater1.DataSource = db.GetDataSetUsingCmdObj(objCommand1);
+            Repeater1.DataBind();
+
+
+
+        }
+
+
         protected void btnUnSaveProgram_Click(object sender, EventArgs e)
         {
             var btn = (Button)sender;
@@ -301,7 +330,8 @@ namespace Term_Project
             lvSaturday.Visible = boo;
             lvSunday.Visible = boo;
             btnBack.Visible = boo;
-            lvContent.Visible = boo;
+            lvWorkouts.Visible = boo;
+            programDiv.Visible = boo;
         }
 
     }

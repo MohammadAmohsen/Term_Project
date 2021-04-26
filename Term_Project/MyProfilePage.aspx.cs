@@ -20,24 +20,31 @@ namespace Term_Project
         {
             if (!IsPostBack)
             {
-                youShallNotPass.Visible = false;
-                lblProfileUserName.Text = "Welcome " + Session["Username"].ToString();
+                if (Session["UserID"] == null)
+                {
+                    youShallNotPass.Visible = true;
+                    navBar.Visible = false;
+                    divContent.Visible = false;
+                }
+                else
+                {
+                    youShallNotPass.Visible = false;
+                    lblProfileUserName.Text = "Welcome " + Session["Username"].ToString();
 
-                lblExperience.Text = "Experience Level: " + Session["Experience"].ToString();
+                    lblExperience.Text = "Experience Level: " + Session["Experience"].ToString();
 
-                lblType.Text = "Type of User: " + Session["Type"].ToString();
+                    lblType.Text = "Type of User: " + Session["Type"].ToString();
 
-                lblUserWeight.Text = "Your Weight (lbs): " + Session["UserAge"].ToString();
+                    lblUserWeight.Text = "Your Weight (lbs): " + Session["UserAge"].ToString();
 
-                lblUserAge.Text = "Your Age: " +   Session["UserWeight"].ToString();
+                    lblUserAge.Text = "Your Age: " + Session["UserWeight"].ToString();
 
-                lblUserGoals.Text = "Your Goals: " + Session["UserGoals"].ToString();
+                    lblUserGoals.Text = "Your Goals: " + Session["UserGoals"].ToString();
 
-                userAvatar.ImageUrl = Session["UserImage"].ToString();
+                    userAvatar.ImageUrl = Session["UserImage"].ToString();
+                }
             }
-            youShallNotPass.Visible = false;
-            
-
+           
            
         }
 

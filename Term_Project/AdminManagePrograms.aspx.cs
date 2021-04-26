@@ -30,6 +30,7 @@ namespace Term_Project
                     navBar.Visible = false;
                     ContentID.Visible = false;
                     youShallNotPass.Visible = true;
+                    btnDelete.Visible = false;
                 }
                 else
                 {

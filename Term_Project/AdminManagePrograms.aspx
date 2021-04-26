@@ -65,7 +65,7 @@
                         <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions</a>
+                        <a class="nav-link" href="AdminMessage.aspx">Customer's Questions</a>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0" runat="server">

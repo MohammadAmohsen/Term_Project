@@ -24,6 +24,7 @@ namespace Term_Project
                 {
                     divContent.Visible = false;
                     youShallNotPass.Visible = true;
+                    containerContent.Visible = false;
                 }
                 else
                 {

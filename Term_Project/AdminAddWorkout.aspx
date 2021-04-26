@@ -71,7 +71,7 @@
                         <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions</a>
+                        <a class="nav-link" href="AdminMessage.aspx">Customer's Questions</a>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0" runat="server">
@@ -197,7 +197,7 @@
                             <div class="row">
                                 <div class="col-md-5 mb-2" style="margin-left: 230px;">
                                     <label for="Sets">Sets for this exercise</label>
-                                    <asp:TextBox ID="txtSetsMonday" runat="server" type="number" CssClass="form-control" placeholder="3"></asp:TextBox>
+                                    <asp:TextBox ID="txtSetsMonday" runat="server"  type="number" FilterType="Numbers" min= "1" max = "12" CssClass="form-control" placeholder="3"></asp:TextBox>
                                     <div class="invalid-feedback">Sets are required!</div>
                                 </div>
                             </div>
@@ -205,7 +205,7 @@
 
                                 <div class="col-md-5 mb-2" style="margin-left: 230px;">
                                     <label for="Reps">Reps for this exercise</label><br />
-                                    <asp:TextBox ID="txtRepsMonday" runat="server" type="number" CssClass="form-control" placeholder="8"></asp:TextBox>
+                                    <asp:TextBox ID="txtRepsMonday" runat="server"  type="number" FilterType="Numbers" min= "1" max = "100" CssClass="form-control" placeholder="8"></asp:TextBox>
                                     <div class="invalid-feedback">Reps are required!</div>
                                 </div>
 

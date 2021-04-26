@@ -61,6 +61,7 @@ namespace Term_Project
                     {
                         DisplayTime();
                         lblCurrentWeight.Text = Session["UserWeight"].ToString() + "lbs";
+                        lblDaysLeft.Text = GetLengthOfProgram(Convert.ToInt32(Session["ProgramID"])).ToString();
                     }
 
                     //DailyWorkout();

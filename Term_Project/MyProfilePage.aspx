@@ -13,7 +13,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="youShallNotPass" runat="server" class="text-center" visibile="false">
+        <div id="youShallNotPass" runat="server" class="text-center" visible="false">
             <h2 class="text-center">You Must Log In To See This Site!</h2>
             <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
             <uc1:LogOutNav runat="server" ID="LogoutNav1" />
@@ -56,6 +56,7 @@
         <br />
         <%--          end nav bar--%>
 
+        <div id="divContent" runat="server">
         <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-3 ml-3">
             <h1 class="h3 mb-0 mt-1 text-gray-800">Profile Page</h1>
         </div>
@@ -236,7 +237,7 @@
                             <asp:ListItem Value="Intermediate">Intermediate</asp:ListItem>
                             <asp:ListItem Value="Advanced">Advanced</asp:ListItem>
                         </asp:DropDownList>
-                    </div>
+                        </div>
                 </div>
                 <br />
 
@@ -245,6 +246,7 @@
 
             </div>
              </div>
+        </div>
         </div>
         </div>
     </form>

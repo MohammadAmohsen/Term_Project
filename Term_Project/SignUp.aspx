@@ -68,7 +68,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="Avatar">What is your experience level?</label><br />
-                            <asp:Image ID="profilePicture" runat="server" ImageUrl="../Images2/beginnerStock.jpg" Width="110" Height="110" class="rounded" />
+                            <asp:Image ID="profilePicture" runat="server" ImageUrl="../Images2/beginnerStock.png" Width="110" Height="110" class="rounded" />
                             <asp:DropDownList ID="ddlImage" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlImage_SelectedIndexChanged"  >
                                 <asp:ListItem Selected="True" Value="Beginner">Beginner</asp:ListItem>
                                 <asp:ListItem Value="Intermediate">Intermediate</asp:ListItem>
@@ -280,9 +280,9 @@
                             <div class="col mb-3">
                                 <asp:Label ID="lblTypeOfTraining" runat="server" Text="Type of Training?"></asp:Label>
                                 <asp:DropDownList ID="ddlTraining" runat="server" CssClass="form-control"  >
-                                    <asp:ListItem Selected="True">Hypertrophy (High Repitions, Lower Weight. Choose this if you want to have a more cut body type)</asp:ListItem>
-                                    <asp:ListItem>Strength (Lower Repitions, Higher Weight.  Choose this if you want to get as strong as possible)</asp:ListItem>
-                                    <asp:ListItem>Both</asp:ListItem>
+                                    <asp:ListItem Value="Hypertrophy" Selected="True">Hypertrophy (High Repitions, Lower Weight. Choose this if you want to have a more cut body type)</asp:ListItem>
+                                    <asp:ListItem Value="Strength">Strength (Lower Repitions, Higher Weight.  Choose this if you want to get as strong as possible)</asp:ListItem>
+                                    <asp:ListItem Value="Mixed">Mixed</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                             <br />

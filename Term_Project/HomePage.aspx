@@ -70,7 +70,7 @@
                 <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Weight Card -->
                         <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
@@ -90,7 +90,7 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Goals card -->
                         <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
@@ -111,7 +111,7 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Program card -->
                         <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
@@ -143,7 +143,7 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Percentage card -->
                         <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -175,7 +175,7 @@
                             </div>
                         </div>
 
-                        <!-- Pending Requests Card Example -->
+                        <!-- Days left card -->
                         <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
@@ -201,10 +201,10 @@
                         <center>
                         <div class="col-lg-8 mb-4">
 
-                            <!-- Illustrations -->
+                            <!-- Workout Gridview -->
                             <uc1:GridViewHomePage runat="server" id="GridViewHomePage" />
 
-                            <!-- Approach -->
+                            <!-- Welcome Card -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Welcome Message</h6>
@@ -228,7 +228,6 @@
 
         </div>
             <!-- End of Main Content -->      
-    <br>
     </form> 
 
 </body>

@@ -42,22 +42,23 @@
 
 </head>
 <body>
-    <div id="youShallNotPass" runat="server" class="text-center">
-        <h2 class="text-center">You Must Log In To See This Site!</h2>
-        <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
-                             <uc1:logoutnav runat="server" id="LogoutNav1" />
-
-    </div>
     <form id="form1" runat="server">
-   
 
-            <div id="divContent" runat="server">
-                <%--    nav bar start--%>
-                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-            <a class="navbar-brand" href="AdminPage.aspx">Moe's Fitness</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div id="youShallNotPass" runat="server" class="text-center">
+            <h2 class="text-center">You Must Log In To See This Site!</h2>
+            <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
+            <uc1:LogoutNav runat="server" ID="LogoutNav1" />
+
+        </div>
+
+
+        <div id="divContent" runat="server">
+            <%--    nav bar start--%>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
+                <a class="navbar-brand" href="AdminPage.aspx">Moe's Fitness</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
@@ -94,6 +95,7 @@
         </div>
 
 <%--        NEW MAILBOX--%>
+        <div id="containerContent" runat="server">
         <div class="container mb-10">
     <div class="row" >
         <div class="col-md-12 col-lg-8">
@@ -239,29 +241,29 @@
 
             </div>
 
-            <div class="container-fluid">
-            <div id="emailContent" runat="server" class="container-fluid"  visible="false">
-                <asp:Label ID="lblTitle" runat="server" ><h3>New Message</h3></asp:Label>
-                <asp:Label ID="lblSendTo" runat="server" Text="To: " class="mr-sm-2"></asp:Label>
-                <asp:TextBox ID="txtEmailTo" runat="server" class="form-control my-2 my-sm-0" placeholder="Receiver" Width="300px"></asp:TextBox>
-                <br />
-                <asp:Label ID="lblSubject" runat="server" Text="Subject: " class="mr-sm-2"></asp:Label>
-                <asp:TextBox ID="txtSubject" runat="server" class="form-control my-2 my-sm-0" placeholder="Subject: " Width="300px"></asp:TextBox>
-                <br />
-                <asp:Label ID="lvlContent" runat="server" Text="Body: " class="mr-sm-2"></asp:Label>
-                <asp:TextBox ID="txtContent" runat="server" class="form-control my-2 my-sm-0" placeholder="Receiver" Height="200px" Width="300px" TextMode="MultiLine"></asp:TextBox>
-                <br />
-                <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" OnClick="btnBack_Click" />
-                <asp:Button ID="btnSend" runat="server" Text="Send" class="btn btn-primary" OnClick="btnSend_Click" />
+                <div class="container-fluid">
+                    <div id="emailContent" runat="server" class="container-fluid" visible="false">
+                        <asp:Label ID="lblTitle" runat="server"><h3>New Message</h3></asp:Label>
+                        <asp:Label ID="lblSendTo" runat="server" Text="To: " class="mr-sm-2"></asp:Label>
+                        <asp:TextBox ID="txtEmailTo" runat="server" class="form-control my-2 my-sm-0" placeholder="Receiver" Width="300px"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="lblSubject" runat="server" Text="Subject: " class="mr-sm-2"></asp:Label>
+                        <asp:TextBox ID="txtSubject" runat="server" class="form-control my-2 my-sm-0" placeholder="Subject: " Width="300px"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="lvlContent" runat="server" Text="Body: " class="mr-sm-2"></asp:Label>
+                        <asp:TextBox ID="txtContent" runat="server" class="form-control my-2 my-sm-0" placeholder="Receiver" Height="200px" Width="300px" TextMode="MultiLine"></asp:TextBox>
+                        <br />
+                        <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" OnClick="btnBack_Click" />
+                        <asp:Button ID="btnSend" runat="server" Text="Send" class="btn btn-primary" OnClick="btnSend_Click" />
 
-            </div>
-            </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+        </div>
 
-
+        </div>
     </form>
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

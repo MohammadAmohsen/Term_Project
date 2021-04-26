@@ -32,6 +32,7 @@ namespace Term_Project
                 navBar.Visible = false;
                 content.Visible = false;
                 youShallNotPass.Visible = true;
+                divContent.Visible = false;
             }
         }
 

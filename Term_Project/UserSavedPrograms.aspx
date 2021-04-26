@@ -50,20 +50,20 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="HomePage.aspx">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Explore2.aspx">Explore Workout Programs</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="UserSavedPrograms.aspx">Saved Programs</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link" href="MyProgram.aspx">My Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My Profile</a>
+                        <a class="nav-link" href="MyProfilePage.aspx">My Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="UserMessages.aspx">Customer Service</a>
@@ -84,11 +84,15 @@
 
 <%--          end nav bar--%>
 
-        <div id="content" runat="server">
-        <div class="row justify-content-center">
- 
+        <div id="contentID" runat="server">
+        <h1 class="mt-4 mb-5 font-weight-strong text-center">Saved Workout Programs</h1>
+
+        <hr />
+
+        <div class="row justify-content-center text-center">
+
             <table>
-                
+
                 <asp:Repeater ID="rptPrograms" runat="server" OnItemCommand="rptPrograms_OnItemCommand">
                     <ItemTemplate>
 
@@ -102,7 +106,100 @@
                         <tr>
 
                             <td>
-                                <asp:Image ID="lblProgramImage" Height="100px" Width="100px" runat="server" ImageUrl='<%# Eval("Image") %>' />
+                                <asp:Label ID="lblProgramName" runat="server" Style="font-size: 30px; font-weight: bold;" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramName") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <asp:Image ID="lblProgramImage" Height="200px" Width="200px" runat="server" ImageUrl='<%# Eval("Image") %>' />
+                            </td>
+                            <td>
+                                <asp:Button ID="btnUnSaveProgram" class="btn btn-primary" Text="Un-Save Program" runat="server" OnClick="btnUnSaveProgram_Click" />
+                                                            <br />
+
+                                                       <br />
+
+                                <asp:Button ID="btnSelectProgram" class="btn btn-primary" Text="Use this workout!" runat="server" OnClick="btnSelectProgram_Click" />
+                                                            <br />
+
+                            <br />
+                                <asp:Button ID="btnDetailView" class="btn btn-primary" Text="View Program details" runat="server" OnClick="btnDetailView_Click" />
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <b><asp:Label ID="lblDesc" runat="server" Text="Description: "></asp:Label></b>
+                                <asp:Label ID="lblProgramDesc" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Description") %>'></asp:Label>
+                            </td>
+                        </tr>
+ 
+                        <tr>
+                            <td>
+                               <strong> <asp:Label ID="lblType" runat="server" Text="Program Type: "></asp:Label></strong>
+                                <asp:Label ID="lblProgramType" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramType") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                 <b><asp:Label ID="lblExp" runat="server" Text="Experience Level: "></asp:Label></b>
+                                <asp:Label ID="lblProgramExperience" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramExperience") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                               <b> <asp:Label ID="lblDays" runat="server" Text="Weekly Frequency: " ></asp:Label></b>
+                                <asp:Label ID="lblAmountOfDays" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Days") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+   
+ 
+                        </tr>
+
+                    </ItemTemplate>
+                </asp:Repeater>
+            </table>
+ 
+         </div>
+
+                <!-- Content Row -->
+                <div class="row" id="programDiv" runat="server" visible="false"  style="margin-left: 300px;  ">
+
+                    <!-- Content Row -->
+                        <center>
+                        <div class="col mb-4">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header">
+                                    <h6 id="h7" runat="server" class="m-0 font-weight-bold text-primary">Your Program</h6>
+                                </div>
+                                <div class="card-body">
+                                   <div style="text-align: center; margin-left:20rem; margin-right:20rem;">
+
+                        <table>
+                
+                <asp:Repeater ID="Repeater1" runat="server">
+                    <ItemTemplate>
+
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblProgramID" visible="false" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramID") %>'></asp:Label>
+
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <asp:Image ID="lblProgramImage" Height="100px" Width="100px" runat="server" ImageUrl='<%# Eval("ProgramImage") %>' />
 
                             </td>
                         </tr>
@@ -121,11 +218,6 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Label ID="lblDate" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateAdded") %>'></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
                                 <asp:Label ID="lblProgramType" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramType") %>'></asp:Label>
                             </td>
                         </tr>
@@ -137,54 +229,41 @@
                         <tr>
 
                             <td>
-                                <asp:Label ID="lblAmountOfDays" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Days") %>'></asp:Label>
+                                <asp:Label ID="lblAmountOfDays" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "AmountOfDays") %>'></asp:Label>
                             </td>
-                        </tr>
-                        <tr>
-
-                            <td>
-                                <asp:Label ID="lblLength" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "LengthOfProgram") %>'></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Button ID="btnDetailView" class="btn btn-primary" Text="Open Program" runat="server" OnClick="btnDetailView_Click" />
-                            </td>
-                        </tr>
-                        <tr>
-                           <td>
-                                <asp:Button ID="btnSelectProgram" class="btn btn-primary" Text="Select" runat="server" OnClick="btnSelectProgram_Click" />
-                            </td>
-                            
-                        </tr>
-                          <tr>
-                           <td>
-                                <asp:Button ID="btnUnsave" class="btn btn-primary" Text="UnSave" runat="server" OnClick="btnUnSaveProgram_Click" />
-                            </td>
-                            
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
-            </table>
-            <asp:Button ID="btnBack" Visible="false" class="btn btn-primary" Text="Back" runat="server" OnClick="btnBack_Click" />
+            </table>                               
 
-        </div>
-         <%--        List View for each individual Workout and Program--%>
-
-        <div id="lvContent" runat="server" visible="false">
-        <div class="album py-5 bg-light" visible="false">
-            <div class="container" visible="false">
-                <div class="row" visible="false">
-                        <!-- Illustrations -->
-                    <div class="col-md-3" visible="false">
-
-                        <div class="card shadow mb-3" visible="false">
-                            <div class="card-header py-3">
-                                <h6 id="h6Day"  runat="server" class="m-0 font-weight-bold text-primary">Monday</h6>
+            </div>
+                                </div>
                             </div>
-                            <div class="card-body" style="height: auto; width: 15rem" visible="false">
+                        </div>
+                            </center>
 
-                                <asp:ListView ID="lvMonday" Visible="false"  runat="server" ItemPlaceholderID="PlaceHolder1">
+                </div>
+        <div class="text-center">
+            <asp:Button ID="btnBack" Visible="false" class="btn btn-primary btn-lg" Text="Back" runat="server" OnClick="btnBack_Click" />
+        </div>
+
+
+        <%--        List View for each individual Workout and Program--%>
+
+        <div id="lvWorkouts" runat="server" visible="false">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                        <!-- Illustrations -->
+                    <div class="col-md-3">
+
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <h6 id="h6Day" runat="server" class="m-0 font-weight-bold text-primary">Monday</h6>
+                            </div>
+                            <div class="card-body" style="height: auto; width: 15rem">
+
+                                <asp:ListView ID="lvMonday" Visible="false" runat="server" ItemPlaceholderID="PlaceHolder1">
                                     <ItemTemplate>
                                         <strong>Exercise Name: </strong>
                                         <asp:Label runat="server" ID="ExerciseName" Text='<%# Eval("ExerciseName") %>'></asp:Label>
@@ -382,10 +461,6 @@
         </div>
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-
 
 
         <!--===============================================================================================-->

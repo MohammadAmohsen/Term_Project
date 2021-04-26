@@ -76,7 +76,7 @@
 
 
         <%--heading--%>
-                            <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-3">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-3" id="headerContent" runat="server">
                         <h1 class="h3 mb-0 mt-5 ml-3 text-gray-800">Current Users</h1>
                     </div>
     

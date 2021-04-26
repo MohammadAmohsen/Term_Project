@@ -51,13 +51,13 @@ namespace Term_Project
         protected global::Term_Project.LogoutNav LogoutNav;
 
         /// <summary>
-        /// content control.
+        /// contentID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl content;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contentID;
 
         /// <summary>
         /// rptPrograms control.
@@ -69,6 +69,33 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Repeater rptPrograms;
 
         /// <summary>
+        /// programDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl programDiv;
+
+        /// <summary>
+        /// h7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl h7;
+
+        /// <summary>
+        /// Repeater1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+
+        /// <summary>
         /// btnBack control.
         /// </summary>
         /// <remarks>
@@ -78,13 +105,13 @@ namespace Term_Project
         protected global::System.Web.UI.WebControls.Button btnBack;
 
         /// <summary>
-        /// lvContent control.
+        /// lvWorkouts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lvContent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lvWorkouts;
 
         /// <summary>
         /// h6Day control.

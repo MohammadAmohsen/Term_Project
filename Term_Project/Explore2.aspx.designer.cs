@@ -15,6 +15,24 @@ namespace Term_Project
     {
 
         /// <summary>
+        /// youShallNotPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl youShallNotPass;
+
+        /// <summary>
+        /// LogoutNav1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Term_Project.LogoutNav LogoutNav1;
+
+        /// <summary>
         /// navBar control.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,15 @@ namespace Term_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Term_Project.LogoutNav LogoutNav;
+
+        /// <summary>
+        /// contentID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contentID;
 
         /// <summary>
         /// rptPrograms control.

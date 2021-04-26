@@ -35,7 +35,13 @@
 </head>
 <body>
     <form runat="server">
-<%--    nav bar start--%>
+        <div id="youShallNotPass" runat="server" class="text-center" visible="false">
+            <h2 class="text-center">You Must Log In To See This Site!</h2>
+            <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
+            <uc1:LogoutNav runat="server" ID="LogoutNav1" />
+        </div>
+
+        <%--    nav bar start--%>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
       <a class="navbar-brand" href="HomePage.aspx">Moe's Fitness</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +63,7 @@
                      <a class="nav-link" href="MyProgram.aspx">My Programs</a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link" href="#">My Profile</a>
+                     <a class="nav-link" href="MyProfilePage.aspx">My Profile</a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="UserMessages.aspx">Customer Service</a>
@@ -68,20 +74,23 @@
              </div>
          </div>
      </nav>
- 
-    <br />    <br />
-    <br />    <br />
-  
 
-<%--          end nav bar--%>
-                            <h1 class="mt-4 mb-5 font-weight-strong text-center">All Workout Programs</h1>
+        <br />
+        <br />
+        <br />
+        <br />
+        <%--          end nav bar--%>
+
+
+        <div id="contentID" runat="server">
+        <h1 class="mt-4 mb-5 font-weight-strong text-center">All Workout Programs</h1>
 
         <hr />
 
         <div class="row justify-content-center text-center">
- 
+
             <table>
-                
+
                 <asp:Repeater ID="rptPrograms" runat="server" OnItemCommand="rptPrograms_OnItemCommand">
                     <ItemTemplate>
 
@@ -447,12 +456,9 @@
             </div>
         </div>
         </div>
+        </div>
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-
 
 
         <!--===============================================================================================-->

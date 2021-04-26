@@ -23,28 +23,36 @@ namespace Term_Project
         {
             if (!IsPostBack)
             {
-                //Repeater
+                if (Session["UserID"] == null)
+                {
+                    contentID.Visible = false;
+                    youShallNotPass.Visible = true;
+                    navBar.Visible = false;
+                }
+                else
+                {
+                    //Repeater
 
-                WebRequest request = WebRequest.Create("https://localhost:44314/api/Fitness/AllPrograms/");
-                WebResponse response = request.GetResponse();
+                    WebRequest request = WebRequest.Create("https://localhost:44314/api/Fitness/AllPrograms/");
+                    WebResponse response = request.GetResponse();
 
-                // Read the data from the Web Response, which requires working with streams.
-                Stream theDataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(theDataStream);
-                String data = reader.ReadToEnd();
-                reader.Close();
-                response.Close();
+                    // Read the data from the Web Response, which requires working with streams.
+                    Stream theDataStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(theDataStream);
+                    String data = reader.ReadToEnd();
+                    reader.Close();
+                    response.Close();
 
-                // Deserialize a JSON string that contains an array of JSON objects into an Array of Team objects.
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                List<Program> programList = js.Deserialize<List<Program>>(data);
+                    // Deserialize a JSON string that contains an array of JSON objects into an Array of Team objects.
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    List<Program> programList = js.Deserialize<List<Program>>(data);
 
-                //String strSQL = "Select * FROM TP_Program";
-                lvVisible(false);
-                // Set the datasource of the Repeater and bind the data
-                 rptPrograms.DataSource = programList;
-                rptPrograms.DataBind();
-
+                    //String strSQL = "Select * FROM TP_Program";
+                    lvVisible(false);
+                    // Set the datasource of the Repeater and bind the data
+                    rptPrograms.DataSource = programList;
+                    rptPrograms.DataBind();
+                }
             }
         }
 
@@ -131,6 +139,7 @@ namespace Term_Project
             var item = (RepeaterItem)btn.NamingContainer;
             Label labelProgram = (Label)item.FindControl("lblProgramID");
             int programID = Convert.ToInt32(labelProgram.Text);
+            lvVisible(false);
 
 
             SqlCommand objCommand1 = new SqlCommand();
@@ -173,11 +182,15 @@ namespace Term_Project
                 db.DoUpdateUsingCmdObj(objCommand);
 
                 Response.Write("<script>alert('Program Has Been Saved!') </script>");
+
+                programDiv.Visible = false;
             }
 
             else
             {
                 Response.Write("<script>alert('Program Has Already Been Saved Dummy!') </script>");
+                programDiv.Visible = false;
+
 
             }
         }
@@ -227,7 +240,10 @@ namespace Term_Project
                 Date.Direction = ParameterDirection.Input;
                 objCommand.Parameters.Add(Date);
 
+                Session["ProgramID"] = programID;
+
                 db.DoUpdateUsingCmdObj(objCommand);
+                Response.Redirect("HomePage.aspx");
 
                 Response.Write("<script>alert('Program Has Been Selected!') </script>");
             }
@@ -295,6 +311,7 @@ namespace Term_Project
             btnBack.Visible = boo;
             lvWorkouts.Visible = boo;
             programDiv.Visible = boo;
+            Repeater1.Visible = boo;
         }
 
     }
