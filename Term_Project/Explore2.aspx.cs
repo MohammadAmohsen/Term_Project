@@ -42,10 +42,31 @@ namespace Term_Project
                 //String strSQL = "Select * FROM TP_Program";
                 lvVisible(false);
                 // Set the datasource of the Repeater and bind the data
-                rptPrograms.DataSource = programList;
+                 rptPrograms.DataSource = programList;
                 rptPrograms.DataBind();
 
             }
+        }
+
+        public void ProgramLoad(int programID)
+        {
+            programDiv.Visible = true;
+
+            //Next use the Program Id and add that to the Repeater
+            SqlCommand objCommand1 = new SqlCommand();
+
+            objCommand1.CommandType = CommandType.StoredProcedure;
+            objCommand1.CommandText = "TP_SelectAllFromProgramWhereID";
+
+            SqlParameter ProgramID1 = new SqlParameter("@ID", programID);
+            ProgramID1.Direction = ParameterDirection.Input;
+            objCommand1.Parameters.Add(ProgramID1);
+
+            Repeater1.DataSource = db.GetDataSetUsingCmdObj(objCommand1);
+            Repeater1.DataBind();
+
+
+         
         }
 
 
@@ -83,6 +104,7 @@ namespace Term_Project
             lvSunday.DataSource = lvWorkoutDays(ID, "Sunday");
             lvSunday.DataBind();
 
+            ProgramLoad(ID);
         }
 
         protected void btnDetailView_Click(object sender, EventArgs e)
@@ -96,6 +118,7 @@ namespace Term_Project
         protected void btnBack_Click(object sender, EventArgs e)
         {
             rptPrograms.Visible = true;
+            Repeater1.Visible = false;
              // ListViewDisplayWorkout.Visible = false;
             lvVisible(false);
         }
@@ -200,6 +223,9 @@ namespace Term_Project
                 UserID.Direction = ParameterDirection.Input;
                 objCommand.Parameters.Add(UserID);
 
+                SqlParameter Date = new SqlParameter("@Date", DateTime.Now);
+                Date.Direction = ParameterDirection.Input;
+                objCommand.Parameters.Add(Date);
 
                 db.DoUpdateUsingCmdObj(objCommand);
 
@@ -268,6 +294,7 @@ namespace Term_Project
             lvSunday.Visible = boo;
             btnBack.Visible = boo;
             lvWorkouts.Visible = boo;
+            programDiv.Visible = boo;
         }
 
     }

@@ -53,20 +53,20 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="AdminPage.aspx">Home<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="AdminSignUp.aspx">Create an Admin!</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AdminSignUp.aspx">Create Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program!</a>
+                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs!</a>
+                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions!</a>
+                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions</a>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0" runat="server">
@@ -74,16 +74,6 @@
                 </div>
             </div>
       </nav>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
 
 
         <%--          end nav bar--%>
@@ -99,12 +89,12 @@
                         <br />
 
                         <div class="col-md-1 mb-3">
-                            <img src="../Images2/Logo.png" width="100" height="100" />
+                            <img src="../Images2/Asset_4.png" width="100" height="100" />
                         </div>
                         <br />
 
                         <div class="col-md-8 mb-3" id="Heading">
-                            <h4 class="mb-3">Admin Sign Up!</h4>
+                            <h4 class="mb-3">Create Administrator</h4>
                         </div>
                     </div>
                     <br />
@@ -119,7 +109,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="Avatar">What is your experience level?</label><br />
                             <asp:Image ID="profilePicture" runat="server" ImageUrl="../Images2/Admin1.png" Width="110" Height="110" class="rounded" />
-                            <asp:DropDownList ID="ddlImage" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlImage_SelectedIndexChanged"  >
+                            <asp:DropDownList ID="ddlImage" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlImage_SelectedIndexChanged"  >
                                 <asp:ListItem Selected="True" Value="Admin1">Admin 1</asp:ListItem>
                                 <asp:ListItem Value="Admin2">Admin 2</asp:ListItem>
                                 <asp:ListItem Value="Admin3">Admin 3</asp:ListItem>
@@ -199,7 +189,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="SQ1" runat="server" Text="Security Question 1"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ1" runat="server" AutoPostBack="true" >
+                                 <asp:DropDownList ID="ddlSQ1" CssClass="form-control" runat="server" AutoPostBack="true" >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -221,7 +211,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <asp:Label ID="lblSQ2" runat="server" Text="Security Question 2"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ2" runat="server" AutoPostBack="true"  >
+                                 <asp:DropDownList ID="ddlSQ2" runat="server" CssClass="form-control" AutoPostBack="true"  >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -243,8 +233,8 @@
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <asp:Label ID="lblSQ3" runat="server" Text="Security Question 3"></asp:Label>
-                                 <asp:DropDownList ID="ddlSQ3" runat="server" AutoPostBack="true"  >
+                            <asp:Label ID="lblSQ3" runat="server"  Text="Security Question 3"></asp:Label>
+                                 <asp:DropDownList ID="ddlSQ3" CssClass="form-control" runat="server" AutoPostBack="true"  >
                                 <asp:ListItem Selected="True">What's your favorite animal?</asp:ListItem>
                                 <asp:ListItem>What was your first school called?</asp:ListItem>
                                 <asp:ListItem>What's your favorite food?</asp:ListItem>
@@ -263,10 +253,13 @@
                     <hr />
 
                  
+                    <div class="mb-2">
+                    <div class="d-inline bg-danger-primary text-white">
 
-                    <asp:Button ID="btnCreate" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Your Account!" OnClick="btnCreate_Click1" />
-                    <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Back To Admin Page!" OnClick="btnBackToSign_Click" />
-
+                    <asp:Button ID="btnCreate" runat="server" class="btn btn-md btn-block" type="submit" Text="Create Administrator" OnClick="btnCreate_Click1" />
+                    <asp:Button ID="btnBack" class="btn btn-md btn-light btn-block" runat="server" Text="Home Page" OnClick="btnBackToSign_Click" />
+                    </div>
+                        </div>
                 </div>
             </div>
         </div>

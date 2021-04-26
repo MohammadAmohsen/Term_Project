@@ -70,7 +70,7 @@
 
                     <div class="d-inline bg-danger-primary text-white">
                         <asp:Button ID="btnContinue" runat="server" class="btn btn-md btn-primary" Text="Continue" OnClick="btnContinue_Click" />
-						 <input type="button" value="HTML Continue" runat="server" id="btnHtmlContinue" onclick="btnHtmlContinue_Click()" />
+						 <input type="button" value="Continue" runat="server" id="btnHtmlContinue" onclick="btnHtmlContinue_Click()" />
                                         </div>
                     <%--<div class="container-login100-form-btn">
                         <asp:Button ID="btnSignIn" runat="server" Visible="false" class="login100-form-btn" Text="Sign-In" OnClick="btnSignIn_Click" />
@@ -128,7 +128,8 @@
                                 dataType: "json",
                                 data: strInput,
                                 success: function (data) {
-                                    alert("your account is verified");
+                                    alert("Congratulations!Your account is verified");
+                                    window.location.replace("LogIn.aspx");
                                 },
                                 error: function (req, status, error) {
                                     alert("error2");

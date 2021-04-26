@@ -45,27 +45,27 @@
 
     <%--    nav bar start--%>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-            <a class="navbar-brand" href="#">Moe's Gym</a>
+            <a class="navbar-brand" href="#">Moe's Fitness</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="AdminPage.aspx">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminSignUp.aspx">Create an Admin!</a>
+                        <a class="nav-link" href="AdminSignUp.aspx">Create Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program!</a>
+                        <a class="nav-link" href="AdminAddWorkout.aspx">Make Program</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs!</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions!</a>
+                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions</a>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0" runat="server">
@@ -74,29 +74,26 @@
             </div>
       </nav>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+
 
 
 <%--          end nav bar--%>
-      
+              <br />
+        <br />
+        <br />
 
         <br />
+        <div class=" col text-center">
+        <asp:Button ID="btnDelete" class="btn btn-primary btn-lg" runat="server" Text="Delete" OnClick="btnDelete_Click" />      
+            <asp:Button ID="btnBack" Visible="false" class="btn btn-primary" Text="Back" runat="server" OnClick="btnBack_Click" />
+
+            </div>
         <br />
-        <br />
-        <asp:Button ID="btnDelete" class="btn btn-info" runat="server" Text="delete" OnClick="btnDelete_Click" />
 
 
         <!-- Content Row -->
         <div class="row justify-content-center" runat="server" id="ContentID">
-            <asp:GridView ID="gvManagePrograms" Style="margin-left: auto; margin-right: auto;" Visible="true" runat="server" AutoGenerateSelectButton="true" AutoGenerateColumns="False" CssClass="table table-hover" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" Width="90%" OnSelectedIndexChanged="gvManagePrograms_SelectedIndexChanged">
+            <asp:GridView ID="gvManagePrograms" Style="margin-left: auto; margin-right: auto;" runat="server" AutoGenerateSelectButton="True" AutoGenerateColumns="False" CssClass="table table-hover" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Width="90%" OnSelectedIndexChanged="gvManagePrograms_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField HeaderText="Select: ">
                         <ItemTemplate>
@@ -117,10 +114,105 @@
                     <asp:BoundField DataField="lengthOfProgram" HeaderText="length Of Program:" />
 
                 </Columns>
+                <FooterStyle BackColor="White" ForeColor="#000066" />
+                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                <RowStyle ForeColor="#000066" />
+                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#00547E" />
             </asp:GridView>
         </div>
 
-          <asp:Button ID="btnBack" Visible="false" class="btn btn-primary" Text="Back" runat="server" OnClick="btnBack_Click" />
+
+
+
+
+
+            <!-- Content Row -->
+                <div class="row" id="programDiv" runat="server" visible="false"  style="margin-left: 300px;  ">
+
+                    <!-- Content Row -->
+                        <center>
+                        <div class="col mb-4">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4" id="card" runat="server" visible="false">
+                                <div class="card-header" >
+                                    <h6 id="h7" runat="server" class="m-0 font-weight-bold text-primary">Your Program</h6>
+                                </div>
+                                <div class="card-body">
+                                   <div style="text-align: center; margin-left:20rem; margin-right:20rem;">
+
+                        <table>
+                
+                <asp:Repeater ID="Repeater1" runat="server">
+                    <ItemTemplate>
+
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblProgramID" visible="false" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramID") %>'></asp:Label>
+
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <asp:Image ID="lblProgramImage" Height="100px" Width="100px" runat="server" ImageUrl='<%# Eval("ProgramImage") %>' />
+
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblProgramName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramName") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblProgramDesc" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Description") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblProgramType" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramType") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblProgramExperience" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ProgramExperience") %>'></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <asp:Label ID="lblAmountOfDays" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "AmountOfDays") %>'></asp:Label>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </table>                               
+
+            </div>
+                                </div>
+                            </div>
+                        </div>
+                            </center>
+
+                </div>
+        <div class="text-center">
+            <asp:Button ID="Button1" Visible="false" class="btn btn-primary btn-lg" Text="Back" runat="server" OnClick="btnBack_Click" />
+        </div>
+
+
+
+
+
 
         <div id="lvContent" runat="server" visible="false">
         <div class="album py-5 bg-light" > 

@@ -35,16 +35,25 @@ namespace Term_Project
                 }
                 else
                 {
+                    string goals = Session["UserGoals"].ToString();
+                    if (goals == "")
+                    {
+                        lblGoals.Text = "Get Stronger";
+                    }
+                    else
+                    {
+                        lblGoals.Text = Session["UserGoals"].ToString();
+                    }
                     // int programID = Convert.ToInt32(Session["ProgramID"]);
                     DateTime f = DateTime.Now;
                     DateTime no = f.AddDays(12);
                     ContentID.Visible = true;
                     youShallNotPass.Visible = false;
                     SavedWorkouts();
-                    if (Convert.ToInt32(Session["ProgramID"]) == 32)
+                    int id = Convert.ToInt32(Session["ProgramID"]);
+                    if (id == 32)
                     {
                         DateStampLabel.Text = "No Workout Program Selected!";
-                        lblGoals.Text = Session["UserGoals"].ToString();
                         lblCurrentWeight.Text = Session["UserWeight"].ToString() + "lbs";
                         lblDaysLeft.Text = "N/A";
                     }
@@ -52,7 +61,6 @@ namespace Term_Project
                     {
                         DisplayTime();
                         lblCurrentWeight.Text = Session["UserWeight"].ToString() + "lbs";
-                        lblGoals.Text = Session["UserGoals"].ToString();
                     }
 
                     //DailyWorkout();

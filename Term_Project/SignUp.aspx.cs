@@ -270,7 +270,7 @@ namespace Term_Project
                                         sqlCommand2.Parameters.Add(UserID);
 
                                         //Adds questions to user
-                                        db.DoUpdateUsingCmdObj(sqlCommand2);
+                                        int ret3 = db.DoUpdateUsingCmdObj(sqlCommand2);
 
                                     SqlCommand sqlCommand9 = new SqlCommand();
 
@@ -286,7 +286,7 @@ namespace Term_Project
                                     UserID7.Direction = ParameterDirection.Input;
                                     sqlCommand9.Parameters.Add(UserID7);
 
-                                    db.DoUpdateUsingCmdObj(sqlCommand9);
+                                  int ret2 =  db.DoUpdateUsingCmdObj(sqlCommand9);
 
 
                                     Response.Redirect("LogIn.aspx");

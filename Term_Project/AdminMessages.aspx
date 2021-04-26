@@ -40,13 +40,47 @@
 
 
         <div id="youShallNotPass" runat="server" class="text-center">
-            <h2 class="text-center">You Must Log In To See This Site!</h2>
+            <h2 class="text-center">You Must Login To See This Site!</h2>
             <img src="Images2/ShallNotPass.gif" style="margin-top: 100px;" />
             <uc1:LogoutNav runat="server" ID="LogoutNav2" />
 
         </div>
 
-            <div id="divContent" runat="server">
+
+                <div class="mb-3">
+                     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
+            <a class="navbar-brand" href="#">Moe's Fitness</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                         
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminPage.aspx">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminSignUp.aspx">Create Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions</a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0" runat="server">
+                    <uc1:LogoutNav runat="server" ID="LogoutNav1" />
+                </div>
+            </div>
+      </nav>
+      </div>
+
+        <div id="divContent" runat="server">
 
         <div class="d-flex" id="wrap">
         <div class="border-right" runat="server" id="sideBar">
@@ -67,42 +101,10 @@
             </div>
         </div>
 
-                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" id="navBar" runat="server">
-            <a class="navbar-brand" href="#">Moe's Gym</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="AdminPage.aspx">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="AdminSignUp.aspx">Create an Admin!</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="AdminAddWorkout.aspx">Make A Program!</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="AdminManagePrograms.aspx">Manage Programs!</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="AdminMessages.aspx">Customer's Questions!</a>
-                    </li>
-                </ul>
-                <div class="form-inline my-2 my-lg-0" runat="server">
-                    <uc1:LogoutNav runat="server" ID="LogoutNav1" />
-                </div>
-            </div>
-      </nav>
-
-        <br />
-        <br />
-                <br />
-
+           
+            <div class="mt-10">
            <asp:Label ID="lblName" runat="server" Text="INBOX FOLDER" ></asp:Label>
-
+             
             <div class="container-fluid">
                 <br />
 
@@ -189,6 +191,7 @@
             </div>
 
             </div>
+                   </div>
 
             <div id="emailContent" runat="server" class="container-fluid"  visible="false">
                 <asp:Label ID="lblTitle" runat="server" CssClass="text-center"><h3>New Message</h3></asp:Label>

@@ -41,7 +41,26 @@ namespace Term_Project
             }
         }
 
-      
+        public void ProgramLoad(int programID)
+        {
+            programDiv.Visible = true;
+
+            //Next use the Program Id and add that to the Repeater
+            SqlCommand objCommand1 = new SqlCommand();
+
+            objCommand1.CommandType = CommandType.StoredProcedure;
+            objCommand1.CommandText = "TP_SelectAllFromProgramWhereID";
+
+            SqlParameter ProgramID1 = new SqlParameter("@ID", programID);
+            ProgramID1.Direction = ParameterDirection.Input;
+            objCommand1.Parameters.Add(ProgramID1);
+
+            Repeater1.DataSource = db.GetDataSetUsingCmdObj(objCommand1);
+            Repeater1.DataBind();
+
+
+
+        }
 
         public void ShowPrograms()
         {
@@ -236,6 +255,9 @@ namespace Term_Project
 
             lvVisible(true);
             gvManagePrograms.Visible = false;
+            ProgramLoad(ID);
+            btnDelete.Visible = false;
+
         }
 
         private ArrayList lvWorkoutDays(int ID, string dayName)
@@ -292,6 +314,8 @@ namespace Term_Project
             lvSunday.Visible = boo;
             btnBack.Visible = boo;
             lvContent.Visible = boo;
+            Repeater1.Visible = boo;
+            card.Visible = boo;
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -299,6 +323,8 @@ namespace Term_Project
             gvManagePrograms.Visible = true;
             // ListViewDisplayWorkout.Visible = false;
             lvVisible(false);
+            btnDelete.Visible = true;
+
         }
     }
 }

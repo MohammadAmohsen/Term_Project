@@ -246,10 +246,10 @@
 
                         <div class="row" runat="server" visible="false" id="Questions2">
                             <div class="col mb-3">
-                                <asp:Label ID="LabelGoals" runat="server"  Text="What are your fitness goals"></asp:Label>
+                                <asp:Label ID="LabelGoals" runat="server"  Text="What are your fitness goals?"></asp:Label>
 
-                                <asp:DropDownList ID="ddlGoals" runat="server" CssClass="form-control" AutoPostBack="true"  >
-                                    <asp:ListItem Selected="True">Gain Weight?</asp:ListItem>
+                                <asp:DropDownList ID="ddlGoals" runat="server" CssClass="form-control" >
+                                    <asp:ListItem Selected="True">Gain Weight</asp:ListItem>
                                     <asp:ListItem>Lose Weight</asp:ListItem>
                                     <asp:ListItem>Maintain Weight</asp:ListItem>
                                 </asp:DropDownList>
@@ -264,10 +264,10 @@
                         <div class="row" runat="server" visible="false" id="Questions3">
                             <div class="col mb-3 ">
                                 <asp:Label ID="DaysAWeekProgram" runat="server" Text="How many days a week would you look your program to be?"></asp:Label>
-                                <asp:DropDownList ID="ddlDays" runat="server" CssClass="form-control" AutoPostBack="true">
+                                <asp:DropDownList ID="ddlDays" runat="server" CssClass="form-control">
                                     <asp:ListItem Selected="True">3</asp:ListItem>
-                                    <asp:ListItem>4-5</asp:ListItem>
-                                    <asp:ListItem>6-7</asp:ListItem>
+                                    <asp:ListItem Value="5">4-5</asp:ListItem>
+                                    <asp:ListItem Value="7">6-7</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                             <br />
@@ -279,9 +279,9 @@
                         <div class="row" runat="server" visible="false" id="Questions5">
                             <div class="col mb-3">
                                 <asp:Label ID="lblTypeOfTraining" runat="server" Text="Type of Training?"></asp:Label>
-                                <asp:DropDownList ID="ddlTraining" runat="server" CssClass="form-control" AutoPostBack="true" >
-                                    <asp:ListItem Selected="True">Hypertrophy (High Repitions)</asp:ListItem>
-                                    <asp:ListItem>Strength (Lower Repitions)</asp:ListItem>
+                                <asp:DropDownList ID="ddlTraining" runat="server" CssClass="form-control"  >
+                                    <asp:ListItem Selected="True">Hypertrophy (High Repitions, Lower Weight. Choose this if you want to have a more cut body type)</asp:ListItem>
+                                    <asp:ListItem>Strength (Lower Repitions, Higher Weight.  Choose this if you want to get as strong as possible)</asp:ListItem>
                                     <asp:ListItem>Both</asp:ListItem>
                                 </asp:DropDownList>
                             </div>

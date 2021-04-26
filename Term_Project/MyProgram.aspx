@@ -138,7 +138,7 @@
                 </div>
 
 
-                         <%--        List View for each individual Workout and Program--%>
+                <%--        List View for each individual Workout and Program--%>
 
         <div class="album py-5 bg-light">
             <div class="container">
